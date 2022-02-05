@@ -34,3 +34,17 @@ var GameHam = GameHam || {};
   };
 
 })(GameHam); 
+
+
+/*
+just some scratch for ui logic 
+
+SceneManager._scene._itemWindow.visible
+
+SceneManager._scene._actorCommandWindow.active
+
+_itemWindow
+_actorCommand
+
+$gameParty.members()[1]._row
+*/

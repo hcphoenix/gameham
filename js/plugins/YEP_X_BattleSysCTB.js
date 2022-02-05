@@ -573,7 +573,7 @@ Yanfly.Param.CTBOptionSpeedTx = String(Yanfly.Parameters['CTB Speed Text']);
 Yanfly.Param.CTBDefaultSpeed = Number(Yanfly.Parameters['Default CTB Speed']);
 
 Yanfly.Param.CTBTurnOrder = eval(String(Yanfly.Parameters['Show Turn Order']));
-Yanfly.Param.CTBTurnPosY = Number(Yanfly.Parameters['Position Y']);
+Yanfly.Param.CTBTurnPosY = String(Yanfly.Parameters['Position Y']); // Changed to support scaling from bottom
 Yanfly.Param.CTBTurnPosX = String(Yanfly.Parameters['Position X']);
 Yanfly.Param.CTBIconSize = Number(Yanfly.Parameters['Icon Size']);
 Yanfly.Param.CTBTurnDirection = String(Yanfly.Parameters['Turn Direction']);
@@ -2531,10 +2531,19 @@ Window_CTBIcon.prototype.updatePositionX = function() {
 };
 
 Window_CTBIcon.prototype.destinationY = function() {
-    var value = Yanfly.Param.CTBTurnPosY - this.standardPadding();
+    // use formula
+    var screenHeight = 624; // stupid hack why isnt this exposed? maybe it is idk the docs suck
+    var code = Yanfly.Param.CTBTurnPosY;
+    var value = 0;
+    try {
+        value = Number(eval(code));
+    } catch (e) {
+        Yanfly.Util.displayError(e, code, 'CTB TURN POS BUFFER FORMULA ERROR');
+    }
+
     var scene = SceneManager._scene;
     if (scene && scene._helpWindow.visible) {
-        value = Math.max(value, scene._helpWindow.height);
+        value -= scene._helpWindow.height * 0.9; // we moved the help window to the bottom of the screen
     }
     if (!this._battler) return value;
     if (this._battler.isSelected()) {
