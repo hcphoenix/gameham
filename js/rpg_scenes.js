@@ -2389,7 +2389,8 @@ Scene_Battle.prototype.createPartyCommandWindow = function() {
     this._partyCommandWindow.setHandler('fight',  this.commandFight.bind(this));
     this._partyCommandWindow.setHandler('escape', this.commandEscape.bind(this));
     this._partyCommandWindow.deselect();
-    this.addWindow(this._partyCommandWindow);
+    // Disable party command window
+    //this.addWindow(this._partyCommandWindow);
 };
 
 Scene_Battle.prototype.createActorCommandWindow = function() {
@@ -2398,7 +2399,9 @@ Scene_Battle.prototype.createActorCommandWindow = function() {
     this._actorCommandWindow.setHandler('skill',  this.commandSkill.bind(this));
     this._actorCommandWindow.setHandler('guard',  this.commandGuard.bind(this));
     this._actorCommandWindow.setHandler('item',   this.commandItem.bind(this));
-    this._actorCommandWindow.setHandler('cancel', this.selectPreviousCommand.bind(this));
+    this._actorCommandWindow.setHandler('escape',   this.commandItem.bind(this));
+    // Disable going to the party command window
+    // this._actorCommandWindow.setHandler('cancel', this.selectPreviousCommand.bind(this));
     this.addWindow(this._actorCommandWindow);
 };
 
