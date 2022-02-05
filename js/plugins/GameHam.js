@@ -8,32 +8,33 @@ Imported["GameHam"] = true;
 var GameHam = GameHam || {};
 
 
-// (function (_) { 
-//   "use strict";
+(function (_) { 
+  "use strict";
+
+  GameHam.randomIntFromInterval = function(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
   
-//   _.Game_Actor_setup= Game_Actor.prototype.setup;
-//   Game_Actor.prototype.setup = function(actorId) {
-//       _Game_Actor_setup.call(this, actorId);
-//       this.initAltitude();
-//   };
+  GameHam.spawnheight = 15;
+  
+  GameHam.randomX = function() {
+    return this.randomIntFromInterval(0,16);
+  }
 
-//   /*
-//   for(var i = 0; i < $gameTroop._enemies.length; i++){
-//     var enemyId = $gameTroop._enemies[i]._enemyId;
-//     var selected = $gameTroop._enemies[i]._selected;
-//   }*/
-
-// })(GameHam); 
-
-function randomIntFromInterval(min, max) { // min and max included 
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
-
-GameHam.spawnheight = 15;
-
-GameHam.randomX = function() {
-  return randomIntFromInterval(0,16);
-}
+  GameHam.party = [];
+  GameHam.randomParty = function() {
+    this.party = [];
+    var i = 0;
+    while(i < 4) {
+      var member = this.randomIntFromInterval(0,7);
+      if(!this.party.includes(member)) {
+        this.party.push(member);
+        i++;
+      }
+    }
+    return this.party;
+  }
+})(GameHam); 
 
 /*
 just some scratch for ui logic 
