@@ -718,15 +718,20 @@ HUDManager.getAnimateInfo = function() {
 	return data;
 };
 
-HUDManager.setupNewSprite = function(sprite) {
-	sprite._originalX = Graphics.boxWidth / 2;
-	sprite._originalY = Graphics.boxHeight / 2;
+HUDManager.setupNewSprite = function(sprite, data) {
+    if(data) {
+        sprite._originalX = data.x;
+	    sprite._originalY = data.y;
+    } else {
+        sprite._originalX = Graphics.boxWidth / 2;
+	    sprite._originalY = Graphics.boxHeight / 2;
+    }
 	sprite.setHighlight(this.getHighlight());
 	this._hud.addChild(sprite);
 	this._sprites.push(sprite);
 	this._currentId = this._sprites.length - 1;
 	this.refreshCurrentId();
-	this.getData().id = this.nextId;
+	if(this.getData()) this.getData().id = this.nextId;
 	this.nextId++;
 };
 
@@ -1711,7 +1716,22 @@ Scene_Battle.prototype.start = function() {
 		this._hud.refresh();
 		this.createHudUpperLayer();
 	}
+    this.setupEnemyBars();
 };
+
+Scene_Battle.prototype.setupEnemyBars = function() {
+    for(var i = 0; i < $gameTroop._enemies.length; i++){
+        var type = HUDManager.types[Sprite_HUDEnemyImageGauge._label];
+        const data = JsonEx.makeDeepCopy(type.data);
+        data.animateInfo = HUDManager.getAnimateInfo();
+        const sprite = new type.class(data);
+        data.x = $gameTroop._enemies[i]._screenX;
+        data.y = $gameTroop._enemies[i]._screenY;
+        HUDManager._data.push(data);
+        HUDManager.setupNewSprite(sprite, data);
+        //var enemyGauge = new Sprite_HUDEnemyImageGauge(data, i, true);
+    }
+}
 
 _.Scene_Battle_createSpriteset = Scene_Battle.prototype.createSpriteset;
 Scene_Battle.prototype.createSpriteset = function() {
@@ -3571,21 +3591,45 @@ HUDManager.types[Sprite_HUDEnemyImageGauge._label] = {
 	}
 }
 
-Sprite_HUDEnemyImageGauge.prototype.initialize = function(info) {
+Sprite_HUDEnemyImageGauge.prototype.initialize = function(info, enemyNum, autoDraw) {
 	Sprite_HUDObject.prototype.initialize.call(this, new Bitmap(1, 1), info);
+    
 	this.properties = ["Cur. Value", "Max Value", "Condition", "Layer", "Scale X", "Scale Y", "Style", 
-						"Main Image", "Back Image"];
-	for(let i = 0; i < this.properties.length; i++) {
-		const prop = this.properties[i];
-		this[prop] = info[prop];
-	}
+						"Main Image", "Back Image", "x", "y"];
+    
+    for(let i = 0; i < this.properties.length; i++) {
+        const prop = this.properties[i];
+        this[prop] = info[prop];
+    }
+
+    /* {
+        this._originalX = 150;//$gameTroop._enemies[enemyNum]._screenX;
+        this._originalY = 20;//$gameTroop._enemies[enemyNum]._screenY;
+        this.x = this._originalX;
+        this.y = this._originalY;
+        this.move(this.x,this.y);
+
+        console.log("Enemy Health: " + enemyNum);
+        console.log($gameTroop._enemies[enemyNum]);
+        console.log(this);
+        this["type"] = Sprite_HUDEnemyImageGauge._label;
+        this["Cur. Value"] = 5;
+        this["Max Value"] = 10;
+        this["Condition"] = ''; 
+        this["Layer"] = 0;
+        this["Scale X"] = 1;
+        this["Scale Y"] = 1;
+        this["Style"] = "down";
+        this["Main Image"] = "test";
+        this["Back Image"] = "test"; 
+    }*/
+
 	this._value = this.getCurrentValue();
 	this._maxvalue = this.getMaxValue();
 	this._gauge = new Sprite();
 	this._gauge.anchor.y = 0.5;
 	this.addChild(this._gauge);
 	this.refresh(true);
-    console.log("TEST INIT");
 };
 
 Sprite_HUDEnemyImageGauge.prototype.getCurrentValue = function() {
