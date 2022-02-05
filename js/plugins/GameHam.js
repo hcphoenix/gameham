@@ -27,9 +27,9 @@ var GameHam = GameHam || {};
     Game_Battler.prototype.initAltitude = function() {
       this._altitude = 0;
       if (this.isActor()) {
-        this._altitude = this.actor().defaultAltitdue;
+        this._altitude = this.actor().defaultAltitude;
       } else if (this.isEnemy()) {
-        this._altitude = this.enemy().defaultAltitdue;
+        this._altitude = this.enemy().defaultAltitude;
       }
   };
 
