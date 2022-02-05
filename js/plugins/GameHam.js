@@ -29,7 +29,7 @@ function randomIntFromInterval(min, max) { // min and max included
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-GameHam.spawnheight = 14;
+GameHam.spawnheight = 15;
 
 GameHam.randomX = function() {
   return randomIntFromInterval(0,16);
