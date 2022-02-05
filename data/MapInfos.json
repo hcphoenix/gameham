@@ -1,5 +1,6 @@
 [
 null,
 {"id":1,"expanded":false,"name":"MAP001","order":1,"parentId":0,"scrollX":1139,"scrollY":705.5},
-{"id":2,"expanded":false,"name":"Spawner","order":2,"parentId":0,"scrollX":1139,"scrollY":705.5}
+{"id":2,"expanded":false,"name":"Spawner","order":2,"parentId":0,"scrollX":1139,"scrollY":705.5},
+{"id":3,"expanded":false,"name":"GameOver","order":3,"parentId":0,"scrollX":1139,"scrollY":705.5}
 ]
