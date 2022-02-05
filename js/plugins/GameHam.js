@@ -15,23 +15,12 @@ var GameHam = GameHam || {};
       _Game_Actor_setup.call(this, actorId);
       this.initAltitude();
   };
-  // do the same for enemies 
-  // Game_Enemy
 
-  if (this.isActor()) {
-      var rows = this.actor().defaultRow;
-    } else if (this.isEnemy()) {
-      var rows = this.enemy().defaultRow;
-    }
-
-    Game_Battler.prototype.initAltitude = function() {
-      this._altitude = 0;
-      if (this.isActor()) {
-        this._altitude = this.actor().defaultAltitude;
-      } else if (this.isEnemy()) {
-        this._altitude = this.enemy().defaultAltitude;
-      }
-  };
+  /*
+  for(var i = 0; i < $gameTroop._enemies.length; i++){
+    var enemyId = $gameTroop._enemies[i]._enemyId;
+    var selected = $gameTroop._enemies[i]._selected;
+  }*/
 
 })(GameHam); 
 

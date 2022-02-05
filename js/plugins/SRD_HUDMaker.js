@@ -3479,6 +3479,234 @@ Sprite_HUDImageGauge.prototype.setupSnaps2 = function() {
 	this.ySnaps = [height / 2, Graphics.boxHeight / 2, Graphics.boxHeight - (height / 2)];
 };
 
+
+//-----------------------------------------------------------------------------
+// Sprite_HUDEnemyImageGauge
+//-----------------------------------------------------------------------------
+
+function Sprite_HUDEnemyImageGauge() {
+	this.initialize.apply(this, arguments);
+}
+
+Sprite_HUDEnemyImageGauge.prototype = Object.create(Sprite_HUDObject.prototype);
+Sprite_HUDEnemyImageGauge.prototype.constructor = Sprite_HUDEnemyImageGauge;
+
+Sprite_HUDEnemyImageGauge._label = "Enemy Image Gauge";
+
+/*
+ * Get HTML for Sprite_HUDEnemyImageGauge manipulation
+ */
+Sprite_HUDEnemyImageGauge.getHtml = function(data) {
+	const value = data["Cur. Value"];
+	const max = data["Max Value"];
+	let condition = data["Condition"];
+	const layer = data["Layer"];
+	const scaleX = data["Scale X"];
+	const scaleY = data["Scale Y"];	
+	const fill = data["Style"];
+	const main = data["Main Image"];
+	const back = data["Back Image"];
+
+	const sele2 = ['', '', '', ''];
+	if(fill === 'left') sele2[0] = 'selected';
+	else if(fill === 'right') sele2[1] = 'selected';
+	else if(fill === 'up') sele2[2] = 'selected';
+	else if(fill === 'down') sele2[3] = 'selected';
+
+	try {
+		eval(condition);
+	} catch(e) {
+		data["Condition"] = '';
+		condition = '';
+	}
+
+	return `${HUDManager.createTitle(data.id, Sprite_HUDEnemyImageGauge._label)}
+			<table>
+				${HUDManager.createHeader()}
+				${HUDManager.createInput("Cur. Value", value)}
+				${HUDManager.createInput("Max Value", max)}
+				${HUDManager.createConditionInput("Condition", condition)}
+				${HUDManager.createInput("Layer", layer)}
+				${HUDManager.createFilelist("Main Image", 'gauge_images', main)}
+				${HUDManager.createFilelist("Back Image", 'gauge_backs', back, true)}
+				${HUDManager.createInput("Scale X", scaleX)}
+				${HUDManager.createInput("Scale Y", scaleY)}
+				${HUDManager.createSelect("Style",   ["left", sele2[0], "Left"],
+											["right", sele2[1], "Right"],
+											["up", sele2[2], "Up"],
+											["down", sele2[3], "Down"])}
+				${HUDManager.createRefresh()}
+			</table>`;
+};
+
+/*
+ * Register Sprite_HUDEnemyImageGauge within the HUDManager
+ */
+HUDManager.typeNames.push(Sprite_HUDEnemyImageGauge._label);
+HUDManager.types[Sprite_HUDEnemyImageGauge._label] = {
+	class: Sprite_HUDEnemyImageGauge,
+	html: Sprite_HUDEnemyImageGauge.getHtml,
+	data: {
+		"type": 		Sprite_HUDEnemyImageGauge._label,
+		"Cur. Value": 	"$gameParty.leader().hp",
+		"Max Value": 	"$gameParty.leader().mhp",
+		"Condition": 	"",
+		"Layer": 		"0",
+		"Scale X": 		"1",
+		"Scale Y": 		"1",
+		"Style": 		"left",
+		"Main Image": 	_.getFirstFile('gauge_images'),
+		"Back Image": 	_.getFirstFile('gauge_backs')
+	},
+	format: function(data) {
+		let temp;
+		try {
+			temp = String(eval(data["Cur. Value"]));
+			temp += "/" + String(eval(data["Max Value"]));
+		} catch(e) {
+			temp = "ERROR";
+		}
+		if(temp.length > 12) temp = temp.substring(0, 12) + "...";
+		return temp;
+	}
+}
+
+Sprite_HUDEnemyImageGauge.prototype.initialize = function(info) {
+	Sprite_HUDObject.prototype.initialize.call(this, new Bitmap(1, 1), info);
+	this.properties = ["Cur. Value", "Max Value", "Condition", "Layer", "Scale X", "Scale Y", "Style", 
+						"Main Image", "Back Image"];
+	for(let i = 0; i < this.properties.length; i++) {
+		const prop = this.properties[i];
+		this[prop] = info[prop];
+	}
+	this._value = this.getCurrentValue();
+	this._maxvalue = this.getMaxValue();
+	this._gauge = new Sprite();
+	this._gauge.anchor.y = 0.5;
+	this.addChild(this._gauge);
+	this.refresh(true);
+    console.log("TEST INIT");
+};
+
+Sprite_HUDEnemyImageGauge.prototype.getCurrentValue = function() {
+	let result;
+	try {
+		result = eval(this["Cur. Value"]);
+	} catch(e) {
+		console.log('Error with Gauge\n' + e);
+		result = 0;
+	}
+	return result;
+};
+
+Sprite_HUDEnemyImageGauge.prototype.getMaxValue = function() {
+	let result;
+	try {
+		result = eval(this["Max Value"]);
+	} catch(e) {
+		console.log('Error with Gauge\n' + e);
+		result = 0;
+	}
+	return result;
+};
+
+Sprite_HUDEnemyImageGauge.prototype.update = function() {
+	Sprite_HUDObject.prototype.update.call(this);
+	if(!this._isActive) return;
+	const newValue = this.getCurrentValue();
+	const newMax = this.getMaxValue();
+	if(this._value !== newValue || this._maxvalue !== newMax) {
+		this._value = newValue;
+		this._maxvalue = newMax;
+		this.refresh();
+	}
+};
+
+Sprite_HUDEnemyImageGauge.prototype.refresh = function(refreshProperties) {
+	Sprite_HUDObject.prototype.refresh.apply(this, arguments);
+	const style = this["Style"];
+	const horizontal = Boolean(style === 'left' || style === 'right');
+	if(this.bitmap) {
+		this.bitmap.addLoadListener(function() {
+			if($gameTemp.isManipulatingHud && this.highlight) this.highlight.setup(this);
+			if(horizontal) {
+				this._gauge.y = 0;
+				this._gauge.x = (this.bitmap.width / -2);
+				this._gauge.anchor.x = 0;
+				this._gauge.anchor.y = 0.5;
+			} else {
+				this._gauge.x = 0;
+				this._gauge.y = (this.bitmap.height / -2);
+				this._gauge.anchor.y = 0;
+				this._gauge.anchor.x = 0.5;
+			}
+			this.setupSnaps();
+		}.bind(this));
+	}
+	if((this._value || this._value === 0) && (this._maxvalue || this._maxvalue == 0)) {
+		this._gauge.bitmap.addLoadListener(function() {
+			if(horizontal) {
+				this._gauge._frame.height = this._gauge.bitmap.height;
+				this._gauge._frame.y = 0;
+				this._gauge._frame.width = this._gauge.bitmap.width * (this._value / this._maxvalue);
+				if(style === 'right') {
+					this._gauge._frame.x = this._gauge.bitmap.width - this._gauge._frame.width;
+					if(this.bitmap) this._gauge.x = (this.bitmap.width / -2) + this._gauge._frame.x;
+				} else if(style === 'left') {
+					this._gauge._frame.x = 0;
+					if(this.bitmap) this._gauge.x = (this.bitmap.width / -2);
+				}
+				this._gauge._refresh();
+				if(!this.bitmap) {
+					this._gauge.x = (this._gauge.bitmap.width / -2);
+					this.setupSnaps2();
+				}
+			} else {
+				this._gauge._frame.width = this._gauge.bitmap.width;
+				this._gauge._frame.x = 0;
+				this._gauge._frame.height = this._gauge.bitmap.height * (this._value / this._maxvalue);
+				if(style === 'down') {
+					this._gauge._frame.y = this._gauge.bitmap.height - this._gauge._frame.height;
+					this._gauge.y = (this.bitmap.height / -2) + this._gauge._frame.y;
+				} else if(style === 'up') {
+					this._gauge._frame.y = 0;
+					this._gauge.y = (this.bitmap.height / -2);
+				}
+				this._gauge._refresh();
+				if(!this.bitmap) {
+					this._gauge.y = (this._gauge.bitmap.height / -2);
+					this.setupSnaps2();
+				}
+			}
+		}.bind(this));
+	}
+};
+
+Sprite_HUDEnemyImageGauge.prototype.refreshProperties = function() {
+	Sprite_HUDObject.prototype.refreshProperties.apply(this, arguments);
+	this.z = parseInt(this["Layer"]);
+	const front = this["Main Image"];
+	const back = this["Back Image"];
+	if(front) {
+		this._gauge.bitmap = _.getGauge(front);
+		this._baseXScale = parseFloat(this["Scale X"]);
+		this._baseYScale = parseFloat(this["Scale Y"]);
+		this.updateRealScale();
+	}
+	if(back && back !== "N\n\nONE") {
+		this.bitmap = _.getGaugeBack(back);
+	} else {
+		this.bitmap = null;
+	}
+};
+
+Sprite_HUDEnemyImageGauge.prototype.setupSnaps2 = function() {
+	const width = this._gauge.width * this._baseXScale;
+	const height = this._gauge.height * this._baseYScale;
+	this.xSnaps = [width / 2, Graphics.boxWidth / 2, Graphics.boxWidth - (width / 2)];
+	this.ySnaps = [height / 2, Graphics.boxHeight / 2, Graphics.boxHeight - (height / 2)];
+};
+
 //-----------------------------------------------------------------------------
 // Sprite_HUDImageText
 //-----------------------------------------------------------------------------
