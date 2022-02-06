@@ -2577,7 +2577,7 @@ BattleManager.applySubstitute = function(target) {
 };
 
 BattleManager.checkSubstitute = function(target) {
-    return target.isDying() && !this._action.isCertainHit();
+    return target.isStateAffected(20) && !this._action.isCertainHit();
 };
 
 BattleManager.isActionForced = function() {
