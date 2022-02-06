@@ -5255,7 +5255,7 @@ Game_Troop.prototype.setup = function(troopId) {
         if ($dataEnemies[member.enemyId]) {
             var enemyId = member.enemyId;
             var x = member.x;
-            var y = member.y;
+            var y = member.y + 100; // ENEMY OFFSET <- we could change that in a plugin haha jk 
             var enemy = new Game_Enemy(enemyId, x, y);
             if (member.hidden) {
                 enemy.hide();
