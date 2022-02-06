@@ -1376,6 +1376,15 @@ Game_Action.prototype.getStealableItem = function(target, stealable) {
     if (fmt === '') return;
     var text = fmt.format(this.subject().name(), target.name(), name, icon);
     this.displayStealText(text);
+    if(target.allItemsStolen(this.item())) {
+      this.displayStealText(this.subject().name() + " has nothing left to steal!");
+      target.addState(33);
+    } else {
+      if(target.states().map(s => s.id).includes(Yanfly.Steal.scanStateId)) {
+        var unstolenCount = target.stealableItems().filter(i => !i.isStolen).length;
+        this.displayStealText("Your scanner tells you " + target.name() + " has " + unstolenCount + " items left...");
+      }
+    }
 };
 
 Game_Action.prototype.afterStealEffect = function(target, item) {
