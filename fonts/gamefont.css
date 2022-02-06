@@ -1,6 +1,7 @@
 @font-face {
-    font-family: GameFont;
+    font-family: GameFont2;
     src: url("upheavtt.ttf");
+    letter-spacing: 20px;
 }
 
 @font-face {
@@ -8,6 +9,15 @@
     size-adjust: 1000%;
     src: url("8bitArcadeIn.ttf");
 }
+
+@font-face {
+    font-family: GameFont;
+    size-adjust: 1000%;
+    letter-spacing: 20px;
+    src: url("Mario-Kart-DS.ttf");
+}
+
+
 
 .IIV::-webkit-media-controls-play-button,
 video::-webkit-media-controls-start-playback-button {

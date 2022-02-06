@@ -46,9 +46,7 @@ var GameHam = GameHam || {};
     if(SceneManager._scene.constructor === Scene_Battle && commandName.contains("\\i[")){
       var arr = /\[\d+\]/.exec(commandName);
       var iconNum = 0;
-      console.log(arr);
       if (arr) {
-          console.log("test");
           iconNum = parseInt(arr[0].slice(1));
           this.drawIcon(iconNum, rect.x-4, rect.y+2);
           commandName = commandName.slice(commandName.indexOf("]")+1);

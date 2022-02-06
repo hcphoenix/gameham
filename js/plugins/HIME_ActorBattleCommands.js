@@ -295,7 +295,7 @@ function Data_BattlerCommand() {
   $.defaultBattlerCommands = function(obj) {
     var cmds = [
       //$.makeCommand("attack"),
-      $.makeCommand("steal", 1),
+      $.makeCommand("steal", 3),
       $.makeCommand("skill_list"),
       $.makeCommand("guard"),
       $.makeCommand("item"),

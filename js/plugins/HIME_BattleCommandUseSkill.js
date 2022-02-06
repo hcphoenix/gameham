@@ -82,6 +82,18 @@ TH.BattleCommandUseSkill = TH.BattleCommandUseSkill || {};
 
 (function ($) {
 
+  TH.ActorBattleCommands.defaultBattlerCommands = function(obj) {
+    var cmds = [
+      //$.makeCommand("attack"),
+      TH.ActorBattleCommands.makeCommand("use_skill", 3),
+      TH.ActorBattleCommands.makeCommand("skill_list"),
+      TH.ActorBattleCommands.makeCommand("guard"),
+      TH.ActorBattleCommands.makeCommand("item"),
+      TH.ActorBattleCommands.makeCommand("use_skill", 4),
+      TH.ActorBattleCommands.makeCommand("use_skill", 5),
+    ];
+    return cmds;
+  };
   /* Create command */
   TH.ActorBattleCommands.makeCommand_use_skill = function(symbol, ext) {
     ext = Math.floor(ext)
@@ -93,7 +105,8 @@ TH.BattleCommandUseSkill = TH.BattleCommandUseSkill || {};
   Window_ActorCommand.prototype.addBattleCommand_use_skill = function(cmd) {
     var skill = $dataSkills[cmd.ext()]
     var enabled = cmd.isEnabled(this._actor) && this._actor.canUse(skill);
-    this.addCommand(cmd.name(), cmd.symbol(), enabled, cmd.ext());
+    var name = cmd.name() !== "move" ? cmd.name() : (this._actor._row === 1 ? "Ascend" : "Descend"); // special case for move
+    this.addCommand(name, cmd.symbol(), enabled, cmd.ext());
   };
   
   /* Add bindings for command window */

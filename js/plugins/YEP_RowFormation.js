@@ -1143,7 +1143,7 @@ DataManager.processRowNotetags2 = function(group) {
         evalMode = 'none';
       } else if (evalMode === 'customUserRow') {
         obj.userRowEval = obj.userRowEval + line + '\n';
-      }
+      } 
     }
   }
 };
