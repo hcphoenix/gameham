@@ -1,6 +1,12 @@
 @font-face {
     font-family: GameFont;
-    src: url("mplus-1m-regular.ttf");
+    src: url("upheavtt.ttf");
+}
+
+@font-face {
+    font-family: BulkyFont;
+    size-adjust: 1000%;
+    src: url("8bitArcadeIn.ttf");
 }
 
 .IIV::-webkit-media-controls-play-button,
