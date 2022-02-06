@@ -1225,6 +1225,7 @@ Game_Action.prototype.applyItemStealEffect = function(target) {
         return;
       }
     }
+    //target._mp = target._mp - this.subject().luk;
     this.displayStealFailure(target);
 };
 
