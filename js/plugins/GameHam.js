@@ -21,7 +21,6 @@ var GameHam = GameHam || {};
     return this.randomIntFromInterval(0,16);
   }
 
-  GameHam.party = [];
   GameHam.randomParty = function() {
     this.party = [];
     var i = 0;
