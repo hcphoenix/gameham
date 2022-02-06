@@ -53,6 +53,12 @@ var GameHam = GameHam || {};
       }
 	}
 
+  GameHam.cycleStateIcon = function(partyMemberId) {
+    //var s = $gameParty.members()[partyMemberId].states(); //priority
+    //var highest = s.sort((a, b)=> a.priority - b.priority); 
+    return "icon_" + $gameParty.members()[partyMemberId].states().sort((b, a)=> a.priority - b.priority)[0].iconIndex;
+  } // $gameParty.members()[1].states().length
+
   this.drawText(commandName, rect.x, rect.y, rect.width, align);
 };
 })(GameHam); 
@@ -68,4 +74,5 @@ _itemWindow
 _actorCommand
 
 $gameParty.members()[1]._row
+($gameParty.members()[1]._row > 1) ? 'row_up' : 'row_down'
 */
