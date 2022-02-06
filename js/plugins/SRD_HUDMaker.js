@@ -1731,8 +1731,8 @@ Scene_Battle.prototype.setupEnemyBars = function() {
         data["Condition"] = "$gameTroop._enemies["+i+"].hp > 0";
         data.animateInfo = HUDManager.getAnimateInfo();
         const sprite = new type.class(data);
-        data.x = $gameTroop._enemies[i]._screenX - $gameTroop._enemies[i].spriteWidth() / 2 - 5;
-        data.y = $gameTroop._enemies[i]._screenY - 84;
+        data.x = $gameTroop._enemies[i]._screenX - $gameTroop._enemies[i].spriteWidth() / 2;
+        data.y = $gameTroop._enemies[i]._screenY;//- $gameTroop._enemies[i].spriteHeight() * 0.75;
         HUDManager._data.push(data);
         HUDManager.setupNewSprite(sprite, data);
     }
@@ -1749,8 +1749,8 @@ Scene_Battle.prototype.setupEnemyBars = function() {
         data["Condition"] = "$gameTroop._enemies["+i+"].hp > 0";
         const sprite = new type.class(data);
         console.log($gameTroop._enemies[i]);
-        data.x = $gameTroop._enemies[i]._screenX + $gameTroop._enemies[i].spriteWidth() / 2 + 15;
-        data.y = $gameTroop._enemies[i]._screenY - 84;
+        data.x = $gameTroop._enemies[i]._screenX + $gameTroop._enemies[i].spriteWidth() / 2;
+        data.y = $gameTroop._enemies[i]._screenY;// - $gameTroop._enemies[i].spriteHeight() * 0.75;
         HUDManager._data.push(data);
         HUDManager.setupNewSprite(sprite, data);
         //var enemyGauge = new Sprite_HUDEnemyImageGauge(data, i, true);
@@ -3598,7 +3598,7 @@ HUDManager.types[Sprite_HUDEnemyImageGauge._label] = {
 		"Layer": 		"0",
 		"Scale X": 		"1",
 		"Scale Y": 		"1",
-		"Style": 		"down",
+		"Style": 		"left",
 		"Main Image": 	_.getFirstFile('gauge_images'),
 		"Back Image": 	_.getFirstFile('gauge_backs')
 	},

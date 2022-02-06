@@ -56,7 +56,8 @@ var GameHam = GameHam || {};
   GameHam.cycleStateIcon = function(partyMemberId) {
     //var s = $gameParty.members()[partyMemberId].states(); //priority
     //var highest = s.sort((a, b)=> a.priority - b.priority); 
-    return "icon_" + $gameParty.members()[partyMemberId].states().sort((b, a)=> a.priority - b.priority)[0].iconIndex;
+    var icon = $gameParty.members()[partyMemberId].states().sort((b, a)=> a.priority - b.priority)[0].iconIndex;
+    return "Icons_" + Math.min(icon, 23);
   } // $gameParty.members()[1].states().length
 
   this.drawText(commandName, rect.x, rect.y, rect.width, align);
