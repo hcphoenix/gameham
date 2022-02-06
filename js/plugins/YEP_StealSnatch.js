@@ -632,6 +632,9 @@ Yanfly.Param.StealSEGold = {
   pan:    Number(Yanfly.Parameters['Gold Pan'])
 };
 
+// Const
+Yanfly.Steal.scanStateId = 32;
+
 //=============================================================================
 // DataManager
 //=============================================================================
@@ -691,6 +694,7 @@ DataManager.processStealNotetagsA = function(group) {
 
 DataManager.processStealNotetags1 = function(group) {
   var note1i = /<(?:STEAL I|STEAL ITEM)[ ](\d+):[ ](\d+)([%％])>/i;
+  var note1s = /<(?:STEAL S|STEAL SCAN)[ ](\d+):[ ](\d+)([%％]):[ ](\d+)>/i;
   var note1w = /<(?:STEAL W|STEAL WEAPON)[ ](\d+):[ ](\d+)([%％])>/i;
   var note1a = /<(?:STEAL A|STEAL ARMOR)[ ](\d+):[ ](\d+)([%％])>/i;
   var note1g = /<(?:STEAL G|STEAL GOLD)[ ](\d+):[ ](\d+)([%％])>/i;
@@ -745,6 +749,14 @@ DataManager.processStealNotetags1 = function(group) {
         }
         var entry = this.processCreateStealItem(type, id, rate);
         obj.stealableItems.push(entry);
+      } else if (line.match(note1s)) { // bad practice but i dont care at this point
+        var type = 'item';
+        var id = parseInt(RegExp.$1);
+        var rate = parseFloat(RegExp.$2);
+        var quality = parseFloat(RegExp.$4);
+
+        var entry = this.processCreateStealItem(type, id, rate, false, quality);
+        obj.stealableItems.push(entry);
       } else if (line.match(/<(?:STEAL RESIST):[ ]([\+\-]\d+)([%％])>/i)) {
         obj.stealResist = parseFloat(RegExp.$1) * 0.01;
       }
@@ -790,14 +802,15 @@ DataManager.processConvertDropStealable = function(obj, drop) {
     obj.stealableItems.push(entry);
 };
 
-DataManager.processCreateStealItem = function(type, id, rate, drop) {
+DataManager.processCreateStealItem = function(type, id, rate, drop, quality = 0) {
     drop = drop || false;
     var obj = {
       type: String(type).toLowerCase(),
       id: parseInt(id),
       rate: parseFloat(rate) * 0.01,
       isStolen: false,
-      isDrop: drop
+      isDrop: drop,
+      quality: quality
     }
     return obj;
 };
@@ -1110,6 +1123,9 @@ Game_Enemy.prototype.allItemsStolen = function(skill) {
       if (!skill.stealType.contains('all')) {
         if (!skill.stealType.contains(stealable.type)) continue;
       }
+      if(this.stealableItems()[i].quality > 0 && !this.states().map(s => s.id).includes(Yanfly.Steal.scanStateId)) {
+        continue;
+      }
       if (!stealable.isStolen) return false;
     }
     return true;
@@ -1184,8 +1200,23 @@ Game_Action.prototype.applyItemStealEffect = function(target) {
     if (target.allItemsStolen(this.item())) {
       return this.displayStealEmpty(target);
     }
-    for (var i = 0; i < target.stealableItems().length; ++i) {
-      var stealable = target.stealableItems()[i];
+    // priority
+    qualityItems = target.stealableItems().filter(i => i.quality > 0);
+    regularItems = target.stealableItems().filter(i => i.quality == 0);
+    if(target.states().map(s => s.id).includes(Yanfly.Steal.scanStateId)) {
+      for (var i = 0; i < qualityItems.length; ++i) {
+        var stealable = qualityItems[i];
+        if (!this.matchStealType(target, stealable)) continue;
+        var rate = this.getStealableRate(target, stealable);
+        var result = this.makeStealRandom(target, stealable) < rate;
+        if (result) {
+          this.getStealableItem(target, stealable);
+          return;
+        }
+      }
+    }
+    for (var i = 0; i < regularItems.length; ++i) {
+      var stealable = regularItems[i];
       if (!this.matchStealType(target, stealable)) continue;
       var rate = this.getStealableRate(target, stealable);
       var result = this.makeStealRandom(target, stealable) < rate;
@@ -1243,6 +1274,7 @@ Game_Action.prototype.matchStealType = function(target, stealable) {
 };
 
 Game_Action.prototype.getStealableRate = function(target, stealable) {
+  /*
     var rate = parseFloat(stealable.rate);
     rate += this.item().stealRate['all'];
     rate += this.item().stealRate[stealable.type];
@@ -1250,6 +1282,8 @@ Game_Action.prototype.getStealableRate = function(target, stealable) {
     rate += this.stealBonusFormula(target);
     rate -= target.stealResist();
     rate = this.customStealRateEval(target, stealable, rate);
+    */
+    var rate = (target.mmp - target.mp) + this.subject().luk;
     return rate;
 };
 

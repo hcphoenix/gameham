@@ -368,24 +368,6 @@ function Data_BattlerCommand() {
     return new Data_BattlerCommand(name, symbol, stypeId);
   };
 
-  $.makeCommand_steal = function(symbol, ext) {
-    var stypeId = Math.floor(ext);
-    name = $dataSystem.skillTypes[stypeId];
-    return new Data_BattlerCommand(name, symbol, stypeId);
-  };
-
-  $.makeCommand_escape = function(symbol, ext) {
-    var stypeId = Math.floor(ext);
-    name = $dataSystem.skillTypes[stypeId];
-    return new Data_BattlerCommand(name, symbol, stypeId);
-  };
-
-  $.makeCommand_move = function(symbol, ext) {
-    var stypeId = Math.floor(ext);
-    name = $dataSystem.skillTypes[stypeId];
-    return new Data_BattlerCommand(name, symbol, stypeId);
-  };
-  
   $.makeCommand_skill_list = function(symbol, ext) {
     return new Data_BattlerCommand("", symbol);
   };
