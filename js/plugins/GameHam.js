@@ -34,6 +34,30 @@ var GameHam = GameHam || {};
     }
     return this.party;
   }
+
+
+  // Draw icon on battle menu
+  var GameHam_Window_Command_prototype_drawItem = Window_Command.prototype.drawItem;
+  Window_Command.prototype.drawItem = function(index) {
+    var rect = this.itemRectForText(index);
+    var align = this.itemTextAlign();
+    this.resetTextColor();
+    this.changePaintOpacity(this.isCommandEnabled(index));
+    var commandName = this.commandName(index);
+    if(SceneManager._scene.constructor === Scene_Battle && commandName.contains("\\i[")){
+      var arr = /\[\d+\]/.exec(commandName);
+      var iconNum = 0;
+      console.log(arr);
+      if (arr) {
+          console.log("test");
+          iconNum = parseInt(arr[0].slice(1));
+          this.drawIcon(iconNum, rect.x-4, rect.y+2);
+          commandName = commandName.slice(commandName.indexOf("]")+1);
+      }
+	}
+
+  this.drawText(commandName, rect.x, rect.y, rect.width, align);
+};
 })(GameHam); 
 
 /*
