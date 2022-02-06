@@ -297,7 +297,7 @@ function Data_BattlerCommand() {
       //$.makeCommand("attack"),
       $.makeCommand("steal", 1),
       $.makeCommand("skill_list"),
-      //$.makeCommand("guard"),
+      $.makeCommand("guard"),
       $.makeCommand("item"),
       $.makeCommand("move", 1),
       $.makeCommand("escape", 1)
@@ -571,7 +571,7 @@ function Data_BattlerCommand() {
 
   Window_ActorCommand.prototype.addBattleCommand_steal = function(cmd) {
     var enabled = cmd.isEnabled(this._actor) && this._actor._row == 1;
-    this.addCommand("Steal", cmd.symbol(), enabled, cmd.ext());
+    this.addCommand("\\i[1] Steal", cmd.symbol(), enabled, cmd.ext());
   };
 
   Window_ActorCommand.prototype.addBattleCommand_escape = function(cmd) {
