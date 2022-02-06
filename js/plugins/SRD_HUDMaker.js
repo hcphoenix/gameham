@@ -1721,12 +1721,36 @@ Scene_Battle.prototype.start = function() {
 
 Scene_Battle.prototype.setupEnemyBars = function() {
     for(var i = 0; i < $gameTroop._enemies.length; i++){
+        // left bar
+        var type = HUDManager.types[Sprite_HUDEnemyImageGauge._label];
+        const data = JsonEx.makeDeepCopy(type.data);
+        data["Main Image"] = "Fear_Full";
+        data["Back Image"] = "Fear_Empty";
+        data["Cur. Value"] = "$gameTroop._enemies["+i+"].mhp - $gameTroop._enemies["+i+"].hp";
+	    data["Max Value"] = $gameTroop._enemies[i].mhp;
+        data["Condition"] = "$gameTroop._enemies["+i+"].hp > 0";
+        data.animateInfo = HUDManager.getAnimateInfo();
+        const sprite = new type.class(data);
+        data.x = $gameTroop._enemies[i]._screenX - $gameTroop._enemies[i].spriteWidth() / 2 - 5;
+        data.y = $gameTroop._enemies[i]._screenY - 84;
+        HUDManager._data.push(data);
+        HUDManager.setupNewSprite(sprite, data);
+    }
+
+    for(var i = 0; i < $gameTroop._enemies.length; i++){
+        // right bar
         var type = HUDManager.types[Sprite_HUDEnemyImageGauge._label];
         const data = JsonEx.makeDeepCopy(type.data);
         data.animateInfo = HUDManager.getAnimateInfo();
+        data["Main Image"] = "Distraction_Full";
+        data["Back Image"] = "Distraction_Empty";
+        data["Cur. Value"] = "$gameTroop._enemies["+i+"].mmp - $gameTroop._enemies["+i+"].mp";
+	    data["Max Value"] = $gameTroop._enemies[i].mmp;
+        data["Condition"] = "$gameTroop._enemies["+i+"].hp > 0";
         const sprite = new type.class(data);
-        data.x = $gameTroop._enemies[i]._screenX;
-        data.y = $gameTroop._enemies[i]._screenY;
+        console.log($gameTroop._enemies[i]);
+        data.x = $gameTroop._enemies[i]._screenX + $gameTroop._enemies[i].spriteWidth() / 2 + 15;
+        data.y = $gameTroop._enemies[i]._screenY - 84;
         HUDManager._data.push(data);
         HUDManager.setupNewSprite(sprite, data);
         //var enemyGauge = new Sprite_HUDEnemyImageGauge(data, i, true);
@@ -3574,7 +3598,7 @@ HUDManager.types[Sprite_HUDEnemyImageGauge._label] = {
 		"Layer": 		"0",
 		"Scale X": 		"1",
 		"Scale Y": 		"1",
-		"Style": 		"left",
+		"Style": 		"down",
 		"Main Image": 	_.getFirstFile('gauge_images'),
 		"Back Image": 	_.getFirstFile('gauge_backs')
 	},
