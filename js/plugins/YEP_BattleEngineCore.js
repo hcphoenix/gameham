@@ -5430,7 +5430,7 @@ Yanfly.BEC.maxChar = 45;
 Yanfly.BEC.Window_BattleLog_displayAction =
     Window_BattleLog.prototype.displayAction;
 Window_BattleLog.prototype.displayAction = function(subject, item) {
-    if (Yanfly.Param.BECFullActText) {
+    if (false) {
       Yanfly.BEC.Window_BattleLog_displayAction.call(this, subject, item);
     } else {
       this._actionIcon = this.displayIcon(item);
