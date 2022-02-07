@@ -1284,7 +1284,7 @@ Game_Action.prototype.getStealableRate = function(target, stealable) {
     rate -= target.stealResist();
     rate = this.customStealRateEval(target, stealable, rate);
     */
-    var rate = (target.mmp - target.mp) + this.subject().luk;
+    var rate = (target.mmp  + this.subject().luk - target.mp) / target.mmp;
     return rate;
 };
 
