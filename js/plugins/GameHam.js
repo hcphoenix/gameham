@@ -51,7 +51,9 @@ var GameHam = GameHam || {};
           this.drawIcon(iconNum, rect.x-4, rect.y+2);
           commandName = commandName.slice(commandName.indexOf("]")+1);
       }
-	}
+	  }
+    this.drawText(commandName, rect.x, rect.y, rect.width, align);
+  };
 
   GameHam.cycleStateIcon = function(partyMemberId) {
     //var s = $gameParty.members()[partyMemberId].states(); //priority
@@ -61,8 +63,17 @@ var GameHam = GameHam || {};
     return "Icons_" + Math.min(icon, 200);
   } // $gameParty.members()[1].states().length
 
-  this.drawText(commandName, rect.x, rect.y, rect.width, align);
-};
+  // set custom escape formula
+  var Game_Action_prototype_itemHit = Game_Action.prototype.itemHit;
+  Game_Action.prototype.itemHit = function(target) {
+    if(this.item().id === 5) {
+      var chance = Math.max($gameTroop._enemies.map(e => (e.mhp - e.hp) / e.mhp).reduce((x,y)=>(x+y)) / $gameTroop._enemies.length, 0.0);
+        console.log("success chance: " + chance);
+        return chance;
+    }
+    Game_Action_prototype_itemHit.call(this, target);
+  }
+
 })(GameHam); 
 
 /*
