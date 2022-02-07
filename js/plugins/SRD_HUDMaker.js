@@ -535,12 +535,21 @@ HUDManager.showPiecesType = true;
 
 HUDManager.setup = function(data, hud) {
 	this._sprites = [];
-	this._data = data;
+	this._data = HUDManager.filterData(data);
 	this._hud = hud;
 	this._currentId = -1;
 	this.setupData();
 	this.refreshLayers();
 };
+
+// remove temp garbage
+HUDManager.filterData = function(data) {
+    const newData = [];
+    for(let i = 0; i < data.length; i++) {
+        if(data[i].type !== Sprite_HUDEnemyImageGauge._label) newData.push(data[i]);
+    }
+    return newData;
+}
 
 HUDManager.setupData = function() {
 	for(let i = 0; i < this._data.length; i++) {
@@ -1748,7 +1757,6 @@ Scene_Battle.prototype.setupEnemyBars = function() {
 	    data["Max Value"] = $gameTroop._enemies[i].mmp;
         data["Condition"] = "$gameTroop._enemies["+i+"].hp > 0";
         const sprite = new type.class(data);
-        console.log($gameTroop._enemies[i]);
         data.x = $gameTroop._enemies[i]._screenX + $gameTroop._enemies[i].spriteWidth() / 2;
         data.y = $gameTroop._enemies[i]._screenY;// - $gameTroop._enemies[i].spriteHeight() * 0.75;
         HUDManager._data.push(data);
