@@ -1404,9 +1404,24 @@ Game_Action.prototype.displayStealText = function(text) {
     var scene = SceneManager._scene;
     if (text === '') return;
     if (!scene._logWindow) return;
-    if (Yanfly.Param.StealCenter) text = '<CENTER>' + text;
+    // if (Yanfly.Param.StealCenter) text = '<CENTER>' + text;
     var win = scene._logWindow;
-    win._lines.push(text);
+
+    // text wrapping
+    var words = text.split(' ');
+    var lines = [""];
+    var pos= 0;
+    for(var i = 0; i < words.length; i++) {
+        if(lines[pos].length + words[i].length < Yanfly.BEC.maxChar){
+            lines[pos] += words[i] + " ";
+        } else {
+            pos++;
+            lines[pos] = words[i] + " ";
+        }
+    }
+    for(var i = 0; i < lines.length; i++) {
+      win._lines.push('<CENTER>' + lines[i]);
+    }
     win.refresh();
 };
 

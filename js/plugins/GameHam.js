@@ -34,7 +34,7 @@ var GameHam = GameHam || {};
     return this.party;
   }
 
-
+/*
   // Draw icon on battle menu
   var GameHam_Window_Command_prototype_drawItem = Window_Command.prototype.drawItem;
   Window_Command.prototype.drawItem = function(index) {
@@ -53,7 +53,7 @@ var GameHam = GameHam || {};
       }
 	  }
     this.drawText(commandName, rect.x, rect.y, rect.width, align);
-  };
+  }; */
 
   GameHam.cycleStateIcon = function(partyMemberId) {
     //var s = $gameParty.members()[partyMemberId].states(); //priority

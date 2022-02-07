@@ -5426,6 +5426,7 @@ Window_BattleLog.prototype.waitForPopups = function() {
     this.setWaitMode('popups');
 };
 
+Yanfly.BEC.maxChar = 45;
 Yanfly.BEC.Window_BattleLog_displayAction =
     Window_BattleLog.prototype.displayAction;
 Window_BattleLog.prototype.displayAction = function(subject, item) {
@@ -5434,9 +5435,41 @@ Window_BattleLog.prototype.displayAction = function(subject, item) {
     } else {
       this._actionIcon = this.displayIcon(item);
       var text = this.displayText(item);
-      this.push('addText', '<SIMPLE>' + text);
+      // command name v
+      // this.push('addText', '<SIMPLE>' + text);
+      if (item.message1) {
+        var message = "" + subject.name() + item.message1.format(text);
+        var words = message.split(' ');
+        var lines = [""];
+        var pos= 0;
+        for(var i = 0; i < words.length; i++) {
+            if(lines[pos].length + words[i].length < Yanfly.BEC.maxChar){
+                lines[pos] += words[i] + " ";
+            } else {
+                pos++;
+                lines[pos] = words[i] + " ";
+            }
+        }
+        for(var i = 0; i < lines.length; i++) {
+            this.push('addText', '<CENTER>' + lines[i]);
+        }
+      }
       if (item.message2) {
-        this.push('addText', '<CENTER>' + item.message2.format(text));
+        var message = item.message2.format(text)
+        var words = message.split(' ');
+        var lines = [""];
+        var pos= 0;
+        for(var i = 0; i < words.length; i++) {
+            if(lines[pos].length + words[i].length < Yanfly.BEC.maxChar){
+                lines[pos] += words[i] + " ";
+            } else {
+                pos++;
+                lines[pos] = words[i] + " ";
+            }
+        }
+        for(var i = 0; i < lines.length; i++) {
+            this.push('addText', '<CENTER>' + lines[i]);
+        }
       }
     }
 };
