@@ -2,6 +2,8 @@
 // WELCOME HELL
 //=============================================================================
 
+const { debug } = require("console");
+
 var Imported = Imported || {};
 Imported["GameHam"] = true;
 
@@ -92,6 +94,24 @@ var GameHam = GameHam || {};
       this._states = [];
     }
     this._stateTurns = {};
+  }
+
+  GameHam.learnSkillFromClass = function(actorId, classId) {
+    var actordata = $gameActors._data[actorId];
+    var learnings = $dataClasses[classId].learnings;
+    var skillsToLearn = [];
+    for(var i = 0; i < learnings.length; i++){
+      if(!actordata.hasSkill(learnings[i].skillId)) {
+        skillsToLearn.push(learnings[i]);
+      }
+    }
+    if(skillsToLearn.length) {
+      var r = GameHam.randomIntFromInterval(0, skillsToLearn.length - 1);
+      actordata.learnSkill(skillsToLearn[r].skillId);
+      $gameVariables.setValue(8, $dataSkills[skillsToLearn[r].skillId].name);
+    } else {
+      // maybe print a sad message
+    }
   }
 
 })(GameHam); 
