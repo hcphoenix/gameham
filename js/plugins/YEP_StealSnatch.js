@@ -1120,7 +1120,7 @@ Game_Enemy.prototype.allItemsStolen = function(skill) {
     var max = this.stealableItems().length;
     for (var i = 0; i < max; ++i) {
       var stealable = this.stealableItems()[i];
-      if (!skill.stealType.contains('all')) {
+      if (stealable.type == 'gold' || !skill.stealType.contains('all')) {
         if (!skill.stealType.contains(stealable.type)) continue;
       }
       if(this.stealableItems()[i].quality > 0 && !this.states().map(s => s.id).includes(Yanfly.Steal.scanStateId)) {
@@ -1270,7 +1270,7 @@ Game_Action.prototype.isSnatchAction = function() {
 Game_Action.prototype.matchStealType = function(target, stealable) {
     if (stealable.isStolen) return false;
     var skill = this.item();
-    if (skill.stealType.contains('all')) return true;
+    if (skill.stealType.contains('all') && stealable.type != 'gold') return true;
     return skill.stealType.contains(stealable.type);
 };
 
@@ -1378,12 +1378,12 @@ Game_Action.prototype.getStealableItem = function(target, stealable) {
     var text = fmt.format(this.subject().name(), target.name(), name, icon);
     this.displayStealText(text);
     if(target.allItemsStolen(this.item())) {
-      this.displayStealText(this.subject().name() + " has nothing left to steal!");
+      GameHam.displayBattleText(target.name() + " has nothing left to steal!", 150);
       target.addState(33);
     } else {
       if(target.states().map(s => s.id).includes(Yanfly.Steal.scanStateId)) {
         var unstolenCount = target.stealableItems().filter(i => !i.isStolen).length;
-        this.displayStealText("Your scanner tells you " + target.name() + " has " + unstolenCount + " items left...");
+        GameHam.displayBattleText("Your scanner tells you " + target.name() + " has " + unstolenCount + " items left...", 250);
       }
     }
 };
@@ -1421,6 +1421,7 @@ Game_Action.prototype.displayStealText = function(text) {
     }
     for(var i = 0; i < lines.length; i++) {
       win._lines.push('<CENTER>' + lines[i]);
+      win._waitCount += 55;
     }
     win.refresh();
 };
@@ -1441,9 +1442,12 @@ Game_Action.prototype.displayStealFailure = function(target) {
 
 Game_Action.prototype.displayStealEmpty = function(target) {
     this.playStealSound(Yanfly.Param.StealSEEmpty);
-    var fmt = Yanfly.Param.StealEmpty;
-    if (fmt === '') return;
-    var text = fmt.format(target.name());
+    //var fmt = Yanfly.Param.StealEmpty;
+    // fuck it i dont feel like editing the plugins.js
+    //var fmt = ""
+    //if (fmt === '') return;
+    //var text = fmt.format(target.name());
+    var text = this.subject().name() + " found nothing left to steal!";
     this.displayStealText(text);
     this.makeBattleEngineCoreStealWait();
 };

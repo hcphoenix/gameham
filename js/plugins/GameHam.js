@@ -75,12 +75,44 @@ var GameHam = GameHam || {};
     Game_Action_prototype_itemHit.call(this, target);
   }
 
+  GameHam.displayBattleText = function(text, time, timePerLine = 0) {
+    if (!$gameParty.inBattle()) return;
+    var scene = SceneManager._scene;
+
+    if (text === '') return;
+    if (!scene._logWindow) return;
+
+    var win = scene._logWindow;
+
+    // text wrapping
+    var words = text.split(' ');
+    var lines = [""];
+    var pos= 0;
+    for(var i = 0; i < words.length; i++) {
+        if(lines[pos].length + words[i].length < Yanfly.BEC.maxChar){
+            lines[pos] += words[i] + " ";
+        } else {
+            pos++;
+            lines[pos] = words[i] + " ";
+        }
+    }
+    for(var i = 0; i < lines.length; i++) {
+      win._lines.push('<CENTER>' + lines[i] );
+      win._waitCount += timePerLine;
+    }
+    win._waitCount += time;
+    win.refresh();
+};
   // Fix escape when party member is dead
   var Game_Battler_prototype_refresh = Game_Battler.prototype.refresh;
   Game_Battler.prototype.refresh = function() {
     Game_Battler_prototype_refresh.call(this);
-    if (this.hp === 0) {
+    if (this.hp === 0 && !this._jacob_says_im_dead) {
+      this._jacob_says_im_dead = true;
+      GameHam.displayBattleText(" ", 1); // Idk i think it looks better this way
+      GameHam.displayBattleText(this._name + " perished in battle", 60);
       this.escape();
+      $gameParty.removeActor(this._actorId);
     }
   }
 
