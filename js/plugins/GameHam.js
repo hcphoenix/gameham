@@ -74,6 +74,26 @@ var GameHam = GameHam || {};
     Game_Action_prototype_itemHit.call(this, target);
   }
 
+  // Fix escape when party member is dead
+  var Game_Battler_prototype_refresh = Game_Battler.prototype.refresh;
+  Game_Battler.prototype.refresh = function() {
+    Game_Battler_prototype_refresh.call(this);
+    if (this.hp === 0) {
+      this.escape();
+    }
+  }
+
+  var Game_BattlerBase_prototype_clearStates = Game_BattlerBase.prototype.clearStates;
+  const deathStates = [1,11];
+  Game_BattlerBase.prototype.clearStates = function() {
+    if(this._states){
+      this._states = this._states.filter(s => deathStates.includes(s));
+    } else {
+      this._states = [];
+    }
+    this._stateTurns = {};
+  }
+
 })(GameHam); 
 
 /*
