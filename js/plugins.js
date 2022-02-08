@@ -28,5 +28,6 @@ var $plugins =
 {"name":"HIME_ActorBattleCommands","status":true,"description":"v1.6 - Provides you with tools to customize and manage actor\r\nbattle commands.","parameters":{}},
 {"name":"HIME_BattleCommandUseSkill","status":true,"description":"v1.3 - Allows you to use a skill directly from the command menu\r\nrather than going to the skill menu.","parameters":{}},
 {"name":"SlowText","status":true,"description":"This plugin makes rpgmaker draw text at a slower speed.","parameters":{"Text Speed":"1"}},
-{"name":"GameHam","status":true,"description":"","parameters":{}}
+{"name":"GameHam","status":true,"description":"","parameters":{}},
+{"name":"YEP_X_CounterControl","status":true,"description":"v1.10 (Requires YEP_BattleEngineCore.js) Gives you more\r\ncontrol over how counters work in RPG Maker MV!","parameters":{"---General---":"","Queue Max":"20","---Default Traits---":"","Counter Skill":"1","Evade Counter":"false","Counter Name":"Counter-%1","Counter Icon":"78","Counter Total":"0","Ally Counter":"false","---Default Conditions---":"","Physical":"true","Single Target":"true","Not Counter":"false"}}
 ];
