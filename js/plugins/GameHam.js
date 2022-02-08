@@ -70,8 +70,7 @@ var GameHam = GameHam || {};
   Game_Action.prototype.itemHit = function(target) {
     if(this.item().id === 5) {
       var chance = Math.max($gameTroop._enemies.map(e => (e.mhp - e.hp) / e.mhp).reduce((x,y)=>(x+y)) / $gameTroop._enemies.length, 0.0);
-        console.log("success chance: " + chance);
-        return chance;
+      return chance;
     }
     Game_Action_prototype_itemHit.call(this, target);
   }

@@ -207,7 +207,9 @@ Scene_Base.prototype.checkGameover = function() {
 Game_Party.prototype.reviveLeader = function() {
     if ($gameParty.isAllDead()) {
         $gameParty.leader().setHp(1);
+        $gameParty.leader().setMp(1);
         $gameParty.leader().clearStates();
+        $gameParty.leader()._states = [];
     }
 };
 
