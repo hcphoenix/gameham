@@ -110,7 +110,7 @@ var GameHam = GameHam || {};
     if (this.hp === 0 && !this._jacob_says_im_dead) {
       this._jacob_says_im_dead = true;
       GameHam.displayBattleText(" ", 1); // Idk i think it looks better this way
-      GameHam.displayBattleText(this._name + " perished in battle", 60);
+      GameHam.displayBattleText(this._name + " perished in battle", 100);
       this.escape();
       $gameParty.removeActor(this._actorId);
     }
