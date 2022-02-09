@@ -110,10 +110,18 @@ var GameHam = GameHam || {};
     Game_Battler_prototype_refresh.call(this);
     if (this.hp === 0 && !this._jacob_says_im_dead) {
       this._jacob_says_im_dead = true;
-      GameHam.displayBattleText(" ", 1); // Idk i think it looks better this way
-      GameHam.displayBattleText(this._name + " perished in battle", 100);
-      this.escape();
-      $gameParty.removeActor(this._actorId);
+      GameHam.displayBattleText(this._name + " perished in battle", 70);
+      if($gameParty.members().length > 1) {
+        this.escape();
+        this.addState(this.deathStateId());
+        $gameParty.removeActor(this._actorId);
+      } else {
+        // quick fix
+        this.addState(this.deathStateId());
+        BattleManager._escaped = false;
+        BattleManager.processDefeat();
+        BattleManager.updateBattleEnd();
+      }
     }
   }
 

@@ -5225,7 +5225,7 @@ Window_BattleLog.prototype.displayAddedStates = function(target) {
         if (stateMsg) {
             this.push('popBaseLine');
             this.push('pushBaseLine');
-            this.push('addText', target.name() + stateMsg);
+            this.push('addText', '<CENTER>'+ target.name() + stateMsg);
             this.push('waitForEffect');
         }
     }, this);
@@ -5236,7 +5236,7 @@ Window_BattleLog.prototype.displayRemovedStates = function(target) {
         if (state.message4) {
             this.push('popBaseLine');
             this.push('pushBaseLine');
-            this.push('addText', target.name() + state.message4);
+            this.push('addText', '<CENTER>' + target.name() + state.message4);
         }
     }, this);
 };

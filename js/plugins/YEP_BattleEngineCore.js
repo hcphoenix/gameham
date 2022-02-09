@@ -5619,7 +5619,17 @@ Yanfly.BEC.Window_BattleLog_displayCurrentState =
     Window_BattleLog.prototype.displayCurrentState;
 Window_BattleLog.prototype.displayCurrentState = function(subject) {
     if (!Yanfly.Param.BECShowStateText) return;
-    Yanfly.BEC.Window_BattleLog_displayCurrentState.call(this, subject);
+    if (!scene._logWindow) return;
+
+    var win = scene._logWindow;
+    // custom printing
+    var stateText = subject.mostImportantStateText();
+    if (stateText) {
+        win._lines.push('<CENTER>' + subject.name() + stateText);
+        win.push('wait');
+        win.push('clear');
+        win.refresh();
+    }
 };
 
 Yanfly.BEC.Window_BattleLog_displayAddedStates =
