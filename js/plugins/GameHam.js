@@ -101,6 +101,7 @@ var GameHam = GameHam || {};
       win._waitCount += timePerLine;
     }
     win._waitCount += time;
+    win.push('wait');
     win.refresh();
 };
   // Fix escape when party member is dead

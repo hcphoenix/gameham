@@ -1383,7 +1383,7 @@ Game_Action.prototype.getStealableItem = function(target, stealable) {
     } else {
       if(target.states().map(s => s.id).includes(Yanfly.Steal.scanStateId)) {
         var unstolenCount = target.stealableItems().filter(i => !i.isStolen).length;
-        GameHam.displayBattleText("Your scanner tells you " + target.name() + " has " + unstolenCount + " items left...", 250);
+        GameHam.displayBattleText("Your scanner tells you " + target.name() + " has " + unstolenCount + " items left...", 1000, 100);
       }
     }
 };
