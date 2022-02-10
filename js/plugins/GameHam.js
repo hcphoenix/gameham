@@ -1,9 +1,6 @@
 //=============================================================================
 // WELCOME HELL
 //=============================================================================
-
-const { debug } = require("console");
-
 var Imported = Imported || {};
 Imported["GameHam"] = true;
 
@@ -111,7 +108,7 @@ var GameHam = GameHam || {};
     if (this.hp === 0 && !this._jacob_says_im_dead) {
       this._jacob_says_im_dead = true;
       GameHam.displayBattleText(this._name + " perished in battle", 70);
-      if($gameParty.members().length > 1) {
+      if($gameParty.allMembers().length > 1) {
         this.escape();
         this.addState(this.deathStateId());
         $gameParty.removeActor(this._actorId);
