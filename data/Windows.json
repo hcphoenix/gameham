@@ -13,17 +13,17 @@
   },
   "Scene_Battle": {
     "Window_BattleStatus": {
-      "x": 3,
-      "y": 244,
-      "opacity": "255",
-      "width": "816",
-      "height": "200",
-      "rows": "1",
+      "x": 176,
+      "y": 36,
+      "opacity": "0",
+      "width": "650",
+      "height": "250",
+      "rows": "4",
       "cols": "4"
     },
     "Window_ActorCommand": {
       "x": 0,
-      "y": 1,
+      "y": 384,
       "opacity": "255",
       "width": "192",
       "rows": "6",
@@ -32,8 +32,8 @@
       "align": "center"
     },
     "Window_Help": {
-      "x": 0,
-      "y": 516,
+      "x": 3,
+      "y": 276,
       "opacity": "255",
       "width": "816",
       "height": "108"
@@ -65,7 +65,7 @@
     },
     "Window_BattleItem": {
       "x": 192,
-      "y": 0,
+      "y": 384,
       "opacity": "255",
       "width": "625",
       "height": "240",

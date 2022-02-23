@@ -497,7 +497,7 @@ Window_BattleStatus.prototype.drawAllFaces = function() {
     }
     this._faceContents.bitmap.clear();
     for (var i = 0; i < this.maxItems(); ++i) {
-      this.drawStatusFace(i);
+      //this.drawStatusFace(i);
     }
 };
 
@@ -529,22 +529,22 @@ Window_BattleStatus.prototype.itemHeight = function() {
 
 Window_BattleStatus.prototype.drawItem = function(index) {
     var actor = $gameParty.battleMembers()[index];
-    this.drawBasicArea(this.basicAreaRect(index), actor);
-    this.drawGaugeArea(this.gaugeAreaRect(index), actor);
+    //this.drawBasicArea(this.basicAreaRect(index), actor);
+    //this.drawGaugeArea(this.gaugeAreaRect(index), actor);
     this.drawStateArea(this.basicAreaRect(index), actor);
 };
 
 Window_BattleStatus.prototype.drawBasicArea = function(rect, actor) {
     if (Imported.YEP_X_BattleSysATB && Yanfly.Param.ATBGaugeStyle) {
       if (BattleManager.isATB()) {
-        this.drawActorAtbGauge(actor, rect.x - 2, rect.y, rect.width + 2);
+      //  this.drawActorAtbGauge(actor, rect.x - 2, rect.y, rect.width + 2);
       }
     }
     var iw = Window_Base._iconWidth;
     this.drawActorActionIcon(actor, rect.x, rect.y);
     this.resetFontSettings();
     this.contents.fontSize = Yanfly.Param.BSWNameFontSize;
-    this.drawActorName(actor, rect.x + iw + 4, rect.y, rect.width);
+    //this.drawActorName(actor, rect.x + iw + 4, rect.y, rect.width);
 };
 
 Window_BattleStatus.prototype.basicAreaRect = function(index) {
@@ -573,8 +573,8 @@ Window_BattleStatus.prototype.drawGaugeArea = function(rect, actor) {
 Window_BattleStatus.prototype.drawStateArea = function(rect, actor) {
   var row = Yanfly.Param.BSWStateIconRow;
   if (row === undefined) row = 1;
-  var wy = rect.y + (this.lineHeight() * row);
-  this.drawActorIcons(actor, rect.x + 2, wy, rect.width);
+  var wy = rect.y + (this.lineHeight() * row) + 83; //modified for top
+  this.drawActorIcons(actor, rect.x + 70, wy, rect.width);
 };
 
 Window_BattleStatus.prototype.getGaugesDrawn = function(actor) {
