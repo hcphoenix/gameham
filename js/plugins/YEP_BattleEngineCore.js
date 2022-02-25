@@ -5021,7 +5021,7 @@ Window_BattleEnemy.prototype.refresh = function() {
     this.sortTargets();
     Window_Selectable.prototype.refresh.call(this);
 };
-
+// interesting bit of code TARGET SORTING
 Window_BattleEnemy.prototype.sortTargets = function() {
     this._enemies.sort(function(a, b) {
         if (a.spritePosX() === b.spritePosX()) {

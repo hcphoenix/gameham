@@ -223,9 +223,9 @@ Yanfly.Param.BSWCurrentMax = eval(Yanfly.Param.BSWCurrentMax);
 Yanfly.Param.BSWAdjustCol = eval(String(Yanfly.Parameters['Adjust Columns']));
 Yanfly.Param.BSWStateIconRow = Number(Yanfly.Parameters['State Icons Row']);
 
-Yanfly.Param.BSWLfRt = eval(String(Yanfly.Parameters['Left / Right']));
-Yanfly.Param.BSWPageUpDn = eval(String(Yanfly.Parameters['PageUp / PageDown']));
-Yanfly.Param.BSWTurnSkip = eval(String(Yanfly.Parameters['Allow Turn Skip']));
+Yanfly.Param.BSWLfRt = false;//eval(String(Yanfly.Parameters['Left / Right']));
+Yanfly.Param.BSWPageUpDn = false;//eval(String(Yanfly.Parameters['PageUp / PageDown']));
+Yanfly.Param.BSWTurnSkip = false;//eval(String(Yanfly.Parameters['Allow Turn Skip']));
 
 Yanfly.Param.BSWShowAni = eval(String(Yanfly.Parameters['Show Animations']));
 Yanfly.Param.BSWShowSprite = eval(String(Yanfly.Parameters['Show Sprites']));
@@ -342,27 +342,30 @@ Sprite_Actor.prototype.setActorHome = function(index) {
     }
 };
 
+// this sets the location where animations will be played
 Sprite_Actor.prototype.setActorHomeFrontView = function(index) {
     if (Imported.YEP_BattleEngineCore) {
       var statusHeight = Yanfly.Param.BECCommandRows;
     } else {
       var statusHeight = 4;
     }
-    statusHeight *= Window_Base.prototype.lineHeight.call(this);
-    statusHeight += Window_Base.prototype.standardPadding.call(this) * 2;
+    //statusHeight *= Window_Base.prototype.lineHeight.call(this);
+    //statusHeight += Window_Base.prototype.standardPadding.call(this) * 2;
     var screenW = Graphics.boxWidth;
     var windowW = Window_PartyCommand.prototype.windowWidth.call(this);
     screenW -= windowW;
-    windowW /= 2;
+    //windowW /= 2;
     if (Yanfly.Param.BSWAdjustCol) {
       var size = $gameParty.battleMembers().length;
     } else {
       var size = $gameParty.maxBattleMembers();
     }
     
-    var homeX = screenW / size * index + windowW + screenW / (size * 2);
+    //var homeX = screenW / size * index + windowW + screenW / (size * 2);
+    // window size / number of total party members * current + (screenw - window size) + battlerw/2
+    var homeX = 625 / 4 * index + 200 + 50;
     homeX += Yanfly.Param.BSWXOffset;
-    var homeY = Graphics.boxHeight - statusHeight;
+    var homeY = 150;//Graphics.boxHeight - statusHeight;
     homeY += Yanfly.Param.BSWYOffset;
     this.setHome(homeX, homeY);
     this.moveToStartPosition();
@@ -475,6 +478,26 @@ Window_BattleStatus.prototype.createContents = function() {
     Window_Selectable.prototype.createContents.call(this);
 };
 
+
+/// Window override
+Window_BattleStatus.prototype._refreshCursor = function() {
+    this._windowCursorSprite.visible = false;
+    Window_Selectable.prototype._refreshCursor.call(this);
+    this._windowCursorSprite.alpha = 90;
+    this._windowCursorSprite.visible = false;
+}
+
+Window_BattleStatus.prototype._updateCursor = function() {
+    this._animationCount++;
+    Window_Selectable.prototype._updateCursor.call(this);
+    let selectWin = SceneManager._scene._statusWindow._enemySelectWindow;
+    if(selectWin.active && selectWin._enemies[selectWin._index].isEnemy()) {
+        this._windowCursorSprite.alpha = 0;
+    } else {
+        this._windowCursorSprite.alpha = (this._animationCount % 100)/100;
+    }
+}
+
 Window_BattleStatus.prototype.createFaceContents = function() {
     this._faceContents = new Sprite();
     var ww = this.contentsWidth();
@@ -573,8 +596,8 @@ Window_BattleStatus.prototype.drawGaugeArea = function(rect, actor) {
 Window_BattleStatus.prototype.drawStateArea = function(rect, actor) {
   var row = Yanfly.Param.BSWStateIconRow;
   if (row === undefined) row = 1;
-  var wy = rect.y + (this.lineHeight() * row) + 83; //modified for top
-  this.drawActorIcons(actor, rect.x + 70, wy, rect.width);
+  var wy = rect.y + (this.lineHeight() * row)+115; //modified for top
+  this.drawActorIcons(actor, rect.x, wy, rect.width);
 };
 
 Window_BattleStatus.prototype.getGaugesDrawn = function(actor) {
@@ -616,8 +639,8 @@ Window_BattleStatus.prototype.drawFace = function(fn, fi, x, y, width, height) {
 };
 
 Window_BattleStatus.prototype.updateTransform = function() {
-    Window_Selectable.prototype.updateTransform.call(this);
     this.updateFaceContents();
+    Window_Selectable.prototype.updateTransform.call(this);
 };
 
 Window_BattleStatus.prototype.updateFaceContents = function() {

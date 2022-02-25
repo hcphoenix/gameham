@@ -13,10 +13,10 @@
   },
   "Scene_Battle": {
     "Window_BattleStatus": {
-      "x": 176,
-      "y": 36,
+      "x": 192,
+      "y": 0,
       "opacity": "0",
-      "width": "650",
+      "width": "625",
       "height": "250",
       "rows": "4",
       "cols": "4"
@@ -32,7 +32,7 @@
       "align": "center"
     },
     "Window_Help": {
-      "x": 3,
+      "x": 0,
       "y": 276,
       "opacity": "255",
       "width": "816",
@@ -40,7 +40,7 @@
     },
     "Window_BattleSkill": {
       "x": 0,
-      "y": 0,
+      "y": 382,
       "opacity": "255",
       "width": "816",
       "height": "242",
