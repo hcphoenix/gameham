@@ -14,62 +14,48 @@
   "Scene_Battle": {
     "Window_BattleStatus": {
       "x": 192,
-      "y": 0,
+      "y": 36,
       "opacity": "0",
-      "width": "625",
-      "height": "250",
+      "width": "624",
+      "height": "180",
       "rows": "4",
       "cols": "4"
     },
     "Window_ActorCommand": {
       "x": 0,
-      "y": 384,
+      "y": 380,
       "opacity": "255",
       "width": "192",
-      "rows": "6",
-      "cols": "1",
-      "lineHeight": "34",
-      "align": "center"
-    },
-    "Window_Help": {
-      "x": 0,
-      "y": 276,
-      "opacity": "255",
-      "width": "816",
-      "height": "108"
+      "height": "180",
+      "rows": "4",
+      "cols": "1"
     },
     "Window_BattleSkill": {
       "x": 0,
-      "y": 382,
+      "y": 336,
       "opacity": "255",
       "width": "816",
-      "height": "242",
+      "height": "180",
       "cols": "1"
     },
-    "Window_BattleActor": {
-      "x": 192,
-      "y": 0
-    },
-    "Window_BattleEnemy": {
-      "x": 819,
-      "y": 0,
-      "opacity": "255",
-      "width": "624",
-      "height": "200",
-      "rows": "4",
-      "cols": "5"
-    },
-    "Window_PartyCommand": {
+    "Window_Help": {
       "x": 0,
-      "y": 0
+      "y": 516
     },
     "Window_BattleItem": {
-      "x": 192,
-      "y": 384,
+      "x": 0,
+      "y": 336,
       "opacity": "255",
-      "width": "625",
-      "height": "240",
+      "width": "816",
+      "height": "180",
       "cols": "2"
+    },
+    "Window_Help 2": {
+      "x": 0,
+      "y": 516,
+      "opacity": "255",
+      "width": "816",
+      "height": "64"
     }
   }
 }

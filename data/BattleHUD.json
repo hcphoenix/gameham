@@ -810,5 +810,169 @@
     "id": 41,
     "x": 794,
     "y": 191
+  },
+  {
+    "type": "Enemy Image Gauge",
+    "Cur. Value": "$gameTroop._enemies[0].mhp - $gameTroop._enemies[0].hp",
+    "Max Value": 200,
+    "Condition": "$gameTroop._enemies[0] && !$gameTroop._enemies[0]._hidden && $gameTroop._enemies[0].hp > 0",
+    "Layer": "0",
+    "Scale X": "1",
+    "Scale Y": "1",
+    "Style": "left",
+    "Main Image": "Fear_Full",
+    "Back Image": "Fear_Empty",
+    "animateInfo": {
+      "x": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      },
+      "y": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      },
+      "s": {
+        "spd": 0,
+        "loop": false,
+        "min": 1,
+        "max": 1
+      },
+      "r": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "x": 341,
+    "y": 508,
+    "id": 42
+  },
+  {
+    "type": "Enemy Image Gauge",
+    "Cur. Value": "$gameTroop._enemies[1].mhp - $gameTroop._enemies[1].hp",
+    "Max Value": 200,
+    "Condition": "$gameTroop._enemies[1] && !$gameTroop._enemies[1]._hidden && $gameTroop._enemies[1].hp > 0",
+    "Layer": "0",
+    "Scale X": "1",
+    "Scale Y": "1",
+    "Style": "left",
+    "Main Image": "Fear_Full",
+    "Back Image": "Fear_Empty",
+    "animateInfo": {
+      "x": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      },
+      "y": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      },
+      "s": {
+        "spd": 0,
+        "loop": false,
+        "min": 1,
+        "max": 1
+      },
+      "r": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "x": 611,
+    "y": 544,
+    "id": 43
+  },
+  {
+    "type": "Enemy Image Gauge",
+    "Cur. Value": "$gameTroop._enemies[0].mmp - $gameTroop._enemies[0].mp",
+    "Max Value": 100,
+    "Condition": "$gameTroop._enemies[0] && !$gameTroop._enemies[0]._hidden && $gameTroop._enemies[0].hp > 0",
+    "Layer": "0",
+    "Scale X": "1",
+    "Scale Y": "1",
+    "Style": "left",
+    "Main Image": "Distraction_Full",
+    "Back Image": "Distraction_Empty",
+    "animateInfo": {
+      "x": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      },
+      "y": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      },
+      "s": {
+        "spd": 0,
+        "loop": false,
+        "min": 1,
+        "max": 1
+      },
+      "r": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "x": 469,
+    "y": 508,
+    "id": 44
+  },
+  {
+    "type": "Enemy Image Gauge",
+    "Cur. Value": "$gameTroop._enemies[1].mmp - $gameTroop._enemies[1].mp",
+    "Max Value": 100,
+    "Condition": "$gameTroop._enemies[1] && !$gameTroop._enemies[1]._hidden && $gameTroop._enemies[1].hp > 0",
+    "Layer": "0",
+    "Scale X": "1",
+    "Scale Y": "1",
+    "Style": "left",
+    "Main Image": "Distraction_Full",
+    "Back Image": "Distraction_Empty",
+    "animateInfo": {
+      "x": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      },
+      "y": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      },
+      "s": {
+        "spd": 0,
+        "loop": false,
+        "min": 1,
+        "max": 1
+      },
+      "r": {
+        "spd": 0,
+        "loop": false,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "x": 739,
+    "y": 544,
+    "id": 45
   }
 ]
