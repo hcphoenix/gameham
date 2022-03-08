@@ -763,7 +763,7 @@
       {
         "code": 21,
         "dataId": 7,
-        "value": 0.5
+        "value": 0
       }
     ],
     "iconIndex": 37,
@@ -775,7 +775,7 @@
     "minTurns": 3,
     "motion": 0,
     "name": "Law-Abiding",
-    "note": "",
+    "note": "<Help Description>\nThey love property rights, reducing their chance to Steal.\n</Help Description>",
     "overlay": 0,
     "priority": 50,
     "removeAtBattleEnd": true,
@@ -907,7 +907,7 @@
     "minTurns": 1,
     "motion": 0,
     "name": "Scanned",
-    "note": "",
+    "note": "<Help Description>\nYou can steal more items from them!\n</Help Description>",
     "overlay": 0,
     "priority": 50,
     "removeAtBattleEnd": false,

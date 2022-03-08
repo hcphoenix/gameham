@@ -69,7 +69,7 @@
     "requiredWtypeId2": 0,
     "scope": 11,
     "speed": 2000,
-    "stypeId": 0,
+    "stypeId": 1,
     "successRate": 100,
     "tpCost": 0,
     "tpGain": 10
@@ -84,10 +84,10 @@
       "type": 2,
       "variance": 20
     },
-    "description": "Attempt to snatch something from an enemy.\nSuccess chance goes up with enemy distraction.",
+    "description": "Steal from a foe if they're distracted enough.\nMust be \\I[11] Landed.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 55,
     "message1": " attempts to steal!",
     "message2": "",
     "mpCost": 0,
@@ -99,7 +99,7 @@
     "requiredWtypeId2": 0,
     "scope": 1,
     "speed": 0,
-    "stypeId": 0,
+    "stypeId": 1,
     "successRate": 100,
     "tpCost": 0,
     "tpGain": 0

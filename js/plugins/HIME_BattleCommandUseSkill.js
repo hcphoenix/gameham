@@ -85,9 +85,9 @@ TH.BattleCommandUseSkill = TH.BattleCommandUseSkill || {};
   TH.ActorBattleCommands.defaultBattlerCommands = function(obj) {
     var cmds = [
       //$.makeCommand("attack"),
-      TH.ActorBattleCommands.makeCommand("use_skill", 3),
+      //TH.ActorBattleCommands.makeCommand("use_skill", 3),
       TH.ActorBattleCommands.makeCommand("skill_list"),
-      TH.ActorBattleCommands.makeCommand("guard"),
+      //TH.ActorBattleCommands.makeCommand("guard"),
       TH.ActorBattleCommands.makeCommand("item"),
       TH.ActorBattleCommands.makeCommand("use_skill", 4),
       TH.ActorBattleCommands.makeCommand("use_skill", 5),

@@ -8,7 +8,8 @@
       "rows": "4",
       "cols": "1",
       "lineHeight": "36",
-      "align": "left"
+      "align": "left",
+      "height": "144"
     }
   },
   "Scene_Battle": {
@@ -56,6 +57,10 @@
       "opacity": "255",
       "width": "816",
       "height": "64"
+    },
+    "Window_HelpActorCommand": {
+      "x": 0,
+      "y": 560
     }
   }
 }
