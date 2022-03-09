@@ -1724,6 +1724,7 @@ Scene_Battle.prototype.start = function() {
 		HUDManager.setup($dataBattleHUD, this._hud);
 		this._hud.refresh();
 		this.createHudUpperLayer();
+        SceneManager._scene._spriteset._battleField.addChild(this._hud);
 	}
     this.setupEnemyBars();
 };
