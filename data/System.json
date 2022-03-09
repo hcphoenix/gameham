@@ -197,9 +197,9 @@
       "volume": 50
     },
     {
-      "name": "bird up",
+      "name": "cancel",
       "pan": 0,
-      "pitch": 100,
+      "pitch": 120,
       "volume": 40
     },
     {
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 18741416,
+  "versionId": 86364329,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

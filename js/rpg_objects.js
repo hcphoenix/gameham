@@ -4438,7 +4438,7 @@ Game_Enemy.prototype.performActionEnd = function() {
 Game_Enemy.prototype.performDamage = function() {
     Game_Battler.prototype.performDamage.call(this);
     SoundManager.playEnemyDamage();
-    this.requestEffect('blink');
+    //this.requestEffect('blink');
 };
 
 Game_Enemy.prototype.performCollapse = function() {

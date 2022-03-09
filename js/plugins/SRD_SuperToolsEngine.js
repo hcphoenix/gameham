@@ -394,7 +394,7 @@ if(_.isPlaytest) {
 _.SceneManager_onKeyDown = SceneManager.onKeyDown;
 SceneManager.onKeyDown = function(event) {
 	_.SceneManager_onKeyDown.apply(this, arguments);
-	if(event.keyCode === 123) {
+	if(event.keyCode === 122) {
 		this.openMaker();
 	}
 };

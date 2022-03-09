@@ -11,7 +11,7 @@
       "type": 3,
       "variance": 0
     },
-    "description": "Heals 10 HP and 30 HUNGER.",
+    "description": "Made with real cotton!\nHeals 10 HP and 30 HUNGER.",
     "effects": [
       {
         "code": 12,
@@ -103,7 +103,7 @@
       "type": 2,
       "variance": 0
     },
-    "description": "Is it safe? Who cares.\nDeals 15 DISTRACTION and FEAR to all enemies.",
+    "description": "Made with love and all-natural nitroglycerin.\nDeals 15 DISTRACTION and FEAR to all foes.",
     "effects": [
       {
         "code": 11,
@@ -169,7 +169,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Shines with an appetizing light.\nHeal 40 HUNGER.",
+    "description": "Shines with an appetizing light.\nHeals 40 HUNGER.",
     "effects": [
       {
         "code": 12,
@@ -208,7 +208,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Utter drivel. Boosts HATRED by 50.",
+    "description": "Utter drivel.\nBoosts HATRED by 50.",
     "effects": [
       {
         "code": 13,
@@ -333,7 +333,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Fragments of power.\nUse to discretely gain a skill.",
+    "description": "Fragments of forbidden power.\nUse to discretely gain a SKILL.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 48,
@@ -444,7 +444,7 @@
       "type": 4,
       "variance": 0
     },
-    "description": "Juice that wash.\nHeals 0 HP and 15 HUNGER. Applies 'Head Empty'.",
+    "description": "Juice that wash.\nHeals 15 HUNGER. Applies 'Head Empty'.",
     "effects": [
       {
         "code": 21,
