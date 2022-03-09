@@ -490,12 +490,14 @@ Window_BattleStatus.prototype._refreshCursor = function() {
 Window_BattleStatus.prototype._updateCursor = function() {
     this._animationCount++;
     Window_Selectable.prototype._updateCursor.call(this);
-    let selectWin = SceneManager._scene._statusWindow._enemySelectWindow;
+    /*let selectWin = SceneManager._scene._statusWindow._enemySelectWindow;
     if(selectWin.active && selectWin._enemies[selectWin._index].isEnemy()) {
         this._windowCursorSprite.alpha = 0;
     } else {
         this._windowCursorSprite.alpha = (this._animationCount % 100)/100;
-    }
+    }*/
+    this._windowCursorSprite.alpha = 0;
+    // Disable this while we're using image cursor
 }
 
 Window_BattleStatus.prototype.createFaceContents = function() {
