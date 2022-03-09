@@ -3586,6 +3586,37 @@
               ]
             },
             {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                -1,
+                {
+                  "list": [
+                    {
+                      "code": 33,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 33,
+                  "indent": null
+                }
+              ]
+            },
+            {
               "code": 122,
               "indent": 0,
               "parameters": [
