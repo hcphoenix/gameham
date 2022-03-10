@@ -7,7 +7,7 @@
       "volume": 90
     },
     "characterIndex": 3,
-    "characterName": "Vehicle",
+    "characterName": "",
     "startMapId": 0,
     "startX": 0,
     "startY": 0
@@ -93,7 +93,7 @@
       "volume": 90
     },
     "characterIndex": 0,
-    "characterName": "Vehicle",
+    "characterName": "",
     "startMapId": 0,
     "startX": 0,
     "startY": 0
@@ -105,7 +105,7 @@
     "pitch": 100,
     "volume": 90
   },
-  "editMapId": 4,
+  "editMapId": 2,
   "elements": [
     "",
     "Physical",
@@ -167,7 +167,7 @@
       "volume": 90
     },
     "characterIndex": 1,
-    "characterName": "Vehicle",
+    "characterName": "",
     "startMapId": 0,
     "startX": 0,
     "startY": 0
@@ -323,9 +323,9 @@
       "volume": 0
     }
   ],
-  "startMapId": 4,
-  "startX": 12,
-  "startY": 3,
+  "startMapId": 6,
+  "startX": 8,
+  "startY": 0,
   "switches": [
     "",
     "Player Can Move",
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 42783898,
+  "versionId": 98992889,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

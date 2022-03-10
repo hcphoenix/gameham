@@ -6,7 +6,7 @@
     "name": "MAP001",
     "order": 1,
     "parentId": 0,
-    "scrollX": 1138,
+    "scrollX": 1139,
     "scrollY": 633
   },
   {
@@ -25,7 +25,7 @@
     "order": 3,
     "parentId": 0,
     "scrollX": 1139,
-    "scrollY": 617.5
+    "scrollY": 633
   },
   {
     "id": 4,
@@ -33,6 +33,24 @@
     "name": "GameBoard1",
     "order": 4,
     "parentId": 0,
+    "scrollX": 1139,
+    "scrollY": 633
+  },
+  {
+    "id": 5,
+    "expanded": true,
+    "name": "Minigames",
+    "order": 5,
+    "parentId": 0,
+    "scrollX": 1139,
+    "scrollY": 633
+  },
+  {
+    "id": 6,
+    "expanded": false,
+    "name": "Duck Hunt",
+    "order": 6,
+    "parentId": 5,
     "scrollX": 1139,
     "scrollY": 633
   }
