@@ -1744,11 +1744,11 @@ Game_Actor.prototype.recoverAll = function() {
 //==============================
 // * Initialize
 //==============================
-var _alias_mog_bhud_initialize = Window_BattleStatus.prototype.initialize
+/*var _alias_mog_bhud_initialize = Window_BattleStatus.prototype.initialize
 Window_BattleStatus.prototype.initialize = function() {
 	_alias_mog_bhud_initialize.call(this);
     this.visible = false
-};
+}; */
 
 //=============================================================================
 // ** Window_BattleSkill
@@ -2279,7 +2279,7 @@ Scene_Map.prototype.createSpriteset = function() {
 	_mog_bhud_sMap_createSpriteset.call(this);
 	if (!this._hudField) {this.createHudField()};
 };
-
+/* Disable all layouts
 //==============================
 // ** createWindowLayer
 //==============================
@@ -2288,6 +2288,7 @@ Scene_Battle.prototype.createWindowLayer = function() {
 	this.create_layout_window();	
 	_alias_mog_bhud_createWindowLayer.call(this);
 };
+*/
 
 //==============================
 // ** createAllWindows
@@ -3801,7 +3802,11 @@ Battle_Hud.prototype.refresh_states2 = function() {
 	var m = Math.min(Math.max(this._battler.allIcons().length,0),Moghunter.bhud_statesMax);
 	var align = Moghunter.bhud_statesAlign;
 	for (i = 0; i < m; i++){
+        //new Sprite_StateIcon();
+        // ^ we could also have these be the cylce state icons
 		 this._stateIcons[i] = new Sprite(this._state_img);
+         this._stateIcons[i]._battler = this._battler;
+         //this._stateIcons[i]._iconIndex = 1;//this._battler.allIcons()[i];
 	     var sx = icons[i] % 16 * w;
 		 var sy = Math.floor(icons[i] / 16) * w;
 		 this._stateIcons[i].setFrame(sx, sy, w, w);
