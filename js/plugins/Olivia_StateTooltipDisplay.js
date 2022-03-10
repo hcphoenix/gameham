@@ -237,12 +237,13 @@ Battle_Hud['prototype']['updateStateIconTooltipWindow'] = function () {
 Battle_Hud['prototype']['isMouseOverStates'] = function () {
     let mouseX = TouchInput['_mouseOverX'];
     let mouseY = TouchInput['_mouseOverY'];
-    let x = this._pos_x-29;
-    let y = 0;
-    let onX = mouseX > x && mouseX < (x + 100);
-    let onY = mouseY > y && mouseY < (y + 300);
-    //console.log("vis:"+this['isFullyVisible']());
-    return this['isFullyVisible']() && onX && onY;
+    let x = this._pos_x-20;
+    let y = 150;
+    let onX = mouseX > x && mouseX < (x + 36);
+    let onY = mouseY > y && mouseY < (y + 36);
+    let val = this['isFullyVisible']() && onX && onY;
+    //console.log("batler: " + this._battler.name() + " " + val);
+    return val;
 };
 Battle_Hud['prototype']['canvasToLocalX'] = function (_0x1b39c4) {
     var _0x16866a = this;
@@ -275,12 +276,12 @@ Battle_Hud['prototype']['isFullyVisible'] = function () {
 };
 Olivia['StateTooltipDisplay']['___Window_Battle_Hud_update___'] = Battle_Hud['prototype']['update'];
 
-
 Battle_Hud['prototype']['update'] = function () {
     Olivia['StateTooltipDisplay']['___Window_Battle_Hud_update___']['call'](this);
+    // if(this.tooltipWindow()._targetHost) console.log(this.tooltipWindow()._targetHost.constructor.name);
     if (!!this['_battler'] && !!this['tooltipWindow']() && this['isMouseOverStates']()) {
         this['updateStateIconTooltipWindow']();
     }
 };
 
-if(Olivia[_0x1db1('0x12')]['Enabled']){Olivia[_0x1db1('0x12')][_0x1db1('0x68')]=Window_BattleStatus['prototype'][_0x1db1('0x92')];Window_BattleStatus[_0x1db1('0x54')][_0x1db1('0x92')]=function(){Olivia[_0x1db1('0x12')][_0x1db1('0x68')]['call'](this);if(!!this[_0x1db1('0x8a')]()&&this['isMouseOverStates']()){this['determineStateTooltipBattler']();if(!!this[_0x1db1('0x27')]){this['updateStateIconTooltipWindow']();}}};Window_BattleStatus[_0x1db1('0x54')][_0x1db1('0x63')]=function(){var _0x1b87e0=this[_0x1db1('0x35')](TouchInput[_0x1db1('0x98')]);var _0x20e268=this[_0x1db1('0x6c')](TouchInput[_0x1db1('0x44')]);if(_0x1b87e0<=this[_0x1db1('0x3c')]()||_0x1b87e0>=this[_0x1db1('0x3b')]-this[_0x1db1('0x3c')]()){this[_0x1db1('0x27')]=undefined;}else if(_0x20e268<=this[_0x1db1('0x3c')]()||_0x20e268>=this[_0x1db1('0x2e')]-this[_0x1db1('0x3c')]()){this['_battler']=undefined;}else if(Imported[_0x1db1('0x26')]){var _0x419f69=this[_0x1db1('0x17')]()/this[_0x1db1('0x58')]();var _0x24f8ae=Math[_0x1db1('0x62')]((_0x1b87e0-this[_0x1db1('0x3c')]())/_0x419f69);this[_0x1db1('0x27')]=$gameParty['members']()[_0x24f8ae];}else{var _0x3f285d=this[_0x1db1('0x70')](_0x24f8ae)['height'];var _0x24f8ae=this[_0x1db1('0x82')]()+Math[_0x1db1('0x62')]((_0x20e268-this[_0x1db1('0x3c')]())/_0x3f285d);this[_0x1db1('0x27')]=$gameParty[_0x1db1('0x5e')]()[_0x24f8ae];}};}
+if(Olivia[_0x1db1('0x12')]['Enabled']['windowBattleStatus']){Olivia[_0x1db1('0x12')][_0x1db1('0x68')]=Window_BattleStatus['prototype'][_0x1db1('0x92')];Window_BattleStatus[_0x1db1('0x54')][_0x1db1('0x92')]=function(){Olivia[_0x1db1('0x12')][_0x1db1('0x68')]['call'](this);if(!!this[_0x1db1('0x8a')]()&&this['isMouseOverStates']()){this['determineStateTooltipBattler']();if(!!this[_0x1db1('0x27')]){this['updateStateIconTooltipWindow']();}}};Window_BattleStatus[_0x1db1('0x54')][_0x1db1('0x63')]=function(){var _0x1b87e0=this[_0x1db1('0x35')](TouchInput[_0x1db1('0x98')]);var _0x20e268=this[_0x1db1('0x6c')](TouchInput[_0x1db1('0x44')]);if(_0x1b87e0<=this[_0x1db1('0x3c')]()||_0x1b87e0>=this[_0x1db1('0x3b')]-this[_0x1db1('0x3c')]()){this[_0x1db1('0x27')]=undefined;}else if(_0x20e268<=this[_0x1db1('0x3c')]()||_0x20e268>=this[_0x1db1('0x2e')]-this[_0x1db1('0x3c')]()){this['_battler']=undefined;}else if(Imported[_0x1db1('0x26')]){var _0x419f69=this[_0x1db1('0x17')]()/this[_0x1db1('0x58')]();var _0x24f8ae=Math[_0x1db1('0x62')]((_0x1b87e0-this[_0x1db1('0x3c')]())/_0x419f69);this[_0x1db1('0x27')]=$gameParty['members']()[_0x24f8ae];}else{var _0x3f285d=this[_0x1db1('0x70')](_0x24f8ae)['height'];var _0x24f8ae=this[_0x1db1('0x82')]()+Math[_0x1db1('0x62')]((_0x20e268-this[_0x1db1('0x3c')]())/_0x3f285d);this[_0x1db1('0x27')]=$gameParty[_0x1db1('0x5e')]()[_0x24f8ae];}};}
