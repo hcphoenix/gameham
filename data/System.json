@@ -367,7 +367,7 @@
       "Escape",
       "Attack",
       "Guard",
-      "Item",
+      "Luggage",
       "Skill",
       "Equip",
       "Status",
@@ -458,7 +458,7 @@
   },
   "testBattlers": [
     {
-      "actorId": 2,
+      "actorId": 19,
       "equips": [
         0,
         0,
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 11243018,
+  "versionId": 42783898,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

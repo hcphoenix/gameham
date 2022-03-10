@@ -105,7 +105,11 @@ TH.BattleCommandUseSkill = TH.BattleCommandUseSkill || {};
   Window_ActorCommand.prototype.addBattleCommand_use_skill = function(cmd) {
     var skill = $dataSkills[cmd.ext()]
     var enabled = cmd.isEnabled(this._actor) && this._actor.canUse(skill);
-    var name = cmd.name() !== "move" ? cmd.name() : (this._actor._row === 1 ? "Ascend" : "Descend"); // special case for move
+    
+    // special case for move
+    var name = cmd.name() !== "move" ? cmd.name() : (this._actor._row === 1 ? "Ascend" : "Descend");
+    if (!enabled) name = "Grounded";
+
     this.addCommand(name, cmd.symbol(), enabled, cmd.ext());
   };
   

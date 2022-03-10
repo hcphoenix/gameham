@@ -42,6 +42,11 @@
         "skillId": 3
       },
       {
+        "level": 1,
+        "note": "",
+        "skillId": 2
+      },
+      {
         "level": 99,
         "note": "",
         "skillId": 11
@@ -930,6 +935,11 @@
         "skillId": 3
       },
       {
+        "level": 1,
+        "note": "",
+        "skillId": 2
+      },
+      {
         "level": 99,
         "note": "",
         "skillId": 21
@@ -1816,6 +1826,11 @@
         "level": 1,
         "note": "",
         "skillId": 3
+      },
+      {
+        "level": 1,
+        "note": "",
+        "skillId": 2
       },
       {
         "level": 99,
@@ -2711,6 +2726,11 @@
         "skillId": 3
       },
       {
+        "level": 1,
+        "note": "",
+        "skillId": 2
+      },
+      {
         "level": 99,
         "note": "",
         "skillId": 41
@@ -3604,6 +3624,11 @@
         "skillId": 3
       },
       {
+        "level": 1,
+        "note": "",
+        "skillId": 2
+      },
+      {
         "level": 99,
         "note": "",
         "skillId": 51
@@ -4492,6 +4517,11 @@
         "skillId": 3
       },
       {
+        "level": 1,
+        "note": "",
+        "skillId": 2
+      },
+      {
         "level": 99,
         "note": "",
         "skillId": 133
@@ -5363,6 +5393,11 @@
         "level": 1,
         "note": "",
         "skillId": 3
+      },
+      {
+        "level": 1,
+        "note": "",
+        "skillId": 2
       },
       {
         "level": 99,
@@ -6256,6 +6291,11 @@
         "level": 1,
         "note": "",
         "skillId": 3
+      },
+      {
+        "level": 1,
+        "note": "",
+        "skillId": 2
       },
       {
         "level": 99,
