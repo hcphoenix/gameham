@@ -163,8 +163,12 @@ var GameHam = GameHam || {};
     return Math.max($gameTroop._enemies.map(e => (e.mhp - e.hp) / e.mhp).reduce((x,y)=>(x+y)) / $gameTroop._enemies.length, 0.0);
   }
 
+  Game_BattlerBase.prototype.pursuitDamage = function () {
+    return Math.floor(this.mdf * (this.hp / this.mhp));
+  }
+
   GameHam.GetPursuitDamage = function () {
-    return $gameTroop._enemies.map(e => e.mdf - (e.mhp - e.hp)).reduce((x,y)=>(x+y), 0);
+    return $gameTroop._enemies.map(e => e.pursuitDamage()).reduce((x,y)=>(x+y), 0);
   }
 
   var BattleManager_processEscape = BattleManager.processEscape;
