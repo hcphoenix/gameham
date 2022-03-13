@@ -2208,7 +2208,10 @@ Sprite_Battler.prototype.addCTBIcon = function() {
     if (!scene._windowLayer) return;
     this._addedCTBIcon = true;
     this._ctbIcon.setWindowLayer(scene._windowLayer);
-    scene.addChild(this._ctbIcon);
+    // to add above other ui -> scene.addChild(this._ctbIcon);
+
+    // adds behind windows
+    BattleManager._spriteset.addChild(this._ctbIcon);
 };
 
 //=============================================================================
@@ -2525,47 +2528,46 @@ Window_CTBIcon.prototype.updatePositionX = function() {
     if (this._destinationX === undefined) return;
     if (BattleManager._escaped) return;
     var desX = this._destinationX;
-    var moveAmount = Math.max(1, Math.abs(desX - this.x) / 4);
-    if (this.x > desX) this.x = Math.max(this.x - moveAmount, desX);
-    if (this.x < desX) this.x = Math.min(this.x + moveAmount, desX);
+    var moveAmount = Math.max(1, Math.abs(desX - this.y) / 4);
+    if (this.y > desX) this.y = Math.max(this.y - moveAmount, desX);
+    if (this.y < desX) this.y = Math.min(this.y + moveAmount, desX);
 };
 
 Window_CTBIcon.prototype.destinationY = function() {
     // use formula
-    var screenHeight = 624; // stupid hack why isnt this exposed? maybe it is idk the docs suck
     var code = Yanfly.Param.CTBTurnPosY;
     var value = 0;
-    try {
+    /*try {
         value = Number(eval(code));
     } catch (e) {
         Yanfly.Util.displayError(e, code, 'CTB TURN POS BUFFER FORMULA ERROR');
-    }
+    } */
 
-    var scene = SceneManager._scene;
+    /*var scene = SceneManager._scene;
     if (scene && scene._helpWindow.visible) {
         value -= scene._helpWindow.height * 0.9; // we moved the help window to the bottom of the screen
-    }
+    }*/
     if (!this._battler) return value;
     if (this._battler.isSelected()) {
-        value -= this.contents.height / 4;
+        value += this.contents.height / 4;
     }
     return value;
 };
 
 Window_CTBIcon.prototype.updatePositionY = function() {
     if (BattleManager._escaped) return;
-    if (this._destinationX !== this.x) {
+    if (this._destinationX !== this.y) {
       var desX = this._destinationX;
       var cap1 = this.destinationY() - this.contents.height / 2;
       var cap2 = this.destinationY() + this.contents.height / 2;
-      var moveAmount = Math.max(1, Math.abs(cap2 - this.y) / 4);
-      if (this.x > desX) this.y = Math.max(this.y - moveAmount, cap1);
-      if (this.x < desX) this.y = Math.min(this.y + moveAmount, cap2);
-    } else if (this.destinationY() !== this.y) {
+      var moveAmount = Math.max(1, Math.abs(cap2 - this.x) / 4);
+      if (this.y > desX) this.x = Math.max(this.x - moveAmount, cap1);
+      if (this.y < desX) this.x = Math.min(this.x + moveAmount, cap2);
+    } else if (this.destinationY() !== this.x) {
       var desY = this.destinationY();
-      var moveAmount = Math.max(1, Math.abs(desY - this.y) / 4);
-      if (this.y > desY) this.y = Math.max(this.y - moveAmount, desY);
-      if (this.y < desY) this.y = Math.min(this.y + moveAmount, desY);
+      var moveAmount = Math.max(1, Math.abs(desY - this.x) / 4);
+      if (this.x > desY) this.x = Math.max(this.x - moveAmount, desY);
+      if (this.x < desY) this.x = Math.min(this.x + moveAmount, desY);
     }
 };
 
