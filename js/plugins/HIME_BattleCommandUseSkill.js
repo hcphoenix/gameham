@@ -90,7 +90,9 @@ TH.BattleCommandUseSkill = TH.BattleCommandUseSkill || {};
       //TH.ActorBattleCommands.makeCommand("guard"),
       TH.ActorBattleCommands.makeCommand("item"),
       TH.ActorBattleCommands.makeCommand("use_skill", 4),
-      TH.ActorBattleCommands.makeCommand("use_skill", 5),
+      // Old individual escape
+      // TH.ActorBattleCommands.makeCommand("use_skill", 5),
+      TH.ActorBattleCommands.makeCommand("escape")
     ];
     return cmds;
   };

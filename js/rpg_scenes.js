@@ -2399,7 +2399,7 @@ Scene_Battle.prototype.createActorCommandWindow = function() {
     this._actorCommandWindow.setHandler('skill',  this.commandSkill.bind(this));
     this._actorCommandWindow.setHandler('guard',  this.commandGuard.bind(this));
     this._actorCommandWindow.setHandler('item',   this.commandItem.bind(this));
-    this._actorCommandWindow.setHandler('escape',   this.commandItem.bind(this));
+    this._actorCommandWindow.setHandler('escape',   this.commandEscape.bind(this));
     // Disable going to the party command window
     // this._actorCommandWindow.setHandler('cancel', this.selectPreviousCommand.bind(this));
     this.addWindow(this._actorCommandWindow);

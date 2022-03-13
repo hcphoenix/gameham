@@ -383,10 +383,8 @@
       "Clear",
       "New Game",
       "Continue",
-      null,
       "To Title",
       "Cancel",
-      null,
       "Buy",
       "Sell"
     ],
@@ -396,7 +394,7 @@
       "Aggression",
       "Chutzpah",
       "Metabolism",
-      "Stupidity",
+      "Pursuit",
       "Speed",
       "Thievery",
       "Hit",
@@ -554,7 +552,7 @@
     "",
     ""
   ],
-  "versionId": 81185338,
+  "versionId": "123_fuck",
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

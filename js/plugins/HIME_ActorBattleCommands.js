@@ -300,7 +300,7 @@ function Data_BattlerCommand() {
       $.makeCommand("guard"),
       $.makeCommand("item"),
       $.makeCommand("move", 1),
-      $.makeCommand("escape", 1)
+      $.makeCommand("escape")
     ];
     return cmds;
   };
@@ -374,6 +374,10 @@ function Data_BattlerCommand() {
   
   $.makeCommand_item = function(symbol, ext) {
     return new Data_BattlerCommand(TextManager.item, symbol);
+  };
+
+  $.makeCommand_escape = function(symbol, ext) {
+    return new Data_BattlerCommand(TextManager.escape, symbol);
   };  
   
   /***************************************************************************/
@@ -557,8 +561,16 @@ function Data_BattlerCommand() {
   };
 
   Window_ActorCommand.prototype.addBattleCommand_escape = function(cmd) {
-    var enabled = cmd.isEnabled(this._actor);
-    this.addCommand("Escape", cmd.symbol(), enabled, cmd.ext());
+    var enabled = cmd.isEnabled(this._actor) && BattleManager.canEscape();
+    // This will set the help window text
+    let helpText = 'Everyone flees and each bird takes ' + GameHam.GetPursuitDamage() + ' damage.';
+    Eli.HelpWindows.actorCmd().contents = Eli.HelpWindows.actorCmd().contents.filter(c => c.symbol != 'Escape');
+    Eli.HelpWindows.actorCmd().contents.push({
+        text: helpText,
+        symbol: 'Escape',
+        note: ''
+    });
+    this.addCommand("Escape", 'escape', enabled);
   };
 
   Window_ActorCommand.prototype.addBattleCommand_move = function(cmd) {

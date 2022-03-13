@@ -63,6 +63,7 @@ var GameHam = GameHam || {};
   } // $gameParty.members()[1].states().length
 
   // set custom escape formula
+  // THIS MAY NOT BE NEEDED AFTER SWITCHING TO PARTY ESCAPE
   var Game_Action_prototype_itemHit = Game_Action.prototype.itemHit;
   Game_Action.prototype.itemHit = function(target) {
     if(this.item().id === 5) {
@@ -147,9 +148,57 @@ var GameHam = GameHam || {};
       actordata.learnSkill(skillsToLearn[r].skillId);
       $gameVariables.setValue(8, $dataSkills[skillsToLearn[r].skillId].name);
     } else {
-      // maybe print a sad message
+      $gameMessage.add("No more skills to learn!");
     }
   }
+
+
+  Object.defineProperties(Game_BattlerBase.prototype, {
+    // pursuit damage
+    pstdmg: { value: "_mdf", writable: true }
+  });
+
+  // no longer needed
+  GameHam.GetEscapeChance = function () {
+    return Math.max($gameTroop._enemies.map(e => (e.mhp - e.hp) / e.mhp).reduce((x,y)=>(x+y)) / $gameTroop._enemies.length, 0.0);
+  }
+
+  GameHam.GetPursuitDamage = function () {
+    return $gameTroop._enemies.map(e => e.mdf - (e.mhp - e.hp)).reduce((x,y)=>(x+y), 0);
+  }
+
+  var BattleManager_processEscape = BattleManager.processEscape;
+  BattleManager.processEscape = function() {
+    $gameMessage.newPage();
+    let pstdmg = GameHam.GetPursuitDamage();
+    $gameMessage.add("Escape and take " + pstdmg +" damage?");
+    $gameMessage.setChoices(["Yes", "No"], 0, 1);
+    //$gameMessage.setChoiceBackground(background);
+    //$gameMessage.setChoicePositionType(positionType);
+    $gameMessage.setChoiceCallback(function(n) {
+      SceneManager._scene._messageWindow._choiceWindow.close();
+      if(n == 0) {
+        $gameParty.performEscapeSuccess();
+        SoundManager.playEscape();
+        let chance = GameHam.GetEscapeChance();
+        
+        $gameMessage.add($gameParty.name() + " flew away!");
+        this._escaped = true;
+        SceneManager._scene._actorCommandWindow.processCancel();
+        BattleManager.processAbort();
+      } else {
+        //$gameVariables.setValue($gameMessage.itemChoiceVariableId(), 0);
+        //SceneManager._scene._messageWindow.hide();
+        SceneManager._scene._messageWindow.terminateMessage();
+        SceneManager._scene._actorCommandWindow.activate();
+        SceneManager._scene._actorCommandWindow.processCancel();
+      }
+    });
+
+    return false;
+  };
+
+  
 
 })(GameHam); 
 
