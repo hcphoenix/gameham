@@ -74,8 +74,21 @@
   },
   {
     "id": 2,
-    "members": [],
-    "name": "",
+    "members": [
+      {
+        "enemyId": 1,
+        "x": 405,
+        "y": 408,
+        "hidden": false
+      },
+      {
+        "enemyId": 1,
+        "x": 675,
+        "y": 444,
+        "hidden": false
+      }
+    ],
+    "name": "Bat*2",
     "pages": [
       {
         "conditions": {
@@ -90,9 +103,37 @@
           "turnA": 0,
           "turnB": 0,
           "turnEnding": false,
-          "turnValid": false
+          "turnValid": true
         },
         "list": [
+          {
+            "code": 333,
+            "indent": 0,
+            "parameters": [
+              0,
+              0,
+              32
+            ]
+          },
+          {
+            "code": 333,
+            "indent": 0,
+            "parameters": [
+              -1,
+              0,
+              27
+            ]
+          },
+          {
+            "code": 313,
+            "indent": 0,
+            "parameters": [
+              0,
+              0,
+              0,
+              27
+            ]
+          },
           {
             "code": 0,
             "indent": 0,

@@ -32,7 +32,7 @@
     "name": "R.E.A.L.B.I.R.D.",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "\"MY INTERESTS INCLUDE BIRD FOOD, DISRUPTING\nENEMY COMBATANTS, AND [ERROR: CLASSIFIED].\""
   },
   {
     "id": 2,
@@ -122,8 +122,8 @@
     "maxLevel": 99,
     "name": "Therese",
     "nickname": "",
-    "note": "",
-    "profile": ""
+    "note": "<CTB Icon: 288>",
+    "profile": "test test test"
   },
   {
     "id": 5,
@@ -214,7 +214,7 @@
     "name": "Nightshade",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "test test test"
   },
   {
     "id": 8,
@@ -305,7 +305,7 @@
     "name": "Trash Victory",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "test test test"
   },
   {
     "id": 11,
@@ -396,7 +396,7 @@
     "name": "Pardoner",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "test test test"
   },
   {
     "id": 14,
@@ -487,7 +487,7 @@
     "name": "Pollyanna",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "test test test"
   },
   {
     "id": 17,
@@ -578,7 +578,7 @@
     "name": "Mr. Tuxedo",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "test test test"
   },
   {
     "id": 20,
@@ -669,7 +669,7 @@
     "name": "Rex",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "test test test"
   },
   {
     "id": 23,
@@ -732,8 +732,8 @@
     "id": 25,
     "battlerName": "",
     "characterIndex": 0,
-    "characterName": "",
-    "classId": 1,
+    "characterName": "$imp",
+    "classId": 3,
     "equips": [
       0,
       0,
@@ -741,12 +741,12 @@
       0,
       0
     ],
-    "faceIndex": 0,
-    "faceName": "",
+    "faceIndex": 4,
+    "faceName": "Bird3",
     "traits": [],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Tomium",
     "nickname": "",
     "note": "",
     "profile": ""
@@ -755,8 +755,8 @@
     "id": 26,
     "battlerName": "",
     "characterIndex": 0,
-    "characterName": "",
-    "classId": 1,
+    "characterName": "$imp",
+    "classId": 3,
     "equips": [
       0,
       0,
@@ -764,12 +764,12 @@
       0,
       0
     ],
-    "faceIndex": 0,
-    "faceName": "",
+    "faceIndex": 4,
+    "faceName": "Bird3",
     "traits": [],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Furcula",
     "nickname": "",
     "note": "",
     "profile": ""
@@ -778,8 +778,8 @@
     "id": 27,
     "battlerName": "",
     "characterIndex": 0,
-    "characterName": "",
-    "classId": 1,
+    "characterName": "$imp",
+    "classId": 3,
     "equips": [
       0,
       0,
@@ -787,22 +787,22 @@
       0,
       0
     ],
-    "faceIndex": 0,
-    "faceName": "",
+    "faceIndex": 4,
+    "faceName": "Bird3",
     "traits": [],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Hallux",
     "nickname": "",
     "note": "",
     "profile": ""
   },
   {
     "id": 28,
-    "battlerName": "",
-    "characterIndex": 0,
-    "characterName": "",
-    "classId": 1,
+    "battlerName": "Actor2_7",
+    "characterIndex": 5,
+    "characterName": "Bird_Map_Pal_1",
+    "classId": 10,
     "equips": [
       0,
       0,
@@ -810,12 +810,12 @@
       0,
       0
     ],
-    "faceIndex": 0,
-    "faceName": "",
+    "faceIndex": 5,
+    "faceName": "Bird1",
     "traits": [],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Mirage A",
     "nickname": "",
     "note": "",
     "profile": ""

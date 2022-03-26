@@ -204,7 +204,7 @@
     "priority": 70,
     "releaseByDamage": false,
     "removeAtBattleEnd": true,
-    "removeByDamage": true,
+    "removeByDamage": false,
     "removeByRestriction": false,
     "removeByWalking": false,
     "restriction": 1,
@@ -213,7 +213,7 @@
       {
         "code": 22,
         "dataId": 9,
-        "value": 0.05
+        "value": 0.1
       }
     ]
   },
@@ -247,12 +247,12 @@
     "autoRemovalTiming": 1,
     "chanceByDamage": 50,
     "iconIndex": 3,
-    "maxTurns": 4,
+    "maxTurns": 2,
     "message1": " turns against the flock!",
     "message2": " turns on their fellow man!",
     "message3": "",
     "message4": " remembers who their true enemy is!",
-    "minTurns": 2,
+    "minTurns": 1,
     "motion": 1,
     "name": "Fascination",
     "note": "",
@@ -583,18 +583,18 @@
       {
         "code": 21,
         "dataId": 3,
-        "value": 0.5
+        "value": 0
       }
     ],
     "iconIndex": 33,
     "maxTurns": 3,
-    "message1": " is freaking out!",
-    "message2": " is freaking out!",
+    "message1": " is a sitting duck!",
+    "message2": " is a sitting human!",
     "message3": "",
     "message4": "",
     "minTurns": 3,
     "motion": 0,
-    "name": "Frightened",
+    "name": "Defenseless",
     "note": "",
     "overlay": 0,
     "priority": 50,

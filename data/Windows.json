@@ -78,5 +78,64 @@
       "lineHeight": "36",
       "align": "left"
     }
+  },
+  "Scene_Menu": {
+    "Window_MenuCommand": {
+      "x": 624,
+      "y": 336,
+      "opacity": "255",
+      "width": "192",
+      "rows": "7",
+      "cols": "1",
+      "lineHeight": "36",
+      "align": "left"
+    },
+    "Window_Gold": {
+      "x": 560,
+      "y": 0,
+      "opacity": "255",
+      "width": "256",
+      "height": "144"
+    },
+    "Window_MenuStatus": {
+      "x": 0,
+      "y": 444,
+      "opacity": "255",
+      "width": "624",
+      "height": "180",
+      "rows": "1",
+      "cols": "4"
+    },
+    "Window_Help": {
+      "x": 0,
+      "y": 0
+    },
+    "Window_Status": {}
+  },
+  "Scene_Skill": {
+    "Window_Help": {
+      "x": 0,
+      "y": 0
+    },
+    "Window_SkillList": {
+      "x": 0,
+      "y": 288,
+      "opacity": "255",
+      "width": "816",
+      "height": "336",
+      "cols": "1"
+    }
+  },
+  "Scene_Status": {
+    "Window_Status": {
+      "x": 0,
+      "y": 0,
+      "opacity": "255",
+      "width": "816",
+      "height": "480",
+      "cols": "1"
+    },
+    "Window_MenuStatus": {},
+    "Window_MenuCommand": {}
   }
 }

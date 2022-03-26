@@ -1532,11 +1532,21 @@ Window_Gold.prototype.windowHeight = function() {
     return this.fittingHeight(1);
 };
 
+//EDITED BY HALEY
 Window_Gold.prototype.refresh = function() {
     var x = this.textPadding();
     var width = this.contents.width - this.textPadding() * 2;
     this.contents.clear();
-    this.drawCurrencyValue(this.value(), this.currencyUnit(), x, 0, width);
+    //this.drawCurrencyValue(this.value(), this.currencyUnit(), x, 0, width);
+
+	this.drawText('SHINY:', 0, 0, this.contents.width);
+    this.drawText($gameParty.gold(), 0, 0, this.contents.width, "right");
+
+    this.drawText('ITEMS:', 0, this.lineHeight(), this.contents.width);
+	this.drawInvSlot(0, this.lineHeight(), this.contents.width);
+    
+    this.drawText('SCORE:', 0, this.lineHeight()*2, this.contents.width);
+    this.drawText($gameVariables.value(1), 0, this.lineHeight()*2, this.contents.width, "right");
 };
 
 Window_Gold.prototype.value = function() {
@@ -2539,21 +2549,17 @@ Window_Status.prototype.refresh = function() {
     this.contents.clear();
     if (this._actor) {
         var lineHeight = this.lineHeight();
-        this.drawBlock1(lineHeight * 0);
-        this.drawHorzLine(lineHeight * 1);
-        this.drawBlock2(lineHeight * 2);
-        this.drawHorzLine(lineHeight * 6);
-        this.drawBlock3(lineHeight * 7);
-        this.drawHorzLine(lineHeight * 13);
-        this.drawBlock4(lineHeight * 14);
+        this.drawText(this._actor.name() + " the " + this._actor.currentClass().name, 6, 0);
+        this.drawParameters(48, lineHeight);
+        this.drawProfile(6, this.height - 96);
+        //this.drawHorzLine(lineHeight * 1);
+        //this.drawBlock2(lineHeight * 2);
+        //this.drawHorzLine(lineHeight * 6);
+        //this.drawBlock3(lineHeight * 1);
+        //this.drawHorzLine(lineHeight * 13);
+        //this.drawBlock4(lineHeight * 14);
     }
-};
-
-Window_Status.prototype.drawBlock1 = function(y) {
-    this.drawActorName(this._actor, 6, y);
-    this.drawActorClass(this._actor, 192, y);
-    this.drawActorNickname(this._actor, 432, y);
-};
+}
 
 Window_Status.prototype.drawBlock2 = function(y) {
     this.drawActorFace(this._actor, 12, y);
@@ -2590,15 +2596,35 @@ Window_Status.prototype.drawBasicInfo = function(x, y) {
 };
 
 Window_Status.prototype.drawParameters = function(x, y) {
-    var lineHeight = this.lineHeight();
+    var lh = this.lineHeight();
     for (var i = 0; i < 6; i++) {
         var paramId = i + 2;
-        var y2 = y + lineHeight * i;
+        var y2 = y + lh * i;
         this.changeTextColor(this.systemColor());
         this.drawText(TextManager.param(paramId), x, y2, 160);
         this.resetTextColor();
         this.drawText(this._actor.param(paramId), x + 160, y2, 60, 'right');
     }
+    this.drawText('Dodge', x, y + lh * 6);
+    this.drawText(this._actor.eva * 100 + "%", x + 160, lh * 7, 60, 'right');
+    this.drawText('Aim', x, y + lh * 7);
+    this.drawText(this._actor.hit * 100 + "%", x + 160, lh * 8, 60, 'right');
+    this.drawText('Cool', x, y + lh * 8);
+    this.drawText(this._actor.cri * 100 + "%", x + 160, lh * 9, 60, 'right');
+
+    var x = 300;
+    this.drawText('Boosts skills', x, y);
+    this.drawText('Reduces damage', x, y + lh);
+    this.drawText('Reduces hunger costs?', x, y + lh * 2);
+    this.drawText('Uhh', x, y + lh * 3);
+    this.drawText('Take more turns', x, y + lh * 4);
+    this.drawText('Boosts chance to steal', x, y + lh * 5);
+    this.drawText('Chance to dodge attacks', x, y + lh * 6);
+    this.drawText('Chance to land attacks', x, y + lh * 7);
+    this.drawText('Chance for cool bonuses', x, y + lh * 8);
+
+    //HALEY: 16 is the starting offset for the attribute icons
+    for (var i = 0; i < 9; i++) this.drawIcon(i + 16, 0, y + lh * i);
 };
 
 Window_Status.prototype.drawExpInfo = function(x, y) {

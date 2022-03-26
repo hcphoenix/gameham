@@ -84,7 +84,7 @@
   "battleback1Name": "Battle_BG",
   "battleback2Name": "",
   "battlerHue": 0,
-  "battlerName": "Alien",
+  "battlerName": "Hunter",
   "boat": {
     "bgm": {
       "name": "Ship1",
@@ -140,7 +140,7 @@
   "menuCommands": [
     true,
     true,
-    false,
+    true,
     true,
     false,
     false
@@ -370,10 +370,10 @@
       "Luggage",
       "Skill",
       "Equip",
-      "Status",
+      "Info",
       "Formation",
       "Save",
-      "Game End",
+      "Quit",
       "Options",
       "Weapon",
       "Armor",
@@ -393,7 +393,7 @@
       "Stomach",
       "Aggression",
       "Chutzpah",
-      "Metabolism",
+      "Ascetism",
       "Pursuit",
       "Speed",
       "Thievery",
@@ -552,7 +552,7 @@
     "",
     ""
   ],
-  "versionId": "123_fuck",
+  "versionId": 82967619,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

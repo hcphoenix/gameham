@@ -426,6 +426,7 @@ Window_Base.prototype.drawItemSize = function(item, x, y, width){
 //===================================================================
 // ** Limited Inventory - Window_MainMenu
 //===================================================================
+/* REMOVED BY HALEY
 Theo.LINV.Window_MainMenu = function(){
 	this.initialize.apply(this, arguments);
 }
@@ -444,6 +445,7 @@ Theo.LINV.Window_MainMenu.prototype.refresh = function(){
 	this.drawText(txt, 0, 0, this.contents.width);
 	this.drawInvSlot(0, 0, this.contents.width);
 }
+*/
 //===================================================================
 // ** Limited Inventory - Window_ItemSize
 //===================================================================
@@ -667,6 +669,7 @@ if (Theo.LINV.Params['displayItem'] === 'true'){
 //===================================================================
 // ** Default Script - Scene_Menu
 //===================================================================
+/* REMOVED BY HALEY
 Theo.LINV.sceneMenuCreate = Scene_Menu.prototype.create;
 Scene_Menu.prototype.create = function(){
 	Theo.LINV.sceneMenuCreate.call(this);
@@ -680,6 +683,7 @@ Scene_Menu.prototype.createLinvWindow = function(){
 	this._linvWindow.refresh();
 	this.addWindow(this._linvWindow);
 }
+*/
 //===================================================================
 // ** Default Script - Scene_Item
 //===================================================================

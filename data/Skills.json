@@ -47,7 +47,7 @@
       "type": 1,
       "variance": 0
     },
-    "description": "Frighten an enemy.\nMust be \\I[11] Landed.",
+    "description": "Frighten a FOE.\nMust be \\I[11] Landed.",
     "effects": [],
     "hitType": 1,
     "iconIndex": 51,
@@ -55,7 +55,7 @@
     "message2": "",
     "mpCost": 0,
     "name": "PECK",
-    "note": "<Row Only: 1>",
+    "note": "<Row Only: 1>\n<Bypass Cooldown>",
     "occasion": 1,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -75,9 +75,9 @@
       "elementId": -1,
       "formula": "a.luk/2",
       "type": 2,
-      "variance": 20
+      "variance": 0
     },
-    "description": "Steal from a foe if they're distracted enough.\nMust be \\I[11] Landed and have \\I[176] Luggage space.",
+    "description": "Steal from a FOE if they're distracted enough.\nMust be \\I[11] Landed and have \\I[176] Luggage space.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 51,
@@ -85,7 +85,7 @@
     "message2": "",
     "mpCost": 0,
     "name": "STEAL",
-    "note": "<Steal>\n<Row Only: 1>\n<Custom Requirement>\nvalue = !($gameParty.isInvMaxed());\n</Custom Requirement>",
+    "note": "<Steal>\n<Row Only: 1>\n<Custom Requirement>\nvalue = !($gameParty.isInvMaxed());\n</Custom Requirement>\n<Bypass Cooldown>",
     "occasion": 1,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -122,7 +122,7 @@
     "message2": "",
     "mpCost": 0,
     "name": "move",
-    "note": "<Custom User Row>\nif (row > 1) {\nrow = 1;\n} else {\nrow = 2;\n}\n</Custom User Row>",
+    "note": "<Custom User Row>\nif (row > 1) {\nrow = 1;\n} else {\nrow = 2;\n}\n</Custom User Row>\n<Bypass Cooldown>",
     "occasion": 1,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -158,8 +158,8 @@
     "message1": " tries to escape!",
     "message2": "",
     "mpCost": 0,
-    "name": "Escape",
-    "note": "<After Eval>\n  if(user._hidden){ //success\n     GameHam.displayBattleText(user._name + \" got away!\", 50);\n  } else { // failed escape\n     GameHam.displayBattleText(user._name + \" failed to escape!\", 30);\n  }\n</After Eval>",
+    "name": "Flee",
+    "note": "<After Eval>\n  if(user._hidden){ //success\n     GameHam.displayBattleText(user._name + \" got away!\", 50);\n  } else { // failed escape\n     GameHam.displayBattleText(user._name + \" failed to escape!\", 30);\n  }\n</After Eval>\n<Bypass Cooldown>",
     "occasion": 1,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -226,7 +226,7 @@
     "message2": "",
     "mpCost": 0,
     "name": "Wait",
-    "note": "",
+    "note": "<Bypass Cooldown>",
     "occasion": 1,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -293,7 +293,7 @@
     "message2": "",
     "mpCost": 0,
     "name": "Guard",
-    "note": "Skill #2 will be used when you select\nthe Guard command.",
+    "note": "<Bypass Cooldown>",
     "occasion": 1,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -345,7 +345,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Reveal an enemy's info and items that you\ncouldn't normally steal. Must be \\I[11] Landed.",
+    "description": "Scanned FOES have items you couldn't otherwise\nsteal. Must be \\I[11] Landed.",
     "effects": [
       {
         "code": 21,
@@ -359,7 +359,7 @@
     "message1": " scans the enemy combatant...",
     "message2": "",
     "mpCost": 0,
-    "name": "Scan",
+    "name": "SCAN",
     "note": "<Row Only: 1>",
     "occasion": 0,
     "repeats": 1,
@@ -378,11 +378,11 @@
     "damage": {
       "critical": true,
       "elementId": 0,
-      "formula": "Math.max(((a.mat + a.atk) - b.def) / 2,1)",
+      "formula": "Math.max(a.atk - b.def,1)",
       "type": 2,
       "variance": 0
     },
-    "description": "Drop a bomb, raises Distraction and may inflict\nBerserk. Must be \\I[10] Flying.",
+    "description": "Drop a load. Raises a FOE'S EXPOSURE and may\ninflict \\I[4] RAGE. Must be \\I[10] Flying.",
     "effects": [
       {
         "code": 21,
@@ -392,11 +392,11 @@
       }
     ],
     "hitType": 1,
-    "iconIndex": 49,
+    "iconIndex": 52,
     "message1": " poops on the enemy!",
     "message2": "",
     "mpCost": 0,
-    "name": "Drop Payload",
+    "name": "PAYLOAD",
     "note": "<Row Only: 2>",
     "occasion": 0,
     "repeats": 1,
@@ -406,7 +406,7 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 5,
+    "tpCost": 2,
     "tpGain": 0
   },
   {
@@ -419,7 +419,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Removes buffs and adds random statuses to\nall enemies. Must be \\I[10] Flying.",
+    "description": "Removes buffs and adds random debuffs to\nall FOES. Must be \\I[10] Flying.",
     "effects": [
       {
         "code": 22,
@@ -493,7 +493,7 @@
     "message1": "befuddles the masses!",
     "message2": "",
     "mpCost": 0,
-    "name": "Chemtrail",
+    "name": "CHEMTRAIL",
     "note": "<Row Only: 2>",
     "occasion": 0,
     "repeats": 1,
@@ -503,28 +503,28 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 40,
+    "tpCost": 4,
     "tpGain": 0
   },
   {
     "id": 14,
     "animationId": 29,
     "damage": {
-      "critical": false,
+      "critical": true,
       "elementId": 4,
-      "formula": "Math.max(1, (a.atk * 1.5) - b.def)",
+      "formula": "Math.max(1, (a.atk * 2) - b.def)",
       "type": 1,
       "variance": 0
     },
-    "description": "Electircal surge hurting the user and frightens\ntarget. Must be \\I[11] Landed.",
+    "description": "Powerful FEAR attack that disables your unique\nskills for 3 turns. Must be \\I[11] Landed.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 49,
-    "message1": " released an electric shock!",
+    "message1": " releases an electric shock!",
     "message2": "",
     "mpCost": 0,
-    "name": "Assault & Batteries",
-    "note": "<Row Only: 1>\n<HP Cost = 15>",
+    "name": "OVERLOAD",
+    "note": "<Row Only: 1>\n<HP Cost = 1>\n<Global Cooldown: 3>",
     "occasion": 0,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -540,21 +540,21 @@
     "id": 15,
     "animationId": 30,
     "damage": {
-      "critical": false,
+      "critical": true,
       "elementId": 0,
       "formula": "Math.max(1, (a.atk * 3) - b.def)",
       "type": 1,
-      "variance": 20
+      "variance": 0
     },
-    "description": "Crash down, scaring and distracting all enemies\nand hurting yourself in the process. \\I[10]",
+    "description": "Raises all FOES' FEAR and EXPOSURE.\nMust be \\I[10] Flying, becomes \\I[11] Landed.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 49,
+    "iconIndex": 52,
     "message1": "",
     "message2": "",
     "mpCost": 0,
-    "name": "Crash Landing!",
-    "note": "<Row only: 2>\n<HP Cost: 40>\n<Change User Row: 1>",
+    "name": "CRASHLAND",
+    "note": "<Row only: 2>\n<HP Cost: 4>\n<Change User Row: 1>",
     "occasion": 0,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -563,7 +563,7 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 30,
+    "tpCost": 3,
     "tpGain": 0
   },
   {
@@ -572,19 +572,19 @@
     "damage": {
       "critical": false,
       "elementId": 0,
-      "formula": "0",
-      "type": 0,
-      "variance": 20
+      "formula": "a.gainTp(b.tp);b.gainTp(-b.tp)",
+      "type": 5,
+      "variance": 0
     },
-    "description": "",
+    "description": "Steal all of a FOE's HATRED, once per battle.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 4,
     "message1": "",
     "message2": "",
     "mpCost": 0,
-    "name": "",
-    "note": "",
+    "name": "ADRENOHARVEST",
+    "note": "<Limit Uses: 1>",
     "occasion": 0,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -726,7 +726,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Your sweet song draws everyone's attention.\n Must be \\I[11] Landed.",
+    "description": "Your sweet song draws everyone's attention.\nMust be \\I[11] Landed.",
     "effects": [
       {
         "code": 21,
@@ -769,7 +769,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Your hatred and hunger for battle grant everyone\nrandom bonuses.",
+    "description": "Invoke the hateful might of the TRASH GOD,\ngranting all FOWL random bonuses.",
     "effects": [
       {
         "code": 21,
@@ -799,9 +799,9 @@
     "hitType": 0,
     "iconIndex": 4,
     "message1": " does a horrible dance!",
-    "message2": "",
-    "mpCost": 5,
-    "name": "TRASH GOD'S BLESSING",
+    "message2": "The heavens cry out! The Earth trembles!",
+    "mpCost": 0,
+    "name": "BLESSING",
     "note": "",
     "occasion": 0,
     "repeats": 1,
@@ -811,7 +811,7 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 30,
+    "tpCost": 3,
     "tpGain": 0
   },
   {
@@ -824,7 +824,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Take hits for the allies \\I[[10] above you and \ngrant them 15 Hatred. Must be \\I[11] Landed.",
+    "description": "Take hits for all FOWL \\I[[10] above you and \ngrant them 2 HATRED. Must be \\I[11] Landed.",
     "effects": [
       {
         "code": 21,
@@ -835,7 +835,7 @@
       {
         "code": 13,
         "dataId": 0,
-        "value1": 15,
+        "value1": 2,
         "value2": 0
       }
     ],
@@ -844,7 +844,7 @@
     "message1": " takes the vanguard!",
     "message2": "",
     "mpCost": 0,
-    "name": "CHAMPION HATRED",
+    "name": "CHAMPION HATE",
     "note": "<Row Only: 1>\n<Target: Ally Row 2>\n<After Eval>\n   user.addState(19);\n</After Eval>",
     "occasion": 0,
     "repeats": 1,
@@ -863,7 +863,7 @@
     "damage": {
       "critical": false,
       "elementId": 0,
-      "formula": "Math.max(1, (a.atk * 1.5) - b.def)",
+      "formula": "Math.max(1, a.atk - b.def)",
       "type": 1,
       "variance": 0
     },
@@ -873,7 +873,7 @@
         "code": 12,
         "dataId": 0,
         "value1": 0,
-        "value2": -20
+        "value2": -2
       }
     ],
     "hitType": 1,
@@ -891,7 +891,7 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 0,
+    "tpCost": 2,
     "tpGain": 0
   },
   {
@@ -904,12 +904,12 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Fascinate an enemy, making them attack their own.",
+    "description": "\\I[3] FASCINATE a FOE, making them question\ntheir loyalties.",
     "effects": [
       {
         "code": 21,
         "dataId": 9,
-        "value1": 0.8,
+        "value1": 1,
         "value2": 0
       }
     ],
@@ -928,7 +928,7 @@
     "speed": -5,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 30,
+    "tpCost": 10,
     "tpGain": 0
   },
   {
@@ -944,11 +944,11 @@
     "description": "",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 4,
     "message1": "",
     "message2": "",
     "mpCost": 0,
-    "name": "",
+    "name": "IMPURITANISM",
     "note": "",
     "occasion": 0,
     "repeats": 1,
@@ -1091,7 +1091,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Commit murder most fowl.\nWorks on everything always.",
+    "description": "Commit murder most fowl.\nSlow to charge.",
     "effects": [
       {
         "code": 21,
@@ -1102,9 +1102,9 @@
     ],
     "hitType": 0,
     "iconIndex": 5,
-    "message1": " commits murder!",
+    "message1": " commits fowl play!",
     "message2": "",
-    "mpCost": 40,
+    "mpCost": 4,
     "name": "MURDER",
     "note": "",
     "occasion": 0,
@@ -1112,10 +1112,10 @@
     "requiredWtypeId1": 0,
     "requiredWtypeId2": 0,
     "scope": 1,
-    "speed": 0,
+    "speed": -6,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 40,
+    "tpCost": 0,
     "tpGain": 0
   },
   {
@@ -1128,7 +1128,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Blind an enemy, lowering their accuracy.",
+    "description": "\\I[2] BLIND a FOE, lowering their AIM.",
     "effects": [
       {
         "code": 21,
@@ -1141,7 +1141,7 @@
     "iconIndex": 2,
     "message1": " brings down a veil of ultimate darkness!",
     "message2": "",
-    "mpCost": 15,
+    "mpCost": 2,
     "name": "CURSE OF DARKNESS",
     "note": "",
     "occasion": 0,
@@ -1165,7 +1165,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Silence an enemy, preventing many abilities.",
+    "description": "\\I[6] SILENCE a FOE, preventing many skills.",
     "effects": [
       {
         "code": 21,
@@ -1178,18 +1178,18 @@
     "iconIndex": 53,
     "message1": " said the line!",
     "message2": "",
-    "mpCost": 0,
+    "mpCost": 2,
     "name": "NEVERMORE",
     "note": "",
     "occasion": 0,
     "repeats": 1,
     "requiredWtypeId1": 0,
     "requiredWtypeId2": 0,
-    "scope": 0,
+    "scope": 1,
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 25,
+    "tpCost": 0,
     "tpGain": 0
   },
   {
@@ -1198,16 +1198,16 @@
     "damage": {
       "critical": true,
       "elementId": 0,
-      "formula": "Math.max(1, a.atk - (b.def/2))",
+      "formula": "Math.max(1, a.atk)",
       "type": 1,
       "variance": 0
     },
-    "description": "Frighten an enemy, with a chance to cut down\ntheir defenses. Must be \\I[11] Landed.",
+    "description": "FRIGHTEN a FOE and leave them \\I[33] DEFENSELESS.\nMust be \\I[11] Landed.",
     "effects": [
       {
         "code": 21,
         "dataId": 21,
-        "value1": 0.66,
+        "value1": 1,
         "value2": 0
       }
     ],
@@ -1226,7 +1226,7 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 0,
+    "tpCost": 2,
     "tpGain": 0
   },
   {
@@ -1286,7 +1286,7 @@
     ],
     "hitType": 0,
     "iconIndex": 2,
-    "message1": " starts writing in their diary!",
+    "message1": " starts brooding!",
     "message2": "",
     "mpCost": 0,
     "name": "tch.",
@@ -1299,12 +1299,12 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 50,
+    "tpCost": 3,
     "tpGain": 0
   },
   {
     "id": 36,
-    "animationId": 0,
+    "animationId": 37,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -1312,20 +1312,27 @@
       "type": 0,
       "variance": 20
     },
-    "description": "",
-    "effects": [],
+    "description": "Summon an undead minion to fight for you.\nMust have less than 4 FOWL in your FLOCK.",
+    "effects": [
+      {
+        "code": 44,
+        "dataId": 40,
+        "value1": 1,
+        "value2": 0
+      }
+    ],
     "hitType": 0,
-    "iconIndex": 0,
-    "message1": "",
-    "message2": "",
-    "mpCost": 0,
-    "name": "",
-    "note": "",
+    "iconIndex": 5,
+    "message1": " made a nest of bones!",
+    "message2": "Something unspeakable rises!",
+    "mpCost": 4,
+    "name": "RAISE DEAD",
+    "note": "<Custom Requirement>\nvalue = ($gameParty.size() != 4);\n</Custom Requirement>\n\n",
     "occasion": 0,
     "repeats": 1,
     "requiredWtypeId1": 0,
     "requiredWtypeId2": 0,
-    "scope": 1,
+    "scope": 0,
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
@@ -1458,18 +1465,18 @@
     "damage": {
       "critical": false,
       "elementId": 0,
-      "formula": "Math.max(1, (a.mat * 2) - b.def)",
+      "formula": "Math.max(1, a.mat - b.def)",
       "type": 1,
       "variance": 0
     },
-    "description": "Frighten all enemies, and then high-tail it\nout of battle. Must be \\I[11] Landed.",
+    "description": "Frighten all FOES, then high-tail it\nout of battle. Must be \\I[11] Landed.",
     "effects": [],
     "hitType": 2,
     "iconIndex": 48,
     "message1": " vomits violently.",
     "message2": "",
-    "mpCost": 30,
-    "name": "Retch & Run",
+    "mpCost": 3,
+    "name": "RETCH & RUN",
     "note": "<Row Only: 1>\n<Post-Damage Eval>\n   user.escape();\n</Post-Damage Eval>\n",
     "occasion": 0,
     "repeats": 1,
@@ -1479,7 +1486,7 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 30,
+    "tpCost": 0,
     "tpGain": 0
   },
   {
@@ -1492,14 +1499,14 @@
       "type": 1,
       "variance": 0
     },
-    "description": "Take a bite out of an enemy, inflicting fear\nand restoring some hunger. Must be \\I[11] Landed.",
+    "description": "Take a bite out of a FOE, inflicting FEAR\nand restoring HUNGER. Must be \\I[11] Landed.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 48,
     "message1": " feasts upon the weak!",
     "message2": "",
     "mpCost": 0,
-    "name": "Gorge",
+    "name": "GORGE",
     "note": "<Row Only: 1>",
     "occasion": 0,
     "repeats": 1,
@@ -1509,7 +1516,7 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 20,
+    "tpCost": 2,
     "tpGain": 0
   },
   {
@@ -1522,7 +1529,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Begin circling an enemy, causing them fear\nevery turn for 3 turns. Must be \\I[10] Flying.",
+    "description": "\\I[48] CIRCLE a FOE, raising their FEAR each turn.\nMust be \\I[10] Flying.",
     "effects": [
       {
         "code": 21,
@@ -1535,8 +1542,8 @@
     "iconIndex": 2,
     "message1": "flies menacingly overhead!",
     "message2": "",
-    "mpCost": 15,
-    "name": "Demonic Circle",
+    "mpCost": 2,
+    "name": "DEMONIC CIRCLE",
     "note": "<Row Only: 2>",
     "occasion": 0,
     "repeats": 1,
@@ -1559,7 +1566,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "The next hit to this bird will deal 1 damage.",
+    "description": "The next hit to this FOWL will deal 1 damage.",
     "effects": [
       {
         "code": 21,
@@ -1573,7 +1580,7 @@
     "message1": " is obscured by the heat!",
     "message2": "",
     "mpCost": 0,
-    "name": "Desert Mirage",
+    "name": "MIRAGE",
     "note": "",
     "occasion": 0,
     "repeats": 1,
@@ -1583,7 +1590,7 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 10,
+    "tpCost": 1,
     "tpGain": 0
   },
   {
@@ -1596,7 +1603,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Raise the thievery of all birds.",
+    "description": "Raise the THIEVERY of all FOWL.",
     "effects": [
       {
         "code": 21,
@@ -1608,9 +1615,9 @@
     "hitType": 0,
     "iconIndex": 21,
     "message1": " inspires their fellow bird.",
-    "message2": "You have nothing to lose but your chains!",
+    "message2": "They have nothing to lose but their chains!",
     "mpCost": 0,
-    "name": "Do Crime",
+    "name": "DO CRIME",
     "note": "",
     "occasion": 0,
     "repeats": 1,
@@ -1620,7 +1627,7 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 30,
+    "tpCost": 3,
     "tpGain": 0
   },
   {
@@ -1783,14 +1790,14 @@
       "type": 1,
       "variance": 0
     },
-    "description": "Descend toward the enemy and frighten them.\n Must be \\I[10] Flying, ends \\I[11] Landed.",
+    "description": "Descend on a FOE to inflict FEAR.\nMust be \\I[10] Flying, ends \\I[11] Landed.",
     "effects": [],
     "hitType": 1,
     "iconIndex": 54,
     "message1": " brings death from above!",
     "message2": "",
     "mpCost": 0,
-    "name": "Divebomb",
+    "name": "DIVEBOMB",
     "note": "<Row Only: 2>\n<Change User Row: 1>",
     "occasion": 0,
     "repeats": 1,
@@ -1813,14 +1820,14 @@
       "type": 2,
       "variance": 0
     },
-    "description": "Take flight, distracting all enemies.\n Must be \\I[11] Landed, ends \\I[10] Flying.",
+    "description": "Take flight, EXPOSING all FOES.\nMust be \\I[11] Landed, ends \\I[10] Flying.",
     "effects": [],
     "hitType": 2,
     "iconIndex": 54,
     "message1": "'s engine roars loudly!",
     "message2": "",
     "mpCost": 0,
-    "name": "Takeoff",
+    "name": "TAKEOFF",
     "note": "<Row Only: 1>\n<Change User Row: 2>",
     "occasion": 0,
     "repeats": 1,
@@ -1843,7 +1850,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Let allies in the \\I[10] sky fly behind you for\na speed boost. Must be \\I[11] Landed.",
+    "description": "\\I[20] HASTEN all \\I[10] Flying FOWL.\nMust be \\I[11] Landed.",
     "effects": [
       {
         "code": 21,
@@ -1857,7 +1864,7 @@
     "message1": " is cutting through the air!",
     "message2": "",
     "mpCost": 0,
-    "name": "Tailwind",
+    "name": "TAILWIND",
     "note": "<Row Only: 1>\n<Target: Ally Row 2>",
     "occasion": 0,
     "repeats": 1,
@@ -1867,7 +1874,7 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 25,
+    "tpCost": 3,
     "tpGain": 0
   },
   {
@@ -1880,7 +1887,7 @@
       "type": 1,
       "variance": 0
     },
-    "description": "Raise an enemy's Fear by half of their Distraction.",
+    "description": "Raise an enemy's FEAR by half of their EXPOSURE.",
     "effects": [
       {
         "code": 22,
@@ -1894,7 +1901,7 @@
     "message1": " gets a rude awakening!",
     "message2": "",
     "mpCost": 0,
-    "name": "Wakeup Call",
+    "name": "WAKEUP CALL",
     "note": "",
     "occasion": 0,
     "repeats": 1,
@@ -1924,7 +1931,7 @@
     "message1": " does incredible tricks!",
     "message2": "",
     "mpCost": 0,
-    "name": "Stunt Flier",
+    "name": "STUNT FLIER",
     "note": "",
     "occasion": 0,
     "repeats": 1,
@@ -2111,7 +2118,7 @@
     "message1": " took out a life insurance policy!",
     "message2": "",
     "mpCost": 0,
-    "name": "Insurance Policy",
+    "name": "INSURANCE",
     "note": "",
     "occasion": 0,
     "repeats": 1,
@@ -2121,7 +2128,7 @@
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
-    "tpCost": 10,
+    "tpCost": 0,
     "tpGain": 0
   },
   {
@@ -2134,14 +2141,14 @@
       "type": 2,
       "variance": 0
     },
-    "description": "Pay the enemy 10 Shiny to look the other way,\nraising their Distraction.",
+    "description": "Pay the enemy 10 SHINY to look the other way,\nraising their EXPOSURE.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 55,
     "message1": " offers a bribe!",
     "message2": "",
     "mpCost": 0,
-    "name": "Bribery",
+    "name": "BRIBERY",
     "note": "<Custom Requirement>\n   if ($gameParty.gold() > 10) {\n     value = true;\n   } else {\n     value = false;\n   }\n</Custom Requirement>\n\n<Custom Execution>\n   $gameParty.loseGold(10);\n</Custom Execution>",
     "occasion": 0,
     "repeats": 1,
@@ -2164,14 +2171,14 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Spend 20 Shiny to buy a random item.",
+    "description": "Spend 20 SHINY to buy a random item.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 55,
     "message1": " buys something!",
     "message2": "",
     "mpCost": 0,
-    "name": "Purchase",
+    "name": "PURCHASE",
     "note": "<Custom Requirement>\n   if ($gameParty.gold() > 20) {\n     value = true;\n   } else {\n     value = false;\n   }\n</Custom Requirement>\n\n<Custom Execution>\n   $gameParty.loseGold(20);\n</Custom Execution>\n\n<Post-Damage Eval>\n   $gameTemp.reserveCommonEvent(2);\n</Post-Damage Eval>",
     "occasion": 0,
     "repeats": 1,
@@ -2194,14 +2201,14 @@
       "type": 0,
       "variance": 20
     },
-    "description": "These other birds haven't even noticed that wallet.\nYou bet you could swipe it.",
+    "description": "Steal SHINY from a FOE. Success chance is based\non their EXPOSURE and your THIEVERY.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 55,
     "message1": " exploits the enemy!",
     "message2": "",
     "mpCost": 0,
-    "name": "White Collar Crime",
+    "name": "BLACKMAIL",
     "note": "<Steal Gold>",
     "occasion": 0,
     "repeats": 1,
@@ -2224,7 +2231,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Pay 100 Shiny to have your hired goons eliminate\nan enemy.",
+    "description": "Pay 100 SHINY to have your hired goons eliminate\nan enemy.",
     "effects": [
       {
         "code": 21,
@@ -2238,7 +2245,7 @@
     "message1": " hired professional hitmen!",
     "message2": "",
     "mpCost": 0,
-    "name": "Take to the Cleaners",
+    "name": "HIRED HIT",
     "note": "<Custom Requirement>\n   value = ($gameParty.gold() > 100);\n</Custom Requirement>\n\n<Custom Execution>\n   $gameParty.loseGold(100);\n</Custom Execution>",
     "occasion": 0,
     "repeats": 1,
@@ -4783,6 +4790,306 @@
   },
   {
     "id": 140,
+    "animationId": 0,
+    "damage": {
+      "critical": false,
+      "elementId": 0,
+      "formula": "0",
+      "type": 0,
+      "variance": 20
+    },
+    "description": "",
+    "effects": [],
+    "hitType": 0,
+    "iconIndex": 0,
+    "message1": "",
+    "message2": "",
+    "mpCost": 0,
+    "name": "---CRYSTALS",
+    "note": "",
+    "occasion": 0,
+    "repeats": 1,
+    "requiredWtypeId1": 0,
+    "requiredWtypeId2": 0,
+    "scope": 1,
+    "speed": 0,
+    "stypeId": 1,
+    "successRate": 100,
+    "tpCost": 0,
+    "tpGain": 0
+  },
+  {
+    "id": 141,
+    "animationId": 13,
+    "damage": {
+      "critical": false,
+      "elementId": 0,
+      "formula": "0",
+      "type": 0,
+      "variance": 20
+    },
+    "description": "",
+    "effects": [],
+    "hitType": 0,
+    "iconIndex": 52,
+    "message1": "",
+    "message2": "",
+    "mpCost": 0,
+    "name": "UPDRAFT",
+    "note": "<Push Back Target Row: 1>\n<Instant>",
+    "occasion": 0,
+    "repeats": 1,
+    "requiredWtypeId1": 0,
+    "requiredWtypeId2": 0,
+    "scope": 7,
+    "speed": 0,
+    "stypeId": 1,
+    "successRate": 100,
+    "tpCost": 0,
+    "tpGain": 0
+  },
+  {
+    "id": 142,
+    "animationId": 0,
+    "damage": {
+      "critical": false,
+      "elementId": 0,
+      "formula": "0",
+      "type": 0,
+      "variance": 20
+    },
+    "description": "",
+    "effects": [],
+    "hitType": 0,
+    "iconIndex": 67,
+    "message1": "",
+    "message2": "",
+    "mpCost": 0,
+    "name": "SPLASH",
+    "note": "",
+    "occasion": 0,
+    "repeats": 1,
+    "requiredWtypeId1": 0,
+    "requiredWtypeId2": 0,
+    "scope": 1,
+    "speed": 0,
+    "stypeId": 1,
+    "successRate": 100,
+    "tpCost": 0,
+    "tpGain": 0
+  },
+  {
+    "id": 143,
+    "animationId": 0,
+    "damage": {
+      "critical": false,
+      "elementId": 0,
+      "formula": "0",
+      "type": 0,
+      "variance": 20
+    },
+    "description": "",
+    "effects": [],
+    "hitType": 0,
+    "iconIndex": 0,
+    "message1": "",
+    "message2": "",
+    "mpCost": 0,
+    "name": "",
+    "note": "",
+    "occasion": 0,
+    "repeats": 1,
+    "requiredWtypeId1": 0,
+    "requiredWtypeId2": 0,
+    "scope": 1,
+    "speed": 0,
+    "stypeId": 1,
+    "successRate": 100,
+    "tpCost": 0,
+    "tpGain": 0
+  },
+  {
+    "id": 144,
+    "animationId": 0,
+    "damage": {
+      "critical": false,
+      "elementId": 0,
+      "formula": "0",
+      "type": 0,
+      "variance": 20
+    },
+    "description": "",
+    "effects": [],
+    "hitType": 0,
+    "iconIndex": 0,
+    "message1": "",
+    "message2": "",
+    "mpCost": 0,
+    "name": "",
+    "note": "",
+    "occasion": 0,
+    "repeats": 1,
+    "requiredWtypeId1": 0,
+    "requiredWtypeId2": 0,
+    "scope": 1,
+    "speed": 0,
+    "stypeId": 1,
+    "successRate": 100,
+    "tpCost": 0,
+    "tpGain": 0
+  },
+  {
+    "id": 145,
+    "animationId": 0,
+    "damage": {
+      "critical": false,
+      "elementId": 0,
+      "formula": "0",
+      "type": 0,
+      "variance": 20
+    },
+    "description": "",
+    "effects": [],
+    "hitType": 0,
+    "iconIndex": 0,
+    "message1": "",
+    "message2": "",
+    "mpCost": 0,
+    "name": "",
+    "note": "",
+    "occasion": 0,
+    "repeats": 1,
+    "requiredWtypeId1": 0,
+    "requiredWtypeId2": 0,
+    "scope": 1,
+    "speed": 0,
+    "stypeId": 1,
+    "successRate": 100,
+    "tpCost": 0,
+    "tpGain": 0
+  },
+  {
+    "id": 146,
+    "animationId": 0,
+    "damage": {
+      "critical": false,
+      "elementId": 0,
+      "formula": "0",
+      "type": 0,
+      "variance": 20
+    },
+    "description": "",
+    "effects": [],
+    "hitType": 0,
+    "iconIndex": 0,
+    "message1": "",
+    "message2": "",
+    "mpCost": 0,
+    "name": "",
+    "note": "",
+    "occasion": 0,
+    "repeats": 1,
+    "requiredWtypeId1": 0,
+    "requiredWtypeId2": 0,
+    "scope": 1,
+    "speed": 0,
+    "stypeId": 1,
+    "successRate": 100,
+    "tpCost": 0,
+    "tpGain": 0
+  },
+  {
+    "id": 147,
+    "animationId": 0,
+    "damage": {
+      "critical": false,
+      "elementId": 0,
+      "formula": "0",
+      "type": 0,
+      "variance": 20
+    },
+    "description": "",
+    "effects": [],
+    "hitType": 0,
+    "iconIndex": 0,
+    "message1": "",
+    "message2": "",
+    "mpCost": 0,
+    "name": "",
+    "note": "",
+    "occasion": 0,
+    "repeats": 1,
+    "requiredWtypeId1": 0,
+    "requiredWtypeId2": 0,
+    "scope": 1,
+    "speed": 0,
+    "stypeId": 1,
+    "successRate": 100,
+    "tpCost": 0,
+    "tpGain": 0
+  },
+  {
+    "id": 148,
+    "animationId": 0,
+    "damage": {
+      "critical": false,
+      "elementId": 0,
+      "formula": "0",
+      "type": 0,
+      "variance": 20
+    },
+    "description": "",
+    "effects": [],
+    "hitType": 0,
+    "iconIndex": 0,
+    "message1": "",
+    "message2": "",
+    "mpCost": 0,
+    "name": "",
+    "note": "",
+    "occasion": 0,
+    "repeats": 1,
+    "requiredWtypeId1": 0,
+    "requiredWtypeId2": 0,
+    "scope": 1,
+    "speed": 0,
+    "stypeId": 1,
+    "successRate": 100,
+    "tpCost": 0,
+    "tpGain": 0
+  },
+  {
+    "id": 149,
+    "animationId": 0,
+    "damage": {
+      "critical": false,
+      "elementId": 0,
+      "formula": "0",
+      "type": 0,
+      "variance": 20
+    },
+    "description": "",
+    "effects": [],
+    "hitType": 0,
+    "iconIndex": 0,
+    "message1": "",
+    "message2": "",
+    "mpCost": 0,
+    "name": "",
+    "note": "",
+    "occasion": 0,
+    "repeats": 1,
+    "requiredWtypeId1": 0,
+    "requiredWtypeId2": 0,
+    "scope": 1,
+    "speed": 0,
+    "stypeId": 1,
+    "successRate": 100,
+    "tpCost": 0,
+    "tpGain": 0
+  },
+  {
+    "id": 150,
     "animationId": 0,
     "damage": {
       "critical": false,
