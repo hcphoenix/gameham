@@ -816,7 +816,7 @@
   },
   {
     "id": 23,
-    "animationId": 13,
+    "animationId": 45,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -1521,7 +1521,7 @@
   },
   {
     "id": 43,
-    "animationId": 65,
+    "animationId": 38,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -1782,7 +1782,7 @@
   },
   {
     "id": 51,
-    "animationId": 67,
+    "animationId": 30,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -1812,7 +1812,7 @@
   },
   {
     "id": 52,
-    "animationId": 13,
+    "animationId": 24,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -1842,7 +1842,7 @@
   },
   {
     "id": 53,
-    "animationId": 92,
+    "animationId": 13,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -1916,7 +1916,7 @@
   },
   {
     "id": 55,
-    "animationId": 67,
+    "animationId": 17,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2096,7 +2096,7 @@
   },
   {
     "id": 61,
-    "animationId": 50,
+    "animationId": 26,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2507,7 +2507,7 @@
   },
   {
     "id": 74,
-    "animationId": 66,
+    "animationId": 39,
     "damage": {
       "critical": false,
       "elementId": 2,
@@ -2537,7 +2537,7 @@
   },
   {
     "id": 75,
-    "animationId": 66,
+    "animationId": 39,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2777,7 +2777,7 @@
   },
   {
     "id": 83,
-    "animationId": 0,
+    "animationId": 14,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2880,7 +2880,7 @@
   },
   {
     "id": 86,
-    "animationId": 0,
+    "animationId": 35,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2917,7 +2917,7 @@
   },
   {
     "id": 87,
-    "animationId": 0,
+    "animationId": 14,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2954,7 +2954,7 @@
   },
   {
     "id": 88,
-    "animationId": 0,
+    "animationId": 10,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3081,7 +3081,7 @@
   },
   {
     "id": 92,
-    "animationId": 0,
+    "animationId": 14,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3221,7 +3221,7 @@
   },
   {
     "id": 96,
-    "animationId": 0,
+    "animationId": 40,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3251,7 +3251,7 @@
   },
   {
     "id": 97,
-    "animationId": 0,
+    "animationId": 41,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3288,7 +3288,7 @@
   },
   {
     "id": 98,
-    "animationId": 0,
+    "animationId": 42,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3439,7 +3439,7 @@
   },
   {
     "id": 101,
-    "animationId": 0,
+    "animationId": 43,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3469,7 +3469,7 @@
   },
   {
     "id": 102,
-    "animationId": 0,
+    "animationId": 13,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3506,7 +3506,7 @@
   },
   {
     "id": 103,
-    "animationId": 0,
+    "animationId": 43,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3603,7 +3603,7 @@
   },
   {
     "id": 106,
-    "animationId": 0,
+    "animationId": 44,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3633,7 +3633,7 @@
   },
   {
     "id": 107,
-    "animationId": 0,
+    "animationId": 44,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3688,7 +3688,7 @@
   },
   {
     "id": 108,
-    "animationId": 0,
+    "animationId": 45,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -4025,7 +4025,7 @@
   },
   {
     "id": 119,
-    "animationId": -1,
+    "animationId": 40,
     "damage": {
       "critical": false,
       "elementId": -1,
@@ -4226,7 +4226,7 @@
   },
   {
     "id": 125,
-    "animationId": 23,
+    "animationId": 46,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -4306,7 +4306,7 @@
   },
   {
     "id": 127,
-    "animationId": 76,
+    "animationId": 40,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -4336,7 +4336,7 @@
   },
   {
     "id": 128,
-    "animationId": 67,
+    "animationId": 41,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -4366,7 +4366,7 @@
   },
   {
     "id": 129,
-    "animationId": 14,
+    "animationId": 43,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -4421,7 +4421,7 @@
   },
   {
     "id": 130,
-    "animationId": 0,
+    "animationId": 25,
     "damage": {
       "critical": false,
       "elementId": 0,

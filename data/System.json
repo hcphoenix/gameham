@@ -84,7 +84,7 @@
   "battleback1Name": "Battle_BG",
   "battleback2Name": "",
   "battlerHue": 0,
-  "battlerName": "Hunter",
+  "battlerName": "scream_kid",
   "boat": {
     "bgm": {
       "name": "Ship1",
@@ -552,7 +552,7 @@
     "",
     ""
   ],
-  "versionId": 82967619,
+  "versionId": 69148838,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
