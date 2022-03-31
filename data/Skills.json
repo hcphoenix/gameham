@@ -392,7 +392,7 @@
       }
     ],
     "hitType": 1,
-    "iconIndex": 52,
+    "iconIndex": 58,
     "message1": " poops on the enemy!",
     "message2": "",
     "mpCost": 0,
@@ -549,7 +549,7 @@
     "description": "Raises all FOES' FEAR and EXPOSURE.\nMust be \\I[10] Flying, becomes \\I[11] Landed.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 52,
+    "iconIndex": 58,
     "message1": "",
     "message2": "",
     "mpCost": 0,

@@ -456,7 +456,7 @@
   },
   "testBattlers": [
     {
-      "actorId": 19,
+      "actorId": 5,
       "equips": [
         0,
         0,
@@ -500,7 +500,7 @@
       "level": 1
     }
   ],
-  "testTroopId": 1,
+  "testTroopId": 5,
   "title1Name": "Title",
   "title2Name": "",
   "titleBgm": {
@@ -552,7 +552,7 @@
     "",
     ""
   ],
-  "versionId": 69148838,
+  "versionId": 40891750,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
