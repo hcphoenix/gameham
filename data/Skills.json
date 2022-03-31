@@ -47,7 +47,7 @@
       "type": 1,
       "variance": 0
     },
-    "description": "Frighten a FOE.\nMust be \\I[11] Landed.",
+    "description": "Frighten a FOE.\nMust be \\I[11]Landed.",
     "effects": [],
     "hitType": 1,
     "iconIndex": 51,
@@ -77,10 +77,10 @@
       "type": 2,
       "variance": 0
     },
-    "description": "Steal from a FOE if they're distracted enough.\nMust be \\I[11] Landed and have \\I[176] Luggage space.",
+    "description": "Steal from a FOE if they're Exposed enough.\nMust be \\I[11]Landed and have \\I[56] Luggage space.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 51,
+    "iconIndex": 69,
     "message1": " attempts to steal!",
     "message2": "",
     "mpCost": 0,
@@ -122,7 +122,7 @@
     "message2": "",
     "mpCost": 0,
     "name": "move",
-    "note": "<Custom User Row>\nif (row > 1) {\nrow = 1;\n} else {\nrow = 2;\n}\n</Custom User Row>\n<Bypass Cooldown>",
+    "note": "<Custom User Row>\nif (row > 1) {\nrow = 1;\n} else {\nrow = 2;\n}\n</Custom User Row>\n<CTB Speed: 50%>\n<Bypass Cooldown>",
     "occasion": 1,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -345,7 +345,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Scanned FOES have items you couldn't otherwise\nsteal. Must be \\I[11] Landed.",
+    "description": "Scanned FOES have items you couldn't otherwise\nsteal. Must be \\I[11]Landed.",
     "effects": [
       {
         "code": 21,
@@ -382,7 +382,7 @@
       "type": 2,
       "variance": 0
     },
-    "description": "Drop a load. Raises a FOE'S EXPOSURE and may\ninflict \\I[4] RAGE. Must be \\I[10] Flying.",
+    "description": "Drop a load. Raises a FOE'S EXPOSURE and may\ninflict \\I[4] RAGE. Must be \\I[10]Flying.",
     "effects": [
       {
         "code": 21,
@@ -392,7 +392,7 @@
       }
     ],
     "hitType": 1,
-    "iconIndex": 52,
+    "iconIndex": 58,
     "message1": " poops on the enemy!",
     "message2": "",
     "mpCost": 0,
@@ -419,7 +419,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Removes buffs and adds random debuffs to\nall FOES. Must be \\I[10] Flying.",
+    "description": "Removes buffs and adds random debuffs to\nall FOES. Must be \\I[10]Flying.",
     "effects": [
       {
         "code": 22,
@@ -516,7 +516,7 @@
       "type": 1,
       "variance": 0
     },
-    "description": "Powerful FEAR attack that disables your unique\nskills for 3 turns. Must be \\I[11] Landed.",
+    "description": "Powerful FEAR attack that disables your unique\nskills for 3 turns. Must be \\I[11]Landed.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 49,
@@ -546,10 +546,10 @@
       "type": 1,
       "variance": 0
     },
-    "description": "Raises all FOES' FEAR and EXPOSURE.\nMust be \\I[10] Flying, becomes \\I[11] Landed.",
+    "description": "Raises all FOES' FEAR and EXPOSURE.\nMust be \\I[10]Flying, becomes \\I[11]Landed.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 52,
+    "iconIndex": 58,
     "message1": "",
     "message2": "",
     "mpCost": 0,
@@ -726,7 +726,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Your sweet song draws everyone's attention.\nMust be \\I[11] Landed.",
+    "description": "Your sweet song draws everyone's attention.\nMust be \\I[11]Landed.",
     "effects": [
       {
         "code": 21,
@@ -801,7 +801,7 @@
     "message1": " does a horrible dance!",
     "message2": "The heavens cry out! The Earth trembles!",
     "mpCost": 0,
-    "name": "BLESSING",
+    "name": "TRASH BLESSING",
     "note": "",
     "occasion": 0,
     "repeats": 1,
@@ -816,7 +816,7 @@
   },
   {
     "id": 23,
-    "animationId": 13,
+    "animationId": 45,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -824,7 +824,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Take hits for all FOWL \\I[[10] above you and \ngrant them 2 HATRED. Must be \\I[11] Landed.",
+    "description": "Take hits for all FOWL \\I[[10] above you and \ngrant them 2 HATRED. Must be \\I[11]Landed.",
     "effects": [
       {
         "code": 21,
@@ -867,7 +867,7 @@
       "type": 1,
       "variance": 0
     },
-    "description": "Descend to distract and frighten the enemy.\nMust be \\I[10] Flying, ends \\I[11] Landed.",
+    "description": "Descend to distract and frighten the enemy.\nMust be \\I[10] Flying, ends \\I[11]Landed.",
     "effects": [
       {
         "code": 12,
@@ -1128,7 +1128,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "\\I[2] BLIND a FOE, lowering their AIM.",
+    "description": "\\I[2] BLIND a FOE, lowering their \\I[71] AIM.",
     "effects": [
       {
         "code": 21,
@@ -1202,7 +1202,7 @@
       "type": 1,
       "variance": 0
     },
-    "description": "FRIGHTEN a FOE and leave them \\I[33] DEFENSELESS.\nMust be \\I[11] Landed.",
+    "description": "FRIGHTEN a FOE and leave them\n\\I[33] DEFENSELESS. Must be \\I[11]Landed.",
     "effects": [
       {
         "code": 21,
@@ -1212,7 +1212,7 @@
       }
     ],
     "hitType": 1,
-    "iconIndex": 51,
+    "iconIndex": 57,
     "message1": " brandishes a knife menacingly!",
     "message2": "",
     "mpCost": 0,
@@ -1469,10 +1469,10 @@
       "type": 1,
       "variance": 0
     },
-    "description": "Frighten all FOES, then high-tail it\nout of battle. Must be \\I[11] Landed.",
+    "description": "Frighten all FOES, then high-tail it out of battle. \nMust be \\I[11]Landed.",
     "effects": [],
     "hitType": 2,
-    "iconIndex": 48,
+    "iconIndex": 51,
     "message1": " vomits violently.",
     "message2": "",
     "mpCost": 3,
@@ -1499,7 +1499,7 @@
       "type": 1,
       "variance": 0
     },
-    "description": "Take a bite out of a FOE, inflicting FEAR\nand restoring HUNGER. Must be \\I[11] Landed.",
+    "description": "Take a bite out of a FOE, inflicting FEAR\nand restoring HUNGER. Must be \\I[11]Landed.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 48,
@@ -1521,7 +1521,7 @@
   },
   {
     "id": 43,
-    "animationId": 65,
+    "animationId": 38,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -1529,7 +1529,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "\\I[48] CIRCLE a FOE, raising their FEAR each turn.\nMust be \\I[10] Flying.",
+    "description": "\\I[48] CIRCLE a FOE, raising their FEAR each turn.\nMust be \\I[10]Flying.",
     "effects": [
       {
         "code": 21,
@@ -1782,7 +1782,7 @@
   },
   {
     "id": 51,
-    "animationId": 67,
+    "animationId": 30,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -1790,7 +1790,7 @@
       "type": 1,
       "variance": 0
     },
-    "description": "Descend on a FOE to inflict FEAR.\nMust be \\I[10] Flying, ends \\I[11] Landed.",
+    "description": "Descend on a FOE to inflict FEAR.\nMust be \\I[10]Flying, ends \\I[11]Landed.",
     "effects": [],
     "hitType": 1,
     "iconIndex": 54,
@@ -1812,7 +1812,7 @@
   },
   {
     "id": 52,
-    "animationId": 13,
+    "animationId": 24,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -1820,7 +1820,7 @@
       "type": 2,
       "variance": 0
     },
-    "description": "Take flight, EXPOSING all FOES.\nMust be \\I[11] Landed, ends \\I[10] Flying.",
+    "description": "Take flight, EXPOSING all FOES.\nMust be \\I[11]Landed, ends \\I[10]Flying.",
     "effects": [],
     "hitType": 2,
     "iconIndex": 54,
@@ -1842,7 +1842,7 @@
   },
   {
     "id": 53,
-    "animationId": 92,
+    "animationId": 13,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -1850,7 +1850,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "\\I[20] HASTEN all \\I[10] Flying FOWL.\nMust be \\I[11] Landed.",
+    "description": "\\I[20] HASTEN all \\I[10] Flying FOWL.\nMust be \\I[11]Landed.",
     "effects": [
       {
         "code": 21,
@@ -1916,7 +1916,7 @@
   },
   {
     "id": 55,
-    "animationId": 67,
+    "animationId": 17,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -1924,7 +1924,7 @@
       "type": 2,
       "variance": 20
     },
-    "description": "Distract all enemies and make your next turn \ncome sooner. Must be \\I[10] Flying.",
+    "description": "Distract all enemies and make your next turn \ncome sooner. Must be \\I[10]Flying.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 54,
@@ -2096,7 +2096,7 @@
   },
   {
     "id": 61,
-    "animationId": 50,
+    "animationId": 26,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2507,7 +2507,7 @@
   },
   {
     "id": 74,
-    "animationId": 66,
+    "animationId": 39,
     "damage": {
       "critical": false,
       "elementId": 2,
@@ -2537,7 +2537,7 @@
   },
   {
     "id": 75,
-    "animationId": 66,
+    "animationId": 39,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2777,7 +2777,7 @@
   },
   {
     "id": 83,
-    "animationId": 0,
+    "animationId": 14,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2880,7 +2880,7 @@
   },
   {
     "id": 86,
-    "animationId": 0,
+    "animationId": 35,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2917,7 +2917,7 @@
   },
   {
     "id": 87,
-    "animationId": 0,
+    "animationId": 14,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2954,7 +2954,7 @@
   },
   {
     "id": 88,
-    "animationId": 0,
+    "animationId": 10,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3081,7 +3081,7 @@
   },
   {
     "id": 92,
-    "animationId": 0,
+    "animationId": 14,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3221,7 +3221,7 @@
   },
   {
     "id": 96,
-    "animationId": 0,
+    "animationId": 40,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3251,7 +3251,7 @@
   },
   {
     "id": 97,
-    "animationId": 0,
+    "animationId": 41,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3288,7 +3288,7 @@
   },
   {
     "id": 98,
-    "animationId": 0,
+    "animationId": 42,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3439,7 +3439,7 @@
   },
   {
     "id": 101,
-    "animationId": 0,
+    "animationId": 43,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3469,7 +3469,7 @@
   },
   {
     "id": 102,
-    "animationId": 0,
+    "animationId": 13,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3506,7 +3506,7 @@
   },
   {
     "id": 103,
-    "animationId": 0,
+    "animationId": 43,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3603,7 +3603,7 @@
   },
   {
     "id": 106,
-    "animationId": 0,
+    "animationId": 44,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3633,7 +3633,7 @@
   },
   {
     "id": 107,
-    "animationId": 0,
+    "animationId": 44,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3688,7 +3688,7 @@
   },
   {
     "id": 108,
-    "animationId": 0,
+    "animationId": 45,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -4025,7 +4025,7 @@
   },
   {
     "id": 119,
-    "animationId": -1,
+    "animationId": 40,
     "damage": {
       "critical": false,
       "elementId": -1,
@@ -4226,7 +4226,7 @@
   },
   {
     "id": 125,
-    "animationId": 23,
+    "animationId": 46,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -4306,7 +4306,7 @@
   },
   {
     "id": 127,
-    "animationId": 76,
+    "animationId": 40,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -4336,7 +4336,7 @@
   },
   {
     "id": 128,
-    "animationId": 67,
+    "animationId": 41,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -4366,7 +4366,7 @@
   },
   {
     "id": 129,
-    "animationId": 14,
+    "animationId": 43,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -4421,7 +4421,7 @@
   },
   {
     "id": 130,
-    "animationId": 0,
+    "animationId": 25,
     "damage": {
       "critical": false,
       "elementId": 0,

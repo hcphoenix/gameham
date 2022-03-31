@@ -202,7 +202,23 @@ var GameHam = GameHam || {};
     return false;
   };
 
-  
+  //draw row limitations in skill cost
+  GameHam.dOC = Window_SkillList.prototype.drawOtherCost;
+  Window_SkillList.prototype.drawOtherCost = function(skill, wx, wy, dw) {
+      //landed only
+      if (!skill.rowOnly.contains(2)) {
+        var iw = wx + dw - Window_Base._iconWidth;
+        this.drawIcon(11, iw, wy + 2);
+        dw -= Window_Base._iconWidth + 2;
+      }
+      //flying only
+      if (!skill.rowOnly.contains(1)) {
+        var iw = wx + dw - Window_Base._iconWidth;
+        this.drawIcon(10, iw, wy + 2);
+        dw -= Window_Base._iconWidth + 2;
+      }
+      return GameHam.dOC.call(this, skill, wx, wy, dw);
+  };
 
 })(GameHam); 
 

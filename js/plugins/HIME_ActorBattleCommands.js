@@ -564,13 +564,13 @@ function Data_BattlerCommand() {
     var enabled = cmd.isEnabled(this._actor) && BattleManager.canEscape();
     // This will set the help window text
     let helpText = 'Everyone flees and each bird takes ' + GameHam.GetPursuitDamage() + ' damage.';
-    Eli.HelpWindows.actorCmd().contents = Eli.HelpWindows.actorCmd().contents.filter(c => c.symbol != 'Escape');
+    Eli.HelpWindows.actorCmd().contents = Eli.HelpWindows.actorCmd().contents.filter(c => c.symbol != 'FLEE');
     Eli.HelpWindows.actorCmd().contents.push({
         text: helpText,
-        symbol: 'Escape',
+        symbol: 'FLEE',
         note: ''
     });
-    this.addCommand("Escape", 'escape', enabled);
+    this.addCommand("FLEE", 'escape', enabled);
   };
 
   Window_ActorCommand.prototype.addBattleCommand_move = function(cmd) {

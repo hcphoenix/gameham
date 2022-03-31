@@ -16,7 +16,7 @@
         "hidden": false
       }
     ],
-    "name": "Bat*2 <back1-speed: 1, 0>",
+    "name": "Slime*2 <back1-speed: 1, 0>",
     "pages": [
       {
         "conditions": {
@@ -88,7 +88,7 @@
         "hidden": false
       }
     ],
-    "name": "Bat*2",
+    "name": "Slime*2",
     "pages": [
       {
         "conditions": {

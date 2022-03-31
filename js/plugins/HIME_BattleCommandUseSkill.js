@@ -109,7 +109,7 @@ TH.BattleCommandUseSkill = TH.BattleCommandUseSkill || {};
     var enabled = cmd.isEnabled(this._actor) && this._actor.canUse(skill);
     
     // special case for move
-    var name = cmd.name() !== "move" ? cmd.name() : (this._actor._row === 1 ? "Ascend" : "Descend");
+    var name = cmd.name() !== "move" ? cmd.name() : (this._actor._row === 1 ? "FLY" : "LAND");
     if (!enabled) name = "Grounded";
 
     this.addCommand(name, cmd.symbol(), enabled, cmd.ext());

@@ -28,16 +28,18 @@
     },
     "Window_ActorCommand": {
       "x": 0,
-      "y": 380,
+      "y": 399,
       "opacity": "255",
       "width": "192",
       "height": "180",
       "rows": "4",
-      "cols": "1"
+      "cols": "1",
+      "lineHeight": "36",
+      "align": "left"
     },
     "Window_BattleSkill": {
       "x": 0,
-      "y": 444,
+      "y": 264,
       "opacity": "255",
       "width": "816",
       "height": "276",
@@ -132,10 +134,22 @@
       "y": 0,
       "opacity": "255",
       "width": "816",
-      "height": "480",
+      "height": "468",
       "cols": "1"
     },
     "Window_MenuStatus": {},
     "Window_MenuCommand": {}
+  },
+  "Scene_GameEnd": {
+    "Window_GameEnd": {
+      "x": 258,
+      "y": 258,
+      "opacity": "255",
+      "width": "300",
+      "rows": "2",
+      "cols": "1",
+      "lineHeight": "36",
+      "align": "center"
+    }
   }
 }

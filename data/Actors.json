@@ -32,7 +32,7 @@
     "name": "R.E.A.L.B.I.R.D.",
     "nickname": "",
     "note": "",
-    "profile": "\"MY INTERESTS INCLUDE BIRD FOOD, DISRUPTING\nENEMY COMBATANTS, AND [ERROR: CLASSIFIED].\""
+    "profile": "MY INTERESTS INCLUDE BIRD THINGS, DISRUPTING\nENEMY COMBATANTS, AND [ERROR: CLASSIFIED]."
   },
   {
     "id": 2,
@@ -122,7 +122,7 @@
     "maxLevel": 99,
     "name": "Therese",
     "nickname": "",
-    "note": "<CTB Icon: 288>",
+    "note": "",
     "profile": "test test test"
   },
   {
@@ -157,7 +157,7 @@
     "name": "Roxanne",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "Roxanne likes long flights on the beach,\ndrawing aggro and romantically eating trash."
   },
   {
     "id": 6,
@@ -230,7 +230,7 @@
       0
     ],
     "faceIndex": 1,
-    "faceName": "Bird2",
+    "faceName": "Bird4",
     "traits": [
       {
         "code": 43,

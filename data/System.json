@@ -84,7 +84,7 @@
   "battleback1Name": "Battle_BG",
   "battleback2Name": "",
   "battlerHue": 0,
-  "battlerName": "Hunter",
+  "battlerName": "scream_kid",
   "boat": {
     "bgm": {
       "name": "Ship1",
@@ -174,7 +174,7 @@
   },
   "skillTypes": [
     "",
-    "Skill",
+    "SKILL",
     "Special"
   ],
   "sounds": [
@@ -364,28 +364,28 @@
     ],
     "commands": [
       "Fight",
-      "Escape",
+      "FLEE",
       "Attack",
       "Guard",
-      "Luggage",
-      "Skill",
-      "Equip",
-      "Info",
+      "ITEM",
+      "SKILL",
+      "WEAR",
+      "STAT",
       "Formation",
       "Save",
-      "Quit",
-      "Options",
+      "QUIT",
+      "SETUP",
       "Weapon",
       "Armor",
       "Key Item",
       "Equip",
       "Optimize",
       "Clear",
-      "New Game",
+      "START",
       "Continue",
       "To Title",
-      "Cancel",
-      "Buy",
+      "I give up...",
+      "I'll never stop!",
       "Sell"
     ],
     "params": [
@@ -456,6 +456,17 @@
   },
   "testBattlers": [
     {
+      "actorId": 10,
+      "equips": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "level": 1
+    },
+    {
       "actorId": 19,
       "equips": [
         0,
@@ -467,7 +478,7 @@
       "level": 1
     },
     {
-      "actorId": 4,
+      "actorId": 2,
       "equips": [
         0,
         0,
@@ -478,18 +489,7 @@
       "level": 1
     },
     {
-      "actorId": 7,
-      "equips": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "level": 1
-    },
-    {
-      "actorId": 11,
+      "actorId": 16,
       "equips": [
         0,
         0,
@@ -552,7 +552,7 @@
     "",
     ""
   ],
-  "versionId": 77550584,
+  "versionId": 5926694,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

@@ -2551,7 +2551,7 @@ Window_Status.prototype.refresh = function() {
         var lineHeight = this.lineHeight();
         this.drawText(this._actor.name() + " the " + this._actor.currentClass().name, 6, 0);
         this.drawParameters(48, lineHeight);
-        this.drawProfile(6, this.height - 96);
+        this.drawProfile(6, lineHeight * 10);
         //this.drawHorzLine(lineHeight * 1);
         //this.drawBlock2(lineHeight * 2);
         //this.drawHorzLine(lineHeight * 6);
@@ -2623,8 +2623,8 @@ Window_Status.prototype.drawParameters = function(x, y) {
     this.drawText('Chance to land attacks', x, y + lh * 7);
     this.drawText('Chance for cool bonuses', x, y + lh * 8);
 
-    //HALEY: 16 is the starting offset for the attribute icons
-    for (var i = 0; i < 9; i++) this.drawIcon(i + 16, 0, y + lh * i);
+    //HALEY: 64 is the starting offset for the attribute icons
+    for (var i = 0; i < 9; i++) this.drawIcon(i + 64, 0, y + lh * i);
 };
 
 Window_Status.prototype.drawExpInfo = function(x, y) {
