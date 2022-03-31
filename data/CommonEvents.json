@@ -2849,12 +2849,38 @@
     "id": 20,
     "list": [
       {
+        "code": 337,
+        "indent": 0,
+        "parameters": [
+          0,
+          75,
+          true
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "test"
+        ]
+      },
+      {
         "code": 0,
         "indent": 0,
         "parameters": []
       }
     ],
-    "name": "",
+    "name": "Critical Animation",
     "switchId": 1,
     "trigger": 0
   },

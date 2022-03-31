@@ -416,8 +416,8 @@
       "buffRemove": "%1's %2 returned to normal!",
       "commandRemember": "Command Remember",
       "counterAttack": "%1 counterattacked!",
-      "criticalToActor": "A painful blow!!",
-      "criticalToEnemy": "An excellent hit!!",
+      "criticalToActor": "OUCH!!",
+      "criticalToEnemy": "SUPER COOL!!",
       "debuffAdd": "%1's %2 went down!",
       "defeat": "%1 was defeated.",
       "emerge": "%1 emerged!",
@@ -500,7 +500,7 @@
       "level": 1
     }
   ],
-  "testTroopId": 1,
+  "testTroopId": 2,
   "title1Name": "Title",
   "title2Name": "",
   "titleBgm": {
@@ -552,7 +552,7 @@
     "",
     ""
   ],
-  "versionId": 82967619,
+  "versionId": 77550584,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

@@ -7,7 +7,7 @@
     "iconIndex": 5,
     "maxTurns": 1,
     "message1": " has fallen!",
-    "message2": " is slain!",
+    "message2": " ran in fear!",
     "message3": "",
     "message4": " revives!",
     "minTurns": 1,
@@ -23,13 +23,7 @@
     "removeByWalking": false,
     "restriction": 4,
     "stepsToRemove": 100,
-    "traits": [
-      {
-        "code": 23,
-        "dataId": 9,
-        "value": 0
-      }
-    ]
+    "traits": []
   },
   {
     "id": 2,
@@ -1375,8 +1369,8 @@
     "message4": "",
     "minTurns": 1,
     "motion": 0,
-    "name": "",
-    "note": "",
+    "name": "Critical Effect",
+    "note": "<Custom Establish Effect>\n$gameTemp.reserveCommonEvent(20);\nif (this.isPhysical() && target.result().critical) {\n    $gameTemp.reserveCommonEvent(20);\n}\n</Custom Establish Effect>",
     "overlay": 0,
     "priority": 50,
     "removeAtBattleEnd": false,

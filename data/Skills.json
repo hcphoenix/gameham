@@ -1465,7 +1465,7 @@
     "damage": {
       "critical": false,
       "elementId": 0,
-      "formula": "Math.max(1, a.mat - b.def)",
+      "formula": "Math.max(1, a.atk - b.def)",
       "type": 1,
       "variance": 0
     },
