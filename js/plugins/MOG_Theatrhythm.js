@@ -1209,10 +1209,11 @@ Scene_Theatrhythm.prototype.update_commands = function() {
 	else if (Input.isTriggered("s")) {this.check_key(1)}
 	else if (Input.isTriggered("ok")) {this.check_key(2)}
 	else if (Input.isTriggered("cancel")) {this.check_key(3)}
-	else if (Input.isTriggered("up")) {this.check_key(4)}
-	else if (Input.isTriggered("right")) {this.check_key(5)}
-	else if (Input.isTriggered("left")) {this.check_key(6)}
-	else if (Input.isTriggered("down")) {this.check_key(7)};
+    // Change to DDR mapping
+	else if (Input.isTriggered("up")) {this.check_key(6)}
+	else if (Input.isTriggered("right")) {this.check_key(7)}
+	else if (Input.isTriggered("left")) {this.check_key(4)}
+	else if (Input.isTriggered("down")) {this.check_key(5)};
 };
 
 //==============================
@@ -1633,8 +1634,8 @@ Sprite_TKeys.prototype.refresh_keys = function(i) {
 	this._keysX.sort(function(a, b){return a-b}); 
 	var difX = (this._keys[i].x - this._limit[4]);
 	this._keys_f[i] = false;
-	this._keys_c[i] = Math.randomInt(8);
-	this._keys_h[i] = Math.randomInt(this._batlers.length);
+	this._keys_c[i] = Math.randomInt(4) + 4; // only use arrow keys
+	this._keys_h[i] = this._keys_c[i] - 4; // go to the same row as the key
 	this._keys_r[i] = true;
 	this._keys_s[i] = false;
 	var h = this._positions[this._keys_h[i]][1];
