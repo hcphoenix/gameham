@@ -105,7 +105,7 @@
     "pitch": 100,
     "volume": 90
   },
-  "editMapId": 7,
+  "editMapId": 4,
   "elements": [
     "",
     "Physical",
@@ -324,7 +324,7 @@
     }
   ],
   "startMapId": 4,
-  "startX": 12,
+  "startX": 13,
   "startY": 3,
   "switches": [
     "",
@@ -552,7 +552,7 @@
     "",
     ""
   ],
-  "versionId": 37113559,
+  "versionId": "123_fuck",
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
