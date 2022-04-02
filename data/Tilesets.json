@@ -57476,5 +57476,25 @@
       "SF_Outside_B",
       "Outside_B"
     ]
+  },
+  {
+    "id": 8,
+    "flags": [
+      16
+    ],
+    "mode": 0,
+    "name": "GameBoardNu",
+    "note": "",
+    "tilesetNames": [
+      "",
+      "t_ground",
+      "",
+      "",
+      "",
+      "t_extras_b",
+      "",
+      "",
+      ""
+    ]
   }
 ]
