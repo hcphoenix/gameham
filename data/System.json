@@ -105,7 +105,7 @@
     "pitch": 100,
     "volume": 90
   },
-  "editMapId": 8,
+  "editMapId": 7,
   "elements": [
     "",
     "Physical",
@@ -116,7 +116,9 @@
     "Earth",
     "Wind",
     "Light",
-    "Darkness"
+    "Darkness",
+    "Pursuit",
+    "AoE"
   ],
   "equipTypes": [
     "",
@@ -323,9 +325,9 @@
       "volume": 0
     }
   ],
-  "startMapId": 8,
-  "startX": 7,
-  "startY": 1,
+  "startMapId": 7,
+  "startX": 19,
+  "startY": 4,
   "switches": [
     "",
     "Player Can Move",
@@ -374,7 +376,7 @@
       "Formation",
       "Save",
       "QUIT",
-      "SETUP",
+      "CONF.",
       "Weapon",
       "Armor",
       "Key Item",
@@ -552,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": "123_fuck",
+  "versionId": 21698660,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
