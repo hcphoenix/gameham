@@ -387,7 +387,7 @@ Sprite_FlappyPlayer.prototype.updateVelocity = function() {
 Sprite_FlappyPlayer.prototype.updateInput = function() {
     Sprite_Base.prototype.update.call(this);
 	
-    if (Input.isTriggered("ok") || Input.isTriggered("space")) {
+    if (Input.isTriggered("ok") || Input.isTriggered("space") || TouchInput.isTriggered()) {
         // make the bird jump
         this._velocity = 15;
     }
