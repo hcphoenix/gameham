@@ -1,5 +1,5 @@
 /*:
- * @plugindesc (v0.5) Minigame based on the game flappy bird
+ * @plugindesc (v1.0) Minigame based on the game flappy bird
  * @author contentdeleted
  *
  * @help  
@@ -33,8 +33,6 @@ ImageManager.loadFlappyBird = function(filename) {
     return this.loadBitmap('img/flappybird/', filename, 0, true);
 };
 
-
-
 //=============================================================================
 // ** Game_Interpreter
 //=============================================================================	
@@ -51,8 +49,8 @@ Game_Interpreter.prototype.pluginCommand = function(command, args) {
 
 //=============================================================================
 // ** Scene Map
+// * This is where we hook in the scene flag
 //=============================================================================	
-
 
 var a_Scene_Map_prototype_update = Scene_Map.prototype.update
 Scene_Map.prototype.update = function() {
@@ -77,11 +75,7 @@ Game_System.prototype.initialize = function() {
     a_Game_System_prototype_initialize.call(this);	
 	this._flappybird = false; // is it active
 	this._flappybird_start = false; // flag to activate
-	//this._theatrhythm_data = [1,1];
 	this._flappybird_phase = 0; // 0 -> start, 1 -> play, 2 -> results
-	
-	//Input.keyMapper[65] = 'a';
-    //Input.keyMapper[83] = 's';
 };
 
 Game_System.prototype.flappybird = function() {
@@ -92,6 +86,10 @@ Game_System.prototype.flappybird = function() {
 
 //=============================================================================
 // ** Scene_FlappyBird
+// * This is the actual scene definition, its pretty straight forward
+// * We have several phases, in this case intro, gameplay, and result
+// * When results are finished the scene is pop'd off the scene manager stack 
+// * and we go back to wherever it was called
 //=============================================================================
 
 function Scene_FlappyBird() {
@@ -288,7 +286,9 @@ Scene_FlappyBird.prototype.update_play_phase = function() {
     this._scoretext_sprite.bitmap.drawText(this._score,0,0,100,48,"right");
 
     // Update ground scroll effect
-    this._ground_sprite.origin.x += this._scroll_speed;
+    if(!this._player_sprite._crashed) {
+        this._ground_sprite.origin.x += this._scroll_speed;
+    }
 }
 
 Scene_FlappyBird.prototype.update_end_phase = function() {
@@ -341,6 +341,7 @@ Scene_FlappyBird.prototype.terminate = function() {
 
 // ===========================================
 // * Sprite_FlappyPlayer - The bird sprite whompst jump
+// Everything in here controls the logic for the player character
 // ===========================================
 function Sprite_FlappyPlayer() {
     this.initialize.apply(this, arguments);
@@ -374,7 +375,10 @@ Sprite_FlappyPlayer.prototype.updateVelocity = function() {
     Sprite_Base.prototype.update.call(this);
 	
     this._velocity -= 0.4;
-    this.position.y += -this._velocity; // y is flipped
+    // y is flipped
+    this.position.y += -this._velocity;
+    // clamp the player from flying too high
+    this.position.y = Math.max(this.position.y, -35);
     // make the nose dip when going down etc its flappy bird youve seen it
     this.rotation = -this._velocity / 15;
 };
@@ -399,7 +403,6 @@ Sprite_FlappyPlayer.prototype.updateAnimation = function() {
 
 Sprite_FlappyPlayer.prototype.setAnimation = function(frame) {
     let w = this._bitmap.width / Sprite_FlappyPlayer.animationFrames;
-    console.log(frame * w);
     this.setFrame(frame * w, 0, w, this._bitmap.height);
 }
 
@@ -419,8 +422,9 @@ Sprite_FlappyPlayer.prototype.updateCollision = function() {
     });
 };
 
+// Copied with some minor changes from: https://github.com/kittykatattack/learningPixi#collision
+// I am very lazy
 Sprite_FlappyPlayer.prototype.hitTestRectangle = function(r1, r2) {
-
     //Define the variables we'll need to calculate
     let hit, combinedHalfWidths, combinedHalfHeights, vx, vy;
   
@@ -466,6 +470,8 @@ Sprite_FlappyPlayer.prototype.hitTestRectangle = function(r1, r2) {
 
 // ===========================================
 // * Sprite_FlappyPipeManager - Controls all the pipe sprites
+// * The manager works on an object pool system where we prefill a certain amount of pipes
+// * and take pipes from the pool when we need them
 // ===========================================
 function Sprite_FlappyPipeManager() {
     this.initialize.apply(this, arguments);
