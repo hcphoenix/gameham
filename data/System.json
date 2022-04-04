@@ -116,7 +116,9 @@
     "Earth",
     "Wind",
     "Light",
-    "Darkness"
+    "Darkness",
+    "Pursuit",
+    "AoE"
   ],
   "equipTypes": [
     "",
@@ -374,7 +376,7 @@
       "Formation",
       "Save",
       "QUIT",
-      "SETUP",
+      "CONF.",
       "Weapon",
       "Armor",
       "Key Item",

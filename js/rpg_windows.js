@@ -1607,14 +1607,14 @@ Window_MenuCommand.prototype.addMainCommands = function() {
     if (this.needsCommand('item')) {
         this.addCommand(TextManager.item, 'item', enabled);
     }
-    if (this.needsCommand('skill')) {
-        this.addCommand(TextManager.skill, 'skill', enabled);
-    }
     if (this.needsCommand('equip')) {
         this.addCommand(TextManager.equip, 'equip', enabled);
     }
     if (this.needsCommand('status')) {
         this.addCommand(TextManager.status, 'status', enabled);
+    }
+    if (this.needsCommand('skill')) {
+        this.addCommand(TextManager.skill, 'skill', enabled);
     }
 };
 
@@ -2550,7 +2550,7 @@ Window_Status.prototype.refresh = function() {
     if (this._actor) {
         var lineHeight = this.lineHeight();
         this.drawText(this._actor.name() + " the " + this._actor.currentClass().name, 6, 0);
-        this.drawParameters(48, lineHeight);
+        this.drawParameters(48);
         this.drawProfile(6, lineHeight * 10);
         //this.drawHorzLine(lineHeight * 1);
         //this.drawBlock2(lineHeight * 2);
@@ -2561,6 +2561,32 @@ Window_Status.prototype.refresh = function() {
     }
 }
 
+Window_Status.prototype.drawParameters = function(y) {
+    let lh = this.lineHeight();
+    let table =
+        [ [64, TextManager.param(2), this._actor.param(2), 'Boosts skills']
+        , [65, TextManager.param(3), this._actor.param(3), 'Reduces damage']
+        , [66, TextManager.param(4), this._actor.param(4), 'Reduces skill costs']
+        , [68, TextManager.param(6), this._actor.param(6), 'Take more turns']
+        , [69, TextManager.param(7), this._actor.param(7), 'Boosts chance to steal']
+        , [70, 'Dodge', (this._actor.eva * 100 + '%'), 'Chance to dodge attacks']
+        , [71, 'Aim', (this._actor.hit * 100 + '%'), 'Chance to land attacks']
+        , [72, 'Cool', (this._actor.cri * 100 + '%'), 'Chance for big bonuses']
+        ];
+    for (var i = 0; i < table.length; i++) {
+        let y2 = y + lh * i;
+        this.drawIcon(table[i][0], 0, y2);
+        this.drawText(table[i][1], 48, y2);
+        this.drawText(table[i][2], 208, y2, 60, 'right');
+        this.drawText(table[i][3], 348, y2);
+    }
+};
+
+Window_Status.prototype.drawProfile = function(x, y) {
+    this.drawTextEx(this._actor.profile(), x, y);
+};
+
+/*
 Window_Status.prototype.drawBlock2 = function(y) {
     this.drawActorFace(this._actor, 12, y);
     this.drawBasicInfo(204, y);
@@ -2595,38 +2621,6 @@ Window_Status.prototype.drawBasicInfo = function(x, y) {
     this.drawActorMp(this._actor, x, y + lineHeight * 3);
 };
 
-Window_Status.prototype.drawParameters = function(x, y) {
-    var lh = this.lineHeight();
-    for (var i = 0; i < 6; i++) {
-        var paramId = i + 2;
-        var y2 = y + lh * i;
-        this.changeTextColor(this.systemColor());
-        this.drawText(TextManager.param(paramId), x, y2, 160);
-        this.resetTextColor();
-        this.drawText(this._actor.param(paramId), x + 160, y2, 60, 'right');
-    }
-    this.drawText('Dodge', x, y + lh * 6);
-    this.drawText(this._actor.eva * 100 + "%", x + 160, lh * 7, 60, 'right');
-    this.drawText('Aim', x, y + lh * 7);
-    this.drawText(this._actor.hit * 100 + "%", x + 160, lh * 8, 60, 'right');
-    this.drawText('Cool', x, y + lh * 8);
-    this.drawText(this._actor.cri * 100 + "%", x + 160, lh * 9, 60, 'right');
-
-    var x = 300;
-    this.drawText('Boosts skills', x, y);
-    this.drawText('Reduces damage', x, y + lh);
-    this.drawText('Reduces hunger costs?', x, y + lh * 2);
-    this.drawText('Uhh', x, y + lh * 3);
-    this.drawText('Take more turns', x, y + lh * 4);
-    this.drawText('Boosts chance to steal', x, y + lh * 5);
-    this.drawText('Chance to dodge attacks', x, y + lh * 6);
-    this.drawText('Chance to land attacks', x, y + lh * 7);
-    this.drawText('Chance for cool bonuses', x, y + lh * 8);
-
-    //HALEY: 64 is the starting offset for the attribute icons
-    for (var i = 0; i < 9; i++) this.drawIcon(i + 64, 0, y + lh * i);
-};
-
 Window_Status.prototype.drawExpInfo = function(x, y) {
     var lineHeight = this.lineHeight();
     var expTotal = TextManager.expTotal.format(TextManager.exp);
@@ -2653,13 +2647,10 @@ Window_Status.prototype.drawEquipments = function(x, y) {
     }
 };
 
-Window_Status.prototype.drawProfile = function(x, y) {
-    this.drawTextEx(this._actor.profile(), x, y);
-};
-
 Window_Status.prototype.maxEquipmentLines = function() {
     return 6;
 };
+*/
 
 //-----------------------------------------------------------------------------
 // Window_Options
