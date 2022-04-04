@@ -101,7 +101,7 @@ Scene_FlappyBird.prototype.constructor = Scene_FlappyBird;
 
 Scene_FlappyBird.prototype.initialize = function() {
     Scene_Base.prototype.initialize.call(this);	
-    
+     
     $gameSystem._flappybird_start = false; // already started
     $gameSystem._flappybird = true; // now active
     $gameSystem._flappybird_phase = 0; // start phase
@@ -143,6 +143,7 @@ Scene_FlappyBird.prototype.createDisplayObjects = function() {
     this.createGround();
     this.createBirdSprite();
     this.createScoreText();
+    this.createFlashEffectSprite();
     this.createIntroSprite();
     this.createResultsSprite();
 }
@@ -220,13 +221,29 @@ Scene_FlappyBird.prototype.createPipeSprite = function() {
     this._spriteField.addChild(this._pipe_manager);
 };
 
+Scene_FlappyBird.prototype.createFlashEffectSprite = function() {	
+    // create new sprite size of the screen
+    this._flash_effect_sprite = new Sprite(new Bitmap(Graphics.boxWidth, Graphics.boxHeight));
+    this._flash_effect_sprite.anchor.x = 0.5;
+    this._flash_effect_sprite.anchor.y = 0.5;
+
+    // fill sprite with white
+    let color = 'rgba(255, 255, 255, 1)';
+    this._flash_effect_sprite.bitmap.fillRect(0, 0, Graphics.boxWidth, Graphics.boxHeight, color);
+    
+    this._flash_effect_sprite.x = Graphics.boxWidth / 2;
+	this._flash_effect_sprite.y = Graphics.boxHeight / 2;
+    this._flash_effect_sprite.opacity = 0;
+    this._spriteHudBase.addChild(this._flash_effect_sprite);
+};
+
+
 Scene_FlappyBird.prototype.update = function() {
     Scene_Base.prototype.update.call(this);
     
 	this.update_phase();
 };
 
-//==============================
 Scene_FlappyBird.prototype.update_phase = function() {
     switch ($gameSystem._flappybird_phase) {
 		case 0:
@@ -289,9 +306,15 @@ Scene_FlappyBird.prototype.update_play_phase = function() {
     if(!this._player_sprite._crashed) {
         this._ground_sprite.origin.x += this._scroll_speed;
     }
+
+    // Update flash effect sprite
+    if(this._flash_effect_sprite.opacity > 0) {
+        this._flash_effect_sprite.opacity -= 50;
+    }
 }
 
 Scene_FlappyBird.prototype.update_end_phase = function() {
+    this._flash_effect_sprite.opacity = 0;
     switch (this._phase_state) {
         case 0:
             // set up result sprite
@@ -414,10 +437,16 @@ Sprite_FlappyPlayer.prototype.updateCollision = function() {
         $gameSystem._flappybird_phase = 2;
     }
 
+    // dont bother with other collision
+    if(this._crashed) return;
+
     // iterate through pipes and check collision 
     SceneManager._scene._pipe_manager._pipes.filter(p => p.active).forEach(pipe => {
         if(this.hitTestRectangle(this, pipe.bottomSprite) || this.hitTestRectangle(this, pipe.topSprite)) {
             this._crashed = true;
+            SceneManager._scene._flash_effect_sprite.opacity = 200;
+            // play a sound
+            return;
         }
     });
 };
