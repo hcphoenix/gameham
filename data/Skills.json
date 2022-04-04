@@ -345,11 +345,17 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Scanned FOES have items you couldn't otherwise\nsteal. Must be \\I[11]Landed.",
+    "description": "Reveal a FOE's bio-readout, along with items you\ncouldn't otherwise steal.",
     "effects": [
       {
         "code": 21,
         "dataId": 32,
+        "value1": 1,
+        "value2": 0
+      },
+      {
+        "code": 44,
+        "dataId": 21,
         "value1": 1,
         "value2": 0
       }
@@ -360,7 +366,7 @@
     "message2": "",
     "mpCost": 0,
     "name": "SCAN",
-    "note": "<Row Only: 1>",
+    "note": "<Before Eval>\nif (target.isEnemy()) {\n  $gameSystem._messageRows = 12;\n  $gameMessage.setPositionType(1);\n  var id = target._enemyId;\n\n  var text = '\\\\TS[0]' + target.name() + '\\n';\n  text += '\\\\>\\\\px[9]\\\\c[23]' + (target.mhp - target.hp) + '/' + target.mhp;\n  text += ' \\\\c[0]Fear';\n  text += '\\\\px[90]\\\\c[4]Exposure:\\\\c[23] ' + (target.mmp - target.mp);\n  text += '/' + target.mmp;\n  text += '\\\\px[90]\\\\c[4]Hatred:\\\\c[23] ' + target.tp;\n  text += '\\n';\n  text += '\\\\px[90]\\\\I[64]\\\\c[23] ' + target.atk + '\\\\c[0]Aggression';\n  text += '\\\\px[90]\\\\I[65] \\\\c[4]Chutzpah:\\\\c[23] ' + target.def;\n  text += '\\n';\n  text += '\\\\px[90]\\\\I[66] \\\\c[4]Ascetism:\\\\c[23]      ' + target.mat;\n  text += '\\\\px[90]\\\\I[68] \\\\c[4]Speed:\\\\c[23]    ' + target.agi;\n  text += '\\n';\n  text += '\\\\px[45]\\\\I[70] \\\\c[4]Dodge:\\\\c[23] ' + (target.eva * 100) + '%';\n  text += '\\\\px[45]\\\\I[71] \\\\c[4]Aim:\\\\c[23] ' + (target.hit * 100) + '%';\n  text += '\\\\px[45]\\\\I[72] \\\\c[4]Cool:\\\\c[23] ' + (target.cri * 100) + '%';\n  $gameMessage.add(text);\n \n  var weakness = '';\n  var resist = '';\n  var immune = '';\n  var absorb = '';\n  var elements = $dataSystem.elements;\n  for (var i = 1; i < elements.length; ++i) {\n    var name = elements[i];\n    var rate = target.elementRate(i);\n    if (rate > 1) {\n      weakness += name + ' ';\n    } else if (rate < 0) {\n      absorb += name + ' ';\n    } else if (rate === 0) {\n      immune += name + ' ';\n    } else if (rate < 1) {\n      resist += name + ' ';\n    }\n  }\n  if (weakness === '') weakness = '\\\\c[18]nothing';\n  if (resist === '') resist = '\\\\c[18]nothing';\n  if (immune === '') immune = '\\\\c[18]nothing';\n  if (absorb === '') absorb = '\\\\c[18]nothing';\n  weakness = '\\\\c[4]Weak to\\\\c[1] ' + weakness + '\\n';\n  resist = '\\\\c[4]Resists\\\\c[1] ' + resist + '\\n';\n  immune = '\\\\c[4]Immune to\\\\c[1] ' + immune + '\\n';\n  absorb = '\\\\c[4]Absorbs\\\\c[1] ' + absorb;\n  text = weakness + resist + immune + '\\\\c[0]';\n  $gameMessage.add(text);\n\n  for (const item in target.stealableItems().filter(item => item.type == 'item')) {\n    console.log(item);\n    $gameMessage.add('\\\\ii[' + item.id + ']');\n  }\n}\n</Before Eval>",
     "occasion": 0,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -1647,15 +1653,15 @@
       "type": 0,
       "variance": 20
     },
-    "description": "",
+    "description": "Works like STEAL, but you can pick what to grab.\nDoes not raise EXPOSURE.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 69,
     "message1": "",
     "message2": "",
     "mpCost": 0,
-    "name": "",
-    "note": "",
+    "name": "PICK BONES",
+    "note": "<Snatch>\n<Row Only: 1>\n<Custom Requirement>\nvalue = !($gameParty.isInvMaxed());\n</Custom Requirement>",
     "occasion": 0,
     "repeats": 1,
     "requiredWtypeId1": 0,
@@ -2417,24 +2423,24 @@
   },
   {
     "id": 71,
-    "animationId": 21,
+    "animationId": 0,
     "damage": {
-      "critical": true,
-      "elementId": -1,
-      "formula": "Math.max(1, a.atk - b.def)",
-      "type": 1,
-      "variance": 0
+      "critical": false,
+      "elementId": 0,
+      "formula": "0",
+      "type": 0,
+      "variance": 20
     },
-    "description": "Frighten an enemy.",
+    "description": "",
     "effects": [],
-    "hitType": 1,
-    "iconIndex": 51,
-    "message1": " attacks!",
+    "hitType": 0,
+    "iconIndex": 4,
+    "message1": "",
     "message2": "",
     "mpCost": 0,
-    "name": "Attack",
+    "name": "GRUDGE MATCH",
     "note": "",
-    "occasion": 1,
+    "occasion": 0,
     "repeats": 1,
     "requiredWtypeId1": 0,
     "requiredWtypeId2": 0,
@@ -2443,7 +2449,7 @@
     "stypeId": 1,
     "successRate": 100,
     "tpCost": 0,
-    "tpGain": 10
+    "tpGain": 0
   },
   {
     "id": 72,

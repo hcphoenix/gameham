@@ -105,11 +105,11 @@
     "pitch": 100,
     "volume": 90
   },
-  "editMapId": 9,
+  "editMapId": 7,
   "elements": [
     "",
     "Physical",
-    "Fire",
+    "\\I[180] Fire",
     "Ice",
     "Thunder",
     "Water",
@@ -325,9 +325,9 @@
       "volume": 0
     }
   ],
-  "startMapId": 9,
-  "startX": 9,
-  "startY": 2,
+  "startMapId": 7,
+  "startX": 19,
+  "startY": 4,
   "switches": [
     "",
     "Player Can Move",
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 21698660,
+  "versionId": 48011719,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

@@ -1539,14 +1539,17 @@ Window_Gold.prototype.refresh = function() {
     this.contents.clear();
     //this.drawCurrencyValue(this.value(), this.currencyUnit(), x, 0, width);
 
-	this.drawText('SHINY:', 0, 0, this.contents.width);
-    this.drawText($gameParty.gold(), 0, 0, this.contents.width, "right");
+    this.drawText('SCORE:', 0, 0, this.contents.width);
+    this.drawText($gameVariables.value(1), 0, 0, this.contents.width - 36, "right");
+    this.drawIcon(71, this.contents.width - 36, 0);
 
-    this.drawText('ITEMS:', 0, this.lineHeight(), this.contents.width);
-	this.drawInvSlot(0, this.lineHeight(), this.contents.width);
-    
-    this.drawText('SCORE:', 0, this.lineHeight()*2, this.contents.width);
-    this.drawText($gameVariables.value(1), 0, this.lineHeight()*2, this.contents.width, "right");
+	this.drawText('SHINY:', 0, this.lineHeight(), this.contents.width);
+    this.drawText($gameParty.gold(), 0, this.lineHeight(), this.contents.width - 36, "right");
+    this.drawIcon(55, this.contents.width - 36, this.lineHeight());
+
+    this.drawText('ITEMS:', 0, this.lineHeight() * 2, this.contents.width);
+	this.drawInvSlot(0, this.lineHeight() * 2, this.contents.width - 36);
+    this.drawIcon(56, this.contents.width - 36, this.lineHeight() * 2);
 };
 
 Window_Gold.prototype.value = function() {
@@ -1765,7 +1768,7 @@ Window_MenuStatus.prototype.drawItemImage = function(index) {
     var actor = $gameParty.members()[index];
     var rect = this.itemRect(index);
     this.changePaintOpacity(actor.isBattleMember());
-    this.drawActorFace(actor, rect.x + 1, rect.y + 1, Window_Base._faceWidth, Window_Base._faceHeight);
+    this.drawActorFace(actor, rect.x + (rect.width/2) - (Window_Base._faceWidth/2), rect.y + 1, Window_Base._faceWidth, Window_Base._faceHeight);
     this.changePaintOpacity(true);
 };
 

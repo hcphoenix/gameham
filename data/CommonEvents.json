@@ -2888,12 +2888,19 @@
     "id": 21,
     "list": [
       {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "$gameSystem._messageRows = 4;"
+        ]
+      },
+      {
         "code": 0,
         "indent": 0,
         "parameters": []
       }
     ],
-    "name": "",
+    "name": "Reset Text",
     "switchId": 1,
     "trigger": 0
   },

@@ -135,6 +135,28 @@
             ]
           },
           {
+            "code": 322,
+            "indent": 0,
+            "parameters": [
+              2,
+              "Bird_Map_Pal_2",
+              4,
+              "Holo",
+              4,
+              "Actor1_1"
+            ]
+          },
+          {
+            "code": 339,
+            "indent": 0,
+            "parameters": [
+              1,
+              2,
+              11,
+              0
+            ]
+          },
+          {
             "code": 0,
             "indent": 0,
             "parameters": []

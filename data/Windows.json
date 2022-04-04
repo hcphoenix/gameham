@@ -84,7 +84,7 @@
   "Scene_Menu": {
     "Window_MenuCommand": {
       "x": 624,
-      "y": 336,
+      "y": 136,
       "opacity": "255",
       "width": "192",
       "rows": "7",
@@ -93,17 +93,17 @@
       "align": "left"
     },
     "Window_Gold": {
-      "x": 560,
+      "x": 516,
       "y": 0,
       "opacity": "255",
-      "width": "256",
+      "width": "300",
       "height": "144"
     },
     "Window_MenuStatus": {
       "x": 0,
-      "y": 444,
-      "opacity": "255",
-      "width": "624",
+      "y": 462,
+      "opacity": "0",
+      "width": "816",
       "height": "180",
       "rows": "1",
       "cols": "4"
