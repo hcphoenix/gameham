@@ -990,7 +990,11 @@ Scene_Menu.prototype.createCommandWindow = function() {
     this._commandWindow.setHandler('save',      this.commandSave.bind(this));
     this._commandWindow.setHandler('gameEnd',   this.commandGameEnd.bind(this));
     this._commandWindow.setHandler('cancel',    this.popScene.bind(this));
+    this._commandWindow.setHandler('roll',      this.commandRoll.bind(this));
     this.addWindow(this._commandWindow);
+    
+    //this._commandWindow.addAnimation(new QueueTweenAnimation(new Point(Graphics.boxWidth, 128), new Point(1.0, 1.0), 0, 1, 0, 0));
+    //this._commandWindow.addAnimation(new QueueTweenAnimation(new Point(Graphics.boxWidth - 189, 128), new Point(1.0, 1.0), 0, 20, 2, 0));
 };
 
 Scene_Menu.prototype.createGoldWindow = function() {
@@ -1006,7 +1010,15 @@ Scene_Menu.prototype.createStatusWindow = function() {
     this._statusWindow = new Window_MenuStatus(this._commandWindow.width, 0);
     this._statusWindow.reserveFaceImages();
     this.addWindow(this._statusWindow);
+    
+    this._statusWindow.addAnimation(new QueueTweenAnimation(new Point(0, Graphics.boxHeight), new Point(1.0, 1.0), 0, 1, 0, 0));
+    this._statusWindow.addAnimation(new QueueTweenAnimation(new Point(0, Graphics.boxHeight - this._statusWindow.height + 30), new Point(1.0, 1.0), 0, 20, 2, 0));
 };
+
+Scene_Menu.prototype.commandRoll = function() {
+    SceneManager.pop();
+    $gameTemp.reserveCommonEvent(6);
+}
 
 Scene_Menu.prototype.commandItem = function() {
     SceneManager.push(Scene_Item);
