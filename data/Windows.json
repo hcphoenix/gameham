@@ -87,13 +87,13 @@
       "y": 136,
       "opacity": "255",
       "width": "192",
-      "rows": "7",
+      "rows": "8",
       "cols": "1",
       "lineHeight": "36",
       "align": "left"
     },
     "Window_Gold": {
-      "x": 516,
+      "x": 525,
       "y": 0,
       "opacity": "255",
       "width": "300",

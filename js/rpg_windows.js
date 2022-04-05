@@ -1597,6 +1597,7 @@ Window_MenuCommand.prototype.numVisibleRows = function() {
 };
 
 Window_MenuCommand.prototype.makeCommandList = function() {
+    this.addCommand('LOOK', 'cancel', true);
     this.addMainCommands();
     this.addFormationCommand();
     this.addOriginalCommands();

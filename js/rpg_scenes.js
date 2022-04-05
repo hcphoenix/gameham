@@ -997,6 +997,9 @@ Scene_Menu.prototype.createGoldWindow = function() {
     this._goldWindow = new Window_Gold(0, 0);
     this._goldWindow.y = Graphics.boxHeight - this._goldWindow.height;
     this.addWindow(this._goldWindow);
+
+    this._goldWindow.addAnimation(new QueueTweenAnimation(new Point(Graphics.boxWidth - 291, -150), new Point(1.0, 1.0), 0, 1, 0, 0));
+    this._goldWindow.addAnimation(new QueueTweenAnimation(new Point(Graphics.boxWidth - 291, -3), new Point(1.0, 1.0), 0, 20, 2, 0));
 };
 
 Scene_Menu.prototype.createStatusWindow = function() {
