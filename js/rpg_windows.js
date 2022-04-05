@@ -1539,17 +1539,17 @@ Window_Gold.prototype.refresh = function() {
     this.contents.clear();
     //this.drawCurrencyValue(this.value(), this.currencyUnit(), x, 0, width);
 
-    this.drawText('SCORE:', 0, 0, this.contents.width);
-    this.drawText($gameVariables.value(1), 0, 0, this.contents.width - 36, "right");
-    this.drawIcon(71, this.contents.width - 36, 0);
+    this.drawText('ITEMS:', 0, 0, this.contents.width);
+	this.drawInvSlot(0, 0, this.contents.width - 36);
+    this.drawIcon(56, this.contents.width - 36, 0);
 
 	this.drawText('SHINY:', 0, this.lineHeight(), this.contents.width);
     this.drawText($gameParty.gold(), 0, this.lineHeight(), this.contents.width - 36, "right");
     this.drawIcon(55, this.contents.width - 36, this.lineHeight());
 
-    this.drawText('ITEMS:', 0, this.lineHeight() * 2, this.contents.width);
-	this.drawInvSlot(0, this.lineHeight() * 2, this.contents.width - 36);
-    this.drawIcon(56, this.contents.width - 36, this.lineHeight() * 2);
+    this.drawText('SCORE:', 0, this.lineHeight() * 2, this.contents.width);
+    this.drawText($gameVariables.value(1), 0, this.lineHeight() * 2, this.contents.width - 36, "right");
+    this.drawIcon(60, this.contents.width - 36, this.lineHeight()* 2);
 };
 
 Window_Gold.prototype.value = function() {
@@ -1597,14 +1597,35 @@ Window_MenuCommand.prototype.numVisibleRows = function() {
 };
 
 Window_MenuCommand.prototype.makeCommandList = function() {
+    let enabled = this.areMainCommandsEnabled();
+    
+    if (this.needsCommand('skill')) {
+        this.addCommand(TextManager.skill, 'skill', enabled);
+    }
+    
+    this.addCommand('ALT.', 'altitude', true);
+    
+    if (this.needsCommand('item')) {
+        this.addCommand(TextManager.item, 'item', enabled);
+    }
+    
+    if (this.needsCommand('status')) {
+        this.addCommand(TextManager.status, 'status', enabled);
+    }
+    
     this.addCommand('ROLL', 'roll', true);
-    this.addCommand('LOOK', 'cancel', true);
-    this.addMainCommands();
-    this.addFormationCommand();
-    this.addOriginalCommands();
+    
+    if (this.needsCommand('equip')) {
+        this.addCommand(TextManager.equip, 'equip', enabled);
+    }
+    
     this.addOptionsCommand();
-    this.addSaveCommand();
+    this.addCommand('LOOK', 'cancel', true);
     this.addGameEndCommand();
+    //this.addMainCommands();
+    //this.addFormationCommand();
+    //this.addOriginalCommands();
+    //this.addSaveCommand();
 };
 
 Window_MenuCommand.prototype.addMainCommands = function() {
