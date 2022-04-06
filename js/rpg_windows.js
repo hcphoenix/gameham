@@ -1539,7 +1539,7 @@ Window_Gold.prototype.refresh = function() {
     this.contents.clear();
     //this.drawCurrencyValue(this.value(), this.currencyUnit(), x, 0, width);
 
-    this.drawText('ITEMS:', 0, 0, this.contents.width);
+    this.drawText('SPACE:', 0, 0, this.contents.width);
 	this.drawInvSlot(0, 0, this.contents.width - 36);
     this.drawIcon(56, this.contents.width - 36, 0);
 
