@@ -60,8 +60,8 @@
     "name": "GameBoardKaliTesting",
     "order": 5,
     "parentId": 4,
-    "scrollX": 1139,
-    "scrollY": 633
+    "scrollX": 1131,
+    "scrollY": 625.5
   },
   {
     "id": 8,
@@ -69,16 +69,25 @@
     "name": "Rhythm",
     "order": 8,
     "parentId": 5,
-    "scrollX": 840.5,
-    "scrollY": 487.5
+    "scrollX": 819,
+    "scrollY": 472.5
   },
   {
     "id": 9,
-    "expanded": false,
+    "expanded": true,
     "name": "Flappybird",
     "order": 9,
     "parentId": 5,
     "scrollX": 1139,
     "scrollY": 633
+  },
+  {
+    "id": 10,
+    "expanded": false,
+    "name": "Nasu",
+    "order": 10,
+    "parentId": 5,
+    "scrollX": 819,
+    "scrollY": 472.5
   }
 ]

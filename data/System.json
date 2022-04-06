@@ -105,7 +105,7 @@
     "pitch": 100,
     "volume": 90
   },
-  "editMapId": 7,
+  "editMapId": 10,
   "elements": [
     "",
     "Physical",
@@ -325,9 +325,9 @@
       "volume": 0
     }
   ],
-  "startMapId": 7,
-  "startX": 19,
-  "startY": 4,
+  "startMapId": 10,
+  "startX": 10,
+  "startY": 3,
   "switches": [
     "",
     "Player Can Move",
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 13650929,
+  "versionId": "123_fuck",
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
