@@ -331,7 +331,7 @@
   "switches": [
     "",
     "Player Can Move",
-    "",
+    "Rolling",
     "",
     "",
     "KO Display",
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 89513840,
+  "versionId": 78917813,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

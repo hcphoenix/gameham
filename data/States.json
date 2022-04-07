@@ -1112,8 +1112,14 @@
     "id": 39,
     "autoRemovalTiming": 0,
     "chanceByDamage": 100,
-    "traits": [],
-    "iconIndex": 0,
+    "traits": [
+      {
+        "code": 22,
+        "dataId": 2,
+        "value": 1
+      }
+    ],
+    "iconIndex": 24,
     "maxTurns": 1,
     "message1": "",
     "message2": "",
@@ -1121,7 +1127,7 @@
     "message4": "",
     "minTurns": 1,
     "motion": 0,
-    "name": "",
+    "name": "Super Cool",
     "note": "",
     "overlay": 0,
     "priority": 50,

@@ -2588,7 +2588,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "",
+    "description": "Gain 141.66% COOL during your next turn.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 24,
@@ -2596,7 +2596,7 @@
     "message2": "",
     "mpCost": 0,
     "name": "GRANDSTAND",
-    "note": "",
+    "note": "WHO DO YOU THINK YOU ARE?! I AM!",
     "occasion": 0,
     "repeats": 1,
     "requiredWtypeId1": 0,
