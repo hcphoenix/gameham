@@ -83,9 +83,18 @@
   },
   {
     "id": 10,
-    "expanded": false,
+    "expanded": true,
     "name": "Nasu",
     "order": 10,
+    "parentId": 5,
+    "scrollX": 819,
+    "scrollY": 472.5
+  },
+  {
+    "id": 11,
+    "expanded": false,
+    "name": "Birdle",
+    "order": 11,
     "parentId": 5,
     "scrollX": 819,
     "scrollY": 472.5
