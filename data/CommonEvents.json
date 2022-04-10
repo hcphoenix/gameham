@@ -195,11 +195,67 @@
         ]
       },
       {
-        "code": 117,
+        "code": 111,
         "indent": 1,
         "parameters": [
-          6
+          1,
+          22,
+          0,
+          0,
+          0
         ]
+      },
+      {
+        "code": 122,
+        "indent": 2,
+        "parameters": [
+          22,
+          22,
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 2,
+        "parameters": [
+          "$gameScreen.removeDice(0)"
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 2,
+        "parameters": [
+          10
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 2,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 2,
+        "parameters": [
+          "This is where I'd put a cyoa if i had one"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
       },
       {
         "code": 0,
@@ -218,6 +274,62 @@
           12,
           "$gamePlayer._moveRoute == null"
         ]
+      },
+      {
+        "code": 108,
+        "indent": 2,
+        "parameters": [
+          "Odd numbers are between spaces"
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          12,
+          "$gameVariables._data[22] % 2 == 0"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 3,
+        "parameters": [
+          "let remaining = $gameVariables._data[22] / 2;"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 3,
+        "parameters": [
+          "GameHam.ChangeDiceFace(remaining);"
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 3,
+        "parameters": [
+          10
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
       },
       {
         "code": 111,
@@ -532,61 +644,125 @@
         ]
       },
       {
-        "code": 119,
+        "code": 355,
         "indent": 0,
         "parameters": [
-          "end"
+          "GameHam.ShowMapSkillMenu()"
         ]
       },
       {
-        "code": 205,
+        "code": 112,
         "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 1,
         "parameters": [
-          -1,
-          {
-            "list": [
-              {
-                "code": 15,
-                "parameters": [
-                  120
-                ],
-                "indent": null
-              },
-              {
-                "code": 0
-              }
-            ],
-            "repeat": false,
-            "skippable": false,
-            "wait": false
-          }
+          1,
+          30,
+          0,
+          0,
+          5
         ]
       },
       {
-        "code": 505,
-        "indent": 0,
-        "parameters": [
-          {
-            "code": 15,
-            "parameters": [
-              120
-            ],
-            "indent": null
-          }
-        ]
+        "code": 113,
+        "indent": 2,
+        "parameters": []
       },
       {
-        "code": 356,
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 413,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 121,
         "indent": 0,
         "parameters": [
-          "showDice 300 300 1 1"
+          2,
+          2,
+          1
         ]
       },
       {
         "code": 230,
         "indent": 0,
         "parameters": [
-          60
+          10
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          30,
+          0,
+          -1,
+          0
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameScreen.removeDice(0)"
+        ]
+      },
+      {
+        "code": 351,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 122,
+        "indent": 1,
+        "parameters": [
+          30,
+          30,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "code": 119,
+        "indent": 1,
+        "parameters": [
+          "end"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "showDice 300 300 0 0"
         ]
       },
       {
@@ -604,64 +780,21 @@
         ]
       },
       {
-        "code": 118,
+        "code": 108,
         "indent": 0,
         "parameters": [
-          "end"
+          "We double the dice roll since we go two steps for each pip"
         ]
       },
       {
-        "code": 102,
+        "code": 122,
         "indent": 0,
         "parameters": [
-          [
-            "test",
-            "test"
-          ],
-          1,
+          30,
+          30,
           0,
-          2,
+          0,
           0
-        ]
-      },
-      {
-        "code": 402,
-        "indent": 0,
-        "parameters": [
-          0,
-          "test"
-        ]
-      },
-      {
-        "code": 0,
-        "indent": 1,
-        "parameters": []
-      },
-      {
-        "code": 402,
-        "indent": 0,
-        "parameters": [
-          1,
-          "test"
-        ]
-      },
-      {
-        "code": 0,
-        "indent": 1,
-        "parameters": []
-      },
-      {
-        "code": 404,
-        "indent": 0,
-        "parameters": []
-      },
-      {
-        "code": 121,
-        "indent": 0,
-        "parameters": [
-          2,
-          2,
-          1
         ]
       },
       {
@@ -671,8 +804,15 @@
           22,
           22,
           0,
-          1,
-          25
+          4,
+          "$gameVariables._data[25] * 2"
+        ]
+      },
+      {
+        "code": 118,
+        "indent": 0,
+        "parameters": [
+          "end"
         ]
       },
       {

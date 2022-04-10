@@ -550,9 +550,13 @@ Sprite_TileManager.prototype.checkLetters = function () {
                 correctness = 2;
             } else {
                 // This bat shit thing fixes the edge case of having two letters in your guess and only one in the answer but your second guess letter is correct
+                
+                // check the count of the letter up to and including this point
+                let prev_count = this._count_entries(this._letters.slice(0, this.check_pointer), letter);
+                // check the count of the letter up to and including this point
+                let look_ahead = this._count_entries(answer.filter((l, i) => this._letters[i] != l), letter);
                 if(answer.contains(letter) 
-                   && this._count_entries(this._letters.slice(0, this.check_pointer+1), letter) // check the count of the letter up to and including this point
-                      <= this._count_entries(answer.filter((l, i) => i > this.check_pointer && this._letters[i] != l), letter) // the amount of times the letter appears in the answer EXCLUDING times that it is correct
+                   && (look_ahead > 0 && prev_count < look_ahead)
                     ) {
                     correctness = 1;
                 }

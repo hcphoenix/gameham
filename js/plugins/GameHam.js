@@ -275,7 +275,113 @@ var GameHam = GameHam || {};
     target.stealableItems().filter(i => !i.isStolen).forEach(item => {
       $gameMessage.add('\\ii[' + item.id + ']');
     });
-  }
+  };
+
+  GameHam.ChangeDiceFace = function (newFace) {
+    let dice = $gameScreen._dice_picture_3d_array[0][0][0];
+
+    // this is part of an animation handled in update pictures
+    let offset = 25; // distance to travel down
+    dice._returnY = dice._y; // place to return to
+    dice.show("dice_"+newFace, 0, dice._x, dice._y - offset, 100, 100, 255, 0);
+    for(let i = 1; i <= 5; i++) {
+        $gameScreen._pictures[i]._opacity = 0;
+    }
+    $gameScreen._pictures[6] = dice;
+    $gameScreen._pictures[6]._opacity = 255;
+    GameHam._dice = dice;
+  };
+
+  let _GH_Game_Screen_updatePictures = Game_Screen.prototype.updatePictures;
+  Game_Screen.prototype.updatePictures = function() {
+    // update the gameham dice with our little animation
+    if(GameHam._dice && GameHam._dice._y < GameHam._dice._returnY) {
+      GameHam._dice.show(GameHam._dice._name, 0, GameHam._dice._x, GameHam._dice._y + 3, 100, 100, 255, 0);
+    }
+    _GH_Game_Screen_updatePictures.call(this);
+  };
+
+  // Here's where we'll be handling map skills
+
+  // Indexed by classid
+  GameHam.MapSkills = [
+      { // 1 - Pigeon
+        name: "Pigeon Skill",
+        help_text: "Placeholder help text",
+        common_event_id: -1,
+      },
+      { // 2 -  Seagull
+        name: "Seagull Skill",
+        help_text: "Placeholder help text",
+        common_event_id: -1,
+      },
+      { // 3 - Raven
+        name: "Raven Skill",
+        help_text: "Placeholder help text",
+        common_event_id: -1,
+      },
+      { // 4 - Vulture
+        name: "Vulture Skill",
+        help_text: "Placeholder help text",
+        common_event_id: -1,
+      },
+      { // 3 - Raven
+        name: "Raven Skill",
+        help_text: "Placeholder help text",
+        common_event_id: -1,
+      },
+      { // 5 - Turkey
+        name: "Turkey Skill",
+        help_text: "Placeholder help text",
+        common_event_id: -1,
+      },
+      { // 6 - Parrot
+        name: "Parrot Skill",
+        help_text: "Placeholder help text",
+        common_event_id: -1,
+      },
+      { // 7 - Penguin
+        name: "Penguin Skill",
+        help_text: "Placeholder help text",
+        common_event_id: -1,
+      },
+      { // 8 - Cassowary
+        name: "Cassowary Skill",
+        help_text: "Placeholder help text",
+        common_event_id: -1,
+      },
+  ];
+
+  GameHam.GetPartyMapSkills = function () {
+    let classIds = $gameParty.members().map(m => m._classId);
+    return GameHam.MapSkills.filter((_, c) => classIds.contains(c)).map(s=> s.name);
+  };
+
+  GameHam.ShowMapSkillMenu = function () {
+    $gameMessage.add("Use a map skill before rolling?");
+    $gameMessage.setChoices(["No", ...GameHam.GetPartyMapSkills(), "Cancel"], 0, 1);
+    
+    // This might need to change depending on how you want to reserve common events haley
+    $gameMessage.setChoiceCallback(function(n) {
+        // n == 0 means we do nothing since we just roll next
+        let ret = 1; // return code of 0 for go ahead and roll
+
+        // Reserve the common event attached to the class skill
+        if(n > 1 && n <= $gameParty.members().length) {
+            let event = GameHam.MapSkills[n].common_event_id;
+            // Dont bother with placeholder events, and here is a case where I may add
+            // another member to the map skill object thats a function pointer to run
+            if(event >= 0) $gameTemp.reserveCommonEvent(event);
+        }
+
+        // Cancel the roll
+        if(n > $gameParty.members().length) ret = -1;
+
+        // We want to set a game variable to the return code to be handled on the rpgmaker side
+        $gameVariables.setValue(30, ret);
+    });
+}
+  
 
 })(GameHam); 
 
