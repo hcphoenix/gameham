@@ -1,0 +1,3586 @@
+[
+  null,
+  {
+    "id": 1,
+    "list": [
+      {
+        "code": 205,
+        "indent": 0,
+        "parameters": [
+          -1,
+          {
+            "list": [
+              {
+                "code": 39,
+                "indent": null
+              },
+              {
+                "code": 0
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": true
+          }
+        ]
+      },
+      {
+        "code": 505,
+        "indent": 0,
+        "parameters": [
+          {
+            "code": 39,
+            "indent": null
+          }
+        ]
+      },
+      {
+        "code": 201,
+        "indent": 0,
+        "parameters": [
+          0,
+          3,
+          8,
+          5,
+          0,
+          0
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "GameOver",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 2,
+    "list": [
+      {
+        "code": 122,
+        "indent": 0,
+        "parameters": [
+          2,
+          2,
+          0,
+          2,
+          0,
+          10
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "$gameParty.gainItem($gameVariables.value(2));"
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 0,
+        "parameters": [
+          2,
+          2,
+          0,
+          4,
+          "$dataItems[$gameVariables.value(2)].name"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "Purchased \\V[2]!"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Purchase",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 3,
+    "list": [
+      {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "console.log(this)"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "move",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 4,
+    "list": [
+      {
+        "code": 122,
+        "indent": 0,
+        "parameters": [
+          3,
+          3,
+          0,
+          4,
+          "1 + Math.round(Math.min(2,Math.random()*$gameVariables.value(1)/100))"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Pick Troop Number",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 5,
+    "list": [
+      {
+        "code": 122,
+        "indent": 0,
+        "parameters": [
+          2,
+          2,
+          0,
+          3,
+          7,
+          3,
+          0
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 0,
+        "parameters": [
+          "check for next diceroll"
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          22,
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 1,
+        "parameters": [
+          1,
+          22,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 2,
+        "parameters": [
+          22,
+          22,
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 2,
+        "parameters": [
+          "$gameScreen.removeDice(0)"
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 2,
+        "parameters": [
+          10
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 2,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 2,
+        "parameters": [
+          "This is where I'd put a cyoa if i had one"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 1,
+        "parameters": [
+          12,
+          "$gamePlayer._moveRoute == null"
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 2,
+        "parameters": [
+          "Odd numbers are between spaces"
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          12,
+          "$gameVariables._data[22] % 2 == 0"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 3,
+        "parameters": [
+          "let remaining = $gameVariables._data[22] / 2;"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 3,
+        "parameters": [
+          "GameHam.ChangeDiceFace(remaining);"
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 3,
+        "parameters": [
+          10
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          12,
+          "$gamePlayer.regionId() == 1"
+        ]
+      },
+      {
+        "code": 205,
+        "indent": 3,
+        "parameters": [
+          -1,
+          {
+            "list": [
+              {
+                "code": 2,
+                "indent": null
+              },
+              {
+                "code": 0
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": true
+          }
+        ]
+      },
+      {
+        "code": 505,
+        "indent": 3,
+        "parameters": [
+          {
+            "code": 2,
+            "indent": null
+          }
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 3,
+        "parameters": [
+          22,
+          22,
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 3,
+        "parameters": [
+          12,
+          "$gamePlayer.regionId() == 2"
+        ]
+      },
+      {
+        "code": 205,
+        "indent": 4,
+        "parameters": [
+          -1,
+          {
+            "list": [
+              {
+                "code": 1,
+                "indent": null
+              },
+              {
+                "code": 0
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": true
+          }
+        ]
+      },
+      {
+        "code": 505,
+        "indent": 4,
+        "parameters": [
+          {
+            "code": 1,
+            "indent": null
+          }
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 4,
+        "parameters": [
+          22,
+          22,
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 4,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 4,
+        "parameters": [
+          12,
+          "$gamePlayer.regionId() == 3"
+        ]
+      },
+      {
+        "code": 205,
+        "indent": 5,
+        "parameters": [
+          -1,
+          {
+            "list": [
+              {
+                "code": 3,
+                "indent": null
+              },
+              {
+                "code": 0
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": true
+          }
+        ]
+      },
+      {
+        "code": 505,
+        "indent": 5,
+        "parameters": [
+          {
+            "code": 3,
+            "indent": null
+          }
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 5,
+        "parameters": [
+          22,
+          22,
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 5,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 4,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 5,
+        "parameters": [
+          12,
+          "$gamePlayer.regionId() == 4"
+        ]
+      },
+      {
+        "code": 205,
+        "indent": 6,
+        "parameters": [
+          -1,
+          {
+            "list": [
+              {
+                "code": 4,
+                "indent": null
+              },
+              {
+                "code": 0
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": true
+          }
+        ]
+      },
+      {
+        "code": 505,
+        "indent": 6,
+        "parameters": [
+          {
+            "code": 4,
+            "indent": null
+          }
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 6,
+        "parameters": [
+          22,
+          22,
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 6,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 5,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 5,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 4,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 4,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Run Each Step",
+    "switchId": 1,
+    "trigger": 2
+  },
+  {
+    "id": 6,
+    "list": [
+      {
+        "code": 121,
+        "indent": 0,
+        "parameters": [
+          2,
+          2,
+          0
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "GameHam.ShowMapSkillMenu()"
+        ]
+      },
+      {
+        "code": 112,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 1,
+        "parameters": [
+          1,
+          30,
+          0,
+          0,
+          5
+        ]
+      },
+      {
+        "code": 113,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 413,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 121,
+        "indent": 0,
+        "parameters": [
+          2,
+          2,
+          1
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 0,
+        "parameters": [
+          10
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          30,
+          0,
+          -1,
+          0
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameScreen.removeDice(0)"
+        ]
+      },
+      {
+        "code": 351,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 122,
+        "indent": 1,
+        "parameters": [
+          30,
+          30,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "code": 119,
+        "indent": 1,
+        "parameters": [
+          "end"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "showDice 300 300 0 0"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "throwDice"
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 0,
+        "parameters": [
+          60
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 0,
+        "parameters": [
+          "We double the dice roll since we go two steps for each pip"
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 0,
+        "parameters": [
+          30,
+          30,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 0,
+        "parameters": [
+          22,
+          22,
+          0,
+          4,
+          "$gameVariables._data[25] * 2"
+        ]
+      },
+      {
+        "code": 118,
+        "indent": 0,
+        "parameters": [
+          "end"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Roll Dice",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 7,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Menu",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 8,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 9,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 10,
+    "list": [
+      {
+        "code": 241,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "A Real an Normal Pigeon",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>* BEEP * HELLO FELLOW BIRD NICE BIRD WEATHER. "
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          ""
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "MY SENSORS INDICATE THAT YOU MAY BE A FRIEND. I LIKE TO CALL MY REGULAR BIRD EYES SENSORS."
+        ]
+      },
+      {
+        "code": 102,
+        "indent": 0,
+        "parameters": [
+          [
+            "Invite to join",
+            "ABSORB FLESH"
+          ],
+          1,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          0,
+          "Invite to join"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          18
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>ACKNOWLEDGED."
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameVariables.setValue(10, Math.min(6, (Math.floor(($gameVariables.value(1) / 100)) * 2)));"
+        ]
+      },
+      {
+        "code": 316,
+        "indent": 1,
+        "parameters": [
+          1,
+          5,
+          0,
+          1,
+          10,
+          false
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "if($gameVariables.value(10) > 2){"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "GameHam.learnSkillFromClass($gameActors.actor($gameVariables.value(5))._actorId, $gameActors.actor($gameVariables.value(5))._classId);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "}"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameParty.addActor($gameVariables.value(5));"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          1,
+          "ABSORB FLESH"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>INSUFFICENT POWER. "
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          19
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 404,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 340,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Negotiate Pigeon",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 11,
+    "list": [
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>Hey there ;) "
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "What brings a big strong fowl like you round these parts?"
+        ]
+      },
+      {
+        "code": 102,
+        "indent": 0,
+        "parameters": [
+          [
+            "Invite to join",
+            "ABSORB FLESH"
+          ],
+          1,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          0,
+          "Invite to join"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          18
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>Mmmmm, I'm with this one."
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameVariables.setValue(10, Math.min(6, (Math.floor(($gameVariables.value(1) / 100)) * 2)));"
+        ]
+      },
+      {
+        "code": 316,
+        "indent": 1,
+        "parameters": [
+          1,
+          5,
+          0,
+          1,
+          10,
+          false
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "if($gameVariables.value(10) > 2){"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "GameHam.learnSkillFromClass($gameActors.actor($gameVariables.value(5))._actorId, $gameActors.actor($gameVariables.value(5))._classId);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "}"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameParty.addActor($gameVariables.value(5));"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          1,
+          "ABSORB FLESH"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>* SCREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE *"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          19
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 404,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 340,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Negotiate Seagull",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 12,
+    "list": [
+      {
+        "code": 241,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "Corvid Kontrapunkt",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>You.... I sense a powerful aura...."
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "I came here to sharpen my skill, prehaps we share a goal."
+        ]
+      },
+      {
+        "code": 102,
+        "indent": 0,
+        "parameters": [
+          [
+            "Invite to join",
+            "ABSORB FLESH"
+          ],
+          1,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          0,
+          "Invite to join"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          18
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>Fine, just don't get in my way."
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameVariables.setValue(10, Math.min(6, (Math.floor(($gameVariables.value(1) / 100)) * 2)));"
+        ]
+      },
+      {
+        "code": 316,
+        "indent": 1,
+        "parameters": [
+          1,
+          5,
+          0,
+          1,
+          10,
+          false
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "if($gameVariables.value(10) > 2){"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "GameHam.learnSkillFromClass($gameActors.actor($gameVariables.value(5))._actorId, $gameActors.actor($gameVariables.value(5))._classId);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "}"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameParty.addActor($gameVariables.value(5));"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          1,
+          "ABSORB FLESH"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>Perhaps... it had to be this way. WAIT NO AAAAHH FUCK AAAAAAA-"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          19
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 404,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 340,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Negotiate Raven",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 13,
+    "list": [
+      {
+        "code": 241,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "Carrion-core",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>'sup"
+        ]
+      },
+      {
+        "code": 102,
+        "indent": 0,
+        "parameters": [
+          [
+            "Invite to join",
+            "ABSORB FLESH"
+          ],
+          1,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          0,
+          "Invite to join"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          18
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>cool cool"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameVariables.setValue(10, Math.min(6, (Math.floor(($gameVariables.value(1) / 100)) * 2)));"
+        ]
+      },
+      {
+        "code": 316,
+        "indent": 1,
+        "parameters": [
+          1,
+          5,
+          0,
+          1,
+          10,
+          false
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "if($gameVariables.value(10) > 2){"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "GameHam.learnSkillFromClass($gameActors.actor($gameVariables.value(5))._actorId, $gameActors.actor($gameVariables.value(5))._classId);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "}"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameParty.addActor($gameVariables.value(5));"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          1,
+          "ABSORB FLESH"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>ah noo im dyin' an shit"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          19
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 404,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 340,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Negotiate Vulture",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 14,
+    "list": [
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>Hey there skipper, makin' slow progress south I see."
+        ]
+      },
+      {
+        "code": 102,
+        "indent": 0,
+        "parameters": [
+          [
+            "Invite to join",
+            "ABSORB FLESH"
+          ],
+          1,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          0,
+          "Invite to join"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          18
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>Roger that good buddy, prepare for takeoff!"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameVariables.setValue(10, Math.min(6, (Math.floor(($gameVariables.value(1) / 100)) * 2)));"
+        ]
+      },
+      {
+        "code": 316,
+        "indent": 1,
+        "parameters": [
+          1,
+          5,
+          0,
+          1,
+          10,
+          false
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "if($gameVariables.value(10) > 2){"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "GameHam.learnSkillFromClass($gameActors.actor($gameVariables.value(5))._actorId, $gameActors.actor($gameVariables.value(5))._classId);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "}"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameParty.addActor($gameVariables.value(5));"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          1,
+          "ABSORB FLESH"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>Is this how you give thanks?!"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          19
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 404,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 340,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Negotiate Turkey",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 15,
+    "list": [
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]> * TERRIBLE HUMAN NOISES *"
+        ]
+      },
+      {
+        "code": 102,
+        "indent": 0,
+        "parameters": [
+          [
+            "Invite to join",
+            "ABSORB FLESH"
+          ],
+          1,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          0,
+          "Invite to join"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          18
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>*the bird seems to be willing, though it is difficult to tell through their foul mimicry of the tongues of men*"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameVariables.setValue(10, Math.min(6, (Math.floor(($gameVariables.value(1) / 100)) * 2)));"
+        ]
+      },
+      {
+        "code": 316,
+        "indent": 1,
+        "parameters": [
+          1,
+          5,
+          0,
+          1,
+          10,
+          false
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "if($gameVariables.value(10) > 2){"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "GameHam.learnSkillFromClass($gameActors.actor($gameVariables.value(5))._actorId, $gameActors.actor($gameVariables.value(5))._classId);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "}"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameParty.addActor($gameVariables.value(5));"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          1,
+          "ABSORB FLESH"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>*weeping and gnashing of teeth*"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          19
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 404,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 340,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Negotiate Parrot",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 16,
+    "list": [
+      {
+        "code": 241,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "Waddling Walz",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>Its a pleasure to meet you, would you care to hear about some investment opportunities?"
+        ]
+      },
+      {
+        "code": 102,
+        "indent": 0,
+        "parameters": [
+          [
+            "Invite to join",
+            "ABSORB FLESH"
+          ],
+          1,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          0,
+          "Invite to join"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          18
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>Glad to be working with you. Now, lets talk portfolio."
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameVariables.setValue(10, Math.min(6, (Math.floor(($gameVariables.value(1) / 100)) * 2)));"
+        ]
+      },
+      {
+        "code": 316,
+        "indent": 1,
+        "parameters": [
+          1,
+          5,
+          0,
+          1,
+          10,
+          false
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "if($gameVariables.value(10) > 2){"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "GameHam.learnSkillFromClass($gameActors.actor($gameVariables.value(5))._actorId, $gameActors.actor($gameVariables.value(5))._classId);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "}"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameParty.addActor($gameVariables.value(5));"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          1,
+          "ABSORB FLESH"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>You'll be hearing from my lawyers about this!"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          19
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 404,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 340,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Negotiate Penguin",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 17,
+    "list": [
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>Hail and well met travler."
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "You look weary from your journey."
+        ]
+      },
+      {
+        "code": 102,
+        "indent": 0,
+        "parameters": [
+          [
+            "Invite to join",
+            "ABSORB FLESH"
+          ],
+          1,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          0,
+          "Invite to join"
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          18
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>If we combine our might, we will be unstoppable."
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameVariables.setValue(10, Math.min(6, (Math.floor(($gameVariables.value(1) / 100)) * 2)));"
+        ]
+      },
+      {
+        "code": 316,
+        "indent": 1,
+        "parameters": [
+          1,
+          5,
+          0,
+          1,
+          10,
+          false
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "if($gameVariables.value(10) > 2){"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "GameHam.learnSkillFromClass($gameActors.actor($gameVariables.value(5))._actorId, $gameActors.actor($gameVariables.value(5))._classId);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "}"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameParty.addActor($gameVariables.value(5));"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          1,
+          "ABSORB FLESH"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\af[\\V[5]]\\n<\\N[\\V[5]]>No.... such an honorless end....."
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 1,
+        "parameters": [
+          19
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 404,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Negotiate Cassowary",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 18,
+    "list": [
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          12,
+          "$gameParty.size() == 4"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "Your flock is full. Choose a social reject to exile."
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 1,
+        "parameters": [
+          "OpenActorSelect 2"
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 1,
+        "parameters": [
+          12,
+          "$gameActors.actor($gameVariables.value(2)).isAlive()"
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 2,
+        "parameters": [
+          4,
+          4,
+          0,
+          4,
+          "$gameActors.actor($gameVariables.value(2)).currentClass().id"
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 2,
+        "parameters": [
+          "Pigeon"
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          1,
+          4,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "\\af[\\V[2]]\\n<\\N[\\V[2]]>GOOD BIRD I MEAN BIRD BYE I MEAN *click* *whirrrr*"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          1,
+          4,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "\\af[\\V[2]]\\n<\\N[\\V[2]]>noooo don't go you're so sexy aha~"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          1,
+          4,
+          0,
+          3,
+          0
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "\\af[\\V[2]]\\n<\\N[\\V[2]]>Heh, I was better on my own anyway. \\| \\|tch"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          1,
+          4,
+          0,
+          4,
+          0
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "\\af[\\V[2]]\\n<\\N[\\V[2]]>see ya\\|\\|\\|\\|\\|   idiot"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          1,
+          4,
+          0,
+          5,
+          0
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "\\af[\\V[2]]\\n<\\N[\\V[2]]>Suit yourself, clear skies pal."
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          1,
+          4,
+          0,
+          6,
+          0
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "\\af[\\V[2]]\\n<\\N[\\V[2]]>*profanity*"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          1,
+          4,
+          0,
+          7,
+          0
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "\\af[\\V[2]]\\n<\\N[\\V[2]]>You're walking away from a life changing opportunity!"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          1,
+          4,
+          0,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "\\af[\\V[2]]\\n<\\N[\\V[2]]>Watch your back."
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 101,
+        "indent": 2,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 2,
+        "parameters": [
+          "\\N[\\V[2]] left the party..."
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 101,
+        "indent": 2,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 2,
+        "parameters": [
+          "\\N[\\V[2]] was exiled for the crime of dying, which is illegal."
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameParty.removeActor($gameVariables.value(2));"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Remove Party Member",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 19,
+    "list": [
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "CHOOSE WHO SHALL CONSUME THE SACRIFICE."
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "OpenActorSelect 2"
+        ]
+      },
+      {
+        "code": 316,
+        "indent": 0,
+        "parameters": [
+          1,
+          2,
+          0,
+          0,
+          1,
+          true
+        ]
+      },
+      {
+        "code": 312,
+        "indent": 0,
+        "parameters": [
+          1,
+          2,
+          0,
+          0,
+          50
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 0,
+        "parameters": [
+          4,
+          4,
+          0,
+          4,
+          "$gameActors.actor($gameVariables.value(2)).currentClass().id"
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 0,
+        "parameters": [
+          "Control Vars:"
+        ]
+      },
+      {
+        "code": 408,
+        "indent": 0,
+        "parameters": [
+          "2 - Bird leveling up"
+        ]
+      },
+      {
+        "code": 408,
+        "indent": 0,
+        "parameters": [
+          "4 - Class of bird leveling up"
+        ]
+      },
+      {
+        "code": 408,
+        "indent": 0,
+        "parameters": [
+          "5 - Class of bird it absorbed flesh from"
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 0,
+        "parameters": [
+          "Parrot gets a skill from the class of the bird they absorbed"
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          4,
+          0,
+          6,
+          0
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "GameHam.learnSkillFromClass($gameVariables.value(2),$gameActors._data[$gameVariables.value(5)]._classId)"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "With flesh comes knowledge.\\| Those who speak it understand.\\|"
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\N[\\V[2]] learned '\\V[8]' in their wicked tongue. "
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 108,
+        "indent": 1,
+        "parameters": [
+          "Every other bird gets a random skill from their class"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "GameHam.learnSkillFromClass($gameVariables.value(2),$gameVariables.value(4))"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\N[\\V[2]] grows more powerful..."
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\N[\\V[2]] learned how to use '\\V[8]'"
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 1,
+        "parameters": [
+          "Penguin gets special case because they have more moves to learn"
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 1,
+        "parameters": [
+          1,
+          4,
+          0,
+          7,
+          0
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 2,
+        "parameters": [
+          "GameHam.learnSkillFromClass($gameVariables.value(2),$gameVariables.value(4))"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 2,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 2,
+        "parameters": [
+          "\\N[\\V[2]] gained additional skill '\\V[8]' thanks to their buisness management training."
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 122,
+        "indent": 0,
+        "parameters": [
+          7,
+          7,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 340,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Absorb Flesh",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 20,
+    "list": [
+      {
+        "code": 337,
+        "indent": 0,
+        "parameters": [
+          0,
+          75,
+          true
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "test"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Critical Animation",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 21,
+    "list": [
+      {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "$gameSystem._messageRows = 4;"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Reset Text",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 22,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 23,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 24,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 25,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 26,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 27,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 28,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 29,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 30,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 31,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 32,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 33,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 34,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 35,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 36,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 37,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 38,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 39,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 40,
+    "list": [
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          4,
+          25,
+          0
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 1,
+        "parameters": [
+          4,
+          26,
+          0
+        ]
+      },
+      {
+        "code": 129,
+        "indent": 2,
+        "parameters": [
+          27,
+          0,
+          true
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 129,
+        "indent": 2,
+        "parameters": [
+          26,
+          0,
+          true
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 129,
+        "indent": 1,
+        "parameters": [
+          25,
+          0,
+          true
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Raise Dead",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 41,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "Mirage",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 42,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 43,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 44,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 45,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 46,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 47,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 48,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 49,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 50,
+    "list": [
+      {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  }
+]
