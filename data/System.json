@@ -76,13 +76,13 @@
     }
   ],
   "battleBgm": {
-    "name": "Southbound Scramble",
+    "name": "",
     "pan": 0,
     "pitch": 100,
     "volume": 50
   },
-  "battleback1Name": "Battle_BG",
-  "battleback2Name": "",
+  "battleback1Name": "sky_SPRING",
+  "battleback2Name": "ground_SUBURB",
   "battlerHue": 0,
   "battlerName": "scream_kid",
   "boat": {
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": "123_fuck",
+  "versionId": 6500442,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

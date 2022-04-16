@@ -83,8 +83,8 @@
   },
   "Scene_Menu": {
     "Window_MenuCommand": {
-      "x": -17,
-      "y": -2,
+      "x": 0,
+      "y": 0,
       "opacity": "255",
       "width": "558",
       "rows": "3",

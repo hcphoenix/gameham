@@ -5,18 +5,18 @@
     "members": [
       {
         "enemyId": 1,
-        "x": 405,
+        "x": 321,
         "y": 408,
         "hidden": false
       },
       {
         "enemyId": 1,
-        "x": 675,
-        "y": 444,
+        "x": 534,
+        "y": 408,
         "hidden": false
       }
     ],
-    "name": "Slime*2 <back1-speed: 1, 0>",
+    "name": "Slime*2 <back1-speed: 6, 0>",
     "pages": [
       {
         "conditions": {
@@ -88,7 +88,7 @@
         "hidden": false
       }
     ],
-    "name": "Slime*2",
+    "name": "Slime*2 <back1-speed: 1, 0>",
     "pages": [
       {
         "conditions": {
