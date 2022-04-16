@@ -1359,5 +1359,8 @@
     0,
     0
   ],
-  "events": []
+  "events": [
+    null,
+    null
+  ]
 }

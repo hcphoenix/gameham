@@ -2695,7 +2695,7 @@ Battle_Hud.prototype.refresh_position = function() {
 // * Set Hud Position
 //==============================
 Battle_Hud.prototype.set_hud_position = function() {
-   	 this._hud_size = [144,200];//[this._layout.bitmap.width,this._layout.bitmap.height];
+   	 this._hud_size = [144,200]; //[this._layout.bitmap.width,this._layout.bitmap.height];
 	 this._members_max = $gameParty.battleMembers().length;
 	 var ps = [Number(Moghunter.bhud_space_x) * this._hud_id,
                 Number(Moghunter.bhud_space_y) * this._hud_id];
@@ -3032,8 +3032,8 @@ Battle_Hud.prototype.create_face = function() {
     let face_index_y = Math.floor(face_index / 4) * face_height;
 	this._face.setFrame(face_index_x, face_index_y, face_width, face_height);
 
-	this._face.anchor.x = 0.5;
-	this._face.anchor.y = 0.5;
+	this._face.anchor.x = 0;
+	this._face.anchor.y = 0;
 	this._face_data = [0,0,false,false,false,-1];
 	this._face.ph = 0;
 	this._face.animation = [-1,0,0,0,0,0,0,0,0];
@@ -3196,7 +3196,8 @@ Battle_Hud.prototype.refresh_name = function() {
 	} else if (Moghunter.bhud_name_align === 2) {
 		var align = "right"
 	};
-	this._name.bitmap.drawText(this._battler._name, 0, 0, this._name.bitmap.width, this._name.bitmap.height,align);	
+	this._name.bitmap.sfont = VictorEngine.SFont.getSFont(63);
+	this._name.bitmap.drawText(this._battler._name.toUpperCase(), 0, 0, this._name.bitmap.width, this._name.bitmap.height,align);	
 };
 
 //==============================
@@ -3433,8 +3434,8 @@ Battle_Hud.prototype.create_tp_meter = function() {
 	this.removeChild(this._tp_meter_red);
 	if (!this._battler) {return};
 	this._tp_meter_red = new Sprite(this._tp_meter_img);
-	this._tp_meter_red.x = this._pos_x - 25;//+ Moghunter.bhud_tp_meter_pos_x;
-	this._tp_meter_red.y = this._pos_y + 110; //+ Moghunter.bhud_tp_meter_pos_y;
+	this._tp_meter_red.x = this._pos_x + Moghunter.bhud_tp_meter_pos_x;
+	this._tp_meter_red.y = this._pos_y + Moghunter.bhud_tp_meter_pos_y;
 	this._tp_meter_red.rotation = Moghunter.bhud_tp_meter_rotation * Math.PI / 180;
 	this.addChild(this._tp_meter_red);		
 	this._tp_meter_blue = new Sprite(this._tp_meter_img);
@@ -3721,8 +3722,8 @@ Battle_Hud.prototype.create_states = function() {
 	if (!this._battler) {return};
 	this._states_data = [0,0,0];
 	this._state_icon = new Sprite(this._state_img);
-	this._state_icon.x = this._pos_x - 75;//+ Moghunter.bhud_states_pos_x;
-	this._state_icon.y = this._pos_y + 50;//+ Moghunter.bhud_states_pos_y;
+	this._state_icon.x = this._pos_x + Moghunter.bhud_states_pos_x;
+	this._state_icon.y = this._pos_y + Moghunter.bhud_states_pos_y;
 	this._state_icon.visible = false;
 	this.addChild(this._state_icon);
 	this.refresh_states();	
@@ -3778,8 +3779,8 @@ Battle_Hud.prototype.create_states2 = function() {
 	this._states_data = [0,0,0];
 	this._stateIcons = [];
 	this._state_icon = new Sprite();
-	this._state_icon.x = this._pos_x - 20;//Moghunter.bhud_states_pos_x;
-	this._state_icon.y = this._pos_y + 75;//Moghunter.bhud_states_pos_y;
+	this._state_icon.x = this._pos_x + Moghunter.bhud_states_pos_x;
+	this._state_icon.y = this._pos_y + Moghunter.bhud_states_pos_y;
 	this._state_icon.visible = false;	
 	this.addChild(this._state_icon);
 	this.refresh_states2();	

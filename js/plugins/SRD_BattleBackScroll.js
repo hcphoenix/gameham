@@ -137,6 +137,11 @@ Game_Temp.prototype.initialize = function() {
 	this._battleBack1YSpeed = 0;
 	this._battleBack2XSpeed = 0;
 	this._battleBack2YSpeed = 0;
+	//
+	this._battleBack1XFrame = 0;
+	this._battleBack1YFrame = 0;
+	this._battleBack2XFrame = 0;
+	this._battleBack2YFrame = 0;
 };
 
 Game_Temp.prototype.hasBattleBackgroundSpeed = function(id) {
@@ -197,6 +202,16 @@ Game_Interpreter.prototype.pluginCommand = function(command, args) {
 const _Spriteset_Battle_update = Spriteset_Battle.prototype.update;
 Spriteset_Battle.prototype.update = function() {
 	_Spriteset_Battle_update.apply(this, arguments);
+
+	const shift = 3;
+	if($gameTemp.getBattleBackXSpeed(1) != 0) {
+		$gameTemp._battleBack1XFrame -= 1;
+		if($gameTemp._battleBack1XFrame <= 0) {
+			this._back1Sprite.origin.x += shift;
+			$gameTemp._battleBack1XFrame = Math.abs($gameTemp._battleBack1XSpeed);
+		}
+	}
+	/*
 	if($gameTemp.hasBattleBackgroundSpeed(1)) {
 		this._back1Sprite.origin.x += $gameTemp.getBattleBackXSpeed(1);
 		this._back1Sprite.origin.y += $gameTemp.getBattleBackYSpeed(1);
@@ -205,6 +220,7 @@ Spriteset_Battle.prototype.update = function() {
 		this._back2Sprite.origin.x += $gameTemp.getBattleBackXSpeed(2);
 		this._back2Sprite.origin.y += $gameTemp.getBattleBackYSpeed(2);
 	}
+	*/
 };
 
 })(SRD.BattleBackScroll);

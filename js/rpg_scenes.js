@@ -994,8 +994,8 @@ Scene_Menu.prototype.createCommandWindow = function() {
     this._commandWindow._index = 4;
     this.addWindow(this._commandWindow);
     
-    //this._commandWindow.addAnimation(new QueueTweenAnimation(new Point(Graphics.boxWidth, 128), new Point(1.0, 1.0), 0, 1, 0, 0));
-    //this._commandWindow.addAnimation(new QueueTweenAnimation(new Point(Graphics.boxWidth - 189, 128), new Point(1.0, 1.0), 0, 20, 2, 0));
+    this._commandWindow.addAnimation(new QueueTweenAnimation(new Point(0, -144), new Point(1.0, 1.0), 0, 1, 0, 0));
+    this._commandWindow.addAnimation(new QueueTweenAnimation(new Point(0, 0), new Point(1.0, 1.0), 0, 20, 2, 0));
 };
 
 Scene_Menu.prototype.createGoldWindow = function() {
@@ -1003,8 +1003,8 @@ Scene_Menu.prototype.createGoldWindow = function() {
     this._goldWindow.y = Graphics.boxHeight - this._goldWindow.height;
     this.addWindow(this._goldWindow);
 
-    this._goldWindow.addAnimation(new QueueTweenAnimation(new Point(Graphics.boxWidth - 291, -150), new Point(1.0, 1.0), 0, 1, 0, 0));
-    this._goldWindow.addAnimation(new QueueTweenAnimation(new Point(Graphics.boxWidth - 291, -3), new Point(1.0, 1.0), 0, 20, 2, 0));
+    this._goldWindow.addAnimation(new QueueTweenAnimation(new Point(Graphics.boxWidth - 291, -144), new Point(1.0, 1.0), 0, 1, 0, 0));
+    this._goldWindow.addAnimation(new QueueTweenAnimation(new Point(Graphics.boxWidth - 291, 0), new Point(1.0, 1.0), 0, 20, 2, 0));
 };
 
 Scene_Menu.prototype.createStatusWindow = function() {
