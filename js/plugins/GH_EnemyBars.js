@@ -54,9 +54,12 @@ var GH_EnemyBars = GH_EnemyBars || {};
     };
 
     Enemy_Bar.prototype.SetupSprites = function() {
+        // load images
         this._bar_front_img = ImageManager.loadBarBitmap(this._prop+"_bar_front");
         this._bar_back_img = ImageManager.loadBarBitmap(this._prop+"_bar_back");
+        this._numbers_img = ImageManager.loadBarBitmap("numbers");
 
+        // create new sprites
         this._back_bar = new Sprite(this._bar_back_img);
         this._back_bar.anchor.set(0.5, 0.5);
         this.addChild(this._back_bar);
@@ -64,6 +67,16 @@ var GH_EnemyBars = GH_EnemyBars || {};
         this._front_bar = new Sprite(this._bar_front_img);
         this._front_bar.anchor.set(0.5, 0.5);
         this.addChild(this._front_bar);
+
+        // support up to 3 digits
+        this._text_sprites = [];
+        for(let i = 0; i < 3; i++) {
+            let text_sprite = new Sprite(this._numbers_img);
+            text_sprite.anchor.set(0.5, 0.5);
+            text_sprite.opacity = 0;
+            this.addChild(text_sprite);
+            this._text_sprites[i] = text_sprite;
+        }
     }
 
     Enemy_Bar.prototype.SetPosition = function(dir) {
@@ -92,8 +105,21 @@ var GH_EnemyBars = GH_EnemyBars || {};
 
     Enemy_Bar.prototype.setText = function() {
         let cur = this._enemy["_"+this._prop];
-        numbers = Math.abs(cur).toString().split("");
+        let numbers = Math.abs(cur).toString().split("").reverse();
+        let count = numbers.length;
 
+        for(let i = 0; i < 3; i++) {
+            let sprite = this._text_sprites[i];
+            if(i < count) {
+                sprite.opacity = 255;
+                let w = sprite._bitmap.width / 10;
+                let h = sprite._bitmap.height;
+                sprite.setFrame(w * Number(numbers[i]), 0, w, h);
+                sprite.x = i * w;
+            } else {
+                sprite.opacity = 0;
+            }
+        }
         // This part is kinda hard im tired bye
     }
 
