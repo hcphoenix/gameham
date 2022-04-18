@@ -2467,7 +2467,7 @@ Spriteset_Battle.prototype.createBattleField = function() {
 };
 
 Spriteset_Battle.prototype.createBattleback = function() {
-    var margin = 32;
+    var margin = 0;
     var x = -this._battleField.x - margin;
     var y = -this._battleField.y - margin;
     var width = Graphics.width + margin * 2;

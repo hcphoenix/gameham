@@ -110,7 +110,7 @@ var GameHam = GameHam || {};
   var Game_Battler_prototype_refresh = Game_Battler.prototype.refresh;
   Game_Battler.prototype.refresh = function() {
     Game_Battler_prototype_refresh.call(this);
-    if (this.hp === 0 && !this._jacob_says_im_dead) {
+    if (!this.isEnemy() && this.hp === 0 && !this._jacob_says_im_dead) {
       this._jacob_says_im_dead = true;
       GameHam.displayBattleText(this._name + " perished in battle", 70);
       if($gameParty.allMembers().length > 1) {
