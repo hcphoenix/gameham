@@ -233,10 +233,10 @@
         "flashScope": 0,
         "frame": 0,
         "se": {
-          "name": "cancel",
+          "name": "Damage3",
           "pan": 0,
           "pitch": 100,
-          "volume": 90
+          "volume": 85
         }
       },
       {
@@ -5054,7 +5054,7 @@
         ]
       ]
     ],
-    "name": "_peck_NS",
+    "name": "_peck",
     "position": 1,
     "timings": [
       {
@@ -5080,6 +5080,23 @@
         "flashScope": 1,
         "frame": 3,
         "se": null
+      },
+      {
+        "flashColor": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "flashDuration": 5,
+        "flashScope": 0,
+        "frame": 2,
+        "se": {
+          "name": "Damage3",
+          "pan": 0,
+          "pitch": 100,
+          "volume": 75
+        }
       }
     ]
   },

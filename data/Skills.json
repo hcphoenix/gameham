@@ -2,7 +2,7 @@
   null,
   {
     "id": 1,
-    "animationId": -1,
+    "animationId": 1,
     "damage": {
       "critical": false,
       "elementId": -1,
@@ -355,7 +355,7 @@
       },
       {
         "code": 44,
-        "dataId": 21,
+        "dataId": 22,
         "value1": 1,
         "value2": 0
       }
@@ -366,7 +366,7 @@
     "message2": "",
     "mpCost": 0,
     "name": "SCAN",
-    "note": "<Before Eval>\nif (target.isEnemy()) {\n  GameHam.printScanMessage(target);\n}\n</Before Eval>",
+    "note": "<Before Eval>\n$gameVariables.setValue(12, target);\n</Before Eval>",
     "occasion": 0,
     "repeats": 1,
     "requiredWtypeId1": 0,

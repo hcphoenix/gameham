@@ -3105,6 +3105,33 @@
     "id": 21,
     "list": [
       {
+        "code": 0,
+        "indent": 0,
+        "parameters": []
+      }
+    ],
+    "name": "",
+    "switchId": 1,
+    "trigger": 0
+  },
+  {
+    "id": 22,
+    "list": [
+      {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "GameHam.printScanMessage($gameVariables.value(12));"
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 0,
+        "parameters": [
+          1
+        ]
+      },
+      {
         "code": 355,
         "indent": 0,
         "parameters": [
@@ -3117,20 +3144,7 @@
         "parameters": []
       }
     ],
-    "name": "Reset Text",
-    "switchId": 1,
-    "trigger": 0
-  },
-  {
-    "id": 22,
-    "list": [
-      {
-        "code": 0,
-        "indent": 0,
-        "parameters": []
-      }
-    ],
-    "name": "",
+    "name": "Scan",
     "switchId": 1,
     "trigger": 0
   },

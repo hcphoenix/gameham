@@ -669,9 +669,9 @@ Window_Base.prototype.refreshDimmerBitmap = function() {
         var c1 = this.dimColor1();
         var c2 = this.dimColor2();
         bitmap.resize(w, h);
-        bitmap.gradientFillRect(0, 0, w, m, c2, c1, true);
+        //bitmap.gradientFillRect(0, 0, w, m, c2, c1, true);
         bitmap.fillRect(0, m, w, h - m * 2, c1);
-        bitmap.gradientFillRect(0, h - m, w, m, c1, c2, true);
+        //bitmap.gradientFillRect(0, h - m, w, m, c1, c2, true);
         this._dimmerSprite.setFrame(0, 0, w, h);
     }
 };

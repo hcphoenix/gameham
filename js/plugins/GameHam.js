@@ -224,27 +224,31 @@ var GameHam = GameHam || {};
       return GameHam.dOC.call(this, skill, wx, wy, dw);
   };
 
+  GameHam.DataManager_isDatabaseLoaded = DataManager.isDatabaseLoaded;
+  DataManager.isDatabaseLoaded = function() {
+    if (!GameHam.DataManager_isDatabaseLoaded.call(this)) return false;
+    if (!GameHam._loaded_scan_bio) {
+      //this.processStealNotetags1($dataEnemies);
+      let exp = /<(?:BIO: )>/i;
+      GameHam._loaded_scan_bio = true;
+    }
+    return true;
+  };
+
   GameHam.printScanMessage = function(target) {
-    $gameSystem._messageRows = 12;
+    $gameSystem._messageRows = 8;
     $gameMessage.setPositionType(1);
+    $gameMessage.setBackground(1);
     var id = target._enemyId;
 
     var text = '\\TS[0]' + target.name() + '\n';
-    text += '\\>\\px[9]\\c[23]' + (target.mhp - target.hp) + '/' + target.mhp;
-    text += ' \\c[0]Fear';
-    text += '\\px[90]\\c[4]Exposure:\\c[23] ' + (target.mmp - target.mp);
-    text += '/' + target.mmp;
-    text += '\\px[90]\\c[4]Hatred:\\c[23] ' + target.tp;
+    text += `\\px[30]\\I[64] \\c[23]${target.atk} \\c[0]Aggression`;
+    text += `\\px[30]\\I[65] \\c[23]${target.def} \\c[4]Chutzpah`;
+    text += `\\px[30]\\I[68] \\c[23]${target.agi} \\c[4]Speed`;
     text += '\n';
-    text += '\\px[90]\\I[64]\\c[23] ' + target.atk + '\\c[0]Aggression';
-    text += '\\px[90]\\I[65] \\c[4]Chutzpah:\\c[23] ' + target.def;
-    text += '\n';
-    text += '\\px[90]\\I[66] \\c[4]Ascetism:\\c[23]      ' + target.mat;
-    text += '\\px[90]\\I[68] \\c[4]Speed:\\c[23]    ' + target.agi;
-    text += '\n';
-    text += '\\px[45]\\I[70] \\c[4]Dodge:\\c[23] ' + (target.eva * 100) + '%';
-    text += '\\px[45]\\I[71] \\c[4]Aim:\\c[23] ' + (target.hit * 100) + '%';
-    text += '\\px[45]\\I[72] \\c[4]Cool:\\c[23] ' + (target.cri * 100) + '%';
+    text += `\\px[30]\\I[70] \\c[23]${target.eva * 100}% \\c[4]Dodge`;
+    text += `\\px[81]\\I[71] \\c[23]${target.hit * 100}% \\c[4]Aim`;
+    text += `\\px[60]\\I[72] \\c[23]${target.cri * 100}% \\c[4]Cool`;
     $gameMessage.add(text);
   
     var weakness = '';
@@ -268,17 +272,17 @@ var GameHam = GameHam || {};
     if (weakness === '') weakness = '\\c[18]nothing';
     if (resist === '') resist = '\\c[18]nothing';
     if (immune === '') immune = '\\c[18]nothing';
-    if (absorb === '') absorb = '\\c[18]nothing';
-    weakness = '\\c[4]Weak to\\c[1] ' + weakness + '\n';
-    resist = '\\c[4]Resists\\c[1] ' + resist + '\n';
-    immune = '\\c[4]Immune to\\c[1] ' + immune + '\n';
-    absorb = '\\c[4]Absorbs\\c[1] ' + absorb;
-    text = weakness + resist + immune + '\\c[0]';
+    weakness = `\\c[4]Weak to\\c[1] ${weakness}, `;
+    resist = `\\c[4]Resists\\c[1] ${resist}, `;
+    immune = `\\c[4]Immune to\\c[1] ${immune}`;
+    text = weakness + resist + immune + '\\c[0]\\n';
     $gameMessage.add(text);
 
     target.stealableItems().filter(i => !i.isStolen).forEach(item => {
-      $gameMessage.add('\\ii[' + item.id + ']');
+      $gameMessage.add(`\\ii[${item.id}]`);
     });
+
+    $gameSystem.setWindowskin('Window');
   };
 
   GameHam.ChangeDiceFace = function (newFace) {

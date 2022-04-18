@@ -235,46 +235,46 @@
       "volume": 20
     },
     {
-      "name": "sharpen",
+      "name": "",
       "pan": 0,
       "pitch": 100,
       "volume": 10
     },
     {
-      "name": "cancel",
+      "name": "",
       "pan": 0,
       "pitch": 100,
       "volume": 90
     },
     {
-      "name": "cancel",
+      "name": "",
       "pan": 0,
       "pitch": 100,
       "volume": 90
     },
     {
-      "name": "cancel",
+      "name": "",
       "pan": 0,
       "pitch": 100,
       "volume": 90
     },
     {
-      "name": "cancel",
+      "name": "",
       "pan": 0,
       "pitch": 100,
       "volume": 90
     },
     {
-      "name": "cancel",
+      "name": "",
       "pan": 0,
       "pitch": 100,
       "volume": 90
     },
     {
-      "name": "cassowary scream",
+      "name": "cool3",
       "pan": 0,
-      "pitch": 100,
-      "volume": 35
+      "pitch": 50,
+      "volume": 90
     },
     {
       "name": "bird up",
@@ -289,10 +289,10 @@
       "volume": 90
     },
     {
-      "name": "change",
+      "name": "Evasion1",
       "pan": 0,
       "pitch": 100,
-      "volume": 90
+      "volume": 85
     },
     {
       "name": "change",
@@ -524,7 +524,7 @@
     "starvationList",
     "newBirdLevel",
     "cassHate",
-    "",
+    "lastTarget",
     "",
     "",
     "",
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 58629108,
+  "versionId": 57808160,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

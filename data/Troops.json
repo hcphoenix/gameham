@@ -63,6 +63,16 @@
             ]
           },
           {
+            "code": 313,
+            "indent": 0,
+            "parameters": [
+              0,
+              0,
+              0,
+              39
+            ]
+          },
+          {
             "code": 342,
             "indent": 0,
             "parameters": [
@@ -70,98 +80,6 @@
               0,
               0,
               10
-            ]
-          },
-          {
-            "code": 313,
-            "indent": 0,
-            "parameters": [
-              0,
-              0,
-              0,
-              39
-            ]
-          },
-          {
-            "code": 0,
-            "indent": 0,
-            "parameters": []
-          }
-        ],
-        "span": 0
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "members": [
-      {
-        "enemyId": 1,
-        "x": 405,
-        "y": 408,
-        "hidden": false
-      },
-      {
-        "enemyId": 1,
-        "x": 675,
-        "y": 444,
-        "hidden": false
-      }
-    ],
-    "name": "Slime*2 <back1-speed: 1, 0>",
-    "pages": [
-      {
-        "conditions": {
-          "actorHp": 50,
-          "actorId": 1,
-          "actorValid": false,
-          "enemyHp": 50,
-          "enemyIndex": 0,
-          "enemyValid": false,
-          "switchId": 1,
-          "switchValid": false,
-          "turnA": 0,
-          "turnB": 0,
-          "turnEnding": false,
-          "turnValid": true
-        },
-        "list": [
-          {
-            "code": 333,
-            "indent": 0,
-            "parameters": [
-              0,
-              0,
-              32
-            ]
-          },
-          {
-            "code": 333,
-            "indent": 0,
-            "parameters": [
-              -1,
-              0,
-              27
-            ]
-          },
-          {
-            "code": 313,
-            "indent": 0,
-            "parameters": [
-              0,
-              0,
-              0,
-              27
-            ]
-          },
-          {
-            "code": 313,
-            "indent": 0,
-            "parameters": [
-              0,
-              0,
-              0,
-              39
             ]
           },
           {
@@ -183,9 +101,40 @@
               1,
               2,
               11,
-              0
+              1
             ]
           },
+          {
+            "code": 0,
+            "indent": 0,
+            "parameters": []
+          }
+        ],
+        "span": 0
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "members": [],
+    "name": "",
+    "pages": [
+      {
+        "conditions": {
+          "actorHp": 50,
+          "actorId": 1,
+          "actorValid": false,
+          "enemyHp": 50,
+          "enemyIndex": 0,
+          "enemyValid": false,
+          "switchId": 1,
+          "switchValid": false,
+          "turnA": 0,
+          "turnB": 0,
+          "turnEnding": false,
+          "turnValid": false
+        },
+        "list": [
           {
             "code": 0,
             "indent": 0,
