@@ -2879,7 +2879,7 @@ Battle_Hud.prototype.update_dif = function(value,real_value,speed) {
 //==============================
 Battle_Hud.prototype.refresh_meter = function(sprite,value,value_max,type) {
 	var ch = sprite.bitmap.height / 2;
-    var meter_rate = sprite.bitmap.width * value / value_max;
+    var meter_rate = GameHam.roundPixel(sprite.bitmap.width * value / value_max);
 	sprite.setFrame(0,type * ch, meter_rate, ch);
 };
 

@@ -109,8 +109,8 @@ var GH_EnemyBars = GH_EnemyBars || {};
         // example: _hp / _mhp
         let fillAmount = this._enemy["_"+this._prop] / this._max;
         if (this._invert) fillAmount = 1 - fillAmount;
-        this._front_bar.setFrame(0, h * (1 - fillAmount), w, h * fillAmount);
-        this._front_bar.y = h/2 * (1 - fillAmount);
+        this._front_bar.setFrame(0, GameHam.roundPixel(h * (1 - fillAmount)), w, h * fillAmount);
+        this._front_bar.y = GameHam.roundPixel(h/2 * (1 - fillAmount));
     }
 
     Enemy_Bar.prototype.setText = function() {

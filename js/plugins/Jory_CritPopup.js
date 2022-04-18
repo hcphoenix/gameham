@@ -22,11 +22,13 @@ Sprite_Damage.prototype.setup = function(target) {
     }
     if (result.critical) {
         this.createCrit(); // My Added line to Yanfly's Function
+        Sprite_Damage.playSting();
         this.setupCriticalEffect();
+        $gameScreen.startFlash([255,255,255,128],10);
     }
 };
     
-    //My Function that draws the Critical graphic
+//draws the Critical graphic
 Sprite_Damage.prototype.createCrit = function() {
     var w = this.digitWidth();
     var h = this.digitHeight();
@@ -35,3 +37,8 @@ Sprite_Damage.prototype.createCrit = function() {
     sprite.anchor.y = 2;
     sprite.dy = 0;
 }; 
+
+Sprite_Damage.playSting = function() {
+    let sting = ['cool1','cool2','cool3'].pick();
+    AudioManager.playSe({name: sting, pan: 0, pitch: 100, volume: 80});
+}

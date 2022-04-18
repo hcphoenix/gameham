@@ -10,6 +10,10 @@ var GameHam = GameHam || {};
 (function (_) { 
   "use strict";
 
+  Array.prototype.pick = function () {
+    return this[Math.floor((Math.random()*this.length))];
+  }
+
   GameHam.randomIntFromInterval = function(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
@@ -356,6 +360,10 @@ var GameHam = GameHam || {};
     let classIds = $gameParty.members().map(m => m._classId);
     return GameHam.MapSkills.filter((_, c) => classIds.contains(c)).map(s=> s.name);
   };
+
+  GameHam.roundPixel = function(n) {
+    return Math.round(n/3.0) * 3;
+  }
 
   GameHam.ShowMapSkillMenu = function () {
     $gameMessage.add("Use a map skill before rolling?");
