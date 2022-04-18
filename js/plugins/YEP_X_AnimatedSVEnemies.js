@@ -2184,7 +2184,7 @@ Game_Enemy.prototype.sideviewShadowScaleY = function() {
 };
 
 Game_Enemy.prototype.spriteScaleX = function() {
-    if (this.hasSVBattler()) return this.enemy().spriteScaleX * -1;
+    //if (this.hasSVBattler()) return this.enemy().spriteScaleX * -1;
     return this.enemy().spriteScaleX;
 };
 

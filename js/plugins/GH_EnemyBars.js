@@ -17,10 +17,12 @@ var GH_EnemyBars = GH_EnemyBars || {};
     Sprite_Enemy.prototype.initialize = function (battler) {
         _.Sprite_Enemy_prototype_initialize.call(this, battler);
 
-        let hp_bar = new Enemy_Bar(this, "hp", "left");
-        let mp_bar = new Enemy_Bar(this, "mp", "right");
+        let hp_bar = new Enemy_Bar(this, "hp", this._enemy.mhp, -48, true);
+        let tp_bar = new Enemy_Bar(this, "tp", this._enemy.maxTp(), 0, false);
+        let mp_bar = new Enemy_Bar(this, "mp", this._enemy.mmp, 48, true);
 
         this.addChild(hp_bar);
+        this.addChild(tp_bar);
         this.addChild(mp_bar);
     };
 
@@ -39,16 +41,21 @@ var GH_EnemyBars = GH_EnemyBars || {};
     // Enemy bar constructor takes
     // enemySprite - enemy battler sprite this is attached to
     // prop - battler property to track ie hp, mp, tp
+    // max - what is the max size of the bar
     // pos - which side of the enemy to display on ie left right
-    Enemy_Bar.prototype.initialize = function(enemySprite, prop, pos) {
+    // invert - invert fill amount
+    Enemy_Bar.prototype.initialize = function(enemySprite, prop, max, x, invert) {
         Sprite_Base.prototype.initialize.call(this);
         
         this._enemySprite = enemySprite;
         this._enemy = enemySprite._enemy;
         this._prop = prop;
-        this._pos = pos;
+        this._max = max;
+        this.x = x;
+        this.y = 25;
+        this._invert = invert;
         
-        this.SetPosition(this._pos);
+        //this.SetPosition(this._pos);
         this.SetupSprites();
         this.setFill();
     };
@@ -79,6 +86,7 @@ var GH_EnemyBars = GH_EnemyBars || {};
         }
     }
 
+    /*
     Enemy_Bar.prototype.SetPosition = function(dir) {
         //let w = this._enemySprite._mainSprite.width;
         //let h = this._enemySprite._mainSprite.height;
@@ -87,8 +95,9 @@ var GH_EnemyBars = GH_EnemyBars || {};
         //(w / 3) * (dir == 'left' ? -1 : 1);
         this.x = 25 * (dir == 'left' ? -1 : 1);
         this.y = 25;
-        this._positionSet = true;
+        //this._positionSet = true;
     }
+    */
 
     Enemy_Bar.prototype.setFill = function() {
         if(!this._enemySprite.visible) {
@@ -98,24 +107,25 @@ var GH_EnemyBars = GH_EnemyBars || {};
         let w = this._front_bar._bitmap.width;
         let h = this._front_bar._bitmap.height;
         // example: _hp / _mhp
-        let fillAmount = this._enemy["_"+this._prop] / this._enemy["m"+this._prop];
+        let fillAmount = this._enemy["_"+this._prop] / this._max;
+        if (this._invert) fillAmount = 1 - fillAmount;
         this._front_bar.setFrame(0, h * (1 - fillAmount), w, h * fillAmount);
         this._front_bar.y = h/2 * (1 - fillAmount);
     }
 
     Enemy_Bar.prototype.setText = function() {
         let cur = this._enemy["_"+this._prop];
-        let numbers = Math.abs(cur).toString().split("").reverse();
+        let numbers = Math.abs(cur).toString().split("");
         let count = numbers.length;
 
         for(let i = 0; i < 3; i++) {
             let sprite = this._text_sprites[i];
-            if(i < count) {
+            if(i < count && this._enemy.states().map(s => s.id).includes(Yanfly.Steal.scanStateId)) {
                 sprite.opacity = 255;
                 let w = sprite._bitmap.width / 10;
                 let h = sprite._bitmap.height;
                 sprite.setFrame(w * Number(numbers[i]), 0, w, h);
-                sprite.x = i * w;
+                sprite.x = (i * w) - ((count - 1) * w)/2; //hacky math to center gauge text
             } else {
                 sprite.opacity = 0;
             }

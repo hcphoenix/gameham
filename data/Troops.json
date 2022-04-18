@@ -10,9 +10,9 @@
         "hidden": false
       },
       {
-        "enemyId": 1,
+        "enemyId": 6,
         "x": 534,
-        "y": 408,
+        "y": 415,
         "hidden": false
       }
     ],
@@ -60,6 +60,16 @@
               0,
               0,
               27
+            ]
+          },
+          {
+            "code": 342,
+            "indent": 0,
+            "parameters": [
+              1,
+              0,
+              0,
+              10
             ]
           },
           {

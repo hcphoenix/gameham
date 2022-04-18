@@ -3515,7 +3515,7 @@ Battle_Hud.prototype.update_tp = function() {
    	    }
 		else {	
             this.refresh_meter(this._tp_meter_red,1,1,1);
-            this.refresh_meter(this._tp_meter_blue,this._battler.tp,this._battler.mtp,0);
+            this.refresh_meter(this._tp_meter_blue,this._battler.tp,this._battler.maxTp(),0);
             
             /*
 			if (this.need_refresh_parameter(2)) {
