@@ -228,9 +228,17 @@ var GameHam = GameHam || {};
   DataManager.isDatabaseLoaded = function() {
     if (!GameHam.DataManager_isDatabaseLoaded.call(this)) return false;
     if (!GameHam._loaded_scan_bio) {
-      //this.processStealNotetags1($dataEnemies);
-      let exp = /<(?:BIO: )>/i;
-      GameHam._loaded_scan_bio = true;
+        let group = $dataEnemies;
+        let exp = /<(?:BIO: )(.+)>/i;
+        for (var n = 1; n < group.length; n++) {
+            var notedata = group[n].note;
+            
+            if(notedata.match(exp)) {
+                let bio = RegExp.$1;
+                group[n]._bio = bio;
+            }
+        }
+        GameHam._loaded_scan_bio = true;
     }
     return true;
   };
