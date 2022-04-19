@@ -395,7 +395,6 @@ Window_Base.prototype.drawInvSlot = function(x, y, width, align = 'right'){
 	let total = String($gameParty.totalInvSize());
 	let invmax = String($gameParty.invMax());
 	let txt = total + "/" + invmax;
-	console.log(invmax);
 	let colorId = Number(Theo.LINV.Params['nearMaxColor']);
 	if ($gameParty.isNearingMax()){
 		this.changeTextColor(this.textColor(colorId));

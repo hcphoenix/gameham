@@ -228,14 +228,13 @@ var GameHam = GameHam || {};
   DataManager.isDatabaseLoaded = function() {
     if (!GameHam.DataManager_isDatabaseLoaded.call(this)) return false;
     if (!GameHam._loaded_scan_bio) {
-        let group = $dataEnemies;
         let exp = /<(?:BIO: )(.+)>/i;
-        for (var n = 1; n < group.length; n++) {
-            var notedata = group[n].note;
+        for (var n = 1; n < $dataEnemies.length; n++) {
+            var notedata = $dataEnemies[n].note;
             
             if(notedata.match(exp)) {
                 let bio = RegExp.$1;
-                group[n]._bio = bio;
+                $dataEnemies[n].bio = bio;
             }
         }
         GameHam._loaded_scan_bio = true;
@@ -244,16 +243,19 @@ var GameHam = GameHam || {};
   };
 
   GameHam.printScanMessage = function(target) {
-    $gameSystem._messageRows = 8;
-    $gameMessage.setPositionType(1);
+    $gameSystem._messageRows = 20;
+    $gameMessage.setPositionType(0);
     $gameMessage.setBackground(1);
-    var id = target._enemyId;
 
-    var text = '\\TS[0]' + target.name() + '\n';
+    console.log(target);
+    var text = '\\TS[0]<WordWrap>';
+    //there's a bug with WordWrap where colors are cleared after each space so we have to get stupid
+    target.name().toUpperCase().split(' ').forEach(e => text += `\\c[63]${e} `);
+    text += `<br>\\c[0]${$dataEnemies[target._enemyId].bio}<br>`;
     text += `\\px[30]\\I[64] \\c[23]${target.atk} \\c[0]Aggression`;
     text += `\\px[30]\\I[65] \\c[23]${target.def} \\c[4]Chutzpah`;
     text += `\\px[30]\\I[68] \\c[23]${target.agi} \\c[4]Speed`;
-    text += '\n';
+    text += '<br>';
     text += `\\px[30]\\I[70] \\c[23]${target.eva * 100}% \\c[4]Dodge`;
     text += `\\px[81]\\I[71] \\c[23]${target.hit * 100}% \\c[4]Aim`;
     text += `\\px[60]\\I[72] \\c[23]${target.cri * 100}% \\c[4]Cool`;
@@ -280,14 +282,15 @@ var GameHam = GameHam || {};
     if (weakness === '') weakness = '\\c[18]nothing';
     if (resist === '') resist = '\\c[18]nothing';
     if (immune === '') immune = '\\c[18]nothing';
-    weakness = `\\c[4]Weak to\\c[1] ${weakness}, `;
-    resist = `\\c[4]Resists\\c[1] ${resist}, `;
-    immune = `\\c[4]Immune to\\c[1] ${immune}`;
-    text = weakness + resist + immune + '\\c[0]\\n';
+    weakness = `\\c[4]Weak to \\c[1]${weakness}, `;
+    resist = `\\c[4]Resists \\c[1]${resist}, `;
+    immune = `\\c[4]Immune to \\c[1]${immune}`;
+    text = weakness + resist + immune + '\\c[0]<br>';
     $gameMessage.add(text);
 
+    $gameMessage.add('The target is carrying:<br>')
     target.stealableItems().filter(i => !i.isStolen).forEach(item => {
-      $gameMessage.add(`\\ii[${item.id}]`);
+      $gameMessage.add(`\\ii[${item.id}]<br>`);
     });
 
     $gameSystem.setWindowskin('Window');

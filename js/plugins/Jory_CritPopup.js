@@ -40,5 +40,5 @@ Sprite_Damage.prototype.createCrit = function() {
 
 Sprite_Damage.playSting = function() {
     let sting = ['cool1','cool2','cool3'].pick();
-    AudioManager.playSe({name: sting, pan: 0, pitch: 100, volume: 80});
+    AudioManager.playSe({name: sting, pan: 0, pitch: 100, volume: 100});
 }

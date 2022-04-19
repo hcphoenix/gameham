@@ -3118,6 +3118,157 @@
     "id": 22,
     "list": [
       {
+        "code": 243,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 241,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "A Real an Normal Pigeon",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "Electrocardiogram",
+            "volume": 45,
+            "pitch": 50,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "Battle1",
+            "volume": 50,
+            "pitch": 50,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "Saint1",
+            "volume": 25,
+            "pitch": 50,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "let spriteset = SceneManager._scene._spriteset;"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "let b = $gameVariables.value(12).battler();"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "const x = b._homeX;"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "const y = b._homeY;"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "const amp = 30;"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "const wave = 160;"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "const speed = 0.02;"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "spriteset.createGuardShockwaveAt(x, y, amp, wave, speed);"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "BATTLEBACK 3 ADD: battlebacks1, hacker"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "BATTLEBACK 4 ADD: battlebacks2, hacker"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "BATTLEBACK 3 SCROLL SPEED X: +8"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "BATTLEBACK 3 SCROLL SPEED Y: +8"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "BATTLEBACK 4 SCROLL SPEED X: -4"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "BATTLEBACK 4 SCROLL SPEED Y: -4"
+        ]
+      },
+      {
         "code": 355,
         "indent": 0,
         "parameters": [
@@ -3136,6 +3287,37 @@
         "indent": 0,
         "parameters": [
           "$gameSystem._messageRows = 4;"
+        ]
+      },
+      {
+        "code": 244,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "BATTLEBACK 3 FADE OUT: 20"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "BATTLEBACK 4 FADE OUT: 20"
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "Fire1",
+            "volume": 65,
+            "pitch": 50,
+            "pan": 0
+          }
         ]
       },
       {

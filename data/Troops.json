@@ -16,7 +16,7 @@
         "hidden": false
       }
     ],
-    "name": "Slime*2 <back1-speed: 6, 0>",
+    "name": "Slime*2",
     "pages": [
       {
         "conditions": {
@@ -35,12 +35,22 @@
         },
         "list": [
           {
-            "code": 333,
+            "code": 241,
             "indent": 0,
             "parameters": [
-              0,
-              0,
-              32
+              {
+                "name": "Southbound Scramble",
+                "volume": 90,
+                "pitch": 100,
+                "pan": 0
+              }
+            ]
+          },
+          {
+            "code": 356,
+            "indent": 0,
+            "parameters": [
+              "BATTLEBACK 1 SCROLL SPEED X: +2"
             ]
           },
           {
