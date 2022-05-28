@@ -769,7 +769,7 @@
     "minTurns": 3,
     "motion": 0,
     "name": "Law-Abiding",
-    "note": "<Help Description>\nThey love property rights.\nLowers chance to steal.\n</Help Description>",
+    "note": "They love property rights.\nLowers chance to steal.",
     "overlay": 0,
     "priority": 50,
     "removeAtBattleEnd": true,

@@ -7,8 +7,35 @@ var GH_KeywordTooltips = GH_KeywordTooltips || {};
 (function (_) { 
     "use strict";
 
+    
+    const deepClone = (obj, objArr) => {
+        if (obj === null) return null;
+
+        for(let o in objArr) {
+            if(obj === o) {
+                return o;
+            }
+        }
+
+        let clone = Object.assign({}, obj);
+
+        objArr.push(clone);
+
+        Object.keys(clone).forEach(
+          key =>
+            (clone[key] =
+              typeof obj[key] === 'object' ? deepClone(obj[key], objArr) : obj[key])
+        );
+        if (Array.isArray(obj)) {
+          clone.length = obj.length;
+          return Array.from(clone);
+        }
+        return clone;
+      };
+    
     Scene_Battle.prototype.execute_keyword_tooltips = function() {
         SceneManager.snapForBackground();
+        $gameSystem.keyword_tooltips_cache = SceneManager._scene;
         $gameSystem.keywordTooltips();
     };
 
@@ -51,6 +78,10 @@ var GH_KeywordTooltips = GH_KeywordTooltips || {};
 
         if(Input.isTriggered("#shift")) {
             this.execute_keyword_tooltips();
+        }
+        if($gameSystem.keyword_tooltips_cache != null) {
+            SceneManager._scene = $gameSystem.keyword_tooltips_cache;
+            $gameSystem.keyword_tooltips_cache = null;
         }
     };
 

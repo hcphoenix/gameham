@@ -3800,9 +3800,9 @@ Battle_Hud.prototype.refresh_states2 = function() {
 	this._stateIcons = [];
 	var w = Window_Base._iconWidth;
 	var icons = this._battler.allIcons().slice(0,w);
-	var m = Math.min(Math.max(this._battler.allIcons().length,0),Moghunter.bhud_statesMax);
+	this._stateIconsCount = Math.min(Math.max(this._battler.allIcons().length,0),Moghunter.bhud_statesMax);
 	var align = Moghunter.bhud_statesAlign;
-	for (i = 0; i < m; i++){
+	for (i = 0; i < this._stateIconsCount; i++){
         //new Sprite_StateIcon();
         // ^ we could also have these be the cylce state icons
 		 this._stateIcons[i] = new Sprite(this._state_img);
