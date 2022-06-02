@@ -82,7 +82,54 @@ var GH_Tooltips = GH_Tooltips || {};
         }
     };
 
-   
+    // --------------------------
+    //         Window_Base
+    // Inject code to catalog anytime an icon is printed in text
+    //--------------------------
+    _.Window_Base_Init = Window_Base.prototype.initialize;
+    Window_Base.prototype.initialize = function(x, y, width, height) {
+        _.Window_Base_Init.call(this, x, y, width, height);
+        this._stateIcons = [];
+    }
+
+    _.Window_Base_DrawIcon = Window_Base.prototype.drawIcon;
+    Window_Base.prototype.drawIcon = function(iconIndex, x, y) {
+        _.Window_Base_DrawIcon.call(this, iconIndex, x, y);
+        let thisY = this.y;
+        let thisX = this.x;
+        // This is neccessary for MOG_BattleHud
+        if(this.org && this.org.length > 1) {
+            thisY = this.org[1];
+            thisX = this.org[0];
+        }
+        this._stateIcons.push({x:(thisX + x), y:(thisY + y), id: iconIndex});
+    };
+
+    // On refresh we clear the icon list
+    _.Window_Base_Refresh = Window_Base.prototype.refresh;
+    Window_Base.prototype.refresh = function() {
+        _.Window_Base_Refresh.call(this);
+
+        this._stateIcons = [];
+    }
+
+    _.Window_Selectable_Refresh = Window_Selectable.prototype.refresh;
+    Window_Selectable.prototype.refresh = function() {
+        this._stateIcons = [];
+        _.Window_Selectable_Refresh.call(this);
+    }
+
+    _.Window_ItemList_Refresh = Window_ItemList.prototype.refresh;
+    Window_ItemList.prototype.refresh = function() {
+        this._stateIcons = [];
+        _.Window_ItemList_Refresh.call(this);
+    }
+    
+    _.Window_SkillList_Refresh = Window_SkillList.prototype.refresh;
+    Window_SkillList.prototype.refresh = function() {
+        this._stateIcons = [];
+        _.Window_SkillList_Refresh.call(this);
+    }
 
     //----------------------------------------------------
     //   Sprite tooltip markers can be hovered to see info
@@ -123,20 +170,68 @@ var GH_Tooltips = GH_Tooltips || {};
     Window_Tooltip.prototype = Object.create(Window_Base.prototype);
     Window_Tooltip.prototype.constructor = Window_Tooltip;
 
+
+    // Here we setup the text for each icon in the game
+    // This is cached on start and will be used by the text icons later
+    _.allIcons = {};
+    _.getTextFromIndex = function(index) {
+        let i = _.allIcons[index];
+        if(i) {
+            return i.name;
+        } else {
+            return "Not a state";
+        }
+    };
     Window_Tooltip.prototype.initialize = function() {
         Window_Base.prototype.initialize.call(this, 0, 0, 700, 120);
         
         this.visible = false;
+        this._isIconText = false;
         this.deactivate();
+        
+        // Setup tooltip text for in text icons
+        $dataStates.filter(x => x != null).forEach(s => _.allIcons[s.iconIndex] = s);
     };
 
+    _.checkIconOverlap = function(target) {
+        return (TouchInput.x > target.x + Window_Base._iconWidth / 2
+            && TouchInput.x < target.x + Window_Base._iconWidth * 1.5
+            && TouchInput.y > target.y + Window_Base._iconHeight / 2
+            && TouchInput.y < target.y + Window_Base._iconHeight * 1.5);
+    };
     Window_Tooltip.prototype.update = function() {
         Window_Base.prototype.update.call(this);
+
+        // Seperate update process for in text icons
+        // We only bother checking for the current active icon
+        if(this._isIconText) {
+            if(_.checkIconOverlap(this._target)) {
+                this.show(_.getTextFromIndex(this._target.id), this._target);
+                return;
+            } else {
+                this.hide();
+            }
+        }
+
         if(this.visible) {
             // check if we're hovering if not then hide
             if(!this._target._hovered) {
                 this.hide();
             }
+        }
+
+        // Update process to see if any new in text icons are being hovered
+        let windows = SceneManager._scene._windowLayer.children.filter(x => x.visible && x.active && x._openness > 0);
+        for(let i = 0; i < windows.length; i++) {
+            let window = windows[i];
+
+            window._stateIcons.forEach(icon => {
+                if(_.checkIconOverlap(icon)) {
+                    this.show(_.getTextFromIndex(icon.id), icon);
+                    this._isIconText = true;
+                    return;
+                }
+            });
         }
     };
 
@@ -147,7 +242,7 @@ var GH_Tooltips = GH_Tooltips || {};
         this.x = TouchInput.x;
         if(this.x + this.width > Graphics.boxWidth) this.x = Graphics.boxWidth - this.width;
         this.y = TouchInput.y;
-        if(this.x + this.width > Graphics.boxHeight) this.y = Graphics.boxHeight - this.height;
+        if(this.y + this.height > Graphics.boxHeight) this.y = Graphics.boxHeight - this.height;
     
         if(this._target != target) {
             this.contents.clear();
@@ -159,6 +254,7 @@ var GH_Tooltips = GH_Tooltips || {};
     Window_Tooltip.prototype.hide = function() {
         this.visible = false;
         this.active = false;
+        this._isIconText = false;
         // if you're not on the window hide this
     };
 
