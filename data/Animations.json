@@ -45848,6 +45848,40 @@
         "flashScope": 2,
         "frame": 4,
         "se": null
+      },
+      {
+        "flashColor": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "flashDuration": 5,
+        "flashScope": 0,
+        "frame": 0,
+        "se": {
+          "name": "Fire1",
+          "pan": 0,
+          "pitch": 100,
+          "volume": 90
+        }
+      },
+      {
+        "flashColor": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "flashDuration": 5,
+        "flashScope": 0,
+        "frame": 4,
+        "se": {
+          "name": "Darkness3",
+          "pan": 0,
+          "pitch": 100,
+          "volume": 50
+        }
       }
     ]
   },
