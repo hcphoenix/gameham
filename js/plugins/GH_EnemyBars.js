@@ -21,7 +21,9 @@ function Enemy_Bar() {
     _.Sprite_Enemy_prototype_initialize = Sprite_Enemy.prototype.initialize;
     Sprite_Enemy.prototype.initialize = function (battler) {
         _.Sprite_Enemy_prototype_initialize.call(this, battler);
-
+        if (SceneManager._scene.constructor !== Scene_Battle) {
+            return;
+        }
         let hp_bar = new Enemy_Bar(this, "hp", this._enemy.mhp, -48, true);
         let tp_bar = new Enemy_Bar(this, "tp", this._enemy.maxTp(), 0, false);
         let mp_bar = new Enemy_Bar(this, "mp", this._enemy.mmp, 48, true);

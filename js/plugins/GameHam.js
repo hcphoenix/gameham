@@ -477,10 +477,6 @@ var GameHam = GameHam || {};
     return classIds.map(id => GameHam.MapSkills[id]);
   };
 
-  GameHam.roundPixel = function(n) {
-    return Math.round(n/3.0) * 3;
-  }
-
   GameHam.ShowMapSkillMenu = function () {
     $gameMessage.add("Use a map skill before rolling?");
     let mapSkills = GameHam.GetPartyMapSkills();
@@ -505,8 +501,38 @@ var GameHam = GameHam || {};
         // We want to set a game variable to the return code to be handled on the rpgmaker side
         $gameVariables.setValue(30, ret);
     });
-}
-  
+  };
+
+  GameHam.roundPixel = function(n) {
+    return Math.round(n/3.0) * 3;
+  };
+
+  // Tile Ids for each space type
+  // that the player can land on
+  GameHam.Spaces = {
+    CYOA: 4,
+  }
+
+  GameHam.HandleSpace = function() {
+    let currentTile = $gameMap.tileId($gamePlayer.x, $gamePlayer.y, 3);
+    switch (currentTile) {
+      case GameHam.Spaces.CYOA: {
+        // Do the frame and stuff:
+        $gameScreen.showPicture(15, "cyoa_frame", 0, 15, 15, 100, 100, 255, 0);
+
+        // This is subject to change but lets say
+        // any event over 100 is elegable
+        let events = $dataCommonEvents.filter((event, id) => id > 99 && event.name != "");
+        let event = events.pick();
+        $gameTemp.reserveCommonEvent(event.id);
+      }
+    }
+  };
+
+  GameHam.EndCYOA = function() {
+    $gameScreen.erasePicture(15);
+    //unfade i guess
+  }
 
 })(GameHam); 
 
