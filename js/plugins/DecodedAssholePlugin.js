@@ -143,13 +143,13 @@ Sprite_StateOverlay['prototype']['isMouseOverStates'] = function () {
     _0x5e23f1 += this['anchor']['y'] * this['height'];
     return this['isFullyVisible']() && _0x2b1ea8 >= 0x0 && _0x5e23f1 >= 0x0 && _0x2b1ea8 < this['width'] && _0x5e23f1 < this['height'];
 };
-Sprite_StateOverlay['prototype']['canvasToLocalX'] = function (_0x3a0a22) {
-    var _0xe7d273 = this;
-    while (_0xe7d273) {
-        _0x3a0a22 -= _0xe7d273['x'];
-        _0xe7d273 = _0xe7d273['parent'];
+Sprite_StateOverlay['prototype']['canvasToLocalX'] = function (loc) {
+    var cur = this;
+    while (cur) {
+        loc -= cur.x;
+        cur = cur.parent;
     }
-    return _0x3a0a22;
+    return loc;
 };
 Sprite_StateOverlay['prototype']['canvasToLocalY'] = function (_0x129528) {
     var _0x1a00cd = this;

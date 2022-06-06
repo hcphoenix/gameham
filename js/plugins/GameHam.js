@@ -247,7 +247,6 @@ var GameHam = GameHam || {};
     $gameMessage.setPositionType(0);
     $gameMessage.setBackground(1);
 
-    console.log(target);
     var text = '\\TS[0]<WordWrap>';
     //there's a bug with WordWrap where colors are cleared after each space so we have to get stupid
     target.name().toUpperCase().split(' ').forEach(e => text += `\\c[63]${e} `);

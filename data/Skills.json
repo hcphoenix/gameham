@@ -35,7 +35,7 @@
     "stypeId": 0,
     "successRate": 100,
     "tpCost": 0,
-    "tpGain": 10
+    "tpGain": 1
   },
   {
     "id": 2,
@@ -65,7 +65,7 @@
     "stypeId": 1,
     "successRate": 100,
     "tpCost": 0,
-    "tpGain": 10
+    "tpGain": 1
   },
   {
     "id": 3,
@@ -236,7 +236,7 @@
     "stypeId": 0,
     "successRate": 100,
     "tpCost": 0,
-    "tpGain": 10
+    "tpGain": 1
   },
   {
     "id": 8,
@@ -303,7 +303,7 @@
     "stypeId": 1,
     "successRate": 100,
     "tpCost": 0,
-    "tpGain": 10
+    "tpGain": 1
   },
   {
     "id": 10,
@@ -2479,7 +2479,7 @@
     "stypeId": 1,
     "successRate": 100,
     "tpCost": 25,
-    "tpGain": 5
+    "tpGain": 0
   },
   {
     "id": 73,
@@ -2546,7 +2546,7 @@
     "stypeId": 1,
     "successRate": 100,
     "tpCost": 0,
-    "tpGain": 10
+    "tpGain": 1
   },
   {
     "id": 75,

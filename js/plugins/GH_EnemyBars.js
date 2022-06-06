@@ -4,6 +4,11 @@ Imported["GH_EnemyBars"] = true;
 var GH_EnemyBars = GH_EnemyBars || {};
 
 
+// Expose Enemy Bars for other plugins
+function Enemy_Bar() {
+    this.initialize.apply(this, arguments);
+}
+
 (function (_) { 
     "use strict";
     
@@ -30,14 +35,10 @@ var GH_EnemyBars = GH_EnemyBars || {};
     //        Enemy_Bar
     // Defines the enemy bar type which is a sprite with
     // a custom update function
-    // ------------------------
-    function Enemy_Bar() {
-        this.initialize.apply(this, arguments);
-    }
-    
+    // ------------------------ 
     Enemy_Bar.prototype = Object.create(Sprite_Base.prototype);
-    Enemy_Bar.prototype.constructor = Sprite_Battler;
-    
+    Enemy_Bar.prototype.constructor = Enemy_Bar;
+
     // Enemy bar constructor takes
     // enemySprite - enemy battler sprite this is attached to
     // prop - battler property to track ie hp, mp, tp
@@ -139,6 +140,7 @@ var GH_EnemyBars = GH_EnemyBars || {};
         //if(this._enemySprite._mainSprite._bitmap) 
         this.setFill();
         this.setText();
+        // probably cache the current value and dont update if it hasnt changed
     }
 
 
