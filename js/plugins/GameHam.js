@@ -295,20 +295,126 @@ var GameHam = GameHam || {};
     $gameSystem.setWindowskin('Window');
   };
 
-  GameHam.ChangeDiceFace = function (newFace) {
-    let dice = $gameScreen._dice_picture_3d_array[0][0][0];
-
-    // this is part of an animation handled in update pictures
-    let offset = 25; // distance to travel down
-    dice._returnY = dice._y; // place to return to
-    dice.show("dice_"+newFace, 0, dice._x, dice._y - offset, 100, 100, 255, 0);
-    for(let i = 1; i <= 5; i++) {
-        $gameScreen._pictures[i]._opacity = 0;
-    }
-    $gameScreen._pictures[6] = dice;
-    $gameScreen._pictures[6]._opacity = 255;
-    GameHam._dice = dice;
+  // DICE STUFF
+  function Dice_Picture() {
+    this.initialize.apply(this, arguments);
   };
+
+  Dice_Picture.prototype = Object.create(Game_Picture.prototype);
+  Dice_Picture.prototype.constructor = Dice_Picture;
+
+  Dice_Picture.prototype.initialize = function () {
+    Game_Picture.prototype.initialize.call(this);
+    this._rolling = false;
+    this._roll_frame = 0;
+    this._changing = false;
+    // This could be shrunk to a single number if I was good at math
+    this._throw_counter = 0;
+    this._bounces = 0;
+    this._throwing = false;
+  };
+
+  Dice_Picture.prototype.animationSpeed = function () {
+    return 3;
+  };
+
+  Dice_Picture.prototype.update = function () {
+    Game_Picture.prototype.update.call(this);
+
+    if(this._rolling) {
+      this._name = "DiceRoll_" + (1 + Math.floor(this._roll_frame / this.animationSpeed()));
+      this._roll_frame = (this._roll_frame + 1) % (3 * this.animationSpeed());
+    }
+
+    if(this._throwing) {
+      if(this._throw_counter <= -20) {
+        this._bounces--;
+        if(this._bounces <= 0) {
+          this._rolling = false;
+          this._name = "Dice_" + this._face_num;
+          this._throwing = false;
+        } else {
+          this._throw_counter = 20;
+        }
+      }
+      
+      let h = Math.abs(this._throw_counter * ( this._throw_counter > 0 ? this._bounces + 1 : this._bounces));
+
+      this._y = this._y_org - (h * (h/2)) / 25;
+
+      this._throw_counter--;
+    }
+
+    if(this._changing) {
+      this._y+=5;
+      if (this._y_org <= this._y) {
+        this._y = this._y_org;
+        this._changing = false;
+        this._rolling = false;
+        this._name = "Dice_" + this._face_num;
+      }
+    }
+  };
+
+  GameHam.GetDice = function() {
+    if(GameHam._dice) {
+      return $gameScreen._pictures[GameHam._dice];
+    } else {
+      return null;
+    }
+  };
+
+  GameHam.ShowDice = function (x, y, rolling, face_num) {
+    let dice = GameHam.GetDice();
+    if(!dice) {
+      dice = new Dice_Picture();
+      GameHam._dice = $gameScreen._pictures.length;
+      $gameScreen._pictures[GameHam._dice] = dice;
+    }
+
+    dice._rolling = rolling;
+    dice._x = x;
+    dice._y = y;
+    dice._y_org = dice._y;
+    dice._opacity = 255;
+
+    if(!rolling) {
+      GameHam.ChangeDiceFace(face_num);
+    }
+  };
+
+  GameHam.ChangeDiceFace = function (face_num) {
+    let dice = GameHam.GetDice();
+    if(dice) {
+      if(this._face_num == face_num) return;
+      dice._face_num = face_num;
+      dice._changing = true;
+      dice._rolling = true;
+      dice._y -= 50;
+    }
+  };
+
+  GameHam.RemoveDice = function () {
+    let dice = GameHam.GetDice();
+    if(dice) {
+      $gameScreen._pictures[GameHam._dice] = null;
+      GameHam._dice = null;
+    }
+  }
+
+  GameHam.ThrowDice = function () {
+    let dice = GameHam.GetDice();
+    if(dice) {
+      dice._rolling = true;
+      dice._throw_counter = 20;
+      dice._throwing = true;
+      dice._bounces = 3;
+      dice._face_num = Math.floor(Math.random() * 6) + 1;
+      $gameVariables._data[25] = dice._face_num;
+    }
+
+    return 0;
+  }
 
   let _GH_Game_Screen_updatePictures = Game_Screen.prototype.updatePictures;
   Game_Screen.prototype.updatePictures = function() {
@@ -323,56 +429,52 @@ var GameHam = GameHam || {};
 
   // Indexed by classid
   GameHam.MapSkills = [
+      {}, // Empty for zero
       { // 1 - Pigeon
         name: "Pigeon Skill",
-        help_text: "Placeholder help text",
+        help_text: "Placeholder help text for Pigeon Skill",
         common_event_id: -1,
       },
       { // 2 -  Seagull
         name: "Seagull Skill",
-        help_text: "Placeholder help text",
+        help_text: "Placeholder help text for Seagull Skill",
         common_event_id: -1,
       },
       { // 3 - Raven
         name: "Raven Skill",
-        help_text: "Placeholder help text",
+        help_text: "Placeholder help text for Raven Skill",
         common_event_id: -1,
       },
       { // 4 - Vulture
         name: "Vulture Skill",
-        help_text: "Placeholder help text",
-        common_event_id: -1,
-      },
-      { // 3 - Raven
-        name: "Raven Skill",
-        help_text: "Placeholder help text",
+        help_text: "Placeholder help text for Vulture Skill",
         common_event_id: -1,
       },
       { // 5 - Turkey
         name: "Turkey Skill",
-        help_text: "Placeholder help text",
+        help_text: "Placeholder help text for Turkey Skill",
         common_event_id: -1,
       },
       { // 6 - Parrot
         name: "Parrot Skill",
-        help_text: "Placeholder help text",
+        help_text: "Placeholder help text for Parrot Skill",
         common_event_id: -1,
       },
       { // 7 - Penguin
         name: "Penguin Skill",
-        help_text: "Placeholder help text",
+        help_text: "Placeholder help text for Penguin Skill",
         common_event_id: -1,
       },
       { // 8 - Cassowary
         name: "Cassowary Skill",
-        help_text: "Placeholder help text",
+        help_text: "Placeholder help text for Cassowary Skill",
         common_event_id: -1,
       },
   ];
 
   GameHam.GetPartyMapSkills = function () {
     let classIds = $gameParty.members().map(m => m._classId);
-    return GameHam.MapSkills.filter((_, c) => classIds.contains(c)).map(s=> s.name);
+    return classIds.map(id => GameHam.MapSkills[id]);
   };
 
   GameHam.roundPixel = function(n) {
@@ -381,8 +483,9 @@ var GameHam = GameHam || {};
 
   GameHam.ShowMapSkillMenu = function () {
     $gameMessage.add("Use a map skill before rolling?");
-    $gameMessage.setChoices(["No", ...GameHam.GetPartyMapSkills(), "Cancel"], 0, 1);
-    
+    let mapSkills = GameHam.GetPartyMapSkills();
+    $gameMessage.setChoices(["No", ...mapSkills.map(s => s.name), "Cancel"], 0, 1);
+    Eli.HelpWindows.parameters.choice.contents = ["Roll normally without using any skills.", ...mapSkills.map(s => s.help_text), "Return to the main menu"].map(t => {return {text: t};});
     // This might need to change depending on how you want to reserve common events haley
     $gameMessage.setChoiceCallback(function(n) {
         // n == 0 means we do nothing since we just roll next

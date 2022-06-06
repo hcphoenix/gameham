@@ -1018,6 +1018,11 @@ Scene_Menu.prototype.createStatusWindow = function() {
 
 Scene_Menu.prototype.commandRoll = function() {
     SceneManager.pop();
+
+    // I dont understand why this needs to be called twice
+    // There's some kind of bug or behavior I dont understand with the picture database
+    GameHam.ShowDice(582, 93, true, null);
+    GameHam.ShowDice(582, 93, true, null);
     $gameTemp.reserveCommonEvent(6);
 }
 

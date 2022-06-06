@@ -220,7 +220,7 @@
         "code": 355,
         "indent": 2,
         "parameters": [
-          "$gameScreen.removeDice(0)"
+          "GameHam.RemoveDice()"
         ]
       },
       {
@@ -294,7 +294,7 @@
         "code": 355,
         "indent": 3,
         "parameters": [
-          "let remaining = $gameVariables._data[22] / 2;"
+          "let remaining = Math.floor($gameVariables._data[22] / 2);"
         ]
       },
       {
@@ -305,10 +305,17 @@
         ]
       },
       {
+        "code": 655,
+        "indent": 3,
+        "parameters": [
+          "console.log(remaining);"
+        ]
+      },
+      {
         "code": 230,
         "indent": 3,
         "parameters": [
-          10
+          15
         ]
       },
       {
@@ -635,19 +642,19 @@
     "id": 6,
     "list": [
       {
-        "code": 121,
-        "indent": 0,
-        "parameters": [
-          2,
-          2,
-          0
-        ]
-      },
-      {
         "code": 355,
         "indent": 0,
         "parameters": [
           "GameHam.ShowMapSkillMenu()"
+        ]
+      },
+      {
+        "code": 121,
+        "indent": 0,
+        "parameters": [
+          10,
+          10,
+          0
         ]
       },
       {
@@ -695,16 +702,9 @@
         "code": 121,
         "indent": 0,
         "parameters": [
-          2,
-          2,
+          10,
+          10,
           1
-        ]
-      },
-      {
-        "code": 230,
-        "indent": 0,
-        "parameters": [
-          10
         ]
       },
       {
@@ -722,7 +722,7 @@
         "code": 355,
         "indent": 1,
         "parameters": [
-          "$gameScreen.removeDice(0)"
+          "GameHam.RemoveDice()"
         ]
       },
       {
@@ -759,24 +759,17 @@
         "parameters": []
       },
       {
-        "code": 356,
+        "code": 355,
         "indent": 0,
         "parameters": [
-          "showDice 300 300 0 0"
-        ]
-      },
-      {
-        "code": 356,
-        "indent": 0,
-        "parameters": [
-          "throwDice"
+          "GameHam.ThrowDice()"
         ]
       },
       {
         "code": 230,
         "indent": 0,
         "parameters": [
-          60
+          90
         ]
       },
       {
