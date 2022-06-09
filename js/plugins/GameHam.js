@@ -6,12 +6,22 @@ Imported["GameHam"] = true;
 
 var GameHam = GameHam || {};
 
+GameHam.Season = 'Spring';
+GameHam.Branch = '';
 
 (function (_) { 
   "use strict";
 
   Array.prototype.pick = function () {
     return this[Math.floor((Math.random()*this.length))];
+  }
+
+  Array.prototype.pickMany = function (x) {
+    let arr = [];
+    for(let i = 0; i < x; i++) {
+      arr.push(this.pick());
+    }
+    return arr;
   }
 
   GameHam.randomIntFromInterval = function(min, max) { // min and max included 
@@ -500,6 +510,9 @@ var GameHam = GameHam || {};
 
         // We want to set a game variable to the return code to be handled on the rpgmaker side
         $gameVariables.setValue(30, ret);
+
+        // Clear choice help 
+        Eli.HelpWindows.parameters.choice.contents = [];
     });
   };
 
@@ -511,6 +524,9 @@ var GameHam = GameHam || {};
   // that the player can land on
   GameHam.Spaces = {
     CYOA: 4,
+    SHOP: 12,
+    WEATHER: 28,
+    INN: 20,
   }
 
   GameHam.HandleSpace = function() {
@@ -525,6 +541,22 @@ var GameHam = GameHam || {};
         let events = $dataCommonEvents.filter((event, id) => id > 99 && event.name != "");
         let event = events.pick();
         $gameTemp.reserveCommonEvent(event.id);
+        break;
+      }
+      case GameHam.Spaces.SHOP: {
+        GameHam.HandleShop();
+        break;
+      }
+      case GameHam.Spaces.WEATHER: {
+        // Determine the area and add a weather effect
+        const weatherCommonEvent = 97;
+        $gameTemp.reserveCommonEvent(weatherCommonEvent);
+        break;
+      }
+      case GameHam.Spaces.INN: {
+        const innCommonEvent = 51;
+        $gameTemp.reserveCommonEvent(innCommonEvent);
+        break;
       }
     }
   };
@@ -532,6 +564,127 @@ var GameHam = GameHam || {};
   GameHam.EndCYOA = function() {
     $gameScreen.erasePicture(15);
     //unfade i guess
+  }
+
+  GameHam.ShopItems = [
+    {
+      id: 1,
+      price: 20,
+      type: "item",
+      condition: (merchant) => merchant.name == "Doug Horsehead"
+    },
+    {
+      id: 2,
+      type: "item",
+      price: 0,
+    },
+    {
+      id: 1,
+      type: "weapon",
+      price: 100,
+    },
+    {
+      id: 4,
+      type: "item",
+      price: 100,
+    },
+  ];
+
+  GameHam.ShopKeepers = [
+    {
+      name: "Doug Horsehead",
+      face_id: 0,
+      messages: [
+        "Hey whats up sluts welcome to Doug Horseheads \nbirdseed emporium where you can buy drugs for birds.\n I dont even know what that means.",
+        "Welcome back, perhaps theres a smart way to \nrecord how many times youve been here",
+      ],
+      cantAfford: "You better not be trying to cheat me.\n Come back when you have coin.",
+      farewell: "* shrill whinnying *"
+    },
+    {
+      name: "Shew'd Merchant",
+      face_id: 1,
+      messages: [
+        "Ah, come in come in. \nYou seem like a keen eyed bunch,\n take some time and browse my wares.",
+      ],
+      cantAfford: "You can't afford that!",
+      farewell: "Do make sure to come back now",
+    },
+    {
+      name: "LITERALLY HALEY",
+      face_id: 7,
+      messages: [
+        "NEED SOMETHIN?",
+      ],
+      cantAfford: ":c",
+      farewell: " * discord drops * ",
+    },
+
+  ];
+
+  // Move through the messages a shop keep has to offer
+  // IDK could be cool might not get some use, it wont do anything if theres just one message anyway
+  GameHam.SelectShopMessage = function (keeper) {
+    let num = keeper.visitedCount || 0;
+    let msg = keeper.messages[num];
+    if(num < keeper.messages.length - 1) {
+      keeper.visitedCount++;
+    }
+    return msg;
+  }
+
+  GameHam.GetShopItem = function (shopItem) {
+    let id = shopItem.id;
+    let item;
+    switch (shopItem.type) {
+      case "item": item = $dataItems[id]; break;
+      case "weapon": item = $dataWeapons[id]; break;
+      case "armor": item = $dataArmors[id]; break;
+    }
+    return item;
+  }
+
+  GameHam.Temp = {};
+  GameHam.HandleShop = function (shopKeeper) {
+    $gameScreen.showPicture(16, "shop_frame", 0, 15, 15, 100, 100, 255, 0);
+  
+    shopKeeper = shopKeeper || GameHam.ShopKeepers.pick();
+
+    let shopItems = GameHam.ShopItems.filter(s => s.condition ? s.condition(shopKeeper) : true).pickMany(3);
+    GameHam.Temp.shopItems = shopItems;
+    GameHam.Temp.shopKeeper = shopKeeper;
+    GameHam.Temp.shopMessage = GameHam.SelectShopMessage(shopKeeper);
+    $gameTemp.reserveCommonEvent(52);
+  }
+
+  GameHam.RunShopLoop = function () {
+    let shopItems = GameHam.Temp.shopItems;
+    let shopKeeper = GameHam.Temp.shopKeeper;
+    let shopMessage = GameHam.Temp.shopMessage;
+
+    $gameMessage.add(shopMessage);
+    $gameMessage.setFaceImage("Merchants", shopKeeper.face_id);
+    $gameMessage.setChoices([...shopItems.map(s => GameHam.GetShopItem(s).name), "I'm good thanks."], 0, 1);
+    // set help text
+    // Eli.HelpWindows.parameters.choice.contents = 
+    $gameMessage.setChoiceCallback(function(n) {
+      if(n < shopItems.length) {
+        // Give the player item if they can afford it
+        if(shopItems[n].price < $gameParty._gold) {
+          $gameParty._gold -= shopItems[n].price;
+          let item = GameHam.GetShopItem(shopItems[n]);
+          $gameParty.gainItem(item, 1);
+        } else {
+          // if the player cant afford loop the screen until
+          // they choose something they can or leave
+          GameHam.Temp.shopMessage = shopKeeper.cantAfford;
+          $gameTemp.reserveCommonEvent(52);
+          return;
+        }
+      }
+      // shop exit event
+      $gameTemp.reserveCommonEvent(53);
+    });
   }
 
 })(GameHam); 

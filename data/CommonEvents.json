@@ -3759,12 +3759,79 @@
     "id": 51,
     "list": [
       {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "Nature",
+          2,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "Hale and well met traveler."
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "I am the photo realistic chicken who runs this humble tavern."
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "Stop here and roost your weary wings. "
+        ]
+      },
+      {
+        "code": 311,
+        "indent": 0,
+        "parameters": [
+          0,
+          0,
+          0,
+          0,
+          999,
+          false
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "Yayyy you got your heatlh back or whatever, can we add like a fade to black and have the screen glow a little like in the videogames i like adn also a little jingle that would be cool"
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "also probably we want to have this be a series of events so that the inn keeper is different each time idk"
+        ]
+      },
+      {
         "code": 0,
         "indent": 0,
         "parameters": []
       }
     ],
-    "name": "",
+    "name": "Inn",
     "switchId": 1,
     "trigger": 0
   },
@@ -3772,12 +3839,19 @@
     "id": 52,
     "list": [
       {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "GameHam.RunShopLoop();"
+        ]
+      },
+      {
         "code": 0,
         "indent": 0,
         "parameters": []
       }
     ],
-    "name": "",
+    "name": "RunShopLoop",
     "switchId": 1,
     "trigger": 0
   },
@@ -3785,12 +3859,82 @@
     "id": 53,
     "list": [
       {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "$gameMessage.add(GameHam.Temp.shopKeeper.farewell);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "// clear shop frame"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "$gameScreen.erasePicture(16);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "// Clear choice help "
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "Eli.HelpWindows.parameters.choice.contents = [];"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          ""
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "// Clear temp"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "GameHam.Temp.shopItems = null;"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "GameHam.Temp.shopKeeper = null;"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "GameHam.Temp.shopMessage = null;"
+        ]
+      },
+      {
         "code": 0,
         "indent": 0,
         "parameters": []
       }
     ],
-    "name": "",
+    "name": "EndShopLoop",
     "switchId": 1,
     "trigger": 0
   },
