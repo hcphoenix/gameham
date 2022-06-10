@@ -3746,6 +3746,214 @@
     "id": 50,
     "list": [
       {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          12,
+          "GameHam.Season == 'Spring'"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 1,
+        "parameters": [
+          "weather : 0 : 1 : 40 : 100 : 0 : weather_LEAF"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "A sweet scent permiates the air"
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "and flowers begin to blow around you..."
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "Your party begins to grow sleepy..."
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "(idk this kinda sucks but think of something better later)"
+        ]
+      },
+      {
+        "code": 313,
+        "indent": 1,
+        "parameters": [
+          0,
+          0,
+          0,
+          10
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 1,
+        "parameters": [
+          12,
+          "GameHam.Season == 'Summer'"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 2,
+        "parameters": [
+          "weather : 0 : 1 : 40 : 100 : 0 : weather_LEAF"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          12,
+          "GameHam.Season == 'Fall'"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 3,
+        "parameters": [
+          "weather : 0 : 1 : 40 : 100 : 0 : weather_LEAF"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 3,
+        "parameters": [
+          12,
+          "GameHam.Season == 'Winter'"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 4,
+        "parameters": [
+          "weather : 0 : 1 : 40 : 100 : 0 : weather_LEAF"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 4,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 4,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
         "code": 0,
         "indent": 0,
         "parameters": []

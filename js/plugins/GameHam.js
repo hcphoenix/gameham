@@ -549,7 +549,7 @@ GameHam.Branch = '';
       }
       case GameHam.Spaces.WEATHER: {
         // Determine the area and add a weather effect
-        const weatherCommonEvent = 97;
+        const weatherCommonEvent = 50;
         $gameTemp.reserveCommonEvent(weatherCommonEvent);
         break;
       }
