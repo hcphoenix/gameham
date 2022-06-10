@@ -2481,7 +2481,8 @@ Window_CTBIcon.prototype.updateDestinationX = function() {
 };
 
 Window_CTBIcon.prototype.updateDestinationLeftAlign = function() {
-    this._destinationX = 0;
+    // Adjust offset of Y position of icon list
+    this._destinationX = -5;
 };
 
 Window_CTBIcon.prototype.updateDestinationCenterAlign = function() {
@@ -2521,6 +2522,11 @@ Window_CTBIcon.prototype.updateDestinationGoingRight = function(index) {
     this._destinationX += index * constant;
     if (index === BattleManager.ctbTurnOrder().length - 1) {
       this._destinationX += constant / 2;
+      // hide the battler if its a player
+      // and its their turn
+      if(!this._battler.isEnemy()) {
+        this._destinationX = 400;
+      }
     }
 };
 
@@ -2536,7 +2542,8 @@ Window_CTBIcon.prototype.updatePositionX = function() {
 Window_CTBIcon.prototype.destinationY = function() {
     // use formula
     var code = Yanfly.Param.CTBTurnPosY;
-    var value = 0;
+    // Adjust offset of X position of icon list
+    var value = -15;
     /*try {
         value = Number(eval(code));
     } catch (e) {
@@ -2590,6 +2597,14 @@ Window_CTBIcon.prototype.updateOpacity = function() {
     if (this._battler) {
       var index = BattleManager.ctbTurnOrder().reverse().indexOf(this._battler);
       if (index < 0) return this.reduceOpacity();
+
+      if (index === BattleManager.ctbTurnOrder().length - 1) {
+        // hide the battler if its a player
+        // and its their turn
+        if(!this._battler.isEnemy()) {
+            return this.reduceOpacity();
+        }
+      }
     }
     this.contentsOpacity += rate;
 };

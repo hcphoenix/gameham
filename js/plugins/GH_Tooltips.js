@@ -18,6 +18,23 @@ var GH_Tooltips = GH_Tooltips || {};
         return note || "No description";
     };
 
+    _.findWindowDepth = function (obj) {
+        if(obj == null || obj.parent == null) return null;
+
+        if(obj.parent.constructor.toString().contains("Window")) {
+            let c = obj.parent.parent.children;
+            for(let i = 0; i < c.length; i++) {
+                if(c[i] == obj.parent) {
+                    return i;
+                }
+            }
+
+            return null;
+        } else {
+            return _.findWindowDepth(parent);
+        }
+    };
+
     _.Sprite_StateIcon_update = Sprite_StateIcon.prototype.update;
     Sprite_StateIcon.prototype.update = function() {
         _.Sprite_StateIcon_update.call(this);
