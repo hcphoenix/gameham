@@ -84,11 +84,11 @@ var $plugins =
 {"name":"GH_Birdle","status":true,"description":"(v1.0) Minigame based on the game flappy bird","parameters":{}},
 {"name":"GH_Nasu","status":true,"description":"(v1.0) Minigame based on the game flappy bird","parameters":{}},
 {"name":"GH_Tooltips","status":true,"description":"","parameters":{}},
+{"name":"GH_Driving","status":true,"description":"(v1.0) Driving minigame","parameters":{}},
 {"name":"------------------------","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
 {"name":"-- QUARANTINE","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
 {"name":"YEP_RegionRestrictions","status":false,"description":"v1.04 Use regions to block out Events and/or the player from\nbeing able to venture into those spots.","parameters":{"Player Restrict":"1","Event Restrict":"0","All Restrict":"0","Player Allow":"0","Event Allow":"0","All Allow":"0"}},
 {"name":"GALV_BattleActionInfo","status":false,"description":"Displays information when targeting an enemy with info such as crit chance, damage, etc.","parameters":{"Include Evade":"true","Windowskin Opacity":"0","Peek Height":"0","Box Dimensions":"500,260","Default Enemy Indicator":"battleAttackInfoArrow1,96,165","Default Ally Indicator":"battleAttackInfoArrow2,96,165","Min Damage Position":"170,30,75,center","Max Damage Position":"260,30,75,center","Damage Heal Color":"#68ff64","Crit Chance Position":"170,90,160,center,14,#ffb7a0","Skill Name Position":"100,115,300,center","Hit Chance Position":"170,70,160,center,18","Icon Position":"250,155,center,12","Add Icon":"0","Remove Icon":"0"}},
 {"name":"SRD_HUDMaker","status":false,"description":"Allows developers to create their own map-based HUD through an in-game GUI window!","parameters":{"Active Updating":"true","Show During Events":"hide","Map Global Condition":"","Battle Global Condition":"","Disable Delete Key":"true"}},
-{"name":"MOG_X_MoreHudFaces","status":false,"description":"v1.2.2 An extension plugin for Moghunter's Battle, Actor, and Party HUDs with options to change the face graphics.","parameters":{}},
-{"name":"SRD_BattleBackScroll","status":false,"description":"Allows developers to add movement to the two backgrounds within battles.","parameters":{}}
+{"name":"MOG_X_MoreHudFaces","status":false,"description":"v1.2.2 An extension plugin for Moghunter's Battle, Actor, and Party HUDs with options to change the face graphics.","parameters":{}}
 ];
