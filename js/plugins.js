@@ -84,6 +84,7 @@ var $plugins =
 {"name":"GH_Birdle","status":true,"description":"(v1.0) Minigame based on the game flappy bird","parameters":{}},
 {"name":"GH_Nasu","status":true,"description":"(v1.0) Minigame based on the game flappy bird","parameters":{}},
 {"name":"GH_Tooltips","status":true,"description":"","parameters":{}},
+{"name":"GH_Snake","status":true,"description":"(v1.0) snake minigame","parameters":{}},
 {"name":"GH_Driving","status":true,"description":"(v1.0) Driving minigame","parameters":{}},
 {"name":"------------------------","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
 {"name":"-- QUARANTINE","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
