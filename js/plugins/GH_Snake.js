@@ -152,10 +152,10 @@ Scene_Snake.prototype.createPlayerSprite = function() {
     this._player_sprite = new Sprite_SnakePlayer();
     this._player_sprite.opacity = 255;
     // this._player_sprite.bitmap = this._player_img;
-    this._player_sprite.anchor.x = 0.5;
-    this._player_sprite.anchor.y = 0.5; 
-    this._player_sprite.x = Graphics.boxWidth / 2;
-    this._player_sprite.y = Graphics.boxHeight / 2;
+    this._player_sprite.anchor.x = 0;
+    this._player_sprite.anchor.y = 0; 
+    this._player_sprite.x = 0;
+    this._player_sprite.y = 0;
 
     this._spriteHudBase.addChild(this._player_sprite);
 };
@@ -243,14 +243,130 @@ Sprite_SnakePlayer.prototype.constructor = Sprite_SnakePlayer;
 Sprite_SnakePlayer.prototype.initialize = function() {
     Sprite_Base.prototype.initialize.call(this);
 
-    this._head = new Snake_Segment(1);
+    this._head = new Snake_Segment(Snake_Segment.RandomActorId());
     this.addChild(this._head);
-    this._head.x = 200;
-    
-    this._head.y = 200;
-    console.log(this._head);
+    this._head.x = 0;
+    this._head.y = 0;
+    this._head.dir = 2;
+    this.dir = 2;
 
+    let startingSegs = 3;
+    for(let i = startingSegs - 1; i > 0; i--) {
+        let seg = new Snake_Segment(Snake_Segment.RandomActorId());
+        this.addChild(seg);
+        this.AttachSeg(seg);
+        seg.x = this._head.x - 48 * i;
+        seg.y = this._head.y;
+        seg.dir = 2;
+    }
+
+    this.spawnFruit();
 };
+
+Sprite_SnakePlayer.prototype.spawnFruit = function() {
+    this.fruit = new Snake_Segment(Snake_Segment.RandomActorId());
+    this.addChild(this.fruit);
+    this.fruit._active = false;
+
+    let col = true;
+    while(col) {
+        col = false;
+        this.fruit.x = GameHam.randomIntFromInterval(1, Graphics.boxWidth / 48) * 48 - 48;
+        this.fruit.y = GameHam.randomIntFromInterval(1, Graphics.boxHeight / 48) * 48 - 48;
+        const checkChildCol = (s) => {
+            if(s.x == this.fruit.x && s.y == this.fruit.y) {
+                return true;
+            }
+            if(s.snakeChild) {
+                checkChildCol(s.snakeChild);
+            }
+            return false;
+        }
+
+        col = checkChildCol(this._head);
+    }
+    console.log(this.fruit);
+}
+
+Snake_Segment.RandomActorId = function() {
+    actor = {};
+    while(!actor.characterName) {
+        // actor interval can be adjusted
+        // this should go to a plugin setting
+        let id = GameHam.randomIntFromInterval(1,24);
+        actor = $dataActors[id];
+    }
+    return actor.id;
+}
+
+Sprite_SnakePlayer.setActiveChildren = (seg, active) => {
+    if(seg.snakeChild) {
+        Sprite_SnakePlayer.setActiveChildren(seg.snakeChild, active);
+        seg.snakeChild._active = active;
+    }
+}
+
+Sprite_SnakePlayer.prototype.checkCollision = function() {
+    pos = {x: this._head.x, y: this._head.y};
+    Scene_Snake.AddDir(pos, this.dir, 48);
+
+    const check = (s) => {
+        if (s.x == pos.x && s.y == pos.y) {
+            return true;
+        } else if(s.snakeChild) {
+            return check(s.snakeChild);
+        }
+        return false;
+    };
+
+    if(pos.x < 0 || pos.x > Graphics.boxWidth || pos.y > Graphics.boxHeight || pos.y < 0) {
+        // death
+        Snake_Segment.speed = 0;
+    }
+
+    if(check(this._head)) {
+        // death
+        Snake_Segment.speed = 0;
+    }
+
+    // check food
+    if(this.fruit.x == this._head.x && this.fruit.y == this._head.y) {
+        this.fruit.dir = this._head.dir;
+        this._head.dir = this.dir;
+
+        this.AttachSeg(this.fruit);
+        this.spawnFruit();
+        Sprite_SnakePlayer.setActiveChildren(this._head, false);
+
+        this.eaten = true;
+        if(Snake_Segment.speed<4){
+            Snake_Segment.speed+=0.5;
+        } else{
+            Snake_Segment.speed+=1;
+        }
+
+        //console.log(Snake_Segment.speed);
+    } else {
+        this.updateChildrenDir();
+    }
+}
+
+Sprite_SnakePlayer.prototype.updateChildrenDir = function() {
+    const setChildrenDir = (s, dir) => {
+        if(s.snakeChild) {
+            setChildrenDir(s.snakeChild, s.dir);
+        }
+        s.dir = dir;
+    }
+
+    setChildrenDir(this._head, this.dir);
+}
+
+Sprite_SnakePlayer.prototype.AttachSeg = function(seg) {
+    seg.snakeChild = this._head.snakeChild;
+
+    this._head.snakeChild = seg;
+}
 
 Sprite_SnakePlayer.prototype.update = function() {
     Sprite_Base.prototype.update.call(this);
@@ -259,20 +375,77 @@ Sprite_SnakePlayer.prototype.update = function() {
 	if($gameSystem._snake_phase !== 1) return;
 
     this.updateInput();
+
+    if(this._head.x % 48 == 0 && this._head.y % 48 == 0) {        
+        // eaten
+        if(this.eaten) {
+            Sprite_SnakePlayer.setActiveChildren(this._head, true);
+            this.eaten = false;
+        }
+
+        let r = [];
+        const test = (s) => {
+            r.push("x: "+ s.x + "y: " + s.y);
+            if(s.snakeChild) {
+                test(s.snakeChild, s.dir);
+            }
+        }
+
+        test(this._head);
+        if(Snake_Segment.speed > 0) console.log(r);
+
+        this.checkCollision();
+    }
 };
 
+Scene_Snake.AddDir = function(obj, dir, scale) {
+    switch(dir) {
+        case 0: {
+            let org = Math.floor(obj.y / 48);
+            obj.y+=scale;
+            if(org != Math.floor(obj.y / 48)) {
+                obj.y = Math.floor(obj.y / 48) * 48;
+            }
+            break;
+        }
+        case 1: {
+            let org = Math.ceil(obj.x / 48);
+            obj.x-=scale;
+            if(org != Math.ceil(obj.x / 48)) {
+                obj.x = Math.ceil(obj.x / 48) * 48;
+            }
+            break;
+        }
+        case 2: {
+            let org = Math.floor(obj.x / 48);
+            obj.x+=scale;
+            if(org != Math.floor(obj.x / 48)) {
+                obj.x = Math.floor(obj.x / 48) * 48;
+            }
+            break;
+        }
+        case 3: {
+            let org = Math.ceil(obj.y / 48);
+            obj.y-=scale;
+            if(org != Math.ceil(obj.y / 48)) {
+                obj.y = Math.ceil(obj.y / 48) * 48;
+            }
+            break;
+        }
+    }
+}
 
 Sprite_SnakePlayer.prototype.updateInput = function() {
     Sprite_Base.prototype.update.call(this);
 
     if(Input.isPressed("right")) {
-        this._head.x++;
-        this._head.setAnimation(0);
+        this.dir = 2;
     } else if (Input.isPressed("left")) {
-        this._head.x--;
-        this._head.setAnimation(3);
-    } else {
-       
+        this.dir = 1;
+    } else if (Input.isPressed("up")) {
+        this.dir = 3;
+    }  else if (Input.isPressed("down")) {
+        this.dir = 0;
     }
 };
 
@@ -308,12 +481,27 @@ Snake_Segment.prototype.constructor = Snake_Segment;
 Snake_Segment.prototype.initialize = function(actorIndex) {
     Sprite_Base.prototype.initialize.call(this);
     this._actorIndex = actorIndex;
-    this.bitmap = ImageManager.loadCharacter(this.actor()._characterName);
+    this.bitmap = ImageManager.loadCharacter(this.actor().characterName);
     this._animation_timer = 0;
+    this.dir = 0;
+    this.snakeChild = null;
+    this._active = true;
+
+    this.setAnimation(this.dir);
 }
+
+Snake_Segment.speed = 1;
 
 Snake_Segment.prototype.update = function() {
     Sprite_Base.prototype.update.call(this);
+
+    // only update during gameplay phase
+	if($gameSystem._snake_phase !== 1) return;
+
+    if(this._active) {
+        Scene_Snake.AddDir(this, this.dir, Snake_Segment.speed);
+        this.setAnimation(this.dir);
+    }
 
     this.updateAnimation();
 }
@@ -342,15 +530,15 @@ Snake_Segment.prototype.setAnimation = function(type) {
 }
 
 Snake_Segment.prototype.actor = function() {
-    return $gameActors.actor(this._actorIndex);
+    return $dataActors[this._actorIndex];
 };
 
 Snake_Segment.prototype.characterBlockX = function() {
-    var index = this.actor().characterIndex();
+    var index = this.actor().characterIndex;
     return index % 4 * 3;
 };
 
 Snake_Segment.prototype.characterBlockY = function() {
-    var index = this.actor().characterIndex();
+    var index = this.actor().characterIndex;
     return Math.floor(index / 4) * 4;
 };
