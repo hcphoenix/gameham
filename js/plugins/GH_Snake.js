@@ -114,7 +114,9 @@ Scene_Snake.prototype.initialize = function() {
 }
 
 Scene_Snake.prototype.load_images = function() {
-    //this._player_img = ImageManager.loadSnakeBitmap("player");
+    this._background_img = ImageManager.loadSnakeTexture("background");
+    this._sky_img = ImageManager.loadSnakeBitmap("sky");
+    this._cloud_img = ImageManager.loadSnakeTexture("cloud");
 }
 
 Scene_Snake.prototype.createDisplayObjects = function() {
@@ -128,13 +130,32 @@ Scene_Snake.prototype.createDisplayObjects = function() {
 	this.addChild(this._spriteHudBase);
 
     // Setup all sprites, the order matters for layers
+    this.createBackground();
+    this.createObjectPoolManager();
     this.createPlayerSprite();
     this.createScoreText();
-    this.createObjectPoolManager();
+}
+
+Scene_Snake.prototype.createBackground = function() {
+    //this._sky = new Sprite(this._sky_img);
+    //this._spriteField.addChild(this._sky);
+
+    this._camera = new PIXI.projection.Camera3d(); 
+    this._camera.setPlanes(100, 10, 10000, false);
+    //this._camera.position.set(Graphics.boxWidth / 2, 0);
+    this._camera.position3d.z = -50;
+    this._camera.position3d.y = 0;
+    this._camera.euler.x = Math.PI / 30;
+    this._spriteField.addChild(this._camera);
+
+    let bg = new PIXI.projection.Sprite3d();
+    this._camera.addChild(bg);
+    bg.texture = this._background_img;
+    bg.position3d.z = 30;
 }
 
 Scene_Snake.prototype.createObjectPoolManager = function() {
-    this._objectPoolManager = new Sprite_SnakeObjectPoolManager();
+    this._objectPoolManager = new Sprite_SnakeObjectPoolManager(this._camera, this._cloud_img);
     this.addChild(this._objectPoolManager);
 }
 
@@ -151,7 +172,6 @@ Scene_Snake.prototype.createScoreText = function() {
 Scene_Snake.prototype.createPlayerSprite = function() {	
     this._player_sprite = new Sprite_SnakePlayer();
     this._player_sprite.opacity = 255;
-    // this._player_sprite.bitmap = this._player_img;
     this._player_sprite.anchor.x = 0;
     this._player_sprite.anchor.y = 0; 
     this._player_sprite.x = 0;
@@ -250,6 +270,8 @@ Sprite_SnakePlayer.prototype.initialize = function() {
     this._head.dir = 2;
     this.dir = 2;
 
+    this.dT = 0;
+
     let startingSegs = 3;
     for(let i = startingSegs - 1; i > 0; i--) {
         let seg = new Snake_Segment(Snake_Segment.RandomActorId());
@@ -285,7 +307,6 @@ Sprite_SnakePlayer.prototype.spawnFruit = function() {
 
         col = checkChildCol(this._head);
     }
-    console.log(this.fruit);
 }
 
 Snake_Segment.RandomActorId = function() {
@@ -339,13 +360,16 @@ Sprite_SnakePlayer.prototype.checkCollision = function() {
         Sprite_SnakePlayer.setActiveChildren(this._head, false);
 
         this.eaten = true;
-        if(Snake_Segment.speed<4){
+        if(Snake_Segment.speed<4) {
             Snake_Segment.speed+=0.5;
-        } else{
-            Snake_Segment.speed+=1;
+        } else if(Snake_Segment.speed<6) {
+                Snake_Segment.speed+=1;
+        } else if(Snake_Segment.speed<8) {
+            Snake_Segment.speed+=2;
         }
-
-        //console.log(Snake_Segment.speed);
+        
+        // add score
+        this._score++;
     } else {
         this.updateChildrenDir();
     }
@@ -383,19 +407,13 @@ Sprite_SnakePlayer.prototype.update = function() {
             this.eaten = false;
         }
 
-        let r = [];
-        const test = (s) => {
-            r.push("x: "+ s.x + "y: " + s.y);
-            if(s.snakeChild) {
-                test(s.snakeChild, s.dir);
-            }
-        }
-
-        test(this._head);
-        if(Snake_Segment.speed > 0) console.log(r);
-
         this.checkCollision();
     }
+
+    // Update background
+    this.dT++;
+    SceneManager._scene._camera.euler.x = Math.sin(this.dT/500) / 50;
+    SceneManager._scene._camera.euler.y = Math.cos(this.dT/500) / 50;
 };
 
 Scene_Snake.AddDir = function(obj, dir, scale) {
@@ -461,12 +479,35 @@ function Sprite_SnakeObjectPoolManager() {
 Sprite_SnakeObjectPoolManager.prototype = Object.create(Sprite_Base.prototype);
 Sprite_SnakeObjectPoolManager.prototype.constructor = Sprite_SnakePlayer;
 
-Sprite_SnakeObjectPoolManager.prototype.initialize = function() {
+Sprite_SnakeObjectPoolManager.prototype.initialize = function(camera, texture) {
     Sprite_Base.prototype.initialize.call(this);
+
+    this.maxClouds = 50;
+    this.fieldSize = 5000;
+    this.clouds = [];
+    for(let i = 0; i < this.maxClouds; i++) {
+        let cloud = new PIXI.projection.Sprite3d();
+        camera.addChild(cloud);
+        cloud.texture = texture;
+        cloud.position3d.y = Math.random() * this.fieldSize - (this.fieldSize / 2);
+        cloud.position3d.x = Math.random() * this.fieldSize - (this.fieldSize / 2);
+        cloud.position3d.z = Math.random() * 5;
+        let scale = Math.random();
+        cloud.scale.x = scale;
+        cloud.scale.y = scale;
+        this.clouds.push(cloud);
+    }
 };
 
 Sprite_SnakeObjectPoolManager.prototype.update = function() {
     Sprite_Base.prototype.update.call(this);
+
+    this.clouds.forEach(cloud => {
+        cloud.position3d.x++;
+        if(cloud.position3d.x > this.fieldSize / 2) {
+            cloud.position3d.x = -this.fieldSize / 2;
+        }
+    });
 };
 
 
