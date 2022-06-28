@@ -117,6 +117,7 @@ Scene_Snake.prototype.load_images = function() {
     this._background_img = ImageManager.loadSnakeTexture("background");
     this._sky_img = ImageManager.loadSnakeBitmap("sky");
     this._cloud_img = ImageManager.loadSnakeTexture("cloud");
+    this._explosion_img = ImageManager.loadSnakeBitmap("explosion");
 }
 
 Scene_Snake.prototype.createDisplayObjects = function() {
@@ -170,7 +171,7 @@ Scene_Snake.prototype.createScoreText = function() {
 };
 
 Scene_Snake.prototype.createPlayerSprite = function() {	
-    this._player_sprite = new Sprite_SnakePlayer();
+    this._player_sprite = new Sprite_SnakePlayer(this._explosion_img);
     this._player_sprite.opacity = 255;
     this._player_sprite.anchor.x = 0;
     this._player_sprite.anchor.y = 0; 
@@ -260,9 +261,10 @@ function Sprite_SnakePlayer() {
 Sprite_SnakePlayer.prototype = Object.create(Sprite_Base.prototype);
 Sprite_SnakePlayer.prototype.constructor = Sprite_SnakePlayer;
 
-Sprite_SnakePlayer.prototype.initialize = function() {
+Sprite_SnakePlayer.prototype.initialize = function(explosion_img) {
     Sprite_Base.prototype.initialize.call(this);
 
+    this._explosion_img = explosion_img;
     this._head = new Snake_Segment(Snake_Segment.RandomActorId());
     this.addChild(this._head);
     this._head.x = 0;
@@ -327,6 +329,23 @@ Sprite_SnakePlayer.setActiveChildren = (seg, active) => {
     }
 }
 
+Sprite_SnakePlayer.prototype.death = function () {
+    if(this._dead) return;
+    const explode = (seg) => {
+        return () => {
+            let next = seg.snakeChild ? explode(seg.snakeChild) : null;
+            let e = new Snake_SpriteEffect(this._explosion_img, 1, next);
+            this.addChild(e);
+            e.x = seg.x;
+            e.y = seg.y;
+            seg.alpha = 0;
+            Snake_Segment.speed = 0;
+        }
+    }
+    explode(this._head)();
+    this._dead = true;
+}
+
 Sprite_SnakePlayer.prototype.checkCollision = function() {
     pos = {x: this._head.x, y: this._head.y};
     Scene_Snake.AddDir(pos, this.dir, 48);
@@ -340,14 +359,8 @@ Sprite_SnakePlayer.prototype.checkCollision = function() {
         return false;
     };
 
-    if(pos.x < 0 || pos.x > Graphics.boxWidth || pos.y > Graphics.boxHeight || pos.y < 0) {
-        // death
-        Snake_Segment.speed = 0;
-    }
-
     if(check(this._head)) {
-        // death
-        Snake_Segment.speed = 0;
+        this.death();
     }
 
     // check food
@@ -369,7 +382,7 @@ Sprite_SnakePlayer.prototype.checkCollision = function() {
         }
         
         // add score
-        this._score++;
+        SceneManager._scene._score++;
     } else {
         this.updateChildrenDir();
     }
@@ -399,6 +412,11 @@ Sprite_SnakePlayer.prototype.update = function() {
 	if($gameSystem._snake_phase !== 1) return;
 
     this.updateInput();
+
+    let pos = {x: this._head.x, y: this._head.y};
+    if(pos.x < 0 || pos.x > Graphics.boxWidth || pos.y > Graphics.boxHeight || pos.y < 0) {
+        this.death();
+    }
 
     if(this._head.x % 48 == 0 && this._head.y % 48 == 0) {        
         // eaten
@@ -583,3 +601,58 @@ Snake_Segment.prototype.characterBlockY = function() {
     var index = this.actor().characterIndex;
     return Math.floor(index / 4) * 4;
 };
+
+function Snake_SpriteEffect() {
+    this.initialize.apply(this, arguments);
+}
+
+Snake_SpriteEffect.prototype = Object.create(Sprite_Base.prototype);
+Snake_SpriteEffect.prototype.constructor = Snake_SpriteEffect;
+
+Snake_SpriteEffect.prototype.initialize = function(bitmap, lifetime, callback) {
+    Sprite_Base.prototype.initialize.call(this);
+    this.bitmap = bitmap;
+    this._lifetime = lifetime;
+    this._callback = callback;
+    this._animation_timer = 0;
+    this.setAnimationFrame(0);
+}
+
+Snake_SpriteEffect.prototype.update = function() {
+    Sprite_Base.prototype.update.call(this);
+
+    this.updateAnimation();
+}
+
+Snake_SpriteEffect.animationSpeed = 6;
+Snake_SpriteEffect.animationFrames = 5;
+
+Snake_SpriteEffect.prototype.updateAnimation = function() {
+    let total = Math.floor(this._animation_timer / Snake_SpriteEffect.animationSpeed);
+
+    let cur = total % Snake_SpriteEffect.animationFrames;
+    this.setAnimationFrame(cur);
+
+    if(total == Math.floor(Snake_SpriteEffect.animationFrames / 2)) {
+        // early callback for cooler chain
+        if(this._callback && !this._callback_called) {
+            this._callback();
+            this._callback_called = true;
+        }
+    }
+
+    // self removing
+    if(total >= this._lifetime * Snake_SpriteEffect.animationFrames) {
+        this.parent.removeChild(this);
+        this.alpha = 0;
+        delete this;
+    }
+
+    this._animation_timer++;
+}
+
+Snake_SpriteEffect.prototype.setAnimationFrame = function(frame) {
+    let w = 60;
+    let h = 60;
+    this.setFrame(frame * w, 0, w, h);
+}
