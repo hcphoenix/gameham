@@ -326,7 +326,7 @@
     }
   ],
   "startMapId": 7,
-  "startX": 21,
+  "startX": 20,
   "startY": 4,
   "switches": [
     "",
@@ -525,8 +525,8 @@
     "newBirdLevel",
     "cassHate",
     "lastTarget",
-    "",
-    "",
+    "troopIndex",
+    "Current Year",
     "",
     "",
     "",
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 47770622,
+  "versionId": 27448347,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
