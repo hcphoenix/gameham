@@ -173,13 +173,12 @@ Scene_DrivingMini.prototype.createFlashEffectSprite = function() {
 };
 
 Scene_DrivingMini.prototype.createPlayerSprite = function() {	
-    this._player_sprite = new Sprite_DrivingMiniPlayer(this._camera);
+    this._player_sprite = new Sprite_DrivingMiniPlayer(this._camera, this._player_img);
     this._player_sprite.opacity = 255;
-    this._player_sprite.bitmap = this._player_img;
     this._player_sprite.anchor.x = 0.5;
     this._player_sprite.anchor.y = 0.5; 
     this._player_sprite.x = Graphics.boxWidth / 2;
-    this._player_sprite.y = 500;
+    this._player_sprite.y = 320;
     //this._player_sprite.scale.x = 6;
     //this._player_sprite.scale.y = 6;
 
@@ -331,10 +330,12 @@ function Sprite_DrivingMiniPlayer() {
 Sprite_DrivingMiniPlayer.prototype = Object.create(Sprite_Base.prototype);
 Sprite_DrivingMiniPlayer.prototype.constructor = Sprite_DrivingMiniPlayer;
 
-Sprite_DrivingMiniPlayer.prototype.initialize = function(camera) {
+Sprite_DrivingMiniPlayer.prototype.initialize = function(camera, bitmap) {
     Sprite_Base.prototype.initialize.call(this);
     this._animation_frame = 0;
     this._camera = camera;
+    this.bitmap = bitmap;
+    this.setAnimation(0);
 };
 
 Sprite_DrivingMiniPlayer.prototype.update = function() {
@@ -345,7 +346,7 @@ Sprite_DrivingMiniPlayer.prototype.update = function() {
 
     this.updateInput();
 
-    //this.updateAnimation();
+    this.updateAnimation();
 };
 
 
@@ -354,16 +355,18 @@ Sprite_DrivingMiniPlayer.prototype.updateInput = function() {
 
     if(Input.isPressed("right")) {
         this._camera.position3d.x += 1;
+        this.setAnimation(1);
     } else if (Input.isPressed("left")) {
         this._camera.position3d.x -= 1;
+        this.setAnimation(2);
     } else {
-       
+        this.setAnimation(0);
     }
 };
 
 Sprite_DrivingMiniPlayer.animationSpeed = 3;
-Sprite_DrivingMiniPlayer.animationFrames = 3;
-Sprite_DrivingMiniPlayer.animationTypes = 4;
+Sprite_DrivingMiniPlayer.animationFrames = 1;
+Sprite_DrivingMiniPlayer.animationTypes = 3;
 Sprite_DrivingMiniPlayer.prototype.updateAnimation = function() {
     this._animation_frame++;
     let cur = Math.floor(this._animation_frame / Sprite_DrivingMiniPlayer.animationSpeed) % Sprite_DrivingMiniPlayer.animationFrames; 
