@@ -326,13 +326,13 @@
     }
   ],
   "startMapId": 7,
-  "startX": 20,
+  "startX": 21,
   "startY": 4,
   "switches": [
     "",
     "Player Can Move",
     "Rolling",
-    "",
+    "Can Battle",
     "",
     "KO Display",
     "",
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 27448347,
+  "versionId": 36387218,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

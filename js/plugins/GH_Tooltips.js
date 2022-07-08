@@ -93,7 +93,7 @@ var GH_Tooltips = GH_Tooltips || {};
     Enemy_Bar.prototype.update = function() {
         _.Enemy_Bar_prototype_update.call(this);
         
-        if(this._back_bar._hovered) {
+        if(SceneManager._scene._tooltip_window && this._back_bar._hovered) {
             let text = _.Enemy_Bar_Text[this._prop];
             SceneManager._scene._tooltip_window.show(text, this._back_bar);
         }
