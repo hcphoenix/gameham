@@ -353,7 +353,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "scream_kid",
+    "battlerName": "enemy_icecream-A",
     "dropItems": [
       {
         "kind": 0,
@@ -436,7 +436,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "trampoline_kid(1)",
+    "battlerName": "enemy_bounce-A",
     "dropItems": [
       {
         "kind": 0,
@@ -519,7 +519,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "businessman",
+    "battlerName": "enemy_business-A",
     "dropItems": [
       {
         "kind": 0,
@@ -602,7 +602,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "Alien",
+    "battlerName": "enemy_alien-A",
     "dropItems": [
       {
         "kind": 0,
@@ -685,7 +685,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "Hunter",
+    "battlerName": "enemy_hunter-A",
     "dropItems": [
       {
         "kind": 0,
@@ -768,7 +768,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "Window-Washer",
+    "battlerName": "enemy_washer-A",
     "dropItems": [
       {
         "kind": 0,
@@ -851,7 +851,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "Sorbet_Lad",
+    "battlerName": "enemy_icecream-D",
     "dropItems": [
       {
         "kind": 0,
@@ -934,7 +934,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "Bouncing_Buddy",
+    "battlerName": "enemy_bounce-D",
     "dropItems": [
       {
         "kind": 0,
@@ -1017,7 +1017,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "CEO",
+    "battlerName": "enemy_business-C",
     "dropItems": [
       {
         "kind": 0,
@@ -1100,7 +1100,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "Little_Gray_Man",
+    "battlerName": "enemy_alien-B",
     "dropItems": [
       {
         "kind": 0,
@@ -1183,7 +1183,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "Huntsmaster",
+    "battlerName": "enemy_hunter-E",
     "dropItems": [
       {
         "kind": 0,
@@ -1266,7 +1266,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "Dust_Annihilator",
+    "battlerName": "enemy_washer-B",
     "dropItems": [
       {
         "kind": 0,
