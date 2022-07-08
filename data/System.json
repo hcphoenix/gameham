@@ -105,7 +105,7 @@
     "pitch": 100,
     "volume": 90
   },
-  "editMapId": 14,
+  "editMapId": 7,
   "elements": [
     "",
     "Physical",
@@ -325,9 +325,9 @@
       "volume": 0
     }
   ],
-  "startMapId": 14,
-  "startX": 8,
-  "startY": 6,
+  "startMapId": 7,
+  "startX": 20,
+  "startY": 4,
   "switches": [
     "",
     "Player Can Move",
@@ -525,8 +525,8 @@
     "newBirdLevel",
     "cassHate",
     "lastTarget",
-    "",
-    "",
+    "troopIndex",
+    "Current Year",
     "",
     "",
     "",
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 57094027,
+  "versionId": 27448347,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

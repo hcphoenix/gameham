@@ -818,12 +818,138 @@
     "id": 8,
     "list": [
       {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          22,
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 121,
+        "indent": 1,
+        "parameters": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "it's battle time binch"
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 1,
+        "parameters": [
+          13,
+          13,
+          1,
+          1,
+          14
+        ]
+      },
+      {
+        "code": 301,
+        "indent": 1,
+        "parameters": [
+          1,
+          13,
+          true,
+          false
+        ]
+      },
+      {
+        "code": 601,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 602,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 604,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "it's event time... friend :)"
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 1,
+        "parameters": [
+          "call the thing here"
+        ]
+      },
+      {
+        "code": 121,
+        "indent": 1,
+        "parameters": [
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
         "code": 0,
         "indent": 0,
         "parameters": []
       }
     ],
-    "name": "",
+    "name": "Troop Time",
     "switchId": 1,
     "trigger": 0
   },
