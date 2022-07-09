@@ -488,9 +488,9 @@ GameHam.Branch = '';
   };
 
   GameHam.ShowMapSkillMenu = function () {
-    $gameMessage.add("Use a map skill before rolling?");
+    //$gameMessage.add("Use a map skill before rolling?");
     let mapSkills = GameHam.GetPartyMapSkills();
-    $gameMessage.setChoices(["No", ...mapSkills.map(s => s.name), "Cancel"], 0, 1);
+    $gameMessage.setChoices(["Normal Roll", ...mapSkills.map(s => s.name), "Cancel"], 0, 1);
     Eli.HelpWindows.parameters.choice.contents = ["Roll normally without using any skills.", ...mapSkills.map(s => s.help_text), "Return to the main menu"].map(t => {return {text: t};});
     // This might need to change depending on how you want to reserve common events haley
     $gameMessage.setChoiceCallback(function(n) {

@@ -84,7 +84,7 @@
   "battleback1Name": "sky_SPRING",
   "battleback2Name": "ground_SUBURB",
   "battlerHue": 0,
-  "battlerName": "scream_kid",
+  "battlerName": "enemy_angryelf-G",
   "boat": {
     "bgm": {
       "name": "Ship1",
@@ -123,9 +123,9 @@
   "equipTypes": [
     "",
     "Weapon",
-    "Shield",
-    "Head",
-    "Body",
+    "Emotion",
+    "Crystal",
+    "Junk",
     "Accessory"
   ],
   "gameTitle": "Oregon Quail",
@@ -391,16 +391,16 @@
       "Sell"
     ],
     "params": [
-      "Heart",
-      "Stomach",
-      "Aggression",
-      "Chutzpah",
-      "Ascetism",
+      "\\I[178] Heart",
+      "\\I[181] Stomach",
+      "\\I[64] Aggression",
+      "\\I[65] Chutzpah",
+      "\\I[66] Ascetism",
       "Pursuit",
-      "Speed",
-      "Thievery",
-      "Hit",
-      "Evasion"
+      "\\I[68] Speed",
+      "\\I[69] Thievery",
+      "\\I[70] Hit",
+      "\\I[71] Dodge"
     ],
     "messages": {
       "actionFailure": "There was no effect on %1!",
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 36387218,
+  "versionId": 29157383,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

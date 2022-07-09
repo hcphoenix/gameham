@@ -1542,15 +1542,19 @@ SoundManager.playSystemSound = function(n) {
 };
 
 SoundManager.playCursor = function() {
-    this.playSystemSound(0);
+    AudioManager.playSe({name: "change", pan: 0, pitch: GameHam.randomIntFromInterval(60,135), volume: 60});
+    //this.playSystemSound(0);
+    //HALEY DID THIS
 };
 
 SoundManager.playOk = function() {
-    this.playSystemSound(1);
+    AudioManager.playSe({name: "confirm", pan: 0, pitch: GameHam.randomIntFromInterval(80,120), volume: 45});
+    //this.playSystemSound(1);
 };
 
 SoundManager.playCancel = function() {
-    this.playSystemSound(2);
+    AudioManager.playSe({name: "cancel", pan: 0, pitch: GameHam.randomIntFromInterval(80,120), volume: 45});
+    //this.playSystemSound(2);
 };
 
 SoundManager.playBuzzer = function() {

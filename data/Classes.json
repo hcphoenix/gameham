@@ -33,6 +33,11 @@
         "code": 41,
         "dataId": 1,
         "value": 0
+      },
+      {
+        "code": 52,
+        "dataId": 1,
+        "value": 1
       }
     ],
     "learnings": [
@@ -78,7 +83,7 @@
       }
     ],
     "name": "Pigeon",
-    "note": "",
+    "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
         1,
@@ -931,6 +936,11 @@
         "code": 41,
         "dataId": 1,
         "value": 0
+      },
+      {
+        "code": 52,
+        "dataId": 1,
+        "value": 1
       }
     ],
     "learnings": [
@@ -976,7 +986,7 @@
       }
     ],
     "name": "Seagull",
-    "note": "",
+    "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
         1,
@@ -1829,6 +1839,11 @@
         "code": 41,
         "dataId": 1,
         "value": 0
+      },
+      {
+        "code": 52,
+        "dataId": 1,
+        "value": 1
       }
     ],
     "learnings": [
@@ -1874,7 +1889,7 @@
       }
     ],
     "name": "Raven",
-    "note": "",
+    "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
         1,
@@ -2727,6 +2742,11 @@
         "code": 41,
         "dataId": 1,
         "value": 0
+      },
+      {
+        "code": 52,
+        "dataId": 1,
+        "value": 1
       }
     ],
     "learnings": [
@@ -2767,7 +2787,7 @@
       }
     ],
     "name": "Vulture",
-    "note": "",
+    "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
         1,
@@ -3625,6 +3645,11 @@
         "code": 22,
         "dataId": 1,
         "value": 0.15
+      },
+      {
+        "code": 52,
+        "dataId": 1,
+        "value": 1
       }
     ],
     "learnings": [
@@ -3665,7 +3690,7 @@
       }
     ],
     "name": "Turkey",
-    "note": "",
+    "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
         1,
@@ -4518,6 +4543,11 @@
         "code": 41,
         "dataId": 1,
         "value": 0
+      },
+      {
+        "code": 52,
+        "dataId": 1,
+        "value": 1
       }
     ],
     "learnings": [
@@ -4538,7 +4568,7 @@
       }
     ],
     "name": "Parrot",
-    "note": "",
+    "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
         1,
@@ -5396,6 +5426,11 @@
         "code": 44,
         "dataId": 4,
         "value": 1
+      },
+      {
+        "code": 52,
+        "dataId": 1,
+        "value": 1
       }
     ],
     "learnings": [
@@ -5436,7 +5471,7 @@
       }
     ],
     "name": "Penguin",
-    "note": "<Row Lock>\n",
+    "note": "<Row Lock>\n<Equip Slot: 2, 3, 4>",
     "params": [
       [
         1,
@@ -6294,6 +6329,11 @@
         "code": 44,
         "dataId": 4,
         "value": 1
+      },
+      {
+        "code": 52,
+        "dataId": 1,
+        "value": 1
       }
     ],
     "learnings": [
@@ -6334,7 +6374,7 @@
       }
     ],
     "name": "Cassowary",
-    "note": "<Row Lock>",
+    "note": "<Row Lock>\n<Equip Slot: 2, 3, 4>",
     "params": [
       [
         1,
@@ -7187,6 +7227,11 @@
         "code": 41,
         "dataId": 1,
         "value": 0
+      },
+      {
+        "code": 52,
+        "dataId": 1,
+        "value": 1
       }
     ],
     "learnings": [

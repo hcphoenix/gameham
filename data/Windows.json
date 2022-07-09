@@ -155,5 +155,39 @@
       "lineHeight": "36",
       "align": "center"
     }
+  },
+  "Scene_Equip": {
+    "Window_Help": {
+      "x": 0,
+      "y": 0
+    },
+    "Window_EquipCommand": {
+      "x": -350,
+      "y": 108
+    },
+    "Window_SkillStatus": {
+      "x": 863,
+      "y": 132
+    },
+    "Window_EquipSlot": {
+      "x": 0,
+      "y": 108,
+      "opacity": "255",
+      "width": "408",
+      "height": "150",
+      "cols": "1"
+    },
+    "Window_StatCompare": {
+      "x": 408,
+      "y": 108
+    },
+    "Window_EquipItem": {
+      "x": 0,
+      "y": 258,
+      "opacity": "255",
+      "width": "408",
+      "height": "180",
+      "cols": "1"
+    }
   }
 }
