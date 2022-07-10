@@ -122,7 +122,7 @@ GameHam.Branch = '';
     Game_Battler_prototype_refresh.call(this);
     if (!this.isEnemy() && this.hp === 0 && !this._jacob_says_im_dead) {
       this._jacob_says_im_dead = true;
-      GameHam.displayBattleText(this._name + " perished in battle", 70);
+      //GameHam.displayBattleText(this._name + " perished in battle", 70);
       if($gameParty.allMembers().length > 1) {
         this.escape();
         this.addState(this.deathStateId());
@@ -685,6 +685,24 @@ GameHam.Branch = '';
       // shop exit event
       $gameTemp.reserveCommonEvent(53);
     });
+  }
+
+  // Sets the sprite bitmap to be a frame of a characters aniamtion
+  GameHam.SetCharacterFrameOnSprite = function(sprite, actor, frame = 0, animation_type = 0) {
+    sprite.bitmap = ImageManager.loadCharacter(actor.characterName);
+    let blockX = actor.characterIndex % 4 * 3;
+    let blockY =  Math.floor(actor.characterIndex / 4) * 4;
+    sprite.setFrame((blockX + frame) * 48, (blockY + animation_type) * 48, 48, 48);
+  }
+
+  // Get the junk/armor flavor text for a given class and armor
+  GameHam.GetJunkMessage = function(classId, armorId) {
+    let msg = Object.values($dataJunk[armorId])[classId];
+    // Default if nothing
+    if (msg === " ") {
+      msg = Object.values($dataJunk[0])[classId];
+    }
+    return msg;
   }
 
 })(GameHam); 

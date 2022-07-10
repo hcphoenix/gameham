@@ -59,7 +59,8 @@ DataManager._databaseFiles = [
     { name: '$dataTilesets',     src: 'Tilesets.json'     },
     { name: '$dataCommonEvents', src: 'CommonEvents.json' },
     { name: '$dataSystem',       src: 'System.json'       },
-    { name: '$dataMapInfos',     src: 'MapInfos.json'     }
+    { name: '$dataMapInfos',     src: 'MapInfos.json'     },
+    { name: '$dataJunk',         src: 'Junk.json'         }
 ];
 
 DataManager.loadDatabase = function() {
