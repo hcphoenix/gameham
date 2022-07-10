@@ -1,5 +1,5 @@
 {
-  "autoplayBgm": true,
+  "autoplayBgm": false,
   "autoplayBgs": false,
   "battleback1Name": "sky_SPRING",
   "battleback2Name": "ground_FOREST",
@@ -7182,18 +7182,18 @@
           "directionFix": false,
           "image": {
             "tileId": 0,
-            "characterName": "Actor1",
+            "characterName": "Bird_Map_Pal_2",
             "direction": 2,
             "pattern": 1,
-            "characterIndex": 1
+            "characterIndex": 3
           },
           "list": [
             {
               "code": 101,
               "indent": 0,
               "parameters": [
-                "Actor1",
-                1,
+                "Bird3",
+                3,
                 0,
                 2
               ]
@@ -7202,7 +7202,7 @@
               "code": 401,
               "indent": 0,
               "parameters": [
-                "it's yours my friend :)"
+                "\\n<MORSHY>like us on youtube yownloader :)"
               ]
             },
             {
@@ -7248,7 +7248,7 @@
           "moveSpeed": 3,
           "moveType": 0,
           "priorityType": 1,
-          "stepAnime": false,
+          "stepAnime": true,
           "through": false,
           "trigger": 0,
           "walkAnime": true
@@ -7611,13 +7611,6 @@
                 0,
                 0,
                 14
-              ]
-            },
-            {
-              "code": 117,
-              "indent": 0,
-              "parameters": [
-                8
               ]
             },
             {

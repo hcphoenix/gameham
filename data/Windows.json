@@ -1,12 +1,12 @@
 {
   "Scene_Title": {
     "Window_TitleCommand": {
-      "x": 264,
-      "y": 444,
+      "x": 0,
+      "y": 570,
       "opacity": "255",
-      "width": "240",
-      "rows": "4",
-      "cols": "1",
+      "width": "816",
+      "rows": "2",
+      "cols": "4",
       "lineHeight": "36",
       "align": "left",
       "height": "144"
@@ -136,9 +136,9 @@
     "Window_Status": {
       "x": 0,
       "y": 0,
-      "opacity": "255",
+      "opacity": "0",
       "width": "816",
-      "height": "468",
+      "height": "670",
       "cols": "1"
     },
     "Window_MenuStatus": {},
@@ -159,15 +159,21 @@
   "Scene_Equip": {
     "Window_Help": {
       "x": 0,
-      "y": 0
+      "y": 0,
+      "opacity": "0",
+      "width": "816",
+      "height": "108"
     },
     "Window_EquipCommand": {
       "x": -350,
       "y": 108
     },
     "Window_SkillStatus": {
-      "x": 863,
-      "y": 132
+      "x": 0,
+      "y": 412,
+      "opacity": "0",
+      "width": "816",
+      "height": "256"
     },
     "Window_EquipSlot": {
       "x": 0,
@@ -179,14 +185,17 @@
     },
     "Window_StatCompare": {
       "x": 408,
-      "y": 108
+      "y": 89,
+      "opacity": "0",
+      "width": "408",
+      "height": "336"
     },
     "Window_EquipItem": {
       "x": 0,
       "y": 258,
-      "opacity": "255",
+      "opacity": "0",
       "width": "408",
-      "height": "180",
+      "height": "150",
       "cols": "1"
     }
   }

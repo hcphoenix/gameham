@@ -665,7 +665,7 @@ Window_EquipSlot.prototype.drawItem = function(index) {
     this.changeTextColor(63);
     this.changePaintOpacity(this.isEnabled(index));
     var ww1 = this._nameWidth;
-    this.drawText(this.slotName(index), rect.x, rect.y, ww1);
+    this.drawTextEx(this.slotName(index), rect.x, rect.y, ww1);
     var ww2 = rect.width - ww1;
     var item = this._actor.equips()[index];
     if (item) {
@@ -677,12 +677,13 @@ Window_EquipSlot.prototype.drawItem = function(index) {
 };
 
 Window_EquipSlot.prototype.setSlotNameWidth = function(actor) {
-    if (!actor) return;
+    this._nameWidth = 111;
+    /*if (!actor) return;
     this._nameWidth = 0;
     for (var i = 0; i < actor.equipSlots().length; ++i) {
       var text = $dataSystem.equipTypes[actor.equipSlots()[i]] + ' ';
       this._nameWidth = Math.max(this._nameWidth, this.textWidth(text));
-    }
+    }*/
 };
 
 Window_EquipSlot.prototype.drawEmptySlot = function(wx, wy, ww) {
@@ -708,6 +709,13 @@ Window_EquipSlot.prototype.updateHelp = function() {
 
     //HALEY
     //SceneManager._scene._itemWindow._slotId = -1;
+    if (SceneManager._scene instanceof Scene_Equip && this._flavorWindow) {
+      let classId = this._actor.currentClass().id;
+      let armorId = this.item() ? this.item().id : 0;
+      console.log(classId);
+      console.log(armorId);
+      this._flavorWindow.setMessage(GameHam.GetJunkMessage(classId, armorId));
+    }
     Yanfly.Equip.Window_EquipItem_setSlotId.call(SceneManager._scene._itemWindow, this.index());
 };
 
@@ -776,6 +784,14 @@ Window_EquipItem.prototype.updateHelp = function() {
     if (SceneManager._scene instanceof Scene_Equip && this._infoWindow) {
       this._infoWindow.setItem(this.item());
     }
+
+    if (SceneManager._scene instanceof Scene_Equip && this._flavorWindow) {
+      let classId = this._actor.currentClass().id;
+      let armorId = this.item() ? this.item().id : 0;
+      console.log(classId);
+      console.log(armorId);
+      this._flavorWindow.setMessage(GameHam.GetJunkMessage(classId, armorId));
+    }
 };
 
 //=============================================================================
@@ -830,7 +846,22 @@ Window_StatCompare.prototype.refresh = function() {
     for (var i = 0; i < paramlist.length; ++i) {
         this.drawItem(0, this.lineHeight() * i, paramlist[i]);
     }
-    //TODO: hit/dodge/crit
+    //todo
+    let x = this.textPadding();
+    let y = this.lineHeight() * paramlist.length;
+    const exStatNames = ["\\I[70]\\C[63] ACROBATICS", "\\I[71]\\C[63] EAGLE EYES", "\\I[72]\\C[63] COOLNESS"];
+    for (i=0; i<3; ++i) {
+      let y2 = y + i * this.lineHeight();
+      this.drawDarkRect(x, y2, this.contents.width, this.lineHeight());
+      this.drawTextEx(exStatNames[i], x, y2, this._paramNameWidth);
+      this.drawRightArrow(y2); //this.drawText('\u2192', 283, y2, 29, 'center');
+    }
+    
+    x = this.contents.width - this.textPadding();
+    x -= this._paramValueWidth * 2 + this._arrowWidth + this._bonusValueWidth;
+    this.resetTextColor();
+    this.drawText(this._actor.eva, x, y, this._paramValueWidth, 'right');
+
 };
 
 Window_StatCompare.prototype.setTempActor = function(tempActor) {
@@ -854,11 +885,12 @@ Window_StatCompare.prototype.drawDarkRect = function(dx, dy, dw, dh) {
     this.changePaintOpacity(false);
     this.contents.fillRect(dx + 1, dy + 1, dw - 2, dh - 2, color);
     this.changePaintOpacity(true);
+    this.opacity = 0;
 };
 
 Window_StatCompare.prototype.drawParamName = function(y, paramId) {
     var x = this.textPadding();
-    this.changeTextColor(this.systemColor());
+    //this.changeTextColor(this.systemColor());
     this.drawTextEx(TextManager.param(paramId), x, y, this._paramNameWidth);
 };
 
@@ -913,9 +945,9 @@ Scene_Equip.prototype.create = function() {
     Scene_MenuBase.prototype.create.call(this);
     this.createHelpWindow();
     this.createCommandWindow();
-    this.createStatusWindow();
     this.createSlotWindow();
     this.createItemWindow();
+    this.createStatusWindow();
     this.createCompareWindow();
     this._lowerRightVisibility = true;
     this.updateLowerRightWindows();
@@ -929,11 +961,11 @@ Scene_Equip.prototype.createCommandWindow = function() {
     this._commandWindow = new Window_EquipCommand(0, wy, 240);
     this._commandWindow.setHelpWindow(this._helpWindow);
     this._commandWindow.setHandler('equip', this.commandEquip.bind(this));
-    this._commandWindow.setHandler('optimize', this.commandOptimize.bind(this));
-    this._commandWindow.setHandler('clear', this.commandClear.bind(this));
-    this._commandWindow.setHandler('cancel', this.popScene.bind(this));
-    this._commandWindow.setHandler('pagedown', this.nextActor.bind(this));
-    this._commandWindow.setHandler('pageup', this.previousActor.bind(this));
+    //this._commandWindow.setHandler('optimize', this.commandOptimize.bind(this));
+    //this._commandWindow.setHandler('clear', this.commandClear.bind(this));
+    //this._commandWindow.setHandler('cancel', this.popScene.bind(this));
+    //this._commandWindow.setHandler('pagedown', this.nextActor.bind(this));
+    //this._commandWindow.setHandler('pageup', this.previousActor.bind(this));
     this.addWindow(this._commandWindow);
 };
 
@@ -944,6 +976,8 @@ Scene_Equip.prototype.createStatusWindow = function() {
     var wh = this._commandWindow.height;
     this._statusWindow = new Window_SkillStatus(wx, wy, ww, wh);
     this.addWindow(this._statusWindow);
+    this._slotWindow._flavorWindow = this._statusWindow;
+    this._itemWindow._flavorWindow = this._statusWindow;
 };
 
 Scene_Equip.prototype.createSlotWindow = function() {
@@ -954,8 +988,26 @@ Scene_Equip.prototype.createSlotWindow = function() {
     this._slotWindow.setHelpWindow(this._helpWindow);
     this._slotWindow.setHandler('ok',       this.onSlotOk.bind(this));
     this._slotWindow.setHandler('cancel',   this.popScene.bind(this));
+    this._slotWindow.setHandler('pagedown', this.nextActor.bind(this));
+    this._slotWindow.setHandler('pageup', this.previousActor.bind(this));
+    this._slotWindow.setHandler('left', this.nextActor.bind(this));
+    this._slotWindow.setHandler('right', this.previousActor.bind(this));
     this.addWindow(this._slotWindow);
 };
+
+Window_EquipSlot.prototype.processHandling = function() {
+  Window_Selectable.prototype.processHandling.call(this);
+  if (this.isOpenAndActive()) {
+    if (Input.isRepeated('left')) {
+      SoundManager.playCursor();
+      this.callHandler('left');
+    }
+    if (Input.isRepeated('right')) {
+      SoundManager.playCursor();
+      this.callHandler('right');
+    }
+  } 
+}
 
 Scene_Equip.prototype.createItemWindow = function() {
     var wy = this._slotWindow.y;

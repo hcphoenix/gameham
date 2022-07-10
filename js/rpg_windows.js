@@ -217,11 +217,11 @@ Window_Base.prototype.mpCostColor = function() {
 };
 
 Window_Base.prototype.powerUpColor = function() {
-    return this.textColor(24);
+    return this.textColor(23);
 };
 
 Window_Base.prototype.powerDownColor = function() {
-    return this.textColor(25);
+    return this.textColor(1);
 };
 
 Window_Base.prototype.tpGaugeColor1 = function() {
@@ -2034,8 +2034,8 @@ Window_ItemList.prototype.numberWidth = function() {
 };
 
 Window_ItemList.prototype.drawItemNumber = function(item, x, y, width) {
-    if (this.needsNumber()) {
-        this.drawText(':', x, y, width - this.textWidth('00'), 'right');
+    if ($gameParty.numItems(item) > 1) {
+        this.drawText('x', x, y, width - this.textWidth('00'), 'right');
         this.drawText($gameParty.numItems(item), x, y, width, 'right');
     }
 };
@@ -2131,6 +2131,7 @@ Window_SkillStatus.prototype.constructor = Window_SkillStatus;
 Window_SkillStatus.prototype.initialize = function(x, y, width, height) {
     Window_Base.prototype.initialize.call(this, x, y, width, height);
     this._actor = null;
+    this._message = "";
 };
 
 Window_SkillStatus.prototype.setActor = function(actor) {
@@ -2140,15 +2141,19 @@ Window_SkillStatus.prototype.setActor = function(actor) {
     }
 };
 
+Window_SkillStatus.prototype.setMessage = function(message) {
+    if (this._message !== message) {
+        this._message = message;
+        this.refresh();
+    }
+}
+
 Window_SkillStatus.prototype.refresh = function() {
     this.contents.clear();
     if (this._actor) {
-        var w = this.width - this.padding * 2;
-        var h = this.height - this.padding * 2;
-        var y = h / 2 - this.lineHeight() * 1.5;
-        var width = w - 162 - this.textPadding();
-        this.drawActorFace(this._actor, 0, 0, 144, h);
-        this.drawActorSimpleStatus(this._actor, 162, y, width);
+        this.drawTextEx(("\\I[12] \\C[63]" + this._actor.name() + " the " + this._actor.currentClass().name + " \\I[13]").toUpperCase(), 0, 0);
+        this.drawActorFace(this._actor, 0, 36, 144, 144);
+        this.drawTextEx("<WordWrap>" + this._message, 162, 36);
     }
 };
 
@@ -2571,13 +2576,30 @@ Window_Status.prototype.setActor = function(actor) {
     }
 };
 
+Window_Status.prototype.update = function() {
+    if (Input.isRepeated('left')) {
+        SoundManager.playCursor();
+        this.callHandler('left');
+    }
+    if (Input.isRepeated('right')) {
+        SoundManager.playCursor();
+        this.callHandler('right');
+    }
+    if (Input.isRepeated('cancel')) {
+        SoundManager.playCancel();
+        this.callHandler('cancel');
+    }
+}
+
 Window_Status.prototype.refresh = function() {
     this.contents.clear();
     if (this._actor) {
         var lineHeight = this.lineHeight();
-        this.drawText(this._actor.name() + " the " + this._actor.currentClass().name, 6, 0);
+        this.drawTextEx(("\\I[12] \\C[63]" + this._actor.name() + " the " + this._actor.currentClass().name + " \\I[13]").toUpperCase(), 6, 0);
         this.drawParameters(48);
-        this.drawProfile(6, lineHeight * 10);
+        this.drawActorFace(this._actor, 0, 450);
+        this.drawTextEx('<WordWrap>' + this._actor.profile(), 165, 450);
+        //this.drawProfile(6, lineHeight * 10);
         //this.drawHorzLine(lineHeight * 1);
         //this.drawBlock2(lineHeight * 2);
         //this.drawHorzLine(lineHeight * 6);
@@ -2588,31 +2610,32 @@ Window_Status.prototype.refresh = function() {
 }
 
 Window_Status.prototype.drawParameters = function(y) {
-    let lh = this.lineHeight();
+    let lh = this.lineHeight() + 9;
     let table =
-        [ [64, TextManager.param(2), this._actor.param(2), 'Boosts skills']
-        , [65, TextManager.param(3), this._actor.param(3), 'Reduces damage']
-        , [66, TextManager.param(4), this._actor.param(4), 'Reduces skill costs']
-        , [68, TextManager.param(6), this._actor.param(6), 'Take more turns']
-        , [69, TextManager.param(7), this._actor.param(7), 'Boosts chance to steal']
-        , [70, 'Dodge', (this._actor.eva * 100 + '%'), 'Chance to dodge attacks']
-        , [71, 'Aim', (this._actor.hit * 100 + '%'), 'Chance to land attacks']
-        , [72, 'Cool', (this._actor.cri * 100 + '%'), 'Chance for big bonuses']
+        [ [TextManager.param(2), this._actor.param(2), 'Make attacks stronger']
+        , [TextManager.param(3), this._actor.param(3), 'Reduce damage taken']
+        , [TextManager.param(4), this._actor.param(4), 'Reduce skill costs']
+        , [TextManager.param(6), this._actor.param(6), 'Take your turn more often']
+        , [TextManager.param(7), this._actor.param(7), 'Expose and steal from foes']
+        , ['\\I[72]\\C[63] COOLNESS', (this._actor.cri * 100 + '%'), 'Chance for cool stuff']
+        , ['\\I[70]\\C[63] ACROBATICS', (this._actor.eva * 100 + '%'), 'Chance to dodge attacks']
+        , ['\\I[71]\\C[63] EAGLE EYES', (this._actor.hit * 100 + '%'), 'Chance to land attacks']
         ];
     for (var i = 0; i < table.length; i++) {
         let y2 = y + lh * i;
-        this.drawIcon(table[i][0], 0, y2);
-        this.drawText(table[i][1], 48, y2);
-        this.drawText(table[i][2], 208, y2, 60, 'right');
-        this.drawText(table[i][3], 348, y2);
+        this.drawTextEx(table[i][0], 0, y2);
+        this.resetTextColor();
+        this.drawText(table[i][1], 240, y2, 60, 'right');
+        this.drawTextEx(table[i][2], 330, y2);
     }
 };
 
+/*
 Window_Status.prototype.drawProfile = function(x, y) {
     this.drawTextEx(this._actor.profile(), x, y);
 };
 
-/*
+
 Window_Status.prototype.drawBlock2 = function(y) {
     this.drawActorFace(this._actor, 12, y);
     this.drawBasicInfo(204, y);

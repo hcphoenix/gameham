@@ -32,7 +32,7 @@
     "name": "NOTADRONE",
     "nickname": "",
     "note": "",
-    "profile": "MY INTERESTS INCLUDE BIRD THINGS, DISRUPTING\nENEMY COMBATANTS, AND [ERROR: CLASSIFIED]."
+    "profile": "MY INTERESTS INCLUDE: <br>BIRD THINGS, <br>SCANNING HOSTILES, <br>AND \\C[1][ERROR: \\C[1]CLASSIFIED]"
   },
   {
     "id": 2,
@@ -63,10 +63,10 @@
     ],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "P1G30N",
+    "name": "Pidgin",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "\\I[51]\\I[54]? \\I[7]\\I[8], \\I[61]\\I[62]. :)"
   },
   {
     "id": 3,
@@ -109,7 +109,7 @@
     "traits": [
       {
         "code": 43,
-        "dataId": 21,
+        "dataId": 23,
         "value": 1
       },
       {
@@ -123,7 +123,7 @@
     "name": "Therese",
     "nickname": "",
     "note": "",
-    "profile": "test test test"
+    "profile": "Me? I'm just trying to spread the good word of the Trash God as far as I can, like any decent girl would. Can I interest you in a pamphlet? It's extra soggy!"
   },
   {
     "id": 5,
@@ -143,7 +143,7 @@
     "traits": [
       {
         "code": 43,
-        "dataId": 23,
+        "dataId": 21,
         "value": 1
       },
       {
@@ -157,7 +157,7 @@
     "name": "Roxanne",
     "nickname": "",
     "note": "",
-    "profile": "Roxanne likes long flights on the beach,\ndrawing aggro and romantically eating trash."
+    "profile": "\\C[63]ROXANNE likes long flights on the beach, drawing aggro and romantically eating trash."
   },
   {
     "id": 6,
@@ -214,7 +214,7 @@
     "name": "Nightshade",
     "nickname": "",
     "note": "",
-    "profile": "test test test"
+    "profile": "What's that? You want to know more about my dark past? Hn... very well. I am the last remaining assassin from the legendary Corvid Clan, cursed by the Blood Moon which appears every thousand years"
   },
   {
     "id": 8,
@@ -305,7 +305,7 @@
     "name": "Trashbag",
     "nickname": "",
     "note": "",
-    "profile": "test test test"
+    "profile": "i'm just chillin, man. migration is like nature's band tour. do you play any bass"
   },
   {
     "id": 11,

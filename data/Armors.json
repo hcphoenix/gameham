@@ -30,7 +30,7 @@
   {
     "id": 2,
     "atypeId": 1,
-    "description": "test description 1",
+    "description": "lorem ipsum dolor sit amet yadda yadda yadda yadda yadda yadda yadda yadda",
     "etypeId": 3,
     "traits": [
       {
@@ -45,7 +45,7 @@
     "params": [
       0,
       0,
-      0,
+      1,
       0,
       0,
       0,
@@ -76,7 +76,7 @@
       0,
       0,
       0,
-      0,
+      -1,
       0
     ],
     "price": 0
@@ -552,8 +552,8 @@
         "value": 0
       }
     ],
-    "iconIndex": 0,
-    "name": "",
+    "iconIndex": 53,
+    "name": "Joy",
     "note": "",
     "params": [
       0,
@@ -579,8 +579,8 @@
         "value": 0
       }
     ],
-    "iconIndex": 0,
-    "name": "",
+    "iconIndex": 7,
+    "name": "Depression",
     "note": "",
     "params": [
       0,
@@ -607,7 +607,7 @@
       }
     ],
     "iconIndex": 0,
-    "name": "",
+    "name": "Gratitude",
     "note": "",
     "params": [
       0,
@@ -634,7 +634,7 @@
       }
     ],
     "iconIndex": 0,
-    "name": "",
+    "name": "Greed",
     "note": "",
     "params": [
       0,
@@ -660,8 +660,8 @@
         "value": 0
       }
     ],
-    "iconIndex": 0,
-    "name": "",
+    "iconIndex": 3,
+    "name": "Love",
     "note": "",
     "params": [
       0,
@@ -687,8 +687,8 @@
         "value": 0
       }
     ],
-    "iconIndex": 0,
-    "name": "",
+    "iconIndex": 2,
+    "name": "Envy",
     "note": "",
     "params": [
       0,
@@ -714,8 +714,8 @@
         "value": 0
       }
     ],
-    "iconIndex": 0,
-    "name": "",
+    "iconIndex": 4,
+    "name": "Rage",
     "note": "",
     "params": [
       0,
@@ -741,8 +741,8 @@
         "value": 0
       }
     ],
-    "iconIndex": 0,
-    "name": "",
+    "iconIndex": 60,
+    "name": "Pride",
     "note": "",
     "params": [
       0,
@@ -769,7 +769,7 @@
       }
     ],
     "iconIndex": 0,
-    "name": "",
+    "name": "Anxiety",
     "note": "",
     "params": [
       0,
@@ -796,7 +796,7 @@
       }
     ],
     "iconIndex": 0,
-    "name": "",
+    "name": "Spite",
     "note": "",
     "params": [
       0,
@@ -823,7 +823,7 @@
       }
     ],
     "iconIndex": 0,
-    "name": "",
+    "name": "Disgust",
     "note": "",
     "params": [
       0,
@@ -849,8 +849,8 @@
         "value": 0
       }
     ],
-    "iconIndex": 0,
-    "name": "",
+    "iconIndex": 59,
+    "name": "Hope",
     "note": "",
     "params": [
       0,

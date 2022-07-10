@@ -123,9 +123,9 @@
   "equipTypes": [
     "",
     "Weapon",
-    "Emotion",
-    "Crystal",
-    "Junk",
+    "\\C[63]EMOTION",
+    "\\C[63]CRYSTAL",
+    "\\C[63]JUNK",
     "Accessory"
   ],
   "gameTitle": "Oregon Quail",
@@ -393,12 +393,12 @@
     "params": [
       "\\I[178] Heart",
       "\\I[181] Stomach",
-      "\\I[64] Aggression",
-      "\\I[65] Chutzpah",
-      "\\I[66] Ascetism",
+      "\\I[64] \\C[63]BLOODTHIRST",
+      "\\I[65] \\C[63]CHUTZPAH",
+      "\\I[66] \\C[63]ASCETISM",
       "Pursuit",
-      "\\I[68] Speed",
-      "\\I[69] Thievery",
+      "\\I[68] \\C[63]IMPATIENCE",
+      "\\I[69] \\C[63]THIEVERY",
       "\\I[70] Hit",
       "\\I[71] Dodge"
     ],
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 29157383,
+  "versionId": 54979094,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
