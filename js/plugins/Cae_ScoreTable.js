@@ -769,18 +769,18 @@ CAE.ScoreTable = CAE.ScoreTable || {};		// Plugin namespace
         }
         this._buttons[0].bitmap = bitmapLocal;
         this._buttons[0].setClickHandler(() => {
-            console.log("local");
             this.global = false;
-            console.log(_.scores);
+            this.refresh();
         });
         this._buttons[1].x = 124;
         this._buttons[1].bitmap = bitmapGlobal;
         this._buttons[1].setClickHandler(() => {
-            console.log("global");
-            this.global = true;
             if(_.globalScores == null) {
                 _.globalScores = [];
                 fetch('https://sheets.googleapis.com/v4/spreadsheets/14FWk7MeS15keDqtyX4l46U5Pplo_654zEMfyEsj2-IE/values:batchGet?ranges=A2:A99&key=AIzaSyBW-9hkJiAbMEJXsDr-8oToub0UCf5lyp8', { method: 'GET' }).then(response => response.json()).then(data => this.ProcessScoreResponse(data));
+            } else {
+                this.global = true;
+                this.refresh();
             }
         });
     };
@@ -795,6 +795,7 @@ CAE.ScoreTable = CAE.ScoreTable || {};		// Plugin namespace
         });
 
         _.globalScores = scores;
+        this.global = true;
         this.refresh();
     }
 
