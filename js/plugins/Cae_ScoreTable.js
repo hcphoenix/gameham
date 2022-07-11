@@ -672,7 +672,7 @@ CAE.ScoreTable = CAE.ScoreTable || {};		// Plugin namespace
 
 	// Max items per page (scrolling) and total (list length)
 	Window_ScoreTable.prototype.maxPageItems = function() { return Math.floor(this.contentsHeight() / this.lineHeight()); };
-	Window_ScoreTable.prototype.maxItems = function() { return _.scores.length; };
+	Window_ScoreTable.prototype.maxItems = function() { return this.global ? _.globalScores.length : _.scores.length; };
 
 	// Initialise position and size, reset to top row, refresh, hand over controls
 	Window_ScoreTable.prototype.initialize = function() {
@@ -682,6 +682,8 @@ CAE.ScoreTable = CAE.ScoreTable || {};		// Plugin namespace
 		let h = this.tryEvalInt(_.pos.h, Graphics.boxHeight - 2 * y);
 		Window_Selectable.prototype.initialize.call(this, x, y, w, h);
 		this.setBackgroundType(_.bgType);
+        this.global = false;
+        this.createButtons();
 		this.select(_.latestScoreIx >= 0 ? _.latestScoreIx : 0);
 		this.refresh();
 		this.activate();
@@ -738,7 +740,7 @@ CAE.ScoreTable = CAE.ScoreTable || {};		// Plugin namespace
 
 	// Draw a single score on the scoreboard
 	Window_ScoreTable.prototype.drawItem = function(index) {
-		let score = _.scores[index];
+		let score = this.global ? _.globalScores[index] : _.scores[index];
 		let rect = this.itemRect(index);
 		let x = rect.x, y = rect.y, pad = this.formatPadding();
 		this.getFormat(score, index).forEach(function(f) {
@@ -748,6 +750,53 @@ CAE.ScoreTable = CAE.ScoreTable || {};		// Plugin namespace
 		}, this);
 		this.resetTextColor();
 	};
+
+    Window_ScoreTable.prototype.createButtons = function() {
+        var bitmapLocal = ImageManager.loadSystem('Local');
+        var bitmapGlobal = ImageManager.loadSystem('Global');
+        var buttonWidth = 136;
+        var buttonHeight = 65;
+        this._buttons = [];
+        for (var i = 0; i < 2; i++) {
+            var button = new Sprite_Button();
+            button.visible = true;
+            button.x = buttonWidth * i;
+            button.setColdFrame(0, 0, buttonWidth, buttonHeight);
+            button.setHotFrame(0, buttonHeight, buttonWidth, buttonHeight);
+            button.y = -buttonHeight;
+            this._buttons.push(button);
+            this.addChild(button);
+        }
+        this._buttons[0].bitmap = bitmapLocal;
+        this._buttons[0].setClickHandler(() => {
+            console.log("local");
+            this.global = false;
+            console.log(_.scores);
+        });
+        this._buttons[1].x = 124;
+        this._buttons[1].bitmap = bitmapGlobal;
+        this._buttons[1].setClickHandler(() => {
+            console.log("global");
+            this.global = true;
+            if(_.globalScores == null) {
+                _.globalScores = [];
+                fetch('https://sheets.googleapis.com/v4/spreadsheets/14FWk7MeS15keDqtyX4l46U5Pplo_654zEMfyEsj2-IE/values:batchGet?ranges=A2:A99&key=AIzaSyBW-9hkJiAbMEJXsDr-8oToub0UCf5lyp8', { method: 'GET' }).then(response => response.json()).then(data => this.ProcessScoreResponse(data));
+            }
+        });
+    };
+
+    Window_ScoreTable.prototype.ProcessScoreResponse = function(res) {
+        let scores = res.valueRanges[0].values.map(str => {
+            let v = str[0].split(":");
+            let usr = v[0];
+            let score = v[1];
+
+            return {"Score": score, "Name": usr};
+        });
+
+        _.globalScores = scores;
+        this.refresh();
+    }
 
 	// ==== new scene ==== //
 
