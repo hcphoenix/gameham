@@ -2308,7 +2308,7 @@ Window_SkillList.prototype.processHandling = function() {
 
 Window_SkillList.prototype.processOk = function() {
     if (SceneManager._scene instanceof Scene_Skill) return;
-    Window_Selectable.prototype.processHandling.call(this);
+    Window_Selectable.prototype.processOk.call(this);
 }
 
 //-----------------------------------------------------------------------------
