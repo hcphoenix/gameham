@@ -446,7 +446,7 @@ Scene_Title.prototype.start = function() {
     this.centerSprite(this._backSprite1);
     this.centerSprite(this._backSprite2);
     this.playTitleMusic();
-    this.startFadeIn(this.fadeSpeed(), false);
+    //this.startFadeIn(this.fadeSpeed(), false);
 };
 
 Scene_Title.prototype.update = function() {
@@ -991,7 +991,7 @@ Scene_Menu.prototype.createCommandWindow = function() {
     this._commandWindow.setHandler('gameEnd',   this.commandGameEnd.bind(this));
     this._commandWindow.setHandler('cancel',    this.popScene.bind(this));
     this._commandWindow.setHandler('roll',      this.commandRoll.bind(this));
-    this._commandWindow._index = 4;
+    this._commandWindow._index = 1;
     this.addWindow(this._commandWindow);
     
     this._commandWindow.addAnimation(new QueueTweenAnimation(new Point(0, -144), new Point(1.0, 1.0), 0, 1, 0, 0));
@@ -1336,6 +1336,9 @@ Scene_Skill.prototype.create = function() {
     this.createStatusWindow();
     this.createItemWindow();
     this.createActorWindow();
+    this.refreshActor();
+    this.commandSkill();
+    this._skillTypeWindow.active = false;
 };
 
 Scene_Skill.prototype.start = function() {
@@ -1349,8 +1352,6 @@ Scene_Skill.prototype.createSkillTypeWindow = function() {
     this._skillTypeWindow.setHelpWindow(this._helpWindow);
     this._skillTypeWindow.setHandler('skill',    this.commandSkill.bind(this));
     this._skillTypeWindow.setHandler('cancel',   this.popScene.bind(this));
-    this._skillTypeWindow.setHandler('pagedown', this.nextActor.bind(this));
-    this._skillTypeWindow.setHandler('pageup',   this.previousActor.bind(this));
     this.addWindow(this._skillTypeWindow);
 };
 
@@ -1372,7 +1373,9 @@ Scene_Skill.prototype.createItemWindow = function() {
     this._itemWindow = new Window_SkillList(wx, wy, ww, wh);
     this._itemWindow.setHelpWindow(this._helpWindow);
     this._itemWindow.setHandler('ok',     this.onItemOk.bind(this));
-    this._itemWindow.setHandler('cancel', this.onItemCancel.bind(this));
+    this._itemWindow.setHandler('cancel', this.popScene.bind(this));
+    this._itemWindow.setHandler('left', this.nextActor.bind(this));
+    this._itemWindow.setHandler('right',   this.previousActor.bind(this));
     this._skillTypeWindow.setSkillWindow(this._itemWindow);
     this.addWindow(this._itemWindow);
 };
@@ -1573,6 +1576,7 @@ Scene_Status.prototype.create = function() {
     this._statusWindow.setHandler('pageup',   this.previousActor.bind(this));
     this._statusWindow.setHandler('left', this.nextActor.bind(this));
     this._statusWindow.setHandler('right',   this.previousActor.bind(this));
+    this._statusWindow.setHandler('down',   this.viewSkills.bind(this));
     this._statusWindow.reserveFaceImages();
     this.addWindow(this._statusWindow);
 };
@@ -1591,6 +1595,11 @@ Scene_Status.prototype.onActorChange = function() {
     this.refreshActor();
     this._statusWindow.activate();
 };
+
+Scene_Status.prototype.viewSkills = function() {
+    SoundManager.playCursor();
+    SceneManager.push(Scene_Skill);
+}
 
 //-----------------------------------------------------------------------------
 // Scene_Options

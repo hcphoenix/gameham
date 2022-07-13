@@ -842,16 +842,17 @@ Window_StatCompare.prototype.setActor = function(actor) {
 Window_StatCompare.prototype.refresh = function() {
     this.contents.clear();
     if (!this._actor) return;
+    const spacing = this.lineHeight() + 6;
     const paramlist = [2,3,4,6,7];
     for (var i = 0; i < paramlist.length; ++i) {
-        this.drawItem(0, this.lineHeight() * i, paramlist[i]);
+        this.drawItem(0, spacing * i, paramlist[i]);
     }
     //todo
     let x = this.textPadding();
-    let y = this.lineHeight() * paramlist.length;
+    let y = spacing * paramlist.length;
     const exStatNames = ["\\I[70]\\C[63] ACROBATICS", "\\I[71]\\C[63] EAGLE EYES", "\\I[72]\\C[63] COOLNESS"];
     for (i=0; i<3; ++i) {
-      let y2 = y + i * this.lineHeight();
+      let y2 = y + i * spacing;
       this.drawDarkRect(x, y2, this.contents.width, this.lineHeight());
       this.drawTextEx(exStatNames[i], x, y2, this._paramNameWidth);
       this.drawRightArrow(y2); //this.drawText('\u2192', 283, y2, 29, 'center');

@@ -372,11 +372,11 @@
       "ITEM",
       "SKILL",
       "WEAR",
-      "STAT",
+      "INFO",
       "Formation",
       "Save",
       "QUIT",
-      "CONF.",
+      "OPT.",
       "Weapon",
       "Armor",
       "Key Item",
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 54979094,
+  "versionId": 42707602,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

@@ -1599,29 +1599,19 @@ Window_MenuCommand.prototype.numVisibleRows = function() {
 Window_MenuCommand.prototype.makeCommandList = function() {
     let enabled = this.areMainCommandsEnabled();
     
-    if (this.needsCommand('skill')) {
-        this.addCommand(TextManager.skill, 'skill', enabled);
-    }
+    //if (this.needsCommand('skill')) {
+    //    this.addCommand(TextManager.skill, 'skill', enabled);
+    //}
     
+    this.addCommand(TextManager.item, 'item', enabled);
+    this.addCommand('MOVE', 'roll', true);
+    this.addCommand(TextManager.status, 'status', enabled);
+    this.addCommand(TextManager.equip, 'equip', enabled);
     this.addCommand('ALT.', 'altitude', true);
-    
-    if (this.needsCommand('item')) {
-        this.addCommand(TextManager.item, 'item', enabled);
-    }
-    
-    if (this.needsCommand('status')) {
-        this.addCommand(TextManager.status, 'status', enabled);
-    }
-    
-    this.addCommand('ROLL', 'roll', true);
-    
-    if (this.needsCommand('equip')) {
-        this.addCommand(TextManager.equip, 'equip', enabled);
-    }
-    
     this.addOptionsCommand();
-    this.addCommand('LOOK', 'cancel', true);
-    this.addGameEndCommand();
+
+    //this.addCommand('LOOK', 'cancel', true);
+    //this.addGameEndCommand();
     //this.addMainCommands();
     //this.addFormationCommand();
     //this.addOriginalCommands();
@@ -1715,8 +1705,23 @@ Window_MenuCommand.prototype.isGameEndEnabled = function() {
 };
 
 Window_MenuCommand.prototype.processOk = function() {
-    Window_MenuCommand._lastCommandSymbol = this.currentSymbol();
-    Window_Command.prototype.processOk.call(this);
+    switch (this.currentSymbol()) {
+        case 'skill':
+            SoundManager.playOk();
+            SceneManager.push(Scene_Skill);
+            break;
+        case 'equip':
+            SoundManager.playOk();
+            SceneManager.push(Scene_Equip);
+            break;
+        case 'status':
+            SoundManager.playOk();
+            SceneManager.push(Scene_Status);
+            break;
+        default:
+            Window_Command.prototype.processOk.call(this);
+        }
+    //Window_MenuCommand._lastCommandSymbol = this.currentSymbol();
 };
 
 Window_MenuCommand.prototype.selectLast = function() {
@@ -2151,9 +2156,14 @@ Window_SkillStatus.prototype.setMessage = function(message) {
 Window_SkillStatus.prototype.refresh = function() {
     this.contents.clear();
     if (this._actor) {
-        this.drawTextEx(("\\I[12] \\C[63]" + this._actor.name() + " the " + this._actor.currentClass().name + " \\I[13]").toUpperCase(), 0, 0);
-        this.drawActorFace(this._actor, 0, 36, 144, 144);
-        this.drawTextEx("<WordWrap>" + this._message, 162, 36);
+        this.drawTextEx(("\\I[12] \\C[63]" + this._actor.name() + " the " + this._actor.currentClass().name + " \\I[13]").toUpperCase(), 162, 0);
+        this.drawActorFace(this._actor, 0, 0, 144, 144);
+        
+        if (SceneManager._scene instanceof Scene_Skill) {
+            this.drawTextEx("\\I[10] \\C[63]STATS \\I[10]", 600, 0);
+            this._message = this._actor.profile();
+        }
+        this.drawTextEx("<WordWrap>" + this._message, 165, 36);
     }
 };
 
@@ -2217,7 +2227,7 @@ Window_SkillList.prototype.includes = function(item) {
 };
 
 Window_SkillList.prototype.isEnabled = function(item) {
-    return this._actor && this._actor.canUse(item);
+    return this._actor && (SceneManager._scene instanceof Scene_Skill || this._actor.canUse(item));
 };
 
 Window_SkillList.prototype.makeItemList = function() {
@@ -2277,6 +2287,29 @@ Window_SkillList.prototype.refresh = function() {
     this.createContents();
     this.drawAllItems();
 };
+
+Window_SkillList.prototype.processHandling = function() {
+    if (this.isOpenAndActive()) {
+      if (Input.isRepeated('left')) {
+        SoundManager.playCursor();
+        this.callHandler('left');
+      }
+      if (Input.isRepeated('right')) {
+        SoundManager.playCursor();
+        this.callHandler('right');
+      }
+      if (Input.isRepeated('up') && this._index == this.maxItems() - 1) {
+        SoundManager.playCursor();
+        SceneManager.pop();
+      }
+    } 
+    Window_Selectable.prototype.processHandling.call(this);
+}
+
+Window_SkillList.prototype.processOk = function() {
+    if (SceneManager._scene instanceof Scene_Skill) return;
+    Window_Selectable.prototype.processHandling.call(this);
+}
 
 //-----------------------------------------------------------------------------
 // Window_EquipStatus
@@ -2589,16 +2622,21 @@ Window_Status.prototype.update = function() {
         SoundManager.playCancel();
         this.callHandler('cancel');
     }
+    if (Input.isRepeated('down')) {
+        this.callHandler('down');
+    }
 }
 
 Window_Status.prototype.refresh = function() {
     this.contents.clear();
     if (this._actor) {
-        var lineHeight = this.lineHeight();
-        this.drawTextEx(("\\I[12] \\C[63]" + this._actor.name() + " the " + this._actor.currentClass().name + " \\I[13]").toUpperCase(), 6, 0);
-        this.drawParameters(48);
-        this.drawActorFace(this._actor, 0, 450);
-        this.drawTextEx('<WordWrap>' + this._actor.profile(), 165, 450);
+        this.drawParameters(0);
+        let y = 420;
+        this.drawActorFace(this._actor, 0, y);
+        this.drawTextEx(("\\I[12] \\C[63]" + this._actor.name() + " the " + this._actor.currentClass().name + " \\I[13]").toUpperCase(), 162, y);
+        this.drawTextEx("\\I[11] \\C[63]SKILLS \\I[11]", 600, y);
+        this.drawTextEx('<WordWrap>' + this._actor.profile(), 165, y + 36);
+        //var lineHeight = this.lineHeight();
         //this.drawProfile(6, lineHeight * 10);
         //this.drawHorzLine(lineHeight * 1);
         //this.drawBlock2(lineHeight * 2);

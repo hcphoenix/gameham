@@ -91,14 +91,14 @@
       "y": 0,
       "opacity": "255",
       "width": "558",
-      "rows": "3",
+      "rows": "2",
       "cols": "3",
       "lineHeight": "36",
       "align": "left"
     },
     "Window_Gold": {
       "x": 525,
-      "y": -3,
+      "y": 0,
       "opacity": "255",
       "width": "300",
       "height": "144"
@@ -121,15 +121,29 @@
   "Scene_Skill": {
     "Window_Help": {
       "x": 0,
-      "y": 0
+      "y": 0,
+      "opacity": "0",
+      "width": "816",
+      "height": "108"
     },
     "Window_SkillList": {
       "x": 0,
-      "y": 288,
+      "y": 108,
       "opacity": "255",
       "width": "816",
-      "height": "336",
+      "height": "315",
       "cols": "1"
+    },
+    "Window_SkillType": {
+      "x": -356,
+      "y": 328
+    },
+    "Window_SkillStatus": {
+      "x": 0,
+      "y": 420,
+      "opacity": "0",
+      "width": "816",
+      "height": "240"
     }
   },
   "Scene_Status": {
@@ -170,7 +184,7 @@
     },
     "Window_SkillStatus": {
       "x": 0,
-      "y": 412,
+      "y": 451,
       "opacity": "0",
       "width": "816",
       "height": "256"
@@ -188,14 +202,14 @@
       "y": 89,
       "opacity": "0",
       "width": "408",
-      "height": "336"
+      "height": "369"
     },
     "Window_EquipItem": {
       "x": 0,
       "y": 258,
       "opacity": "0",
       "width": "408",
-      "height": "150",
+      "height": "180",
       "cols": "1"
     }
   }
