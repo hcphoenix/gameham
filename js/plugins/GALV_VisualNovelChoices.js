@@ -46,7 +46,11 @@ Galv.VNC = Galv.VNC || {};        // Galv's stuff
  * @param Message Gap
  * @desc Distance the choices are displayed away from the message window
  * @default 0
- *
+ * 
+ * @param Gap Between Messages (for people who know what words mean :) )
+ * @desc Distance between each message ie THE MESSAGE GAP
+ * @default 0
+ * 
  * @param Disabled Button
  * @desc The row number used to display button for a disabled choice (if using a plugin that can disable choices)
  * @default 3
@@ -95,6 +99,7 @@ Galv.VNC.height = Number(PluginManager.parameters('Galv_VisualNovelChoices')["Co
 Galv.VNC.alwaysMid = PluginManager.parameters('Galv_VisualNovelChoices')["Always Middle"].toLowerCase() == 'true' ? true : false;
 Galv.VNC.msgGap = Number(PluginManager.parameters('Galv_VisualNovelChoices')["Message Gap"]);
 Galv.VNC.disableBtn = Number(PluginManager.parameters('Galv_VisualNovelChoices')["Disabled Button"]);
+Galv.VNC.gapMsg = Number(PluginManager.parameters('Galv_VisualNovelChoices')["Gap Between Messages (for people who know what words mean :) )"]);
 
 // Cache
 Galv.VNC.Scene_Boot_loadSystemImages = Scene_Boot.loadSystemImages;
@@ -137,6 +142,9 @@ Window_ChoiceList.prototype.updatePlacement = function() {
 	if ($gameSystem.vnChoices && Galv.VNC.alwaysMid) {
 		this.x = (Graphics.boxWidth - this.width) / 2;
 	};
+
+    this.y = Graphics.boxHeight / 4 + Galv.VNC.msgGap; return;
+
 	if (this._messageWindow.y >= Graphics.boxHeight / 2) {
 		this.y -= Galv.VNC.msgGap;
     } else {
@@ -152,6 +160,10 @@ Window_ChoiceList.prototype._refreshCursor = function() {
 		Galv.VNC.Window_ChoiceList__refreshCursor.call(this);
 	};
 };
+
+Window_ChoiceList.prototype.windowHeight = () => 800;
+
+Window_ChoiceList.prototype.contentsHeight = () => 800;
 
 Window_ChoiceList.prototype.drawButton = function(index,y,cursor) {
     var bitmap = ImageManager.loadSystem('VNButtons');
@@ -245,6 +257,7 @@ Window_ChoiceList.prototype.itemRectForText = function(index) {
 	} else {
 		rect.x += this.textPadding();
 	};
+    rect.y += Galv.VNC.gapMsg * index;
 	rect.width -= this.textPadding() * 2;
 	return rect;
 };

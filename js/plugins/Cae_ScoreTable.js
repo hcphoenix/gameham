@@ -633,6 +633,8 @@ CAE.ScoreTable = CAE.ScoreTable || {};		// Plugin namespace
 		} else if (newScore.Score === undefined) {
 			console.warn(WARN_NOSCORE, newScore);
 		}
+
+        GameHam.AddNewHighscore(newScore.Name, newScore.Score);
 	};
 
 	// Go to score scene~
@@ -780,6 +782,7 @@ CAE.ScoreTable = CAE.ScoreTable || {};		// Plugin namespace
                 fetch('https://sheets.googleapis.com/v4/spreadsheets/14FWk7MeS15keDqtyX4l46U5Pplo_654zEMfyEsj2-IE/values:batchGet?ranges=A2:A99&key=AIzaSyBW-9hkJiAbMEJXsDr-8oToub0UCf5lyp8', { method: 'GET' }).then(response => response.json()).then(data => this.ProcessScoreResponse(data));
             } else {
                 this.global = true;
+                _.globalScores.sort(_.scoreSort);
                 this.refresh();
             }
         });

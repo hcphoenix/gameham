@@ -444,41 +444,49 @@ GameHam.Branch = '';
         name: "Pigeon Skill",
         help_text: "Placeholder help text for Pigeon Skill",
         common_event_id: -1,
+        vn_choice: 17,
       },
       { // 2 -  Seagull
         name: "Seagull Skill",
         help_text: "Placeholder help text for Seagull Skill",
         common_event_id: -1,
+        vn_choice: 13,
       },
       { // 3 - Raven
         name: "Raven Skill",
         help_text: "Placeholder help text for Raven Skill",
         common_event_id: -1,
+        vn_choice: 14,
       },
       { // 4 - Vulture
         name: "Vulture Skill",
         help_text: "Placeholder help text for Vulture Skill",
         common_event_id: -1,
+        vn_choice: 18,
       },
       { // 5 - Turkey
         name: "Turkey Skill",
         help_text: "Placeholder help text for Turkey Skill",
         common_event_id: -1,
+        vn_choice: 19,
       },
       { // 6 - Parrot
         name: "Parrot Skill",
         help_text: "Placeholder help text for Parrot Skill",
         common_event_id: -1,
+        vn_choice: 20,
       },
       { // 7 - Penguin
         name: "Penguin Skill",
         help_text: "Placeholder help text for Penguin Skill",
         common_event_id: -1,
+        vn_choice: 16,
       },
       { // 8 - Cassowary
         name: "Cassowary Skill",
         help_text: "Placeholder help text for Cassowary Skill",
         common_event_id: -1,
+        vn_choice: 15,
       },
   ];
 
@@ -490,7 +498,8 @@ GameHam.Branch = '';
   GameHam.ShowMapSkillMenu = function () {
     //$gameMessage.add("Use a map skill before rolling?");
     let mapSkills = GameHam.GetPartyMapSkills();
-    $gameMessage.setChoices(["Normal Roll", ...mapSkills.map(s => s.name), "Cancel"], 0, 1);
+    $gameMessage.setChoices(["\\b[12]Normal Roll", ...mapSkills.map(s => `\\b[${s.vn_choice}]${s.name}`), "\\b[11]Cancel"], 0, 1);
+    $gameMessage.setChoicePositionType(1);
     Eli.HelpWindows.parameters.choice.contents = ["Roll normally without using any skills.", ...mapSkills.map(s => s.help_text), "Return to the main menu"].map(t => {return {text: t};});
     // This might need to change depending on how you want to reserve common events haley
     $gameMessage.setChoiceCallback(function(n) {
@@ -705,6 +714,76 @@ GameHam.Branch = '';
     return msg;
   }
 
+  const GetAccessTokenFromServiceAccount = (function () {
+    const _url = "https://www.googleapis.com/oauth2/v4/token";
+    const _grant_type = "urn:ietf:params:oauth:grant-type:jwt-bearer";
+  
+    function _main(_obj) {
+      return new Promise((resolve, reject) => {
+        const { private_key, client_email, scopes } = _obj;
+        if (!private_key || !client_email || !scopes) {
+          throw new Error(
+            "No required values. Please set 'private_key', 'client_email' and 'scopes'"
+          );
+        }
+        const header = { alg: "RS256", typ: "JWT" };
+        const now = Math.floor(Date.now() / 1000);
+        const claim = {
+          iss: client_email,
+          scope: scopes.join(" "),
+          aud: _url,
+          exp: (now + 3600).toString(),
+          iat: now.toString(),
+        };
+        if (_obj.userEmail) {
+          claim.sub = _obj.userEmail;
+        }
+        const signature =
+          btoa(JSON.stringify(header)) + "." + btoa(JSON.stringify(claim));
+        const sign = new JSEncrypt();
+        sign.setPrivateKey(private_key);
+        const jwt =
+          signature + "." + sign.sign(signature, CryptoJS.SHA256, "sha256");
+        const params = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            assertion: jwt,
+            grant_type: _grant_type,
+          }),
+        };
+        fetch(_url, params)
+          .then((res) => res.json())
+          .then((res) => resolve(res))
+          .catch((err) => reject(err));
+      });
+    }
+  
+    return { do: _main };
+  })();
+
+  GameHam.AddNewHighscore = function(name, score) {
+    let secretKey = $dataClient;
+    gapi.load("client", async () => {
+      let f = async () => gapi.auth.setToken(await GetAccessTokenFromServiceAccount.do(secretKey));
+      f().then(GameHam.SendHighscore(name, score));
+    });
+  }
+
+  GameHam.SendHighscore = function(name, score) {
+    gapi.client.init({
+      discoveryDocs: [
+        "https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest",
+      ],
+    }).then(()=>{
+      gapi.client.sheets.spreadsheets.values.append({
+        "spreadsheetId": "14FWk7MeS15keDqtyX4l46U5Pplo_654zEMfyEsj2-IE",
+        "range": "A1:A99",
+        "valueInputOption": "RAW",
+        "insertDataOption": "INSERT_ROWS",
+      }, {"values": [[`${name}:${score}`],],}).then((resp)=>{});
+    });
+  }
 })(GameHam); 
 
 /*
