@@ -6,8 +6,8 @@
     "name": "MAP001",
     "order": 1,
     "parentId": 0,
-    "scrollX": 1139,
-    "scrollY": 633
+    "scrollX": 817,
+    "scrollY": 455.5
   },
   {
     "id": 2,
@@ -15,8 +15,8 @@
     "name": "Spawner",
     "order": 2,
     "parentId": 0,
-    "scrollX": 1139,
-    "scrollY": 633
+    "scrollX": 817,
+    "scrollY": 455.5
   },
   {
     "id": 3,

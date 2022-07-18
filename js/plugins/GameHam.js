@@ -503,7 +503,10 @@ GameHam.Branch = '';
     let mapSkills = GameHam.GetPartyMapSkills();
     $gameMessage.setChoices(["\\b[12]Normal Roll", ...mapSkills.map(s => `\\b[${s.vn_choice}]${s.name}`), "\\b[11]Cancel"], 0, 1);
     $gameMessage.setChoicePositionType(1);
+    $gameMessage.setChoiceBackground(0);
+    // Enable help window
     Eli.HelpWindows.parameters.choice.contents = ["Roll normally without using any skills.", ...mapSkills.map(s => s.help_text), "Return to the main menu"].map(t => {return {text: t};});
+    $gameSwitches.setValue(10, true);
     // This might need to change depending on how you want to reserve common events haley
     $gameMessage.setChoiceCallback(function(n) {
         // n == 0 means we do nothing since we just roll next
@@ -524,7 +527,11 @@ GameHam.Branch = '';
         $gameVariables.setValue(30, ret);
 
         // Clear choice help 
+        $gameSwitches.setValue(10, false);
         Eli.HelpWindows.parameters.choice.contents = [];
+
+        // Handle callbacks and such
+        $gameTemp.reserveCommonEvent(6);
     });
   };
 

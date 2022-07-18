@@ -1023,7 +1023,7 @@ Scene_Menu.prototype.commandRoll = function() {
     // There's some kind of bug or behavior I dont understand with the picture database
     GameHam.ShowDice(370, 120, true, null);
     GameHam.ShowDice(370, 120, true, null);
-    $gameTemp.reserveCommonEvent(6);
+    $gameTemp.reserveCommonEvent(9);
 }
 
 Scene_Menu.prototype.commandItem = function() {

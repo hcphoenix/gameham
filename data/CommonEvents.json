@@ -721,72 +721,6 @@
     "id": 6,
     "list": [
       {
-        "code": 355,
-        "indent": 0,
-        "parameters": [
-          "GameHam.ShowMapSkillMenu()"
-        ]
-      },
-      {
-        "code": 121,
-        "indent": 0,
-        "parameters": [
-          10,
-          10,
-          0
-        ]
-      },
-      {
-        "code": 112,
-        "indent": 0,
-        "parameters": []
-      },
-      {
-        "code": 111,
-        "indent": 1,
-        "parameters": [
-          1,
-          30,
-          0,
-          0,
-          5
-        ]
-      },
-      {
-        "code": 113,
-        "indent": 2,
-        "parameters": []
-      },
-      {
-        "code": 0,
-        "indent": 2,
-        "parameters": []
-      },
-      {
-        "code": 412,
-        "indent": 1,
-        "parameters": []
-      },
-      {
-        "code": 0,
-        "indent": 1,
-        "parameters": []
-      },
-      {
-        "code": 413,
-        "indent": 0,
-        "parameters": []
-      },
-      {
-        "code": 121,
-        "indent": 0,
-        "parameters": [
-          10,
-          10,
-          1
-        ]
-      },
-      {
         "code": 111,
         "indent": 0,
         "parameters": [
@@ -1035,12 +969,19 @@
     "id": 9,
     "list": [
       {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "GameHam.ShowMapSkillMenu();"
+        ]
+      },
+      {
         "code": 0,
         "indent": 0,
         "parameters": []
       }
     ],
-    "name": "",
+    "name": "Start Roll Dice",
     "switchId": 1,
     "trigger": 0
   },
