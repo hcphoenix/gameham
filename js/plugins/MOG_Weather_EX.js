@@ -374,6 +374,7 @@ Spriteset_Base.prototype.recordWeatherEXDataMap = function() {
 // * load Pre Weather
 //==============================
 Spriteset_Base.prototype.reloadWeatherEX = function() {
+    if(!this._weatherField_1) return;
 	for (var i = 0; i < $gameSystem._weatherEX_Data.length; i++) {
 		if ($gameSystem._weatherEX_Data[i]) {
 			if ($gameSystem._weatherEX_Data[i].mode >= 0) {
