@@ -18,6 +18,9 @@ var GH_Tooltips = GH_Tooltips || {};
         return note || "No description";
     };
 
+    _.formatStateMessage = function(name, id, note) {
+        return `<WordWrap>\\I[${id}] ${name} - ${_.formatNote(note)}`
+    }
     _.findWindowDepth = function (obj) {
         if(obj == null || obj.parent == null) return null;
 
@@ -44,7 +47,7 @@ var GH_Tooltips = GH_Tooltips || {};
             let states = this._battler.states();
             states.forEach(s => 
             {
-                text += s.name + ": " + _.formatNote(s.note);
+                text += _.formatStateMessage(s.name, s.iconIndex, s.note);
             });
             SceneManager._scene._tooltip_window.show(text, this);
         }
@@ -61,7 +64,7 @@ var GH_Tooltips = GH_Tooltips || {};
                 
                 if(icon._hovered) {
                     let s = states[i];
-                    let text = s.name + ": " + _.formatNote(s.note);
+                    let text = _.formatStateMessage(s.name, s.iconIndex, s.note);
                     SceneManager._scene._tooltip_window.show(text, icon);
                 }
             }
@@ -180,6 +183,13 @@ var GH_Tooltips = GH_Tooltips || {};
         this.addWindow(this._tooltip_window);
     }
 
+    _.createMapWindows = Scene_Map.prototype.createAllWindows;
+    Scene_Map.prototype.createAllWindows = function () {
+        _.createMapWindows.call(this);
+        this._tooltip_window = new Window_Tooltip();
+        this.addWindow(this._tooltip_window);
+    }
+
     function Window_Tooltip() {
         this.initialize.apply(this, arguments);
     };
@@ -194,16 +204,15 @@ var GH_Tooltips = GH_Tooltips || {};
     _.getTextFromIndex = function(index) {
         let i = _.allIcons[index];
         if(i) {
-            return i.name;
+            return _.formatStateMessage(i.name, index, i.note);
         } else {
-            return "Not a state";
+            return null; // "Not a state";
         }
     };
     Window_Tooltip.prototype.initialize = function() {
         Window_Base.prototype.initialize.call(this, 0, 0, 700, 120);
         
         this.visible = false;
-        this._isIconText = false;
         this.deactivate();
         
         // Setup tooltip text for in text icons
@@ -216,14 +225,61 @@ var GH_Tooltips = GH_Tooltips || {};
             && TouchInput.y > target.y + Window_Base._iconHeight / 2
             && TouchInput.y < target.y + Window_Base._iconHeight * 1.5);
     };
+
+    // Set x and y to the center of the tile thats being hovered
+    Window_Tooltip.prototype.setTileCenter = function() {
+        let w = $gameMap.tileWidth();
+        let h = $gameMap.tileHeight();
+        this.x = Math.floor(TouchInput.x / w) * w + (w/2);
+        this.y = Math.floor(TouchInput.y / h) * h + (h/2);
+    }
+
     Window_Tooltip.prototype.update = function() {
         Window_Base.prototype.update.call(this);
 
+        // Seperate processing for map screen now its getting kind of complicated :/
+        if(SceneManager._scene instanceof Scene_Map) {
+            let mapY = $gameMap.canvasToMapY(TouchInput.y)
+            let mapX = $gameMap.canvasToMapX(TouchInput.x);
+            let id = $gameMap.tileId(mapX, mapY, 3);
+            let tile = Window_Tooltip.Spaces[id];
+
+            if(tile) {
+                this.setTileCenter();
+                let target = { transient: true };
+                
+                this.show(tile.text, target, false);
+                return;
+            }
+
+            let events = $gameMap.eventsXy(mapX, mapY);
+            for(let i = 0; i < events.length; i++) {
+                // Check for larget hitbox enemies
+                if(events[i].x != mapX || events[i].y != mapY) {
+                    continue;
+                }
+                let id = events[i]._eventId;
+                let event = $dataMap.events[id];
+                if(event.note) {
+                    this.setTileCenter();
+                    let target = { transient: true };
+                    this.show(event.note, target, false);
+                    return;
+                }
+            }
+        }
+
+        // erase transient targets 
+        if(this._target && this._target.transient) {
+            this._target = null;
+        }
+
         // Seperate update process for in text icons
         // We only bother checking for the current active icon
-        if(this._isIconText) {
+        if(this._target && this._target._isIconText) {
             if(_.checkIconOverlap(this._target)) {
-                this.show(_.getTextFromIndex(this._target.id), this._target);
+                let text = _.getTextFromIndex(this._target.id);
+                if(text) this.show(text, this._target);
                 return;
             } else {
                 this.hide();
@@ -232,7 +288,7 @@ var GH_Tooltips = GH_Tooltips || {};
 
         if(this.visible) {
             // check if we're hovering if not then hide
-            if(!this._target._hovered) {
+            if(!this._target || !this._target._hovered) {
                 this.hide();
             }
         }
@@ -244,26 +300,51 @@ var GH_Tooltips = GH_Tooltips || {};
 
             window._stateIcons.forEach(icon => {
                 if(_.checkIconOverlap(icon)) {
-                    this.show(_.getTextFromIndex(icon.id), icon);
-                    this._isIconText = true;
-                    return;
+                    let text = _.getTextFromIndex(icon.id);
+                    if(text) {
+                        this.show(text, icon);
+                        this._target._isIconText = true;
+                        return;
+                    }
                 }
             });
         }
     };
 
-    Window_Tooltip.prototype.show = function(text, target) {
+    Window_Tooltip.Spaces = {
+        4: {
+            name: "CYOA",
+            text: "\\I[1] CYOA - These involve chance encounters and require you to choose how you react."
+        },
+        12: {
+            name: "SHOP",
+            text: "\\I[1] Shop - Choose from a selection of three items, if you have the shiny."
+        },
+        20: {
+            name: "INN",
+            text: "\\I[1] Inn - Rest your party and recover their health hp points."
+        },
+        28: {
+            name: "WEATHER",
+            text: "\\I[1] Bad Weather - Landing on this space will trigger a dangerous effect for the season."
+        },
+    }
+
+    Window_Tooltip.prototype.show = function(text, target, setXY = true) {
         this.visible = true;
         this.active = true;
         // get the target position and move this sprite to it
-        this.x = TouchInput.x;
+        if(setXY) {
+            this.x = TouchInput.x;
+            this.y = TouchInput.y;
+        }
+    
         if(this.x + this.width > Graphics.boxWidth) this.x = Graphics.boxWidth - this.width;
-        this.y = TouchInput.y;
         if(this.y + this.height > Graphics.boxHeight) this.y = Graphics.boxHeight - this.height;
     
         if(this._target != target) {
             this.contents.clear();
-            this.drawTextEx(text, 5, 5);
+            this.drawTextEx("<WordWrap>" + text, 5, 5);
             this._target = target;
         }
     };

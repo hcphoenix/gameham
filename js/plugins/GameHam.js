@@ -423,6 +423,9 @@ GameHam.Branch = '';
       $gameVariables._data[25] = dice._face_num;
     }
 
+    // Set steps remaining
+    // $gameVariables._data[22] = $gameVariables._data[25] * 2
+
     return 0;
   }
 
