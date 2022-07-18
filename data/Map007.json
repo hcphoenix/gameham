@@ -1,5 +1,5 @@
 {
-  "autoplayBgm": false,
+  "autoplayBgm": true,
   "autoplayBgs": false,
   "battleback1Name": "sky_SPRING",
   "battleback2Name": "ground_FOREST",
@@ -6618,10 +6618,38 @@
           },
           "list": [
             {
+              "code": 246,
+              "indent": 0,
+              "parameters": [
+                2
+              ]
+            },
+            {
               "code": 355,
               "indent": 0,
               "parameters": [
                 "Galv.VNC.msgGap = 300"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundName bonk"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundVolume 15"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundPitch 70"
               ]
             },
             {
@@ -6638,14 +6666,14 @@
               "code": 401,
               "indent": 0,
               "parameters": [
-                "\\TS[0]You see an uncanny outcropping of strangely identical dwellings on the western horizon."
+                "\\TS[0]To the \\C[29]south you see a twisty little maze of houses, all alike."
               ]
             },
             {
               "code": 401,
               "indent": 0,
               "parameters": [
-                "From the south you hear distant mischevious laughter..."
+                "<br>From the \\C[29]west you hear rustling leaves and mischevious laughter..."
               ]
             },
             {
@@ -6653,8 +6681,8 @@
               "indent": 0,
               "parameters": [
                 [
-                  "GO WEST",
-                  "\\C[29]GO SOUTH\\B[3]"
+                  "\\B[23]\\I[11]GO SOUTH\\I[11]",
+                  "\\B[24]\\I[12]GO WEST\\I[12]"
                 ],
                 1,
                 0,
@@ -6667,69 +6695,38 @@
               "indent": 0,
               "parameters": [
                 0,
-                "GO WEST"
+                "\\B[23]\\I[11]GO SOUTH\\I[11]"
               ]
             },
             {
-              "code": 205,
+              "code": 356,
               "indent": 1,
               "parameters": [
-                -1,
+                "weather : 0 : 15 : 5 : 20 : 0 : Cloud_01A"
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 1,
+              "parameters": [
                 {
-                  "list": [
-                    {
-                      "code": 2,
-                      "indent": null
-                    },
-                    {
-                      "code": 0
-                    }
-                  ],
-                  "repeat": false,
-                  "skippable": false,
-                  "wait": true
+                  "name": "flap",
+                  "volume": 100,
+                  "pitch": 100,
+                  "pan": 0
                 }
               ]
             },
             {
-              "code": 505,
+              "code": 245,
               "indent": 1,
               "parameters": [
                 {
-                  "code": 2,
-                  "indent": null
+                  "name": "Wind",
+                  "volume": 35,
+                  "pitch": 100,
+                  "pan": 0
                 }
-              ]
-            },
-            {
-              "code": 122,
-              "indent": 1,
-              "parameters": [
-                22,
-                22,
-                2,
-                0,
-                1
-              ]
-            },
-            {
-              "code": 355,
-              "indent": 1,
-              "parameters": [
-                "GameHam.Branch = \"Suburb\";"
-              ]
-            },
-            {
-              "code": 0,
-              "indent": 1,
-              "parameters": []
-            },
-            {
-              "code": 402,
-              "indent": 0,
-              "parameters": [
-                1,
-                "\\C[29]GO SOUTH\\B[3]"
               ]
             },
             {
@@ -6764,14 +6761,73 @@
               ]
             },
             {
-              "code": 122,
+              "code": 355,
               "indent": 1,
               "parameters": [
-                22,
-                22,
-                2,
-                0,
-                1
+                "GameHam.Branch = \"Suburb\";"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 1,
+              "parameters": []
+            },
+            {
+              "code": 402,
+              "indent": 0,
+              "parameters": [
+                1,
+                "\\B[24]\\I[12]GO WEST\\I[12]"
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 1,
+              "parameters": [
+                {
+                  "name": "flap",
+                  "volume": 100,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 1,
+              "parameters": [
+                "weather : 0 : 0 : 10 : 50 : 0 : weather_LEAFGREEN"
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 1,
+              "parameters": [
+                -1,
+                {
+                  "list": [
+                    {
+                      "code": 2,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 1,
+              "parameters": [
+                {
+                  "code": 2,
+                  "indent": null
+                }
               ]
             },
             {
@@ -6792,6 +6848,17 @@
               "parameters": []
             },
             {
+              "code": 122,
+              "indent": 0,
+              "parameters": [
+                22,
+                22,
+                2,
+                0,
+                1
+              ]
+            },
+            {
               "code": 355,
               "indent": 0,
               "parameters": [
@@ -6803,6 +6870,13 @@
               "indent": 0,
               "parameters": [
                 "Galv.VNC.msgGap = 0"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundReset"
               ]
             },
             {
@@ -6866,20 +6940,62 @@
           },
           "list": [
             {
+              "code": 246,
+              "indent": 0,
+              "parameters": [
+                2
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 0,
+              "parameters": [
+                "Galv.VNC.msgGap = 300"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundName bonk"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundVolume 15"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundPitch 70"
+              ]
+            },
+            {
               "code": 101,
               "indent": 0,
               "parameters": [
                 "",
                 0,
-                0,
-                2
+                1,
+                0
               ]
             },
             {
               "code": 401,
               "indent": 0,
               "parameters": [
-                "Which way western man"
+                "\\TS[0]From the \\C[29]north you hear the cries of your caged brethren over the cold hum of agridrones."
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "<br>From the \\C[29]east you hear cries from the darkness that frighten you further, exposing more of humanity's crimes."
               ]
             },
             {
@@ -6887,12 +7003,12 @@
               "indent": 0,
               "parameters": [
                 [
-                  "Down",
-                  "Right"
+                  "\\B[22]\\I[10]GO NORTH\\I[10]",
+                  "\\B[21]\\I[13]GO EAST\\I[13]"
                 ],
                 1,
                 0,
-                2,
+                1,
                 0
               ]
             },
@@ -6901,7 +7017,26 @@
               "indent": 0,
               "parameters": [
                 0,
-                "Down"
+                "\\B[22]\\I[10]GO NORTH\\I[10]"
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 1,
+              "parameters": [
+                {
+                  "name": "flap",
+                  "volume": 100,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 1,
+              "parameters": [
+                "weather : 0 : 1 : 20 : 70 : 0 : weather_LEAF"
               ]
             },
             {
@@ -6912,7 +7047,7 @@
                 {
                   "list": [
                     {
-                      "code": 1,
+                      "code": 4,
                       "indent": null
                     },
                     {
@@ -6930,27 +7065,16 @@
               "indent": 1,
               "parameters": [
                 {
-                  "code": 1,
+                  "code": 4,
                   "indent": null
                 }
-              ]
-            },
-            {
-              "code": 122,
-              "indent": 1,
-              "parameters": [
-                22,
-                22,
-                2,
-                0,
-                1
               ]
             },
             {
               "code": 355,
               "indent": 1,
               "parameters": [
-                "GameHam.Branch = \"Beach\";"
+                "GameHam.Branch = \"Farm\";"
               ]
             },
             {
@@ -6963,7 +7087,38 @@
               "indent": 0,
               "parameters": [
                 1,
-                "Right"
+                "\\B[21]\\I[13]GO EAST\\I[13]"
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 1,
+              "parameters": [
+                {
+                  "name": "flap",
+                  "volume": 100,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 1,
+              "parameters": [
+                "clear_all_weathers"
+              ]
+            },
+            {
+              "code": 245,
+              "indent": 1,
+              "parameters": [
+                {
+                  "name": "ocean",
+                  "volume": 55,
+                  "pitch": 100,
+                  "pan": 0
+                }
               ]
             },
             {
@@ -6998,21 +7153,10 @@
               ]
             },
             {
-              "code": 122,
-              "indent": 1,
-              "parameters": [
-                22,
-                22,
-                2,
-                0,
-                1
-              ]
-            },
-            {
               "code": 355,
               "indent": 1,
               "parameters": [
-                "GameHam.Branch = \"Desert\";"
+                "GameHam.Branch = \"Swamp\";"
               ]
             },
             {
@@ -7026,10 +7170,35 @@
               "parameters": []
             },
             {
+              "code": 122,
+              "indent": 0,
+              "parameters": [
+                22,
+                22,
+                2,
+                0,
+                1
+              ]
+            },
+            {
               "code": 355,
               "indent": 0,
               "parameters": [
-                "GameHam.Season = \"Summer\";"
+                "GameHam.Season = \"Autumn\";"
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 0,
+              "parameters": [
+                "Galv.VNC.msgGap = 0"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundReset"
               ]
             },
             {
@@ -7059,8 +7228,8 @@
           "walkAnime": true
         }
       ],
-      "x": 7,
-      "y": 15
+      "x": 23,
+      "y": 21
     },
     {
       "id": 3,
@@ -7504,6 +7673,14 @@
               ]
             },
             {
+              "code": 283,
+              "indent": 0,
+              "parameters": [
+                "sky_AUTUMN",
+                "ground_FARMLAND"
+              ]
+            },
+            {
               "code": 301,
               "indent": 0,
               "parameters": [
@@ -7841,8 +8018,650 @@
       "x": 17,
       "y": 3
     },
-    null,
-    null,
+    {
+      "id": 10,
+      "name": "EV010",
+      "note": "",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": true,
+          "image": {
+            "characterIndex": 0,
+            "characterName": "",
+            "direction": 2,
+            "pattern": 0,
+            "tileId": 0
+          },
+          "list": [
+            {
+              "code": 246,
+              "indent": 0,
+              "parameters": [
+                2
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 0,
+              "parameters": [
+                "Galv.VNC.msgGap = 300"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundName bonk"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundVolume 15"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundPitch 70"
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "",
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "\\TS[0]To the \\C[29]east the horizon is shattered like a ten thousand year temperature record."
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "<br>From the \\C[29]south you smell the nauseating oils of fish, suntan, and petroleum."
+              ]
+            },
+            {
+              "code": 102,
+              "indent": 0,
+              "parameters": [
+                [
+                  "\\B[27]\\I[13]GO EAST\\I[13]",
+                  "\\B[28]\\I[11]GO SOUTH\\I[11]"
+                ],
+                1,
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "code": 402,
+              "indent": 0,
+              "parameters": [
+                0,
+                "\\B[27]\\I[13]GO EAST\\I[13]"
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 1,
+              "parameters": [
+                {
+                  "name": "flap",
+                  "volume": 100,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 1,
+              "parameters": [
+                "weather : 0 : 21 : 15 : 100 : 1 : SunLight_01B"
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 1,
+              "parameters": [
+                -1,
+                {
+                  "list": [
+                    {
+                      "code": 3,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 1,
+              "parameters": [
+                {
+                  "code": 3,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 1,
+              "parameters": [
+                "GameHam.Branch = \"Desert\";"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 1,
+              "parameters": []
+            },
+            {
+              "code": 402,
+              "indent": 0,
+              "parameters": [
+                1,
+                "\\B[28]\\I[11]GO SOUTH\\I[11]"
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 1,
+              "parameters": [
+                {
+                  "name": "flap",
+                  "volume": 100,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 1,
+              "parameters": [
+                "weather : 0 : 21 : 15 : 100 : 1 : SunLight_01B"
+              ]
+            },
+            {
+              "code": 245,
+              "indent": 1,
+              "parameters": [
+                {
+                  "name": "ocean",
+                  "volume": 55,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 1,
+              "parameters": [
+                -1,
+                {
+                  "list": [
+                    {
+                      "code": 1,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 1,
+              "parameters": [
+                {
+                  "code": 1,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 1,
+              "parameters": [
+                "GameHam.Branch = \"Beach\";"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 1,
+              "parameters": []
+            },
+            {
+              "code": 404,
+              "indent": 0,
+              "parameters": []
+            },
+            {
+              "code": 122,
+              "indent": 0,
+              "parameters": [
+                22,
+                22,
+                2,
+                0,
+                1
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 0,
+              "parameters": [
+                "GameHam.Season = \"Summer\";"
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 0,
+              "parameters": [
+                "Galv.VNC.msgGap = 0"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundReset"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 0,
+          "priorityType": 0,
+          "stepAnime": true,
+          "through": true,
+          "trigger": 1,
+          "walkAnime": true
+        }
+      ],
+      "x": 7,
+      "y": 15
+    },
+    {
+      "id": 11,
+      "name": "EV011",
+      "note": "",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": true,
+          "image": {
+            "characterIndex": 0,
+            "characterName": "",
+            "direction": 2,
+            "pattern": 0,
+            "tileId": 0
+          },
+          "list": [
+            {
+              "code": 246,
+              "indent": 0,
+              "parameters": [
+                2
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 0,
+              "parameters": [
+                "Galv.VNC.msgGap = 300"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundName bonk"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundVolume 15"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundPitch 70"
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "",
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "\\TS[0]From the \\C[29]north you hear commercial jingling and see ionized Christmas lights in the sky."
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "<br>From the \\C[29]west you take in the sour smells of smog and venture capital."
+              ]
+            },
+            {
+              "code": 102,
+              "indent": 0,
+              "parameters": [
+                [
+                  "\\B[25]\\I[10]GO NORTH\\I[10]",
+                  "\\B[26]\\I[12]GO WEST\\I[12]"
+                ],
+                1,
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "code": 402,
+              "indent": 0,
+              "parameters": [
+                0,
+                "\\B[25]\\I[10]GO NORTH\\I[10]"
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 1,
+              "parameters": [
+                {
+                  "name": "flap",
+                  "volume": 100,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 1,
+              "parameters": [
+                "weather : 0 : 9 : 60 : 50 : 0 : weather_SNOW"
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 1,
+              "parameters": [
+                -1,
+                {
+                  "list": [
+                    {
+                      "code": 4,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 1,
+              "parameters": [
+                {
+                  "code": 4,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 1,
+              "parameters": [
+                "GameHam.Branch = \"NorthPole\";"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 1,
+              "parameters": []
+            },
+            {
+              "code": 402,
+              "indent": 0,
+              "parameters": [
+                1,
+                "\\B[26]\\I[12]GO WEST\\I[12]"
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 1,
+              "parameters": [
+                {
+                  "name": "flap",
+                  "volume": 100,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 1,
+              "parameters": [
+                "weather : 0 : 9 : 60 : 50 : 0 : weather_SNOW"
+              ]
+            },
+            {
+              "code": 245,
+              "indent": 1,
+              "parameters": [
+                {
+                  "name": "ocean",
+                  "volume": 55,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 1,
+              "parameters": [
+                -1,
+                {
+                  "list": [
+                    {
+                      "code": 2,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 1,
+              "parameters": [
+                {
+                  "code": 2,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 1,
+              "parameters": [
+                "GameHam.Branch = \"City\";"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 1,
+              "parameters": []
+            },
+            {
+              "code": 404,
+              "indent": 0,
+              "parameters": []
+            },
+            {
+              "code": 122,
+              "indent": 0,
+              "parameters": [
+                22,
+                22,
+                2,
+                0,
+                1
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 0,
+              "parameters": [
+                "GameHam.Season = \"Winter\";"
+              ]
+            },
+            {
+              "code": 355,
+              "indent": 0,
+              "parameters": [
+                "Galv.VNC.msgGap = 0"
+              ]
+            },
+            {
+              "code": 356,
+              "indent": 0,
+              "parameters": [
+                "LetterSoundReset"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 0,
+          "priorityType": 0,
+          "stepAnime": true,
+          "through": true,
+          "trigger": 1,
+          "walkAnime": true
+        }
+      ],
+      "x": 35,
+      "y": 9
+    },
     null
   ]
 }
