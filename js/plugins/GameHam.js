@@ -794,6 +794,86 @@ GameHam.Branch = '';
       }, {"values": [[`${name}:${score}`],],}).then((resp)=>{});
     });
   }
+
+  GameHam.SetupMap = function () {
+    // disable spawning ontop of eachoter
+    Galv.SPAWN.overlap = 'terrain';
+    // regions are from 8 - 15
+    for(let region = 8; region <= 15; region++)
+    {
+        let numRequiredEnemies = GameHam.randomIntFromInterval(2,3);
+        for(let i = 0; i < numRequiredEnemies; i++) {
+            GameHam.SpawnRequiredEnemy(region);
+        }
+
+        let numOptionalEnemies = GameHam.randomIntFromInterval(0,3);
+        for(let i = 0; i < numOptionalEnemies; i++) {
+            GameHam.SpawnOptionalEnemy(region);
+        }
+    }
+  }
+
+  GameHam.EnemyRegions = [
+      [1,2,6], // suburbs
+      [4], // forest
+      [1,2], // beach
+      [5], // desert
+      [4], // swamp
+      [3,4], // farm
+      [1,2,3,6], // city
+      [5], // north pole
+  ];
+
+  GameHam.GetRandomEnemy = (region) => GameHam.EnemyRegions[region-8].pick();
+
+  GameHam.SpawnRequiredEnemy = function(region) {
+    let enemy = GameHam.GetRandomEnemy(region);
+    // required regions are from 16 - 23
+    Galv.SPAWN.event(enemy, region+8, true);
+
+    let event = $gameMap._events[$gameMap._lastSpawnEventId];
+    // move event onto the map
+    for(let y = -1; y <= 1; y++) {
+        for(let x = -1; x <= 1; x++) {
+            let tileRegion = $gameMap.regionId(event.x + x, event.y + y);
+            let tileId = $gameMap.tileId(event.x + x, event.y + y, 3);
+            if(!Object.values(GameHam.Spaces).includes(tileId) && tileRegion < 5 && tileRegion > 0) {
+                event._x = event.x + x;
+                event._y = event.y + y;
+                y = x = 2; // break loop
+            }
+        }
+    }
+    $gameMap._events[$gameMap._lastSpawnEventId] = event;
+  }
+
+  GameHam.SpawnOptionalEnemy = function(region) {
+    let enemy = GameHam.GetRandomEnemy(region);
+    Galv.SPAWN.event(enemy, region, true);
+    let event = $gameMap._events[$gameMap._lastSpawnEventId];
+
+    // set vertical or horizontal 
+    for(let y = -1; y <= 1; y++) {
+        for(let x = -1; x <= 1; x++) {
+            let tileId = $gameMap.tileId(event.x + x, event.y + y, 3);
+            if(Object.values(GameHam.Spaces).includes(tileId)) {
+                // set hitbox
+                if(y != 0) {
+                    event._hitboxY = -y;
+                    event._hitboxHeight=3;
+                }
+                if(x != 0) {
+                    event._hitboxX = -x;
+                    event._hitboxWidth=3;
+                }
+                y = x = 2; // break loop
+            }
+        }
+    }
+
+    $gameMap._events[$gameMap._lastSpawnEventId] = event;
+  }
+
 })(GameHam); 
 
 /*
