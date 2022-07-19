@@ -258,8 +258,15 @@ var GH_Tooltips = GH_Tooltips || {};
                 if(events[i].x != mapX || events[i].y != mapY) {
                     continue;
                 }
-                let id = events[i]._eventId;
-                let event = $dataMap.events[id];
+                // Handle for spawn events
+                let id = events[i]._spawnEventId;
+                let event = {};
+                if(id) {
+                    event = $dataSpawnMap.events[id];
+                } else {
+                    id = events[i]._eventId;
+                    event = $dataMap.events[id];
+                }
                 if(event.note) {
                     this.setTileCenter();
                     let target = { transient: true };

@@ -333,7 +333,7 @@
     "Player Can Move",
     "Rolling",
     "Can Battle",
-    "",
+    "DecisionPoint",
     "KO Display",
     "",
     "",
@@ -554,7 +554,7 @@
     "",
     ""
   ],
-  "versionId": 23328348,
+  "versionId": "123_fuck",
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
