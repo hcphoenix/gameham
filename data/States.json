@@ -1140,19 +1140,25 @@
   },
   {
     "id": 40,
-    "autoRemovalTiming": 0,
+    "autoRemovalTiming": 1,
     "chanceByDamage": 100,
-    "traits": [],
+    "traits": [
+      {
+        "code": 11,
+        "dataId": 12,
+        "value": 0
+      }
+    ],
     "iconIndex": 0,
-    "maxTurns": 1,
-    "message1": "",
+    "maxTurns": 5,
+    "message1": "'s stomach hurts!",
     "message2": "",
     "message3": "",
-    "message4": "",
-    "minTurns": 1,
+    "message4": " feels better.",
+    "minTurns": 3,
     "motion": 0,
-    "name": "",
-    "note": "",
+    "name": "Stomach Ache",
+    "note": "<Help Description>\nPrevents food from reducing \\I[181] HUNGER.\n</Help Description>",
     "overlay": 0,
     "priority": 50,
     "removeAtBattleEnd": false,
@@ -1166,8 +1172,14 @@
     "id": 41,
     "autoRemovalTiming": 0,
     "chanceByDamage": 100,
-    "traits": [],
-    "iconIndex": 0,
+    "traits": [
+      {
+        "code": 22,
+        "dataId": 1,
+        "value": -1
+      }
+    ],
+    "iconIndex": 38,
     "maxTurns": 1,
     "message1": "",
     "message2": "",
@@ -1175,8 +1187,8 @@
     "message4": "",
     "minTurns": 1,
     "motion": 0,
-    "name": "",
-    "note": "",
+    "name": "Clumsy",
+    "note": "<Help Description>\nPrevents dodging and using items.\n</Help Description>",
     "overlay": 0,
     "priority": 50,
     "removeAtBattleEnd": false,

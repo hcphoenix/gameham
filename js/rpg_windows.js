@@ -2651,13 +2651,13 @@ Window_Status.prototype.drawParameters = function(y) {
     let lh = this.lineHeight() + 9;
     let table =
         [ [TextManager.param(2), this._actor.param(2), 'Make attacks stronger']
-        , [TextManager.param(3), this._actor.param(3), 'Reduce damage taken']
+        , [TextManager.param(3), this._actor.param(3), 'Protect HEART and FEAR']
         , [TextManager.param(4), this._actor.param(4), 'Reduce skill costs']
         , [TextManager.param(6), this._actor.param(6), 'Take your turn more often']
         , [TextManager.param(7), this._actor.param(7), 'Expose and steal from foes']
-        , ['\\I[72]\\C[63] COOLNESS', (this._actor.cri * 100 + '%'), 'Chance for cool stuff']
-        , ['\\I[70]\\C[63] ACROBATICS', (this._actor.eva * 100 + '%'), 'Chance to dodge attacks']
-        , ['\\I[71]\\C[63] EAGLE EYES', (this._actor.hit * 100 + '%'), 'Chance to land attacks']
+        , ['\\I[72]\\C[63] COOLNESS', (this._actor.cri * 100 + '%'), 'Stunt on foes']
+        , ['\\I[70]\\C[63] ACROBATICS', (this._actor.eva * 100 + '%'), 'Dodge attacks']
+        , ['\\I[71]\\C[63] EAGLE EYES', (this._actor.hit * 100 + '%'), 'Land attacks']
         ];
     for (var i = 0; i < table.length; i++) {
         let y2 = y + lh * i;

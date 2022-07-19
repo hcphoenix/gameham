@@ -542,18 +542,12 @@
   },
   {
     "id": 21,
-    "atypeId": 0,
+    "atypeId": 1,
     "description": "",
     "etypeId": 2,
-    "traits": [
-      {
-        "code": 22,
-        "dataId": 1,
-        "value": 0
-      }
-    ],
-    "iconIndex": 53,
-    "name": "Joy",
+    "traits": [],
+    "iconIndex": 0,
+    "name": "? Joy",
     "note": "",
     "params": [
       0,
@@ -569,7 +563,7 @@
   },
   {
     "id": 22,
-    "atypeId": 0,
+    "atypeId": 1,
     "description": "",
     "etypeId": 2,
     "traits": [
@@ -579,8 +573,8 @@
         "value": 0
       }
     ],
-    "iconIndex": 7,
-    "name": "Depression",
+    "iconIndex": 0,
+    "name": "? Depression",
     "note": "",
     "params": [
       0,
@@ -596,7 +590,7 @@
   },
   {
     "id": 23,
-    "atypeId": 0,
+    "atypeId": 1,
     "description": "",
     "etypeId": 2,
     "traits": [
@@ -607,7 +601,7 @@
       }
     ],
     "iconIndex": 0,
-    "name": "Gratitude",
+    "name": "? Gratitude",
     "note": "",
     "params": [
       0,
@@ -623,18 +617,12 @@
   },
   {
     "id": 24,
-    "atypeId": 0,
-    "description": "",
+    "atypeId": 1,
+    "description": "Eat automatically when STOMACH drops below 5.\n+1 THIEVERY.",
     "etypeId": 2,
-    "traits": [
-      {
-        "code": 22,
-        "dataId": 1,
-        "value": 0
-      }
-    ],
+    "traits": [],
     "iconIndex": 0,
-    "name": "Greed",
+    "name": "! Avarice",
     "note": "",
     "params": [
       0,
@@ -644,23 +632,17 @@
       0,
       0,
       0,
-      0
+      1
     ],
     "price": 0
   },
   {
     "id": 25,
-    "atypeId": 0,
-    "description": "",
+    "atypeId": 1,
+    "description": "Take damage to HATRED before HEART.",
     "etypeId": 2,
-    "traits": [
-      {
-        "code": 22,
-        "dataId": 1,
-        "value": 0
-      }
-    ],
-    "iconIndex": 3,
+    "traits": [],
+    "iconIndex": 0,
     "name": "Love",
     "note": "",
     "params": [
@@ -677,7 +659,7 @@
   },
   {
     "id": 26,
-    "atypeId": 0,
+    "atypeId": 1,
     "description": "",
     "etypeId": 2,
     "traits": [
@@ -704,7 +686,7 @@
   },
   {
     "id": 27,
-    "atypeId": 0,
+    "atypeId": 1,
     "description": "",
     "etypeId": 2,
     "traits": [
@@ -731,7 +713,7 @@
   },
   {
     "id": 28,
-    "atypeId": 0,
+    "atypeId": 1,
     "description": "",
     "etypeId": 2,
     "traits": [
@@ -758,7 +740,7 @@
   },
   {
     "id": 29,
-    "atypeId": 0,
+    "atypeId": 1,
     "description": "",
     "etypeId": 2,
     "traits": [
@@ -785,7 +767,7 @@
   },
   {
     "id": 30,
-    "atypeId": 0,
+    "atypeId": 1,
     "description": "",
     "etypeId": 2,
     "traits": [
@@ -812,14 +794,14 @@
   },
   {
     "id": 31,
-    "atypeId": 0,
+    "atypeId": 1,
     "description": "",
     "etypeId": 2,
     "traits": [
       {
         "code": 22,
-        "dataId": 1,
-        "value": 0
+        "dataId": 3,
+        "value": 1
       }
     ],
     "iconIndex": 0,
@@ -839,14 +821,24 @@
   },
   {
     "id": 32,
-    "atypeId": 0,
-    "description": "",
+    "atypeId": 1,
+    "description": "Makes you a little luckier.",
     "etypeId": 2,
     "traits": [
       {
         "code": 22,
         "dataId": 1,
-        "value": 0
+        "value": 0.1
+      },
+      {
+        "code": 22,
+        "dataId": 0,
+        "value": 0.1
+      },
+      {
+        "code": 22,
+        "dataId": 2,
+        "value": 0.1
       }
     ],
     "iconIndex": 59,
@@ -866,18 +858,18 @@
   },
   {
     "id": 33,
-    "atypeId": 0,
-    "description": "",
+    "atypeId": 1,
+    "description": "Preserves \\I[180] HATRED between battles.",
     "etypeId": 2,
     "traits": [
       {
-        "code": 22,
-        "dataId": 1,
-        "value": 0
+        "code": 62,
+        "dataId": 3,
+        "value": 1
       }
     ],
-    "iconIndex": 0,
-    "name": "",
+    "iconIndex": 4,
+    "name": "Grudge",
     "note": "",
     "params": [
       0,

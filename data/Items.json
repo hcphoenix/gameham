@@ -182,6 +182,12 @@
         "dataId": 14,
         "value1": 0.5,
         "value2": 0
+      },
+      {
+        "code": 21,
+        "dataId": 40,
+        "value1": 0.4,
+        "value2": 0
       }
     ],
     "hitType": 0,

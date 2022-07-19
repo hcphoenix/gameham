@@ -118,7 +118,8 @@
     "Light",
     "Darkness",
     "Pursuit",
-    "AoE"
+    "AoE",
+    "Food"
   ],
   "equipTypes": [
     "",
@@ -554,7 +555,7 @@
     "",
     ""
   ],
-  "versionId": 23328348,
+  "versionId": 39005706,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

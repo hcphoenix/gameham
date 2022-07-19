@@ -82,7 +82,7 @@
         "skillId": 16
       }
     ],
-    "name": "Pigeon",
+    "name": "Normal Bird",
     "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
@@ -985,7 +985,7 @@
         "skillId": 26
       }
     ],
-    "name": "Seagull",
+    "name": "Valkyrie",
     "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
@@ -1888,7 +1888,7 @@
         "skillId": 36
       }
     ],
-    "name": "Raven",
+    "name": "Shadow Mage",
     "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
@@ -2786,7 +2786,7 @@
         "skillId": 45
       }
     ],
-    "name": "Vulture",
+    "name": "Rogue",
     "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
@@ -3689,7 +3689,7 @@
         "skillId": 55
       }
     ],
-    "name": "Turkey",
+    "name": "Aeronaut",
     "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
@@ -4567,7 +4567,7 @@
         "skillId": 133
       }
     ],
-    "name": "Parrot",
+    "name": "Blue Mage",
     "note": "<Equip Slot: 2, 3, 4>",
     "params": [
       [
@@ -5470,7 +5470,7 @@
         "skillId": 65
       }
     ],
-    "name": "Penguin",
+    "name": "Capitalist",
     "note": "<Row Lock>\n<Equip Slot: 2, 3, 4>",
     "params": [
       [
@@ -6373,7 +6373,7 @@
         "skillId": 75
       }
     ],
-    "name": "Cassowary",
+    "name": "Wrestler",
     "note": "<Row Lock>\n<Equip Slot: 2, 3, 4>",
     "params": [
       [
