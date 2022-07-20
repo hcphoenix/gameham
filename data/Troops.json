@@ -205,7 +205,7 @@
               4,
               0,
               4,
-              "$gameActors.actor($gameVariables.value(5)).currentClass().id"
+              "$gameActors.actor(GameHam.LastMapEncounter.actorId).currentClass().id"
             ]
           },
           {
