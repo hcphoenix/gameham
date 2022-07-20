@@ -712,8 +712,6 @@ Window_EquipSlot.prototype.updateHelp = function() {
     if (SceneManager._scene instanceof Scene_Equip && this._flavorWindow) {
       let classId = this._actor.currentClass().id;
       let armorId = this.item() ? this.item().id : 0;
-      console.log(classId);
-      console.log(armorId);
       this._flavorWindow.setMessage(GameHam.GetJunkMessage(classId, armorId));
     }
     Yanfly.Equip.Window_EquipItem_setSlotId.call(SceneManager._scene._itemWindow, this.index());
@@ -788,8 +786,6 @@ Window_EquipItem.prototype.updateHelp = function() {
     if (SceneManager._scene instanceof Scene_Equip && this._flavorWindow) {
       let classId = this._actor.currentClass().id;
       let armorId = this.item() ? this.item().id : 0;
-      console.log(classId);
-      console.log(armorId);
       this._flavorWindow.setMessage(GameHam.GetJunkMessage(classId, armorId));
     }
 };

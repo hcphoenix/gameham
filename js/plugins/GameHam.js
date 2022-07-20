@@ -803,13 +803,24 @@ GameHam.Branch = '';
     {
         let numRequiredEnemies = GameHam.randomIntFromInterval(2,3);
         for(let i = 0; i < numRequiredEnemies; i++) {
-            GameHam.SpawnRequiredEnemy(region);
+            let enemy = GameHam.GetRandomEnemyEvent(region);
+            GameHam.SpawnRequiredEvent(enemy, region);
         }
 
         let numOptionalEnemies = GameHam.randomIntFromInterval(0,3);
         for(let i = 0; i < numOptionalEnemies; i++) {
-            GameHam.SpawnOptionalEnemy(region);
+            let enemy = GameHam.GetRandomEnemyEvent(region);
+            GameHam.SpawnOptionalEvent(enemy, region);
         }
+    }
+
+    // now spawn birds 
+    let numBirds = GameHam.randomIntFromInterval(2, 4);
+    for(let i = 0; i < numBirds; i++) {
+        let bird = GameHam.GetRandomBirdEvent();
+        // dont spawn in the first two regions
+        let region = GameHam.randomIntFromInterval(2,7) + 8;
+        GameHam.SpawnOptionalEvent(bird, region);
     }
   }
 
@@ -824,13 +835,26 @@ GameHam.Branch = '';
       [5], // north pole
   ];
 
-  GameHam.GetRandomEnemy = (region) => GameHam.EnemyRegions[region-8].pick();
+  GameHam.LastMapEncounter = {};
 
-  GameHam.SpawnRequiredEnemy = function(region) {
-    let enemy = GameHam.GetRandomEnemy(region);
+  GameHam.GetSpawnEventIdByCoord = function (x, y) {
+    // youd think this is slow but its how the engine does it
+    let eventsXy = $dataSpawnMap.events.filter((event) => event && event.x == x && event.y == y);
+    if(eventsXy.length) {
+        return eventsXy[0].id;
+    }
+    return 0;
+}
+
+  // Enemies on the first row
+  GameHam.GetRandomEnemyEvent = (region) => GameHam.GetSpawnEventIdByCoord(GameHam.EnemyRegions[region-8].pick() - 1, 0);
+
+  // Birds on the second row
+  GameHam.GetRandomBirdEvent = () => GameHam.GetSpawnEventIdByCoord(GameHam.randomIntFromInterval(0, 7), 1);
+
+  GameHam.SpawnRequiredEvent = function(spawnEvent, region) {
     // required regions are from 16 - 23
-    Galv.SPAWN.event(enemy, region+8, true);
-
+    Galv.SPAWN.event(spawnEvent, region+8, true);
     let event = $gameMap._events[$gameMap._lastSpawnEventId];
     // move event onto the map
     for(let y = -1; y <= 1; y++) {
@@ -844,12 +868,14 @@ GameHam.Branch = '';
             }
         }
     }
+
+    event._isRequired = true;
+
     $gameMap._events[$gameMap._lastSpawnEventId] = event;
   }
 
-  GameHam.SpawnOptionalEnemy = function(region) {
-    let enemy = GameHam.GetRandomEnemy(region);
-    Galv.SPAWN.event(enemy, region, true);
+  GameHam.SpawnOptionalEvent = function(spawnEvent, region) {
+    Galv.SPAWN.event(spawnEvent, region, true);
     let event = $gameMap._events[$gameMap._lastSpawnEventId];
 
     // set vertical or horizontal 
@@ -859,17 +885,19 @@ GameHam.Branch = '';
             if(Object.values(GameHam.Spaces).includes(tileId)) {
                 // set hitbox
                 if(y != 0) {
-                    event._hitboxY = -y;
+                    event._hitboxY = y;
                     event._hitboxHeight=3;
                 }
                 if(x != 0) {
-                    event._hitboxX = -x;
+                    event._hitboxX = x;
                     event._hitboxWidth=3;
                 }
                 y = x = 2; // break loop
             }
         }
     }
+
+    event._isRequired = false;
 
     $gameMap._events[$gameMap._lastSpawnEventId] = event;
   }

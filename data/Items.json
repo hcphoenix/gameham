@@ -7,17 +7,17 @@
     "damage": {
       "critical": false,
       "elementId": 0,
-      "formula": "10",
+      "formula": "1",
       "type": 3,
       "variance": 0
     },
-    "description": "Made with real cotton!\nHeals 10 HP and 30 HUNGER.",
+    "description": "Made with real cotton!\n\\I[178]\\I[181]\\I[181]\\I[181]",
     "effects": [
       {
         "code": 12,
         "dataId": 0,
         "value1": 0,
-        "value2": 30
+        "value2": 3
       }
     ],
     "hitType": 0,
@@ -40,17 +40,17 @@
     "damage": {
       "critical": false,
       "elementId": 0,
-      "formula": "20",
+      "formula": "2",
       "type": 3,
       "variance": 0
     },
-    "description": "100% of daily recommended crunch.\nHeals 20 HP and 25 HUNGER.",
+    "description": "100% of daily recommended crunch.\n\\I[178]\\I[178]\\I[181]\\I[181]",
     "effects": [
       {
         "code": 12,
         "dataId": 0,
         "value1": 0,
-        "value2": 25
+        "value2": 2
       }
     ],
     "hitType": 0,
@@ -73,11 +73,11 @@
     "damage": {
       "critical": false,
       "elementId": 0,
-      "formula": "25",
+      "formula": "3",
       "type": 2,
       "variance": 0
     },
-    "description": "Impossible to look away.\nDeals 25 DISTRACTION to all enemies.",
+    "description": "Impossible to look away.\nDeals 3 \\C[63]EXPOSURE to all enemies.",
     "effects": [],
     "hitType": 0,
     "iconIndex": 33,
@@ -99,19 +99,12 @@
     "damage": {
       "critical": false,
       "elementId": 0,
-      "formula": "15",
-      "type": 2,
+      "formula": "2",
+      "type": 1,
       "variance": 0
     },
-    "description": "Made with love and all-natural nitroglycerin.\nDeals 15 DISTRACTION and FEAR to all foes.",
-    "effects": [
-      {
-        "code": 11,
-        "dataId": 0,
-        "value1": 0,
-        "value2": -15
-      }
-    ],
+    "description": "Made with love and all-natural nitroglycerin.\nDeals 2 \\C[63]FEAR to all foes.",
+    "effects": [],
     "hitType": 0,
     "iconIndex": 49,
     "itypeId": 1,
@@ -136,13 +129,13 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Heals 20 HUNGER for all birds.",
+    "description": "Restores \\I[181]\\I[181] for all birds.",
     "effects": [
       {
         "code": 12,
         "dataId": 0,
         "value1": 0,
-        "value2": 20
+        "value2": 2
       }
     ],
     "hitType": 0,

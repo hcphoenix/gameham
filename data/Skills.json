@@ -132,7 +132,7 @@
     "stypeId": 2,
     "successRate": 100,
     "tpCost": 0,
-    "tpGain": 5
+    "tpGain": 0
   },
   {
     "id": 5,
@@ -582,10 +582,10 @@
       "type": 5,
       "variance": 0
     },
-    "description": "Steal all of a FOE's HATRED, once per battle.",
+    "description": "Steal all of a FOE's \\I[180] \\C[63]HATRED\\C[0], once per battle.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 4,
+    "iconIndex": 116,
     "message1": "",
     "message2": "",
     "mpCost": 0,
@@ -612,7 +612,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "\\I[7]CLOAC yourself.",
+    "description": "\\I[7] \\C[63]CLOAC yourself.",
     "effects": [
       {
         "code": 21,
@@ -4957,7 +4957,7 @@
     "damage": {
       "critical": false,
       "elementId": 5,
-      "formula": "20 * a.cri",
+      "formula": "20.0 * a.cri",
       "type": 2,
       "variance": 0
     },
@@ -4994,7 +4994,7 @@
     "description": "",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 98,
     "message1": "",
     "message2": "",
     "mpCost": 0,
