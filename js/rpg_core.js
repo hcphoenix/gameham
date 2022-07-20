@@ -7133,10 +7133,11 @@ WindowLayer.prototype.renderWebGL = function(renderer) {
     for (var i = 0; i < this.children.length; i++) {
         var child = this.children[i];
         if (child._isWindow && child.visible && child.openness > 0) {
-            this._maskWindow(child, shift);
-            renderer.maskManager.pushScissorMask(this, this._windowMask);
-            renderer.clear();
-            renderer.maskManager.popScissorMask();
+            // Remove masking in the simplest way
+            //this._maskWindow(child, shift);
+            //renderer.maskManager.pushScissorMask(this, this._windowMask);
+            //renderer.clear();
+            //renderer.maskManager.popScissorMask();
             renderer.currentRenderer.start();
             child.renderWebGL(renderer);
             renderer.currentRenderer.flush();

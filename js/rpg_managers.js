@@ -61,7 +61,6 @@ DataManager._databaseFiles = [
     { name: '$dataSystem',       src: 'System.json'       },
     { name: '$dataMapInfos',     src: 'MapInfos.json'     },
     { name: '$dataJunk',         src: 'Junk.json'         },
-    { name: '$dataClient',       src: 'GameHam_Client.json'},
 ];
 
 DataManager.loadDatabase = function() {
