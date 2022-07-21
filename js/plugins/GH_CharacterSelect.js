@@ -98,9 +98,9 @@ Scene_CharacterSelect.prototype.initialize = function() {
     $gameSystem._characterselect = true; // now active
 
     // Clear music
-    BattleManager.saveBgmAndBgs();
-	AudioManager.fadeOutBgm(2);
-	AudioManager.stopBgs();
+    //BattleManager.saveBgmAndBgs();
+	//AudioManager.fadeOutBgm(2);
+	//AudioManager.stopBgs();
 
     // Set data
     this.partySize = 3; // Could be a param if made avalible publicly
