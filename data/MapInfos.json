@@ -125,5 +125,14 @@
     "parentId": 5,
     "scrollX": 1139,
     "scrollY": 633
+  },
+  {
+    "id": 15,
+    "expanded": false,
+    "name": "New Game",
+    "order": 15,
+    "parentId": 0,
+    "scrollX": 616.5,
+    "scrollY": 472.5
   }
 ]
