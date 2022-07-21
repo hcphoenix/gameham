@@ -2109,35 +2109,28 @@
   },
   {
     "id": 61,
-    "animationId": 26,
+    "animationId": 27,
     "damage": {
       "critical": false,
-      "elementId": 0,
-      "formula": "0",
-      "type": 0,
-      "variance": 20
+      "elementId": -1,
+      "formula": "a.luk/2",
+      "type": 1,
+      "variance": 0
     },
-    "description": "Insure yourself and gain Shiny when you're hit\nfor the next 3 turns.",
-    "effects": [
-      {
-        "code": 21,
-        "dataId": 34,
-        "value1": 1,
-        "value2": 0
-      }
-    ],
+    "description": "Works like STEAL, but raises the target's \\C[63]FEAR\\C[0].",
+    "effects": [],
     "hitType": 0,
-    "iconIndex": 55,
-    "message1": " took out a life insurance policy!",
+    "iconIndex": 69,
+    "message1": " attempts to steal!",
     "message2": "",
     "mpCost": 0,
-    "name": "INSURANCE",
-    "note": "",
-    "occasion": 0,
+    "name": "REQUISITION",
+    "note": "<Steal>\n<Row Only: 1>\n<Custom Requirement>\nvalue = !($gameParty.isInvMaxed());\n</Custom Requirement>\n<Bypass Cooldown>",
+    "occasion": 1,
     "repeats": 1,
     "requiredWtypeId1": 0,
     "requiredWtypeId2": 0,
-    "scope": 11,
+    "scope": 1,
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,
@@ -2161,7 +2154,7 @@
     "message1": " offers a bribe!",
     "message2": "",
     "mpCost": 0,
-    "name": "BRIBERY",
+    "name": "BRIBE",
     "note": "<Custom Requirement>\n   if ($gameParty.gold() > 10) {\n     value = true;\n   } else {\n     value = false;\n   }\n</Custom Requirement>\n\n<Custom Execution>\n   $gameParty.loseGold(10);\n</Custom Execution>",
     "occasion": 0,
     "repeats": 1,
@@ -2244,7 +2237,7 @@
       "type": 0,
       "variance": 20
     },
-    "description": "Pay 100 SHINY to have your hired goons eliminate\nan enemy.",
+    "description": "Pay 100 SHINY to have your hired goons eliminate\na FOE.",
     "effects": [
       {
         "code": 21,

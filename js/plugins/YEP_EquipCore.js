@@ -665,13 +665,12 @@ Window_EquipSlot.prototype.drawItem = function(index) {
     this.changeTextColor(63);
     this.changePaintOpacity(this.isEnabled(index));
     var ww1 = this._nameWidth;
-    this.drawTextEx(this.slotName(index), rect.x, rect.y, ww1);
     var ww2 = rect.width - ww1;
     var item = this._actor.equips()[index];
     if (item) {
-      this.drawItemName(item, rect.x + ww1, rect.y, ww2);
+      this.drawItemName(item, rect.x, rect.y, ww2);
     } else {
-      this.drawEmptySlot(rect.x + ww1, rect.y, ww2);
+      this.drawTextEx(this.slotName(index), rect.x, rect.y, ww1);
     }
     this.changePaintOpacity(true);
 };

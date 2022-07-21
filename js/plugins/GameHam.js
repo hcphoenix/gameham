@@ -544,8 +544,9 @@ GameHam.Branch = '';
   GameHam.Spaces = {
     CYOA: 4,
     SHOP: 12,
-    WEATHER: 28,
     INN: 20,
+    WEATHER: 28,
+    CRYSTAL: 36
   }
 
   GameHam.HandleSpace = function() {
@@ -901,6 +902,41 @@ GameHam.Branch = '';
 
     $gameMap._events[$gameMap._lastSpawnEventId] = event;
   }
+
+  GameHam.introLines =
+    // pigeon
+    [ ["I'm a pigeon"]
+    , ["I'm a pigeon"]
+    , ["I'm a pigeon"]
+    // seagull
+    , ["I'm a seagull"]
+    , ["I'm a seagull"]
+    , ["I'm a seagull"]
+    // raven
+    , ["I'm a raven"]
+    , ["I'm a raven"]
+    , ["I'm a raven"]
+    // vulture
+    , ["I'm a vulture"]
+    , ["I'm a vulture"]
+    , ["I'm a vulture"]
+    // turkey
+    , ["I'm a turkey"]
+    , ["I'm a turkey"]
+    , ["I'm a turkey"]
+    // parrot
+    , ["I'm a parrot"]
+    , ["I'm a parrot"]
+    , ["I'm a parrot"]
+    // penguin
+    , ["I'm a penguin"]
+    , ["I'm a penguin"]
+    , ["I'm a penguin"]
+    // cassowary
+    , ["I'm a cassowary"]
+    , ["I'm a cassowary"]
+    , ["I'm a cassowary"]
+    ];
 
 })(GameHam); 
 
