@@ -1570,9 +1570,13 @@ Window_ChoiceList.prototype.updateMoreHelp = function(){
         const contents = Plugin.choice().contents[index]
         this._helpWindow.setText(contents ? contents.text : "")
     }
+
+    if(Plugin.choice().position === "Bottom"){
+        this._helpWindow.y = Graphics.boxHeight - this._helpWindow.height
+    }else{
+        this._helpWindow.y = 0
+    }
 }
-
-
 
 } // Plugin.choice().enable
 
