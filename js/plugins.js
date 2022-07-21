@@ -91,6 +91,7 @@ var $plugins =
 {"name":"GH_Tooltips","status":true,"description":"","parameters":{}},
 {"name":"GH_Snake","status":true,"description":"(v1.0) snake minigame","parameters":{}},
 {"name":"GH_Driving","status":true,"description":"(v1.0) Driving minigame","parameters":{}},
+{"name":"GH_CharacterSelect","status":true,"description":"(v1.0) minigame template","parameters":{}},
 {"name":"------------------------","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
 {"name":"-- QUARANTINE","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
 {"name":"YEP_RegionRestrictions","status":false,"description":"v1.04 Use regions to block out Events and/or the player from\nbeing able to venture into those spots.","parameters":{"Player Restrict":"1","Event Restrict":"0","All Restrict":"0","Player Allow":"0","Event Allow":"0","All Allow":"0"}},
