@@ -433,7 +433,7 @@
     "",
     "Reached Year 2 Ever",
     "Reached Year 2 Last Time",
-    "",
+    "Completed Tutorial",
     "",
     "",
     "",
@@ -655,7 +655,7 @@
     "",
     ""
   ],
-  "versionId": 80385753,
+  "versionId": 28037354,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,

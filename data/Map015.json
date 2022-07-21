@@ -1625,7 +1625,14 @@
               "code": 655,
               "indent": 0,
               "parameters": [
-                "t3"
+                "t3,"
+              ]
+            },
+            {
+              "code": 655,
+              "indent": 0,
+              "parameters": [
+                "\"First time playing? Let's take a trip to Tutorial Island!\""
               ]
             },
             {
@@ -1643,8 +1650,9 @@
                   "\\b[11]Random Party",
                   "\\b[29]Build It Your Way!",
                   "\\b[11]Random Party Premium Plus!",
-                  "     \\C[18](Locked...)",
-                  "                 \\C[18](Locked...)"
+                  "        \\C[18](Locked...)",
+                  "                 \\C[18](Locked...)",
+                  "Introductions"
                 ],
                 -1,
                 0,
@@ -1661,11 +1669,59 @@
               ]
             },
             {
-              "code": 108,
+              "code": 111,
               "indent": 1,
               "parameters": [
-                "This should take you to the tutorial map when we get around to it"
+                0,
+                103,
+                1
               ]
+            },
+            {
+              "code": 111,
+              "indent": 2,
+              "parameters": [
+                0,
+                101,
+                1
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 3,
+              "parameters": [
+                "",
+                0,
+                0,
+                2
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 3,
+              "parameters": [
+                "Wow, looks like someone's too cool to visit Tutorial Island! Let's see how well that works out for them, Bookworm!"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 3,
+              "parameters": []
+            },
+            {
+              "code": 412,
+              "indent": 2,
+              "parameters": []
+            },
+            {
+              "code": 0,
+              "indent": 2,
+              "parameters": []
+            },
+            {
+              "code": 412,
+              "indent": 1,
+              "parameters": []
             },
             {
               "code": 250,
@@ -1866,7 +1922,7 @@
               "indent": 0,
               "parameters": [
                 3,
-                "     \\C[18](Locked...)"
+                "        \\C[18](Locked...)"
               ]
             },
             {
@@ -1880,6 +1936,26 @@
               "parameters": [
                 4,
                 "                 \\C[18](Locked...)"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 1,
+              "parameters": []
+            },
+            {
+              "code": 402,
+              "indent": 0,
+              "parameters": [
+                5,
+                "Introductions"
+              ]
+            },
+            {
+              "code": 108,
+              "indent": 1,
+              "parameters": [
+                "This should take you to the tutorial map when we get around to it"
               ]
             },
             {
