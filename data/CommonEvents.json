@@ -284,13 +284,10 @@
         ]
       },
       {
-        "code": 301,
+        "code": 117,
         "indent": 4,
         "parameters": [
-          0,
-          4,
-          false,
-          false
+          20
         ]
       },
       {
@@ -463,13 +460,10 @@
         ]
       },
       {
-        "code": 301,
+        "code": 117,
         "indent": 5,
         "parameters": [
-          0,
-          4,
-          false,
-          false
+          20
         ]
       },
       {
@@ -1285,7 +1279,7 @@
         "parameters": []
       }
     ],
-    "name": "Negotiate Pigeon",
+    "name": "[DEPRACATED] Negotiate Pigeon",
     "switchId": 1,
     "trigger": 0
   },
@@ -1467,7 +1461,7 @@
         "parameters": []
       }
     ],
-    "name": "Negotiate Seagull",
+    "name": "[DEPRACATED] Negotiate Seagull",
     "switchId": 1,
     "trigger": 0
   },
@@ -1661,7 +1655,7 @@
         "parameters": []
       }
     ],
-    "name": "Negotiate Raven",
+    "name": "[DEPRACATED] Negotiate Raven",
     "switchId": 1,
     "trigger": 0
   },
@@ -1848,7 +1842,7 @@
         "parameters": []
       }
     ],
-    "name": "Negotiate Vulture",
+    "name": "[DEPRACATED] Negotiate Vulture",
     "switchId": 1,
     "trigger": 0
   },
@@ -2023,7 +2017,7 @@
         "parameters": []
       }
     ],
-    "name": "Negotiate Turkey",
+    "name": "[DEPRACATED] Negotiate Turkey",
     "switchId": 1,
     "trigger": 0
   },
@@ -2198,7 +2192,7 @@
         "parameters": []
       }
     ],
-    "name": "Negotiate Parrot",
+    "name": "[DEPRACATED] Negotiate Parrot",
     "switchId": 1,
     "trigger": 0
   },
@@ -2385,7 +2379,7 @@
         "parameters": []
       }
     ],
-    "name": "Negotiate Penguin",
+    "name": "[DEPRACATED] Negotiate Penguin",
     "switchId": 1,
     "trigger": 0
   },
@@ -2562,7 +2556,7 @@
         "parameters": []
       }
     ],
-    "name": "Negotiate Cassowary",
+    "name": "[DEPRACATED] Negotiate Cassowary",
     "switchId": 1,
     "trigger": 0
   },
@@ -3008,7 +3002,7 @@
         "parameters": []
       }
     ],
-    "name": "Remove Party Member",
+    "name": "[DEPRACATED] Remove Party Member",
     "switchId": 1,
     "trigger": 0
   },
@@ -3021,7 +3015,7 @@
         "parameters": [
           "",
           0,
-          0,
+          2,
           2
         ]
       },
@@ -3037,18 +3031,6 @@
         "indent": 0,
         "parameters": [
           "OpenActorSelect 2"
-        ]
-      },
-      {
-        "code": 316,
-        "indent": 0,
-        "parameters": [
-          1,
-          2,
-          0,
-          0,
-          1,
-          true
         ]
       },
       {
@@ -3071,6 +3053,63 @@
           0,
           4,
           "$gameActors.actor($gameVariables.value(2)).currentClass().id"
+        ]
+      },
+      {
+        "code": 224,
+        "indent": 0,
+        "parameters": [
+          [
+            255,
+            0,
+            255,
+            153
+          ],
+          30,
+          false
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "Battle3",
+            "volume": 40,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "Darkness5",
+            "volume": 60,
+            "pitch": 50,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 0,
+        "parameters": [
+          {
+            "name": "Devil1",
+            "volume": 90,
+            "pitch": 50,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 0,
+        "parameters": [
+          120
         ]
       },
       {
@@ -3132,7 +3171,7 @@
         "parameters": [
           "",
           0,
-          0,
+          2,
           2
         ]
       },
@@ -3180,7 +3219,7 @@
         "parameters": [
           "",
           0,
-          0,
+          2,
           2
         ]
       },
@@ -3229,7 +3268,7 @@
         "parameters": [
           "",
           0,
-          0,
+          2,
           2
         ]
       },
@@ -3261,8 +3300,71 @@
         "parameters": []
       },
       {
-        "code": 122,
+        "code": 111,
         "indent": 0,
+        "parameters": [
+          12,
+          "$gameVariables.value(4) == $gameActors.actor(GameHam.LastMapEncounter.actorId).currentClass().id"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "To eat a bird of your own species... it really churns the stomach. Word spreads of your exceptionally heinous act. \\C[1]HEAT dramatically increased."
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 1,
+        "parameters": [
+          7,
+          7,
+          1,
+          0,
+          3
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "Word spreads of your heinous act. \\C[1]HEAT increased."
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 1,
         "parameters": [
           7,
           7,
@@ -3272,7 +3374,12 @@
         ]
       },
       {
-        "code": 340,
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
         "indent": 0,
         "parameters": []
       },
@@ -3290,12 +3397,1094 @@
     "id": 20,
     "list": [
       {
+        "code": 122,
+        "indent": 0,
+        "parameters": [
+          5,
+          5,
+          0,
+          4,
+          "GameHam.LastMapEncounter.actorId"
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 0,
+        "parameters": [
+          4,
+          4,
+          0,
+          4,
+          "$gameActors.actor(GameHam.LastMapEncounter.actorId).currentClass().id"
+        ]
+      },
+      {
+        "code": 243,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          4,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "code": 241,
+        "indent": 1,
+        "parameters": [
+          {
+            "name": "A Real an Normal Pigeon",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          4,
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 1,
+        "parameters": [
+          "seagull music goes here"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          4,
+          0,
+          3,
+          0
+        ]
+      },
+      {
+        "code": 241,
+        "indent": 1,
+        "parameters": [
+          {
+            "name": "Corvid Kontrapunkt",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          4,
+          0,
+          4,
+          0
+        ]
+      },
+      {
+        "code": 241,
+        "indent": 1,
+        "parameters": [
+          {
+            "name": "Carrion-core",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          4,
+          0,
+          5,
+          0
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 1,
+        "parameters": [
+          "turkey music goes here"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          4,
+          0,
+          6,
+          0
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 1,
+        "parameters": [
+          "parrot music goes here"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          4,
+          0,
+          7,
+          0
+        ]
+      },
+      {
+        "code": 241,
+        "indent": 1,
+        "parameters": [
+          {
+            "name": "Waddling Walz",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 111,
+        "indent": 0,
+        "parameters": [
+          1,
+          4,
+          0,
+          8,
+          0
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 1,
+        "parameters": [
+          "cassowary music goes here"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "GameHam.showPicture(1, 'photoedits/cyoa_actor' + $gameVariables.value(5), 108);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "GameHam.showPicture(15, 'frames/negotiate')"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "GWFade picture 1 fadeIn 008-Line02 60 0"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "GWFade picture 15 fadeIn 008-Line02 60 0"
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 0,
+        "parameters": [
+          60
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "You are approached by \\N[\\V[5]] the \\nc[\\V[4]]."
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 0,
+        "parameters": [
+          15,
+          15,
+          0,
+          4,
+          "GameHam.GetNegotiateMessage(GameHam.LastMapEncounter.actorId,\"intro\")"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 0,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "\\V[15]"
+        ]
+      },
+      {
+        "code": 102,
+        "indent": 0,
+        "parameters": [
+          [
+            "\\B[29]Invite to Join :)",
+            "\\B[30]"
+          ],
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          0,
+          "\\B[29]Invite to Join :)"
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 1,
+        "parameters": [
+          12,
+          "$gameParty.size() == 4"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 2,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 2,
+        "parameters": [
+          "Your allies look to each other nervously. Perhaps a flock of five is too many fowl to feed..."
+        ]
+      },
+      {
+        "code": 102,
+        "indent": 2,
+        "parameters": [
+          [
+            "\\B[35]Exile an ally",
+            "\\B[35]Reject this stranger",
+            "\\B[31]Oh? \\C[1]Not \\C[1]enough \\C[1]food, \\C[1]you \\C[1]say...?"
+          ],
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "code": 402,
+        "indent": 2,
+        "parameters": [
+          0,
+          "\\B[35]Exile an ally"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 3,
+        "parameters": [
+          "OpenActorSelect 2"
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 3,
+        "parameters": [
+          15,
+          15,
+          0,
+          4,
+          "GameHam.GetNegotiateMessage($gameVariables.value(2),\"leave\")"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "\\af[\\V[2]]\\n<\\N[\\V[2]]>\\V[15]"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "\\N[\\V[2]] heads off toward their certain doom."
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 3,
+        "parameters": [
+          "$gameParty.removeActor($gameVariables.value(2));"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 2,
+        "parameters": [
+          1,
+          "\\B[35]Reject this stranger"
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 3,
+        "parameters": [
+          15,
+          15,
+          0,
+          4,
+          "GameHam.GetNegotiateMessage(GameHam.LastMapEncounter.actorId,\"leave\")"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "\\V[15]"
+        ]
+      },
+      {
+        "code": 119,
+        "indent": 3,
+        "parameters": [
+          "end"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 2,
+        "parameters": [
+          2,
+          "\\B[31]Oh? \\C[1]Not \\C[1]enough \\C[1]food, \\C[1]you \\C[1]say...?"
+        ]
+      },
+      {
+        "code": 119,
+        "indent": 3,
+        "parameters": [
+          "flesh"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 404,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 122,
+        "indent": 1,
+        "parameters": [
+          15,
+          15,
+          0,
+          4,
+          "GameHam.GetNegotiateMessage(GameHam.LastMapEncounter.actorId,\"join\")"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\V[15]"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\N[\\V[2]] joins you."
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 1,
+        "parameters": [
+          "$gameParty.addActor($gameVariables.value(5));"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          1,
+          "\\B[30]"
+        ]
+      },
+      {
+        "code": 118,
+        "indent": 1,
+        "parameters": [
+          "flesh"
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 1,
+        "parameters": [
+          15,
+          15,
+          0,
+          4,
+          "GameHam.GetNegotiateMessage(GameHam.LastMapEncounter.actorId,\"flesh\")"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 1,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 1,
+        "parameters": [
+          "\\V[15]"
+        ]
+      },
+      {
+        "code": 241,
+        "indent": 1,
+        "parameters": [
+          {
+            "name": "",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 241,
+        "indent": 1,
+        "parameters": [
+          {
+            "name": "We All Scream",
+            "volume": 90,
+            "pitch": 50,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 224,
+        "indent": 1,
+        "parameters": [
+          [
+            255,
+            255,
+            255,
+            170
+          ],
+          10,
+          false
+        ]
+      },
+      {
+        "code": 225,
+        "indent": 1,
+        "parameters": [
+          6,
+          9,
+          30,
+          false
+        ]
+      },
+      {
+        "code": 234,
+        "indent": 1,
+        "parameters": [
+          1,
+          [
+            0,
+            0,
+            0,
+            255
+          ],
+          30,
+          false
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 1,
+        "parameters": [
+          {
+            "name": "Damage3",
+            "volume": 100,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 1,
+        "parameters": [
+          15
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 1,
+        "parameters": [
+          {
+            "name": "Blow3",
+            "volume": 100,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 1,
+        "parameters": [
+          15
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 1,
+        "parameters": [
+          {
+            "name": "Blind",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 1,
+        "parameters": [
+          {
+            "name": "Blind",
+            "volume": 100,
+            "pitch": 50,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 1,
+        "parameters": [
+          15
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 1,
+        "parameters": [
+          {
+            "name": "Darkness3",
+            "volume": 100,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 1,
+        "parameters": [
+          1,
+          4,
+          0,
+          1,
+          5
+        ]
+      },
+      {
+        "code": 117,
+        "indent": 2,
+        "parameters": [
+          19
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 411,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 101,
+        "indent": 2,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 2,
+        "parameters": [
+          "As you tear apart the perfectly ordinary pigeon, you notice that its entrails are thin and wiry, and its bones are bright and cold.\\| Something's not right here..."
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 2,
+        "parameters": [
+          {
+            "name": "chemtrail",
+            "volume": 30,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 2,
+        "parameters": [
+          {
+            "name": "Electrocardiogram",
+            "volume": 55,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 2,
+        "parameters": [
+          60
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 2,
+        "parameters": [
+          {
+            "name": "Electrocardiogram",
+            "volume": 55,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 2,
+        "parameters": [
+          60
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 2,
+        "parameters": [
+          {
+            "name": "Electrocardiogram",
+            "volume": 55,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 2,
+        "parameters": [
+          60
+        ]
+      },
+      {
+        "code": 250,
+        "indent": 2,
+        "parameters": [
+          {
+            "name": "Explosion2",
+            "volume": 100,
+            "pitch": 100,
+            "pan": 0
+          }
+        ]
+      },
+      {
+        "code": 224,
+        "indent": 2,
+        "parameters": [
+          [
+            255,
+            255,
+            255,
+            255
+          ],
+          60,
+          true
+        ]
+      },
+      {
+        "code": 311,
+        "indent": 2,
+        "parameters": [
+          0,
+          0,
+          1,
+          0,
+          4,
+          false
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 2,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 2,
+        "parameters": [
+          "The surveilance drone explodes into shrapnel and static, badly wounding your flock. What a jerk!"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 2,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 2,
+        "parameters": [
+          "Something gleams in the wreckage...\\| you find some \\ni[9]."
+        ]
+      },
+      {
+        "code": 108,
+        "indent": 2,
+        "parameters": [
+          "TODO: We need a system for handling full inventory"
+        ]
+      },
+      {
+        "code": 126,
+        "indent": 2,
+        "parameters": [
+          9,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 404,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 118,
+        "indent": 0,
+        "parameters": [
+          "end"
+        ]
+      },
+      {
+        "code": 244,
+        "indent": 0,
+        "parameters": []
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "GWFade picture 1 fadeOut 008-Line02 60 0"
+        ]
+      },
+      {
+        "code": 356,
+        "indent": 0,
+        "parameters": [
+          "GWFade picture 15 fadeOut 008-Line02 60 0"
+        ]
+      },
+      {
+        "code": 230,
+        "indent": 0,
+        "parameters": [
+          60
+        ]
+      },
+      {
+        "code": 235,
+        "indent": 0,
+        "parameters": [
+          1
+        ]
+      },
+      {
+        "code": 235,
+        "indent": 0,
+        "parameters": [
+          15
+        ]
+      },
+      {
         "code": 0,
         "indent": 0,
         "parameters": []
       }
     ],
-    "name": "",
+    "name": "Negotiate",
     "switchId": 1,
     "trigger": 0
   },

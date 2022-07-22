@@ -549,6 +549,10 @@ GameHam.Branch = '';
     CRYSTAL: 36
   }
 
+  GameHam.showPicture = function(id, path, x=0, y=0, opacity=255) {
+    $gameScreen.showPicture(id, path, 0, x, y, 100, 100, opacity, 0);
+  }
+
   GameHam.HandleSpace = function() {
     let currentTile = $gameMap.tileId($gamePlayer.x, $gamePlayer.y, 3);
     switch (currentTile) {
@@ -723,6 +727,10 @@ GameHam.Branch = '';
       msg = Object.values($dataJunk[0])[classId];
     }
     return msg;
+  }
+
+  GameHam.GetNegotiateMessage = function(id,key) {
+    return $dataNegotiate[id][key];
   }
 
   const GetAccessTokenFromServiceAccount = (function () {

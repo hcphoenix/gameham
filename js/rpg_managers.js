@@ -61,6 +61,7 @@ DataManager._databaseFiles = [
     { name: '$dataSystem',       src: 'System.json'       },
     { name: '$dataMapInfos',     src: 'MapInfos.json'     },
     { name: '$dataJunk',         src: 'Junk.json'         },
+    { name: '$dataNegotiate',    src: 'Negotiate.json'    }
 ];
 
 DataManager.loadDatabase = function() {

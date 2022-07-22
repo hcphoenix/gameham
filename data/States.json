@@ -1230,10 +1230,21 @@
   },
   {
     "id": 43,
-    "autoRemovalTiming": 0,
+    "autoRemovalTiming": 1,
     "chanceByDamage": 100,
-    "traits": [],
-    "iconIndex": 0,
+    "traits": [
+      {
+        "code": 22,
+        "dataId": 2,
+        "value": 0.5
+      },
+      {
+        "code": 21,
+        "dataId": 6,
+        "value": 2
+      }
+    ],
+    "iconIndex": 24,
     "maxTurns": 1,
     "message1": "",
     "message2": "",
@@ -1241,11 +1252,11 @@
     "message4": "",
     "minTurns": 1,
     "motion": 0,
-    "name": "",
-    "note": "",
+    "name": "Dramatic Entrance",
+    "note": "<Help Description>\n+50% \\I[72] \\C[63]COOL and 2x \\I[68] \\C[63]IMPATIENCE for 1 turn.\n</Help Description>",
     "overlay": 0,
     "priority": 50,
-    "removeAtBattleEnd": false,
+    "removeAtBattleEnd": true,
     "removeByDamage": false,
     "removeByRestriction": false,
     "removeByWalking": false,

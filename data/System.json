@@ -105,7 +105,7 @@
     "pitch": 100,
     "volume": 90
   },
-  "editMapId": 15,
+  "editMapId": 7,
   "elements": [
     "",
     "Physical",
@@ -159,7 +159,7 @@
   "partyMembers": [
     1,
     7,
-    10,
+    11,
     4
   ],
   "ship": {
@@ -327,8 +327,8 @@
     }
   ],
   "startMapId": 15,
-  "startX": 6,
-  "startY": 5,
+  "startX": 8,
+  "startY": 3,
   "switches": [
     "",
     "Player Can Move",
@@ -628,7 +628,7 @@
     "lastTarget",
     "troopIndex",
     "Current Year",
-    "",
+    "text",
     "",
     "",
     "",
@@ -655,7 +655,7 @@
     "",
     ""
   ],
-  "versionId": 28037354,
+  "versionId": 55247657,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
