@@ -3346,8 +3346,16 @@
         "parameters": []
       },
       {
-        "code": 101,
+        "code": 111,
         "indent": 1,
+        "parameters": [
+          12,
+          "($gameActors.actor(GameHam.LastMapEncounter.actorId).currentClass().id == 6) || $gameActors.actor(GameHam.LastMapEncounter.actorId).currentClass().id == 7"
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 2,
         "parameters": [
           "",
           0,
@@ -3357,14 +3365,52 @@
       },
       {
         "code": 401,
+        "indent": 2,
+        "parameters": [
+          "Somehow this bird was so widely disliked that your reputation has actually improved."
+        ]
+      },
+      {
+        "code": 122,
+        "indent": 2,
+        "parameters": [
+          7,
+          7,
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 411,
         "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 101,
+        "indent": 2,
+        "parameters": [
+          "",
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 2,
         "parameters": [
           "Word spreads of your heinous act. \\C[1]HEAT increased."
         ]
       },
       {
         "code": 122,
-        "indent": 1,
+        "indent": 2,
         "parameters": [
           7,
           7,
@@ -3372,6 +3418,16 @@
           0,
           1
         ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
       },
       {
         "code": 0,
@@ -4017,6 +4073,65 @@
         ]
       },
       {
+        "code": 111,
+        "indent": 1,
+        "parameters": [
+          1,
+          5,
+          0,
+          6,
+          1
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 2,
+        "parameters": [
+          1,
+          5,
+          0,
+          7,
+          2
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 3,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 3,
+        "parameters": [
+          "Apparently your new recruit has a bad reputation among your brethren...\\. \\C[1]HEAT increased."
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 3,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
         "code": 0,
         "indent": 1,
         "parameters": []
@@ -4062,18 +4177,6 @@
         "indent": 1,
         "parameters": [
           "\\V[15]"
-        ]
-      },
-      {
-        "code": 241,
-        "indent": 1,
-        "parameters": [
-          {
-            "name": "",
-            "volume": 90,
-            "pitch": 100,
-            "pan": 0
-          }
         ]
       },
       {
@@ -4374,7 +4477,7 @@
         "code": 401,
         "indent": 2,
         "parameters": [
-          "The surveilance drone explodes into shrapnel and static, badly wounding your flock. What a jerk!"
+          "The surveilance drone explodes into shrapnel and static, badly wounding your flock.\\.\\. What a jerk!"
         ]
       },
       {
@@ -4383,7 +4486,7 @@
         "parameters": [
           "",
           0,
-          0,
+          2,
           2
         ]
       },
