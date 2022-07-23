@@ -173,34 +173,23 @@ Scene_CharacterSelect.prototype.createSupports = function() {
 
 Scene_CharacterSelect.prototype.createPortraits = function() {
     this._portraits = [];
-    this._pFace = [];
     for(let i = 0; i < this.partySize; i++) {
-        let pFace = new Sprite(this._big_bird_imgs[0]);
-        this.addChild(pFace);
-        let portrait = new Sprite_CharacterSelectPortrait(this._portbig_img, this._big_bird_imgs, pFace);
+        let portrait = new Sprite_CharacterSelectPortrait(this._portbig_img, this._big_bird_imgs);
         portrait.anchor.y = 0.5;
+        portrait.anchor.x = 0.5;
         portrait.y = Graphics.boxHeight / 2;
-        this._portraits.push(portrait);
-        this._pFace.push(pFace);
         this.addChild(portrait);
+        this._portraits.push(portrait);
     }
+    // This is a dumb constant sorry
+    const bigFrameWidth = 240;
     // left
-    this._portraits[0].x = 20;
+    this._portraits[0].x = 20 + bigFrameWidth / 2;
     // middle
     this._portraits[1].y -= 20;
-    this._portraits[1].anchor.x = 0.5;
     this._portraits[1].x = Graphics.boxWidth / 2;
     // right
-    this._portraits[2].x = Graphics.boxWidth - 20;
-    this._portraits[2].anchor.x = 1;
-
-    for(let i = 0; i < this.partySize; i++) {
-        this.addChild(this._portraits[i]);
-        this._pFace[i].x = this._portraits[i].x;
-        this._pFace[i].y = this._portraits[i].y;
-        this._pFace[i].anchor.y = this._portraits[i].anchor.y;
-        this._pFace[i].anchor.x = this._portraits[i].anchor.x;
-    }
+    this._portraits[2].x = Graphics.boxWidth - 20 - bigFrameWidth / 2;
 }
 
 Scene_CharacterSelect.prototype.createTitle = function() {
@@ -248,7 +237,7 @@ function Sprite_CharacterSelectPortrait() {
 Sprite_CharacterSelectPortrait.prototype = Object.create(Sprite_Base.prototype);
 Sprite_CharacterSelectPortrait.prototype.constructor = Sprite_CharacterSelectPortrait;
 
-Sprite_CharacterSelectPortrait.prototype.initialize = function(portrait_img, big_bird_imgs, face_sprite) {
+Sprite_CharacterSelectPortrait.prototype.initialize = function(portrait_img, big_bird_imgs) {
     Sprite_Base.prototype.initialize.call(this);
     this.big_bird_imgs = big_bird_imgs;
     this.bitmap = portrait_img;
@@ -257,7 +246,10 @@ Sprite_CharacterSelectPortrait.prototype.initialize = function(portrait_img, big
     this._faceIndex = 0;
     this._faceFile = 0;
 
-    this.spriteFace = face_sprite;
+    this.spriteFace = new Sprite(big_bird_imgs[0]);
+    this.spriteFace.anchor.y = 0.5;
+    this.spriteFace.anchor.x = 0.5;
+    this.addChild(this.spriteFace);
 };
 
 Sprite_CharacterSelectPortrait.prototype.update = function() {
@@ -291,7 +283,7 @@ Sprite_CharacterSelectPortrait.prototype.updateContent = function() {
     let w = this.big_bird_imgs[0].width / 4;
     let h = this.big_bird_imgs[0].height / 2;
 
-    let x = (this._faceIndex % 4) * w;
+    let x = Math.floor(this._faceIndex % 4) * w;
     let y = Math.floor(this._faceIndex / 4) * h;
 
     this.spriteFace.bitmap = this.big_bird_imgs[this._faceFile];
@@ -301,7 +293,10 @@ Sprite_CharacterSelectPortrait.prototype.updateContent = function() {
 
 // ===========================================
 // * Window_CharacterSelect
-// 
+//  
+// This is the main window of the screen
+// Its basically a window select except that all the placement is fucked
+// You should be able to nav it the same and it updates several other elements
 // ===========================================
 function Window_CharacterSelect() {
     this.initialize.apply(this, arguments);
@@ -335,6 +330,14 @@ Window_CharacterSelect.prototype.initialize = function(frame_spritesheet, char_s
         
         this.charSprites.push(char);
     }
+
+    // Set up little preview guy
+    this.previewSprite = new Sprite_Select_Preview(1);
+    this.previewSprite.anchor.x = 0.5;
+    this.previewSprite.anchor.y = 0.5;
+    this.previewSprite.x = Graphics.boxWidth / 2;
+    this.previewSprite.y = Graphics.boxHeight - 50;
+    this.addChild(this.previewSprite);
 
     this.setHandler('ok',     this.onOk.bind(this));
     this.setHandler('cancel', this.onCancel.bind(this));
@@ -370,8 +373,10 @@ Window_CharacterSelect.prototype.pallette = function() {
 Window_CharacterSelect.prototype.onOk = function() {
     if(this.partyIndex < 2) {
         this.partyIndex++;
+        let cur = this._index; // stay on same box
         this.updateBigPortraits();
         this.start();
+        this.select(cur);
     } else {
         // Start the game
     }
@@ -386,8 +391,10 @@ Window_CharacterSelect.prototype.onCancel = function() {
     } else {
         this.partyIndex--;
         // remove the current portrait
+        let cur = this._index; // stay on same box
         this.updateBigPortraits();
         this.start();
+        this.select(cur);
     }
 }
 
@@ -410,11 +417,16 @@ Window_CharacterSelect.prototype.updateBigPortraits = function() {
 
 Window_CharacterSelect.prototype.fileFromFaceName = (f) => f.charAt(f.length-1);
 
+Window_CharacterSelect.prototype.curActorInfo = function () {
+    return this.classInfo[this._index+1][this.pallette()];
+}
+
 Window_CharacterSelect.prototype.updateBigInnerPortrait = function() {
-    let actorInfo = this.classInfo[this._index+1][this.pallette()];
-    
+    let actorInfo = this.curActorInfo();
+
     this.big_portraits[this.partyIndex]._faceIndex = actorInfo.faceIndex;
     this.big_portraits[this.partyIndex]._faceFile = this.fileFromFaceName(actorInfo.faceName);
+    this.big_portraits[this.partyIndex].spriteFace.anchor.y = this._index == 0 ? -0.5 : 0.5;
 }
 
 Window_CharacterSelect.prototype.start = function() {
@@ -454,6 +466,14 @@ Window_CharacterSelect.prototype.update = function() {
     }
 
     this.updateBigInnerPortrait();
+
+    this.updateCharacterPreview();
+};
+
+Window_CharacterSelect.prototype.updateCharacterPreview = function() {
+    let actorInfo = this.curActorInfo();
+
+    this.previewSprite.setActor(actorInfo.id);
 };
 
 Window_CharacterSelect.prototype.maxItems = function() {
@@ -541,3 +561,130 @@ Window_CharacterSelect.prototype._refreshAllParts = function() {
 Window_CharacterSelect.prototype._refreshCursor = function() {
     this.refresh();
 }
+
+// Cursor movement this is a lot of lines for a little stupid thing
+Window_CharacterSelect.prototype.cursorDown = function(wrap) {
+    var index = this.index();
+    var maxItems = this.maxItems();
+    var maxCols = this.maxCols();
+    if (index < maxItems - maxCols || (wrap && maxCols === 1)) {
+        this.select((index + maxCols) % maxItems);
+    }
+};
+
+Window_CharacterSelect.prototype.cursorUp = function(wrap) {
+    var index = this.index();
+    var maxItems = this.maxItems();
+    var maxCols = this.maxCols();
+    if (index >= maxCols || (wrap && maxCols === 1)) {
+        this.select((index - maxCols + maxItems) % maxItems);
+    }
+};
+
+Window_CharacterSelect.prototype.cursorRight = function(wrap) {
+    var index = this.index();
+    var maxItems = this.maxItems();
+    var maxCols = this.maxCols();
+    if (maxCols >= 2 && (index < maxItems - 1 || (wrap && this.isHorizontal()))) {
+        this.select((index + 1) % maxItems);
+    }
+};
+
+Window_CharacterSelect.prototype.cursorLeft = function(wrap) {
+    var index = this.index();
+    var maxItems = this.maxItems();
+    var maxCols = this.maxCols();
+    if (maxCols >= 2 && (index > 0 || (wrap && this.isHorizontal()))) {
+        this.select((index - 1 + maxItems) % maxItems);
+    }
+};
+
+// do not allow scrolling
+Window_CharacterSelect.prototype.cursorPagedown = function() {
+   return;
+};
+Window_Selectable.prototype.cursorPageup = function() {
+   return;
+};
+Window_Selectable.prototype.scrollDown = function() {
+  return;
+};
+Window_Selectable.prototype.scrollUp = function() {
+    return;
+};
+
+// ===========================================
+// * Sprite_Select_Preview
+// 
+// This sprite definition exists for actor map sprites
+// I could probably make it a global sprite since I figure Ill probably use it
+// more than just here (already copied from snake) but I am lazy
+// ===========================================
+function Sprite_Select_Preview() {
+    this.initialize.apply(this, arguments);
+}
+
+Sprite_Select_Preview.prototype = Object.create(Sprite_Base.prototype);
+Sprite_Select_Preview.prototype.constructor = Sprite_Select_Preview;
+
+Sprite_Select_Preview.prototype.initialize = function(actorIndex) {
+    Sprite_Base.prototype.initialize.call(this);
+    this._actorIndex = actorIndex;
+    this._animation_timer = 0;
+    this.dir = 0;
+
+    this.setAnimation(this.dir);
+}
+
+Sprite_Select_Preview.speed = 1;
+Sprite_Select_Preview.spinSpeed = 50;
+
+Sprite_Select_Preview.prototype.update = function() {
+    Sprite_Base.prototype.update.call(this);
+
+    this.setAnimation(Math.floor(this._animation_timer / Sprite_Select_Preview.spinSpeed) % 4);
+
+    this.updateAnimation();
+}
+
+Sprite_Select_Preview.prototype.setActor = function(id) {
+    this._actorIndex = id;
+    this.bitmap = ImageManager.loadCharacter(this.actor().characterName);
+}
+
+Sprite_Select_Preview.animationSpeed = 10;
+Sprite_Select_Preview.animationFrames = 3;
+Sprite_Select_Preview.animationTypes = 4;
+
+Sprite_Select_Preview.prototype.updateAnimation = function() {
+    this._animation_timer++;
+    let cur = Math.floor(this._animation_timer / Sprite_Select_Preview.animationSpeed) % Sprite_Select_Preview.animationFrames; 
+    this.setAnimationFrame(cur);
+}
+
+Sprite_Select_Preview.prototype.setAnimationFrame = function(frame) {
+    let w = 48;
+    let h = 48;
+    this.setFrame((this.characterBlockX() + frame) * w, (this.characterBlockY() + this._animation_type) * h, w, h);
+}
+
+Sprite_Select_Preview.prototype.setAnimation = function(type) {
+    if(this._animation_type != type) {
+        this._animation_type = type;
+        this.setAnimationFrame(this._animation_timer);
+    }
+}
+
+Sprite_Select_Preview.prototype.actor = function() {
+    return $dataActors[this._actorIndex];
+};
+
+Sprite_Select_Preview.prototype.characterBlockX = function() {
+    var index = this.actor().characterIndex;
+    return index % 4 * 3;
+};
+
+Sprite_Select_Preview.prototype.characterBlockY = function() {
+    var index = this.actor().characterIndex;
+    return Math.floor(index / 4) * 4;
+};
