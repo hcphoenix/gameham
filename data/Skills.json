@@ -1363,19 +1363,26 @@
       "variance": 20
     },
     "description": "",
-    "effects": [],
+    "effects": [
+      {
+        "code": 21,
+        "dataId": 18,
+        "value1": 0.5,
+        "value2": 0
+      }
+    ],
     "hitType": 0,
     "iconIndex": 0,
     "message1": "",
     "message2": "",
     "mpCost": 0,
-    "name": "",
+    "name": "Plague",
     "note": "",
     "occasion": 0,
     "repeats": 1,
     "requiredWtypeId1": 0,
     "requiredWtypeId2": 0,
-    "scope": 1,
+    "scope": 2,
     "speed": 0,
     "stypeId": 1,
     "successRate": 100,

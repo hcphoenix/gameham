@@ -70,9 +70,9 @@
   },
   {
     "id": 3,
-    "battlerName": "",
-    "characterIndex": 0,
-    "characterName": "",
+    "battlerName": "Actor1_1",
+    "characterIndex": 4,
+    "characterName": "Bird_Map_Pal_2",
     "classId": 1,
     "equips": [
       0,
@@ -81,15 +81,26 @@
       0,
       0
     ],
-    "faceIndex": 0,
-    "faceName": "",
-    "traits": [],
+    "faceIndex": 4,
+    "faceName": "Bird3",
+    "traits": [
+      {
+        "code": 43,
+        "dataId": 11,
+        "value": 1
+      },
+      {
+        "code": 43,
+        "dataId": 12,
+        "value": 1
+      }
+    ],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Ilaxtron",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "PERHAPS ONE DAY EVEN A COLD UNFEELING PIGEON LIKE ME SHALL LEARN HOW TO LOVE."
   },
   {
     "id": 4,
@@ -161,10 +172,10 @@
   },
   {
     "id": 6,
-    "battlerName": "",
+    "battlerName": "Actor1_8",
     "characterIndex": 0,
-    "characterName": "",
-    "classId": 1,
+    "characterName": "Bird_Map_Pal_2",
+    "classId": 2,
     "equips": [
       0,
       0,
@@ -173,14 +184,25 @@
       0
     ],
     "faceIndex": 0,
-    "faceName": "",
-    "traits": [],
+    "faceName": "Bird4",
+    "traits": [
+      {
+        "code": 43,
+        "dataId": 21,
+        "value": 1
+      },
+      {
+        "code": 43,
+        "dataId": 24,
+        "value": 1
+      }
+    ],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Coralia",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "Sorry boys, my first love is the sea. (My second love is awe-inspiring violence.)"
   },
   {
     "id": 7,
@@ -252,10 +274,10 @@
   },
   {
     "id": 9,
-    "battlerName": "",
-    "characterIndex": 0,
-    "characterName": "",
-    "classId": 1,
+    "battlerName": "Actor3_8",
+    "characterIndex": 1,
+    "characterName": "Bird_Map_Pal_1",
+    "classId": 3,
     "equips": [
       0,
       0,
@@ -263,15 +285,26 @@
       0,
       0
     ],
-    "faceIndex": 0,
-    "faceName": "",
-    "traits": [],
+    "faceIndex": 1,
+    "faceName": "Bird3",
+    "traits": [
+      {
+        "code": 43,
+        "dataId": 32,
+        "value": 1
+      },
+      {
+        "code": 43,
+        "dataId": 34,
+        "value": 1
+      }
+    ],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Doomsday",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "Kehehe... welcome to my twisted world *smiles at you menacingly* <br>(OOC: yes my character can smile, it's not \"god-modding,\" stfu kevin)"
   },
   {
     "id": 10,
@@ -336,17 +369,17 @@
     ],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "Dumpster Fire",
+    "name": "Sick Spikes",
     "nickname": "",
     "note": "",
     "profile": "did you know i used to tour with a flock of seagulls? no, not those seagulls. we were a cover band for the eagles"
   },
   {
     "id": 12,
-    "battlerName": "",
-    "characterIndex": 0,
-    "characterName": "",
-    "classId": 1,
+    "battlerName": "Actor2_7",
+    "characterIndex": 5,
+    "characterName": "Bird_Map_Pal_1",
+    "classId": 4,
     "equips": [
       0,
       0,
@@ -354,12 +387,23 @@
       0,
       0
     ],
-    "faceIndex": 0,
-    "faceName": "",
-    "traits": [],
+    "faceIndex": 5,
+    "faceName": "Bird3",
+    "traits": [
+      {
+        "code": 43,
+        "dataId": 42,
+        "value": 1
+      },
+      {
+        "code": 43,
+        "dataId": 41,
+        "value": 1
+      }
+    ],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Doc Martens",
     "nickname": "",
     "note": "",
     "profile": ""
@@ -434,10 +478,10 @@
   },
   {
     "id": 15,
-    "battlerName": "",
-    "characterIndex": 0,
-    "characterName": "",
-    "classId": 1,
+    "battlerName": "Actor2_7",
+    "characterIndex": 6,
+    "characterName": "Bird_Map_Pal_2",
+    "classId": 5,
     "equips": [
       0,
       0,
@@ -445,12 +489,23 @@
       0,
       0
     ],
-    "faceIndex": 0,
-    "faceName": "",
-    "traits": [],
+    "faceIndex": 6,
+    "faceName": "Bird4",
+    "traits": [
+      {
+        "code": 43,
+        "dataId": 52,
+        "value": 1
+      },
+      {
+        "code": 43,
+        "dataId": 54,
+        "value": 1
+      }
+    ],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Snoodster",
     "nickname": "",
     "note": "",
     "profile": ""
@@ -471,11 +526,6 @@
     "faceIndex": 7,
     "faceName": "Bird1",
     "traits": [
-      {
-        "code": 61,
-        "dataId": 0,
-        "value": 0.33
-      },
       {
         "code": 43,
         "dataId": 131,
@@ -506,11 +556,6 @@
     "faceName": "Bird4",
     "traits": [
       {
-        "code": 61,
-        "dataId": 0,
-        "value": 0.33
-      },
-      {
         "code": 43,
         "dataId": 131,
         "value": 1
@@ -525,10 +570,10 @@
   },
   {
     "id": 18,
-    "battlerName": "",
-    "characterIndex": 0,
-    "characterName": "",
-    "classId": 1,
+    "battlerName": "Actor2_7",
+    "characterIndex": 7,
+    "characterName": "Bird_Map_Pal_1",
+    "classId": 6,
     "equips": [
       0,
       0,
@@ -536,15 +581,21 @@
       0,
       0
     ],
-    "faceIndex": 0,
-    "faceName": "",
-    "traits": [],
+    "faceIndex": 7,
+    "faceName": "Bird2",
+    "traits": [
+      {
+        "code": 43,
+        "dataId": 131,
+        "value": 1
+      }
+    ],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Ver'onax",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "test test test"
   },
   {
     "id": 19,
@@ -616,10 +667,10 @@
   },
   {
     "id": 21,
-    "battlerName": "",
-    "characterIndex": 0,
-    "characterName": "",
-    "classId": 1,
+    "battlerName": "Actor2_7",
+    "characterIndex": 3,
+    "characterName": "Bird_Map_Pal_2",
+    "classId": 7,
     "equips": [
       0,
       0,
@@ -627,12 +678,23 @@
       0,
       0
     ],
-    "faceIndex": 0,
-    "faceName": "",
-    "traits": [],
+    "faceIndex": 3,
+    "faceName": "Bird4",
+    "traits": [
+      {
+        "code": 43,
+        "dataId": 63,
+        "value": 1
+      },
+      {
+        "code": 43,
+        "dataId": 62,
+        "value": 1
+      }
+    ],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Princeton",
     "nickname": "",
     "note": "",
     "profile": ""
@@ -707,10 +769,10 @@
   },
   {
     "id": 24,
-    "battlerName": "",
-    "characterIndex": 0,
-    "characterName": "",
-    "classId": 1,
+    "battlerName": "Actor2_7",
+    "characterIndex": 2,
+    "characterName": "Bird_Map_Pal_1",
+    "classId": 8,
     "equips": [
       0,
       0,
@@ -718,12 +780,23 @@
       0,
       0
     ],
-    "faceIndex": 0,
-    "faceName": "",
-    "traits": [],
+    "faceIndex": 2,
+    "faceName": "Bird3",
+    "traits": [
+      {
+        "code": 43,
+        "dataId": 71,
+        "value": 1
+      },
+      {
+        "code": 43,
+        "dataId": 72,
+        "value": 1
+      }
+    ],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "",
+    "name": "Koko Loko",
     "nickname": "",
     "note": "",
     "profile": ""
@@ -733,7 +806,7 @@
     "battlerName": "",
     "characterIndex": 0,
     "characterName": "$imp",
-    "classId": 3,
+    "classId": 9,
     "equips": [
       0,
       0,
@@ -741,8 +814,8 @@
       0,
       0
     ],
-    "faceIndex": 4,
-    "faceName": "Bird3",
+    "faceIndex": 6,
+    "faceName": "actors_Summons",
     "traits": [],
     "initialLevel": 1,
     "maxLevel": 99,
@@ -756,7 +829,7 @@
     "battlerName": "",
     "characterIndex": 0,
     "characterName": "$imp",
-    "classId": 3,
+    "classId": 9,
     "equips": [
       0,
       0,
@@ -764,8 +837,8 @@
       0,
       0
     ],
-    "faceIndex": 4,
-    "faceName": "Bird3",
+    "faceIndex": 7,
+    "faceName": "actors_Summons",
     "traits": [],
     "initialLevel": 1,
     "maxLevel": 99,
@@ -779,7 +852,7 @@
     "battlerName": "",
     "characterIndex": 0,
     "characterName": "$imp",
-    "classId": 3,
+    "classId": 9,
     "equips": [
       0,
       0,
@@ -788,7 +861,7 @@
       0
     ],
     "faceIndex": 4,
-    "faceName": "Bird3",
+    "faceName": "actors_Summons",
     "traits": [],
     "initialLevel": 1,
     "maxLevel": 99,
@@ -863,6 +936,29 @@
     "maxLevel": 99,
     "name": "",
     "nickname": "old blanky",
+    "note": "",
+    "profile": ""
+  },
+  {
+    "id": 31,
+    "battlerName": "Actor1_8",
+    "characterIndex": 0,
+    "characterName": "Bird_Map_Pal_1",
+    "classId": 11,
+    "equips": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "faceIndex": 0,
+    "faceName": "actors_Summons",
+    "traits": [],
+    "initialLevel": 1,
+    "maxLevel": 99,
+    "name": "Davenport",
+    "nickname": "",
     "note": "",
     "profile": ""
   }

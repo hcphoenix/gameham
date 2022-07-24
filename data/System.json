@@ -158,7 +158,7 @@
   "optTransparent": false,
   "partyMembers": [
     1,
-    7,
+    9,
     11,
     4
   ],
@@ -326,9 +326,9 @@
       "volume": 0
     }
   ],
-  "startMapId": 15,
-  "startX": 8,
-  "startY": 3,
+  "startMapId": 7,
+  "startX": 20,
+  "startY": 5,
   "switches": [
     "",
     "Player Can Move",
@@ -655,7 +655,7 @@
     "",
     ""
   ],
-  "versionId": 10437330,
+  "versionId": 18579668,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
