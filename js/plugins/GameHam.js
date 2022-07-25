@@ -109,7 +109,7 @@ GameHam.Branch = '';
         }
     }
     for(var i = 0; i < lines.length; i++) {
-      win._lines.push('<CENTER>' + lines[i] );
+      win.push('addText', '<CENTER>' + lines[i] );
       win._waitCount += timePerLine;
     }
     win._waitCount += time;

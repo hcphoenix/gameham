@@ -5625,7 +5625,7 @@ Window_BattleLog.prototype.displayCurrentState = function(subject) {
     // custom printing
     var stateText = subject.mostImportantStateText();
     if (stateText) {
-        win._lines.push('<CENTER>' + subject.name() + stateText);
+        win.push('addText', '<CENTER>' + subject.name() + stateText);
         win.push('wait');
         win.push('clear');
         win.refresh();

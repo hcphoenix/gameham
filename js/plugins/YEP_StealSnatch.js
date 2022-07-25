@@ -1420,7 +1420,7 @@ Game_Action.prototype.displayStealText = function(text) {
         }
     }
     for(var i = 0; i < lines.length; i++) {
-      win._lines.push('<CENTER>' + lines[i]);
+      win.push('addText', '<CENTER>' + lines[i]);
       win._waitCount += 55;
     }
     win.refresh();

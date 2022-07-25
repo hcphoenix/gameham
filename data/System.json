@@ -105,7 +105,7 @@
     "pitch": 100,
     "volume": 90
   },
-  "editMapId": 7,
+  "editMapId": 16,
   "elements": [
     "",
     "Physical",
@@ -326,9 +326,9 @@
       "volume": 0
     }
   ],
-  "startMapId": 7,
-  "startX": 20,
-  "startY": 5,
+  "startMapId": 16,
+  "startX": 13,
+  "startY": 12,
   "switches": [
     "",
     "Player Can Move",
@@ -655,7 +655,7 @@
     "",
     ""
   ],
-  "versionId": 18579668,
+  "versionId": 38007751,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
