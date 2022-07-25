@@ -1834,8 +1834,33 @@
   },
   {
     "id": 28,
-    "members": [],
-    "name": "",
+    "members": [
+      {
+        "enemyId": 19,
+        "x": 216,
+        "y": 412,
+        "hidden": false
+      },
+      {
+        "enemyId": 19,
+        "x": 337,
+        "y": 373,
+        "hidden": false
+      },
+      {
+        "enemyId": 19,
+        "x": 467,
+        "y": 415,
+        "hidden": false
+      },
+      {
+        "enemyId": 19,
+        "x": 654,
+        "y": 421,
+        "hidden": false
+      }
+    ],
+    "name": "The guys",
     "pages": [
       {
         "conditions": {

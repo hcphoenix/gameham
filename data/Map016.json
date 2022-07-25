@@ -7588,7 +7588,34 @@
               "code": 401,
               "indent": 0,
               "parameters": [
-                "Well its time for me to go. Ill see you around."
+                "I got one more battle for ya. See if you can clear it."
+              ]
+            },
+            {
+              "code": 301,
+              "indent": 0,
+              "parameters": [
+                0,
+                28,
+                false,
+                false
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "",
+                0,
+                0,
+                2
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "Okay, thats really the end now."
               ]
             },
             {

@@ -2794,7 +2794,7 @@
     "damage": {
       "critical": false,
       "elementId": 0,
-      "formula": "a.gainHP(-10);",
+      "formula": "a.gainHP(-2);",
       "type": 1,
       "variance": 20
     },
@@ -3456,7 +3456,7 @@
     "damage": {
       "critical": false,
       "elementId": 0,
-      "formula": "Math.max(1, (a.atk - b.def) * 2)",
+      "formula": "Math.max(1, (a.atk - b.def) * 1.5)",
       "type": 1,
       "variance": 0
     },
