@@ -40,8 +40,9 @@ GameHam.Branch = '';
     var i = 0;
     while(i < count) {
       var member = this.randomIntFromInterval(0,7);
-      if(!$gameParty._actors.includes(member)) {
-        $gameParty.addActor((member*3)+1);
+      let id = (member*3)+1;
+      if(!$gameParty._actors.includes(id)) {
+        $gameParty.addActor(id);
         i++;
       }
     }
@@ -560,7 +561,8 @@ GameHam.Branch = '';
     switch (currentTile) {
       case GameHam.Spaces.CYOA: {
         // Do the frame and stuff:
-        $gameScreen.showPicture(15, "cyoa_frame", 0, 15, 15, 100, 100, 255, 0);
+        $gameScreen.showPicture(15, "frames/cyoa", 0, 0, 0, 100, 100, 255, 0);
+        $gameSystem.setWindowskin('Window_CYOA');
 
         // This is subject to change but lets say
         // any event over 100 is elegable
@@ -589,6 +591,7 @@ GameHam.Branch = '';
 
   GameHam.EndCYOA = function() {
     $gameScreen.erasePicture(15);
+    $gameSystem.setWindowskin('Window');
     //unfade i guess
   }
 
@@ -672,8 +675,9 @@ GameHam.Branch = '';
 
   GameHam.Temp = {};
   GameHam.HandleShop = function (shopKeeper) {
-    $gameScreen.showPicture(16, "shop_frame", 0, 15, 15, 100, 100, 255, 0);
-  
+    $gameScreen.showPicture(16, "frames/shop", 0, 15, 15, 100, 100, 255, 0);
+    $gameSystem.setWindowskin('Window_CYOA');
+
     shopKeeper = shopKeeper || GameHam.ShopKeepers.pick();
 
     let shopItems = GameHam.ShopItems.filter(s => s.condition ? s.condition(shopKeeper) : true).pickMany(3);
@@ -948,6 +952,17 @@ GameHam.Branch = '';
     , ["I'm a cassowary"]
     ];
 
+    // Support pictures that are centered on x and not y
+    _.Sprite_Picture_prototype_updateOrigin = Sprite_Picture.prototype.updateOrigin;
+    Sprite_Picture.prototype.updateOrigin = function () {
+        _.Sprite_Picture_prototype_updateOrigin.call(this);
+        var picture = this.picture();
+        if (picture.origin() === 2) {
+            this.anchor.x = 0.5;
+            picture._x = Graphics.boxWidth / 2;
+            this.anchor.y = 0;
+        }
+    };
 })(GameHam); 
 
 /*

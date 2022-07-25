@@ -6590,7 +6590,7 @@
     {
       "id": 1,
       "name": "enemy",
-      "note": "I am a child :)",
+      "note": "big gun",
       "pages": [
         {
           "conditions": {
@@ -6612,9 +6612,9 @@
           "image": {
             "tileId": 0,
             "characterName": "Enemy_map",
-            "direction": 8,
+            "direction": 2,
             "pattern": 1,
-            "characterIndex": 0
+            "characterIndex": 5
           },
           "list": [
             {
@@ -6628,7 +6628,7 @@
               "code": 655,
               "indent": 0,
               "parameters": [
-                "  troopId: 5,"
+                "  troopId: 15,"
               ]
             },
             {
@@ -6770,7 +6770,7 @@
           "walkAnime": true
         }
       ],
-      "x": 16,
+      "x": 22,
       "y": 12
     },
     {
@@ -6947,6 +6947,23 @@
               "parameters": []
             },
             {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "",
+                0,
+                0,
+                2
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "Hi this is Jacob. Im so happy that you've chosen my_cool_test_map_3 for your testing needs! Lets learn about the state of the game together! But most importantlly, remember to have a good time."
+              ]
+            },
+            {
               "code": 0,
               "indent": 0,
               "parameters": []
@@ -6979,7 +6996,7 @@
     {
       "id": 4,
       "name": "enemy",
-      "note": "big gun",
+      "note": "I am a child :)",
       "pages": [
         {
           "conditions": {
@@ -7001,9 +7018,9 @@
           "image": {
             "tileId": 0,
             "characterName": "Enemy_map",
-            "direction": 2,
+            "direction": 8,
             "pattern": 1,
-            "characterIndex": 5
+            "characterIndex": 0
           },
           "list": [
             {
@@ -7017,7 +7034,7 @@
               "code": 655,
               "indent": 0,
               "parameters": [
-                "  troopId: 14,"
+                "  troopId: 27,"
               ]
             },
             {
@@ -7159,7 +7176,7 @@
           "walkAnime": true
         }
       ],
-      "x": 22,
+      "x": 16,
       "y": 12
     },
     {
@@ -7449,7 +7466,166 @@
       "x": 27,
       "y": 10
     },
-    null,
+    {
+      "id": 7,
+      "name": "EV007",
+      "note": "",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "characterIndex": 0,
+            "characterName": "",
+            "direction": 2,
+            "pattern": 0,
+            "tileId": 0
+          },
+          "list": [
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                -1,
+                {
+                  "list": [
+                    {
+                      "code": 15,
+                      "parameters": [
+                        999
+                      ],
+                      "indent": null
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        120
+                      ],
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": false
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    999
+                  ],
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    120
+                  ],
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "",
+                0,
+                0,
+                2
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "Hi player."
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "This is the end of my fun test map."
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "I hope you had a blast with all the great enemy and cool events you just experienced. "
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "Well its time for me to go. Ill see you around."
+              ]
+            },
+            {
+              "code": 354,
+              "indent": 0,
+              "parameters": []
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 0,
+          "priorityType": 0,
+          "stepAnime": false,
+          "through": true,
+          "trigger": 2,
+          "walkAnime": true
+        }
+      ],
+      "x": 23,
+      "y": 12
+    },
     null,
     null,
     null,

@@ -42,8 +42,8 @@
     "name": "Minigames",
     "order": 7,
     "parentId": 0,
-    "scrollX": 1139,
-    "scrollY": 633
+    "scrollX": 822,
+    "scrollY": 630
   },
   {
     "id": 6,
@@ -141,7 +141,7 @@
     "name": "Tutorial Island Lite (Lets get away!)",
     "order": 6,
     "parentId": 4,
-    "scrollX": 811.3333333333334,
+    "scrollX": 1134,
     "scrollY": 619.3333333333334
   }
 ]

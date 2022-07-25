@@ -4505,6 +4505,20 @@
         ]
       },
       {
+        "code": 408,
+        "indent": 2,
+        "parameters": [
+          ""
+        ]
+      },
+      {
+        "code": 408,
+        "indent": 2,
+        "parameters": [
+          "What if we just extend the Change Items function? - Jacob"
+        ]
+      },
+      {
         "code": 126,
         "indent": 2,
         "parameters": [
@@ -5481,6 +5495,27 @@
     "id": 51,
     "list": [
       {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "$gameScreen.showPicture(16, \"photoedits/cyoa_inn\", 2, 0, 0, 100, 100, 255, 0);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "$gameScreen.showPicture(17, \"frames/inn\", 0, 0, 0, 100, 100, 255, 0);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "$gameSystem.setWindowskin('Window_CYOA');"
+        ]
+      },
+      {
         "code": 101,
         "indent": 0,
         "parameters": [
@@ -5494,21 +5529,33 @@
         "code": 401,
         "indent": 0,
         "parameters": [
-          "Hale and well met traveler."
+          "You did well to make it here. Rest your wings, it will do you some good."
         ]
       },
       {
-        "code": 401,
+        "code": 250,
         "indent": 0,
         "parameters": [
-          "I am the photo realistic chicken who runs this humble tavern."
+          {
+            "name": "bird up",
+            "volume": 90,
+            "pitch": 100,
+            "pan": 0
+          }
         ]
       },
       {
-        "code": 401,
+        "code": 224,
         "indent": 0,
         "parameters": [
-          "Stop here and roost your weary wings. "
+          [
+            255,
+            255,
+            255,
+            85
+          ],
+          60,
+          true
         ]
       },
       {
@@ -5537,14 +5584,28 @@
         "code": 401,
         "indent": 0,
         "parameters": [
-          "Yayyy you got your heatlh back or whatever, can we add like a fade to black and have the screen glow a little like in the videogames i like adn also a little jingle that would be cool"
+          "Your flock has recovered from its injuries"
         ]
       },
       {
-        "code": 401,
+        "code": 355,
         "indent": 0,
         "parameters": [
-          "also probably we want to have this be a series of events so that the inn keeper is different each time idk"
+          "$gameSystem.setWindowskin('Window');"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "$gameScreen.erasePicture(16);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "$gameScreen.erasePicture(17);"
         ]
       },
       {
@@ -5599,6 +5660,13 @@
         "indent": 0,
         "parameters": [
           "$gameScreen.erasePicture(16);"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 0,
+        "parameters": [
+          "$gameSystem.setWindowskin('Window');"
         ]
       },
       {
@@ -6262,19 +6330,10 @@
     "id": 100,
     "list": [
       {
-        "code": 231,
+        "code": 355,
         "indent": 0,
         "parameters": [
-          1,
-          "ohio",
-          0,
-          0,
-          40,
-          40,
-          100,
-          100,
-          255,
-          0
+          "$gameScreen.showPicture(14, \"photoedits/cyoa_actor11\", 2, 0, 0, 100, 100, 255, 0);"
         ]
       },
       {
@@ -6315,14 +6374,14 @@
         "code": 355,
         "indent": 0,
         "parameters": [
-          "GameHam.EndCYOA()"
+          "$gameScreen.erasePicture(14);"
         ]
       },
       {
-        "code": 235,
+        "code": 355,
         "indent": 0,
         "parameters": [
-          1
+          "GameHam.EndCYOA()"
         ]
       },
       {
@@ -6338,6 +6397,13 @@
   {
     "id": 101,
     "list": [
+      {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "$gameScreen.showPicture(14, \"photoedits/cyoa_secretbase\", 2, 0, 0, 100, 100, 255, 0);"
+        ]
+      },
       {
         "code": 101,
         "indent": 0,
@@ -6360,6 +6426,13 @@
         "indent": 0,
         "parameters": [
           "GameHam.EndCYOA()"
+        ]
+      },
+      {
+        "code": 355,
+        "indent": 0,
+        "parameters": [
+          "$gameScreen.erasePicture(14);"
         ]
       },
       {
