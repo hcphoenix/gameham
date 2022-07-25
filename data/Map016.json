@@ -6935,6 +6935,13 @@
               ]
             },
             {
+              "code": 355,
+              "indent": 0,
+              "parameters": [
+                "GameHam.randomParty(2);"
+              ]
+            },
+            {
               "code": 214,
               "indent": 0,
               "parameters": []
@@ -7243,11 +7250,9 @@
       "x": 1,
       "y": 0
     },
-    null,
-    null,
     {
-      "id": 8,
-      "name": "EV008",
+      "id": 6,
+      "name": "EV006",
       "note": "This is highscore steve, your best pal",
       "pages": [
         {
@@ -7441,9 +7446,11 @@
           "walkAnime": true
         }
       ],
-      "x": 21,
-      "y": 2
+      "x": 27,
+      "y": 10
     },
+    null,
+    null,
     null,
     null,
     null,

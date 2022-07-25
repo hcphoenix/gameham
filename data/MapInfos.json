@@ -60,7 +60,7 @@
     "name": "GameBoardKaliTesting",
     "order": 5,
     "parentId": 4,
-    "scrollX": 1008.6666666666666,
+    "scrollX": 811.3333333333334,
     "scrollY": 619.3333333333334
   },
   {
@@ -132,8 +132,8 @@
     "name": "New Game",
     "order": 16,
     "parentId": 0,
-    "scrollX": 616.5,
-    "scrollY": 472.5
+    "scrollX": 822,
+    "scrollY": 630
   },
   {
     "id": 16,

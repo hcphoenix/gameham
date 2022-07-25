@@ -62,7 +62,7 @@ var GH_Tooltips = GH_Tooltips || {};
             for (i = 0; i < this._stateIconsCount; i++){
                 let icon = this._stateIcons[i];
                 
-                if(icon._hovered) {
+                if(icon && icon._hovered) {
                     let s = states[i];
                     let text = _.formatStateMessage(s.name, s.iconIndex, s.note);
                     SceneManager._scene._tooltip_window.show(text, icon);

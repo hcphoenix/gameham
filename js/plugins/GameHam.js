@@ -34,17 +34,19 @@ GameHam.Branch = '';
     return this.randomIntFromInterval(0,16);
   }
 
-  GameHam.randomParty = function() {
-    this.party = [];
+  GameHam.randomParty = function(count) {
+    $gameParty._actors = [];
+
     var i = 0;
-    while(i < 4) {
+    while(i < count) {
       var member = this.randomIntFromInterval(0,7);
-      if(!this.party.includes(member)) {
-        this.party.push(member);
+      if(!$gameParty._actors.includes(member)) {
+        $gameParty.addActor((member*3)+1);
         i++;
       }
     }
-    return this.party;
+
+    return $gameParty._actors;
   }
 
 /*

@@ -1739,28 +1739,7 @@
               "code": 355,
               "indent": 1,
               "parameters": [
-                "p = GameHam.randomParty();"
-              ]
-            },
-            {
-              "code": 655,
-              "indent": 1,
-              "parameters": [
-                "p.forEach(e => {"
-              ]
-            },
-            {
-              "code": 655,
-              "indent": 1,
-              "parameters": [
-                "    $gameParty.addActor((e*3)+1);"
-              ]
-            },
-            {
-              "code": 655,
-              "indent": 1,
-              "parameters": [
-                "});"
+                "p = GameHam.randomParty(3);"
               ]
             },
             {
@@ -1869,28 +1848,7 @@
               "code": 355,
               "indent": 1,
               "parameters": [
-                "p = GameHam.randomParty();"
-              ]
-            },
-            {
-              "code": 655,
-              "indent": 1,
-              "parameters": [
-                "p.forEach(e => {"
-              ]
-            },
-            {
-              "code": 655,
-              "indent": 1,
-              "parameters": [
-                "    $gameParty.addActor((e*3)+1);"
-              ]
-            },
-            {
-              "code": 655,
-              "indent": 1,
-              "parameters": [
-                "});"
+                "p = GameHam.randomParty(3);"
               ]
             },
             {

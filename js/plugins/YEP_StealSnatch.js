@@ -1378,7 +1378,6 @@ Game_Action.prototype.getStealableItem = function(target, stealable) {
     var text = fmt.format(this.subject().name(), target.name(), name, icon);
     this.displayStealText(text);
     if(target.allItemsStolen(this.item())) {
-      GameHam.displayBattleText(target.name() + " has nothing left to steal!", 150);
       target.addState(33);
     } else {
       if(target.states().map(s => s.id).includes(Yanfly.Steal.scanStateId)) {
