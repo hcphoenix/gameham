@@ -6668,8 +6668,8 @@
               "code": 283,
               "indent": 0,
               "parameters": [
-                "",
-                "ground_CITY"
+                "sky_SUMMER",
+                "ground_FARMLAND"
               ]
             },
             {
@@ -7627,7 +7627,7 @@
               "code": 283,
               "indent": 0,
               "parameters": [
-                "",
+                "sky_WINTER",
                 "ground_CITY"
               ]
             },

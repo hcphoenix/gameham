@@ -181,7 +181,9 @@ GameHam.Branch = '';
   }
 
   Game_BattlerBase.prototype.pursuitDamage = function () {
-    return Math.max(0, Math.floor(this.mdf * (this.hp / (this.mhp / 2))));
+    let max = (this.mhp / 2);
+    let cur = (this.hp - max);
+    return Math.max(0, Math.floor(this.mdf * (cur / max)));
   }
 
   GameHam.GetPursuitDamage = function () {
@@ -197,19 +199,16 @@ GameHam.Branch = '';
     //$gameMessage.setChoiceBackground(background);
     //$gameMessage.setChoicePositionType(positionType);
     $gameMessage.setChoiceCallback(function(n) {
-      SceneManager._scene._messageWindow._choiceWindow.close();
-      if(n == 0) {
-        $gameParty.performEscapeSuccess();
-        SoundManager.playEscape();
-        let chance = GameHam.GetEscapeChance();
-        
+      if(n == 0) {    
         $gameMessage.add($gameParty.name() + " flew away!");
         this._escaped = true;
+        $gameParty.performEscapeSuccess();
+        SoundManager.playEscape();
         SceneManager._scene._actorCommandWindow.processCancel();
         BattleManager.processAbort();
+        $gameTemp.reserveCommonEvent(54);
       } else {
-        //$gameVariables.setValue($gameMessage.itemChoiceVariableId(), 0);
-        //SceneManager._scene._messageWindow.hide();
+        SceneManager._scene._messageWindow._choiceWindow.close();
         SceneManager._scene._messageWindow.terminateMessage();
         SceneManager._scene._actorCommandWindow.activate();
         SceneManager._scene._actorCommandWindow.processCancel();
