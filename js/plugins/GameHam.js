@@ -181,7 +181,7 @@ GameHam.Branch = '';
   }
 
   Game_BattlerBase.prototype.pursuitDamage = function () {
-    return Math.floor(this.mdf * (this.hp / this.mhp));
+    return Math.max(0, Math.floor(this.mdf * (this.hp / (this.mhp / 2))));
   }
 
   GameHam.GetPursuitDamage = function () {

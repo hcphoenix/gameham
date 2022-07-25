@@ -87,9 +87,15 @@ var GH_Tooltips = GH_Tooltips || {};
     };
 
     _.Enemy_Bar_Text = {
-        hp: "Fear: When this fills the enemy runs away.\nEscape damage is lessened the more fear an enemy has.",
-        mp: "Distraction: Effects steal chance,\nhigher distraction is higher chance to steal.",
-        tp: "Rage: Does this work like players? I should never be hired as a technical writer.",
+        hp: "FEAR: Escape damage is lessened the more fear an enemy has. At full you can escape without consequence.",
+        mp: "EXPOSURE: Effects steal chance, higher distraction is higher chance to steal.",
+        tp: "HATE: Can be converted into powerful attack. Fills as an enemy takes damage.",
+    };
+
+    _.Enemy_Bar_Second_Text = {
+        hp: "FEAR: You got them on the ropes! Escape now unharmed or pressure them into running for an extra stolen good.",
+        mp: "will never be used",
+        tp: "will enver be used",
     };
 
     _.Enemy_Bar_prototype_update = Enemy_Bar.prototype.update;
@@ -98,6 +104,10 @@ var GH_Tooltips = GH_Tooltips || {};
         
         if(SceneManager._scene._tooltip_window && this._back_bar._hovered) {
             let text = _.Enemy_Bar_Text[this._prop];
+            if(this._has_swapped) {
+                console.log("somethin");
+                text = _.Enemy_Bar_Second_Text[this._prop];
+            }
             SceneManager._scene._tooltip_window.show(text, this._back_bar);
         }
     };
@@ -210,7 +220,7 @@ var GH_Tooltips = GH_Tooltips || {};
         }
     };
     Window_Tooltip.prototype.initialize = function() {
-        Window_Base.prototype.initialize.call(this, 0, 0, 700, 120);
+        Window_Base.prototype.initialize.call(this, 0, 0, 700, 400);
         
         this.visible = false;
         this.deactivate();
@@ -338,22 +348,27 @@ var GH_Tooltips = GH_Tooltips || {};
     }
 
     Window_Tooltip.prototype.show = function(text, target, setXY = true) {
-        this.visible = true;
-        this.active = true;
         // get the target position and move this sprite to it
         if(setXY) {
             this.x = TouchInput.x;
             this.y = TouchInput.y;
         }
-    
-        if(this.x + this.width > Graphics.boxWidth) this.x = Graphics.boxWidth - this.width;
-        if(this.y + this.height > Graphics.boxHeight) this.y = Graphics.boxHeight - this.height;
-    
-        if(this._target != target) {
+
+        if(this._target != target || !this.visible) {
             this.contents.clear();
+            
+            let textState = this.textWidthExCheck(text);
+            this.height = 5 + this.fittingHeight( Math.ceil(textState / (this.contentsWidth() - 10)));
             this.drawTextEx("<WordWrap>" + text, 5, 5);
+
             this._target = target;
         }
+        
+        if(this.x + this.width > Graphics.boxWidth) this.x = Graphics.boxWidth - this.width;
+        if(this.y + this.height > Graphics.boxHeight) this.y = Graphics.boxHeight - this.height;
+
+        this.visible = true;
+        this.active = true;
     };
 
     Window_Tooltip.prototype.hide = function() {
