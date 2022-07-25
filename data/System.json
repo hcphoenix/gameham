@@ -82,7 +82,7 @@
     "volume": 50
   },
   "battleback1Name": "sky_SPRING",
-  "battleback2Name": "ground_SUBURB",
+  "battleback2Name": "ground_CITY",
   "battlerHue": 0,
   "battlerName": "enemy_angryelf-G",
   "boat": {
@@ -655,7 +655,7 @@
     "",
     ""
   ],
-  "versionId": 90215765,
+  "versionId": 39509262,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
