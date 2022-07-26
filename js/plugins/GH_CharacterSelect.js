@@ -141,6 +141,7 @@ Scene_CharacterSelect.prototype.createDisplayObjects = function() {
     this.createTitle();
     this.createSupports();
     this.createPortraits();
+    this.createShadow();
     this.createWindowLayer();
     this.createWindow();
 }
@@ -197,6 +198,16 @@ Scene_CharacterSelect.prototype.createTitle = function() {
     this._titleSprite.anchor.x = 0.5;
     this._titleSprite.x = Graphics.boxWidth / 2;
     this.addChild(this._titleSprite);
+}
+
+
+Scene_CharacterSelect.prototype.createShadow = function() {
+    this.shadowSprite = new Sprite(this._shadow_img);
+    this.shadowSprite.anchor.x = 0.5;
+    this.shadowSprite.anchor.y = 0.5;
+    this.shadowSprite.x = Graphics.boxWidth / 2;
+    this.shadowSprite.y = Graphics.boxHeight - Scene_CharacterSelect.previewSpinHeight + 30;
+    this.addChild(this.shadowSprite);
 }
 
 Scene_CharacterSelect.prototype.update = function() {
@@ -305,6 +316,9 @@ function Window_CharacterSelect() {
 Window_CharacterSelect.prototype = Object.create(Window_Selectable.prototype);
 Window_CharacterSelect.prototype.constructor = Window_CharacterSelect;
 
+// how far from the bottom does the spin live
+Scene_CharacterSelect.previewSpinHeight = 100;
+
 Window_CharacterSelect.prototype.initialize = function(frame_spritesheet, char_spritesheet, big_portraits) {
     Window_Selectable.prototype.initialize.call(this);
 
@@ -336,8 +350,15 @@ Window_CharacterSelect.prototype.initialize = function(frame_spritesheet, char_s
     this.previewSprite.anchor.x = 0.5;
     this.previewSprite.anchor.y = 0.5;
     this.previewSprite.x = Graphics.boxWidth / 2;
-    this.previewSprite.y = Graphics.boxHeight - 50;
+    this.previewSprite.y = Graphics.boxHeight - Scene_CharacterSelect.previewSpinHeight;
     this.addChild(this.previewSprite);
+
+    this.nameSprite = new Sprite(new Bitmap(200, 48));
+    this.nameSprite.anchor.x = 0.5;
+    this.nameSprite.anchor.y = 0.5;
+    this.nameSprite.x = Graphics.boxWidth / 2;
+    this.nameSprite.y = Graphics.boxHeight - Scene_CharacterSelect.previewSpinHeight - 36;
+    this.addChild(this.nameSprite);
 
     this.setHandler('ok',     this.onOk.bind(this));
     this.setHandler('cancel', this.onCancel.bind(this));
@@ -348,6 +369,8 @@ Window_CharacterSelect.prototype.initialize = function(frame_spritesheet, char_s
 
     // sort children to put port under the mouse
     this.children.sort((a, b) => Number(b.is_port || 0) - Number(a.is_port || 0));
+
+    this.selectedActors = [];
 
     this.buildClassInfo();
     this.setAllFrames();
@@ -371,6 +394,7 @@ Window_CharacterSelect.prototype.pallette = function() {
 }
 
 Window_CharacterSelect.prototype.onOk = function() {
+    this.selectedActors.push(this.curActorInfo());
     if(this.partyIndex < 2) {
         this.partyIndex++;
         let cur = this._index; // stay on same box
@@ -379,10 +403,23 @@ Window_CharacterSelect.prototype.onOk = function() {
         this.select(cur);
     } else {
         // Start the game
+        $gameParty._actors = [];
+        for(let i = 0; i < this.selectedActors.length; i++){
+            $gameParty.addActor(this.selectedActors[i].id);
+        }
+
+        SceneManager.goto(Scene_Map);
+        
+        // Set steps to prevent cyoa at start
+        $gameVariables.setValue(22, -1);
+
+        // Maybe dont hard code these?
+        $gamePlayer.reserveTransfer(7, 19, 4);
     }
 }
 
 Window_CharacterSelect.prototype.onCancel = function() {
+    this.selectedActors.pop();
     if(this.partyIndex == 0) {
         // We actually dont want to end the scene because you need to select at this point?
         // Or maybe we do end it and go back to title idk figure this out later
@@ -471,8 +508,15 @@ Window_CharacterSelect.prototype.update = function() {
     this.updateBigInnerPortrait();
 
     this.updateCharacterPreview();
+
+    this.drawName();
 };
 
+Window_CharacterSelect.prototype.drawName = function() {
+    //this.nameSprite.bitmap.sfont = VictorEngine.SFont.getSFont(63);
+    this.nameSprite.bitmap.clear();
+    this.nameSprite.bitmap.drawText(this.curActorInfo().name.toUpperCase(), 0, 0, this.nameSprite.bitmap.width, this.nameSprite.bitmap.height, "center");
+}
 Window_CharacterSelect.prototype.cyclePalette = function() {
     // TODO: add controller support
     // TODO: maybe scroll mouse?
@@ -596,19 +640,16 @@ Window_CharacterSelect.prototype.cursorUp = function(wrap) {
 Window_CharacterSelect.prototype.cursorRight = function(wrap) {
     var index = this.index();
     var maxItems = this.maxItems();
-    var maxCols = this.maxCols();
-    if (maxCols >= 2 && (index < maxItems - 1 || (wrap && this.isHorizontal()))) {
-        this.select((index + 1) % maxItems);
-    }
+
+    this.select((index + 1) % maxItems);
 };
 
 Window_CharacterSelect.prototype.cursorLeft = function(wrap) {
     var index = this.index();
     var maxItems = this.maxItems();
     var maxCols = this.maxCols();
-    if (maxCols >= 2 && (index > 0 || (wrap && this.isHorizontal()))) {
-        this.select((index - 1 + maxItems) % maxItems);
-    }
+    
+    this.select((index - 1 + maxItems) % maxItems);
 };
 
 // do not allow scrolling
