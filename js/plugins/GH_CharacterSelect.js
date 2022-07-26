@@ -280,8 +280,8 @@ Sprite_CharacterSelectPortrait.prototype.updateFrame = function() {
 }
 
 Sprite_CharacterSelectPortrait.prototype.updateContent = function() {
-    let w = this.big_bird_imgs[0].width / 4;
-    let h = this.big_bird_imgs[0].height / 2;
+    let w = this.big_bird_imgs[this._faceFile].width / 4;
+    let h = this.big_bird_imgs[this._faceFile].height / 2;
 
     let x = Math.floor(this._faceIndex % 4) * w;
     let y = Math.floor(this._faceIndex / 4) * h;
@@ -425,8 +425,9 @@ Window_CharacterSelect.prototype.updateBigInnerPortrait = function() {
     let actorInfo = this.curActorInfo();
 
     this.big_portraits[this.partyIndex]._faceIndex = actorInfo.faceIndex;
-    this.big_portraits[this.partyIndex]._faceFile = this.fileFromFaceName(actorInfo.faceName);
-    this.big_portraits[this.partyIndex].spriteFace.anchor.y = this._index == 0 ? -0.5 : 0.5;
+    this.big_portraits[this.partyIndex]._faceFile = this.fileFromFaceName(actorInfo.faceName) - 1;
+    this.big_portraits[this.partyIndex].spriteFace.anchor.y = 0.5;
+    this.big_portraits[this.partyIndex].updateContent();
 }
 
 Window_CharacterSelect.prototype.start = function() {
@@ -459,6 +460,8 @@ Window_CharacterSelect.prototype.numVisibleRows = function() {
 Window_CharacterSelect.prototype.update = function() {
     Window_Selectable.prototype.update.call(this);
 
+    this.cyclePalette();
+
     this.timer++;
     for(let i = 0; i < 8; i++) {
         this.setFrameFrame(i);
@@ -470,10 +473,19 @@ Window_CharacterSelect.prototype.update = function() {
     this.updateCharacterPreview();
 };
 
+Window_CharacterSelect.prototype.cyclePalette = function() {
+    // TODO: add controller support
+    // TODO: maybe scroll mouse?
+    if(Input.isTriggered('#c')) {
+        this._pallette++;
+    }
+}
+
 Window_CharacterSelect.prototype.updateCharacterPreview = function() {
     let actorInfo = this.curActorInfo();
 
     this.previewSprite.setActor(actorInfo.id);
+    this.previewSprite.updateAnimation();
 };
 
 Window_CharacterSelect.prototype.maxItems = function() {
