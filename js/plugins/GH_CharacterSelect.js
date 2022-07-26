@@ -138,6 +138,7 @@ Scene_CharacterSelect.prototype.createDisplayObjects = function() {
 
     // Setup all sprites, the order matters for layers
     this.createBackground();
+    this.createWikiSprite();
     this.createTitle();
     this.createSupports();
     this.createPortraits();
@@ -152,7 +153,7 @@ Scene_CharacterSelect.prototype.createBackground = function() {
 }
 
 Scene_CharacterSelect.prototype.createWindow = function() {
-    this.characterSelectWindow = new Window_CharacterSelect(this._portsmall_img, this._char_sheet, this._portraits);
+    this.characterSelectWindow = new Window_CharacterSelect(this._portsmall_img, this._char_sheet, this._portraits, this.wikiSprite);
     this.addWindow(this.characterSelectWindow);
 }
 
@@ -208,6 +209,16 @@ Scene_CharacterSelect.prototype.createShadow = function() {
     this.shadowSprite.x = Graphics.boxWidth / 2;
     this.shadowSprite.y = Graphics.boxHeight - Scene_CharacterSelect.previewSpinHeight + 30;
     this.addChild(this.shadowSprite);
+};
+
+Scene_CharacterSelect.prototype.createWikiSprite = function() {
+    this.wikiSprite = new Sprite(new Bitmap(700, 250));
+    this.wikiSprite.anchor.x = 0.5;
+    this.wikiSprite.anchor.y = 0.5;
+    this.wikiSprite.x = Graphics.boxWidth / 2;
+    this.wikiSprite.y = Graphics.boxHeight - Scene_CharacterSelect.previewSpinHeight + 20;
+    this.wikiSprite.bitmap.sfont = VictorEngine.SFont.getSFont(62);
+    this.addChild(this.wikiSprite);
 }
 
 Scene_CharacterSelect.prototype.update = function() {
@@ -319,7 +330,7 @@ Window_CharacterSelect.prototype.constructor = Window_CharacterSelect;
 // how far from the bottom does the spin live
 Scene_CharacterSelect.previewSpinHeight = 100;
 
-Window_CharacterSelect.prototype.initialize = function(frame_spritesheet, char_spritesheet, big_portraits) {
+Window_CharacterSelect.prototype.initialize = function(frame_spritesheet, char_spritesheet, big_portraits, wikisprite) {
     Window_Selectable.prototype.initialize.call(this);
 
     this.width = Graphics.boxWidth;
@@ -328,6 +339,7 @@ Window_CharacterSelect.prototype.initialize = function(frame_spritesheet, char_s
     this.frame_spritesheet = frame_spritesheet;
     this.char_spritesheet = char_spritesheet;
     this.big_portraits = big_portraits;
+    this.wikiSprite = wikisprite;
 
     this.spriteFrames = [];
     for(let i = 0; i < this.maxItems(); i++) {
@@ -510,13 +522,32 @@ Window_CharacterSelect.prototype.update = function() {
 
     this.updateCharacterPreview();
 
-    this.drawName();
+    this.drawText();
 };
 
-Window_CharacterSelect.prototype.drawName = function() {
-    //this.nameSprite.bitmap.sfont = VictorEngine.SFont.getSFont(63);
+Window_CharacterSelect.prototype.drawText = function() {
     this.nameSprite.bitmap.clear();
     this.nameSprite.bitmap.drawText(this.curActorInfo().name.toUpperCase(), 0, 0, this.nameSprite.bitmap.width, this.nameSprite.bitmap.height, "center");
+
+    let wikiText = Window_Selectable.wikipediaText[this._index];
+    this.wikiSprite.bitmap.clear();
+    let y = -this.wikiSprite.bitmap.height / 2;
+    for(let i = 0; i < wikiText.length; i++) {
+        this.wikiSprite.bitmap.drawText(wikiText[i], 0, y, this.wikiSprite.bitmap.width, this.wikiSprite.bitmap.height, "center");
+        if( Math.floor(this.timer % 10) == 0 ) {
+            if( i % 2 == 0) {
+                let arr = wikiText[i].split("");
+                let f = arr.shift();
+                arr.push(f);
+                wikiText[i] = arr.join("");
+            } else {
+                let arr = wikiText[i].split("");
+                let f = arr.pop();
+                wikiText[i] = f + arr.join("");
+            }
+        }
+        y += 24;
+    }
 }
 Window_CharacterSelect.prototype.cyclePalette = function() {
     // TODO: add controller support
@@ -666,6 +697,27 @@ Window_Selectable.prototype.scrollDown = function() {
 Window_Selectable.prototype.scrollUp = function() {
     return;
 };
+
+
+// And here is the fucking wikipedia text dear lord
+Window_Selectable.wikipediaText = [
+    // pigeon
+    "The domestic pigeon (Columba livia domestica) is a pigeon subspecies that was derived from the rock dove (also called the rock pigeon). The rock pigeon is the world's oldest domesticated bird, Mesopotamian cuneiform tablets mention the domestication of pigeons more than 5,000 years ago, as do Egyptian hieroglyphics [2] Research suggests that domestication of pigeons occurred as early as 10,000 years ago.[2] Pigeons have made contributions of considerable importance to humanity, especially in times of war.[3] In war the homing ability of pigeons has been put to use by making them messengers. So-called war pigeons have carried many vital messages and some have been decorated for their services. Medals such as the Croix de Guerre, awarded to Cher Ami, and the Dickin Medal awarded to the pigeons GI Joe and Paddy, amongst 32 others, have been awarded to pigeons for their services in saving human lives. Despite this, city pigeons today are seen as pests, mainly due to their droppings. Feral pigeons are considered invasive in many parts of the world, though they have a positive impact on wild bird populations, serving as an important prey species of birds of prey. [3][4] ",
+    // seagull
+    "Gulls, or colloquially seagulls, are seabirds of the family Laridae in the suborder Lari. They are most closely related to the terns and skimmers and only distantly related to auks, and even more distantly to waders. Until the 21st century, most gulls were placed in the genus Larus, but that arrangement is now considered polyphyletic, leading to the resurrection of several genera.[1] An older name for gulls is mews, which is cognate with German Möwe, Danish måge, Swedish mås, Dutch meeuw, Norwegian måke/måse and French mouette, and can still be found in certain regional dialects.[2][3][4]Gulls nest in large, densely packed, noisy colonies, they lay two or three speckled eggs in nests composed of vegetation, the young are precocial, born with dark mottled down and mobile upon hatching.[7] Gulls are resourceful, inquisitive, and intelligent, the larger species in particular,[8] demonstrating complex methods of communication and a highly developed social structure. For example, many gull colonies display mobbing behavior, attacking and harassing predators and other intruders.[9] Certain species have exhibited tool-use behavior, such as the herring gull, using pieces of bread as bait with which to catch goldfish, for example.[10] Many species of gulls have learned to coexist successfully with humans and have thrived in human habitats [11] Others rely on kleptoparasitism to get their food. Gulls have been observed preying on live whales, landing on the whale as it surfaces to peck out pieces of flesh.[12]",
+    // raven
+    "The common raven (Corvus corax), also known as the western raven or northern raven when discussing the raven at the subspecies level, is a large all-black passerine bird. Found across the Northern Hemisphere, it is the most widely distributed of all corvids, there are at least eight subspecies with little variation in appearance, although recent research has demonstrated significant genetic differences among populations from various regions. It is one of the two largest corvids, alongside the thick-billed raven, and is possibly the heaviest passerine bird; at maturity, the common raven averages 63 centimetres (25 inches) in length and 1,2 kilograms (2,6 pounds) in mass. Although their typical lifespan is considerably shorter, common ravens can live more than 23 years in the wild; Young birds may travel in flocks but later mate for life, with each mated pair defending a territory. Common ravens have coexisted with humans for thousands of years and in some areas have been so numerous that people have regarded them as pests. Part of their success as a species is due to their omnivorous diet: they are extremely versatile and opportunistic in finding sources of nutrition, feeding on carrion, insects, cereal grains, berries, fruit, small animals, nesting birds, and food waste.Some notable feats of problem-solving provide evidence that the common raven is unusually intelligent. Over the centuries, it has been the subject of mythology, folklore, art, and literature. In many cultures, including the indigenous cultures of Scandinavia, ancient Ireland and Wales, Bhutan, the northwest coast of North America, and Siberia and northeast Asia, the common raven has been revered as a spiritual figure or godlike creature. ",
+    // vulture
+    "A vulture is a bird of prey that scavenges on carrion. There are 23 extant species of vulture (including Condors).[2] Old World vultures include 16 living species native to Europe, Africa, and Asia; New World vultures are restricted to North and South America and consist of seven identified species, all belonging to the Cathartidae family.[2][3] A particular characteristic of many vultures is a bald, unfeathered head. This bare skin is thought to keep the head clean when feeding, and also plays an important role in thermoregulation.[4] Vultures have been observed to hunch their bodies and tuck in their heads in the cold, and open their wings and stretch their necks in the heat. They also urinate on themselves as a means of cooling their bodies.[5] A group of vultures in flight is called a 'kettle', while the term 'committee' refers to a group of vultures resting on the ground or in trees. A group of vultures that are feeding is termed a 'wake'.[6] ",
+    // turkey
+    "The turkey is a large bird in the genus Meleagris, native to North America. There are two extant turkey species: the wild turkey (Meleagris gallopavo) of eastern and central North America and the ocellated turkey (Meleagris ocellata) of the Yucatán Peninsula in Mexico. Males of both turkey species have a distinctive fleshy wattle, called a snood, that hangs from the top of the beak. They are among the largest birds in their ranges. As with many large ground-feeding birds (order Galliformes), the male is bigger and much more colorful than the female. A male ocellated turkey (Meleagris ocellata) with a blue head The earliest turkeys evolved in North America over 20 million years ago. They share a recent common ancestor with grouse, pheasants, and other fowl. The wild turkey species is the ancestor of the domestic turkey, which was domesticated approximately 2,000 years ago. ",
+    // parrot
+    "Parrots, also known as psittacines (/ˈsɪtəsaɪnz/),[1][2] are birds of the roughly 398 species[3] in 92 genera comprising the order Psittaciformes (/ˈsɪtəsɪfɔːrmiːz/), found mostly in tropical and subtropical regions. Parrots, along with ravens, crows, jays, and magpies, are among the most intelligent birds, and the ability of some species to imitate human speech enhances their popularity as pets. Trapping wild parrots for the pet trade, as well as hunting, habitat loss, and competition from invasive species, has diminished wild populations, with parrots being subjected to more exploitation than any other group of birds. As of 2021, about 50 million parrots (half of all parrots) live in captivity, with the vast majority of these living as pets in people's homes.[5] Measures taken to conserve the habitats of some high-profile charismatic species have also protected many of the less charismatic species living in the same ecosystems. Parrots are the only creatures that display true tripedalism, using their necks and beaks as limbs with propulsive forces equal to or greater than those forces generated by the forelimbs of primates when climbing vertical surfaces. They can travel with cyclical tripedal gaits when climbing.[6] ",
+    // penguin
+    "Penguins (order Sphenisciformes /sfɪˈnɪsɪfɔːrmiːz/, family Spheniscidae /sfɪˈnɪsɪdiː/) are a group of aquatic flightless birds. They live almost exclusively in the Southern Hemisphere: only one species, the Galápagos penguin, is found north of the Equator. Highly adapted for life in the water, penguins have countershaded dark and white plumage and flippers for swimming. Most penguins feed on krill, fish, squid and other forms of sea life which they catch with their bills and swallow it whole while swimming. A penguin has a spiny tongue and powerful jaws to grip slippery prey.[4] They spend roughly half of their lives on land and the other half in the sea. The largest living species is the Emperor penguin (Aptenodytes forsteri):[5] on average, adults are about 1.1 m (3 ft 7 in) tall and weigh 35 kg (77 lb). The smallest penguin species is the little blue penguin (Eudyptula minor), also known as the fairy penguin, which stands around 33 cm (13 in) tall and weighs 1 kg (2.2 lb).[6] Today, larger penguins generally inhabit colder regions, and smaller penguins inhabit regions with temperate or tropical climates. Some prehistoric penguin species were enormous: as tall or heavy as an adult human. There was a great diversity of species in subantarctic regions, and at least one giant species in a region around 2,000 km south of the equator 35 mya, in a climate decidedly warmer than today.[which?] ",
+    // cassowary
+    "Casuarius is a genus of birds in the order Casuariiformes, whose members are the cassowaries (Tok Pisin: muruk, Indonesian: kasuari). It is classified as a ratite (flightless bird without a keel on its sternum bone) and is native to the tropical forests of New Guinea (Papua New Guinea and Indonesia), Aru Islands (Indonesia), and northeastern Australia.[3] Three species are extant: The most common, the southern cassowary, is the third-tallest and second-heaviest living bird, smaller only than the ostrich and emu. The other two species are represented by the northern cassowary and the dwarf cassowary. A fourth but extinct species is represented by the pygmy cassowary. Cassowaries feed mainly on fruit, although all species are truly omnivorous and take a range of other plant foods, including shoots and grass seeds, in addition to fungi, invertebrates, and small vertebrates. Cassowaries are very wary of humans, but if provoked, they are capable of inflicting serious, even fatal, injuries to both dogs and people. The cassowary has often been labeled \"the world's most dangerous bird\".[4] ",
+].map(x => x.split("."));
 
 // ===========================================
 // * Sprite_Select_Preview
