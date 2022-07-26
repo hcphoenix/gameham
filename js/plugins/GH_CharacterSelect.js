@@ -353,11 +353,12 @@ Window_CharacterSelect.prototype.initialize = function(frame_spritesheet, char_s
     this.previewSprite.y = Graphics.boxHeight - Scene_CharacterSelect.previewSpinHeight;
     this.addChild(this.previewSprite);
 
-    this.nameSprite = new Sprite(new Bitmap(200, 48));
+    this.nameSprite = new Sprite(new Bitmap(300, 48));
     this.nameSprite.anchor.x = 0.5;
     this.nameSprite.anchor.y = 0.5;
     this.nameSprite.x = Graphics.boxWidth / 2;
-    this.nameSprite.y = Graphics.boxHeight - Scene_CharacterSelect.previewSpinHeight - 36;
+    this.nameSprite.y = Graphics.boxHeight - Scene_CharacterSelect.previewSpinHeight - 45;
+    this.nameSprite.bitmap.sfont = VictorEngine.SFont.defaultSFont();
     this.addChild(this.nameSprite);
 
     this.setHandler('ok',     this.onOk.bind(this));
