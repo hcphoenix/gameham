@@ -92,7 +92,10 @@ TH.BattleCommandUseSkill = TH.BattleCommandUseSkill || {};
       TH.ActorBattleCommands.makeCommand("use_skill", 4),
       // Old individual escape
       // TH.ActorBattleCommands.makeCommand("use_skill", 5),
-      TH.ActorBattleCommands.makeCommand("escape")
+      // Old non common event escape
+      // TH.ActorBattleCommands.makeCommand("escape")
+      // Common event escape
+      TH.ActorBattleCommands.makeCommand("use_skill", 6),
     ];
     return cmds;
   };

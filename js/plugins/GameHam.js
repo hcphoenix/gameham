@@ -189,7 +189,7 @@ GameHam.Branch = '';
   GameHam.GetPursuitDamage = function () {
     return $gameTroop._enemies.map(e => e.pursuitDamage()).reduce((x,y)=>(x+y), 0);
   }
-
+/*
   var BattleManager_processEscape = BattleManager.processEscape;
   BattleManager.processEscape = function() {
     $gameMessage.newPage();
@@ -217,7 +217,7 @@ GameHam.Branch = '';
 
     return false;
   };
-
+*/
   //draw row limitations in skill cost
   GameHam.dOC = Window_SkillList.prototype.drawOtherCost;
   Window_SkillList.prototype.drawOtherCost = function(skill, wx, wy, dw) {

@@ -5715,32 +5715,6 @@
     "id": 54,
     "list": [
       {
-        "code": 121,
-        "indent": 0,
-        "parameters": [
-          4,
-          4,
-          0
-        ]
-      },
-      {
-        "code": 101,
-        "indent": 0,
-        "parameters": [
-          "",
-          0,
-          0,
-          2
-        ]
-      },
-      {
-        "code": 401,
-        "indent": 0,
-        "parameters": [
-          "The flock makes their escape!"
-        ]
-      },
-      {
         "code": 122,
         "indent": 0,
         "parameters": [
@@ -5752,14 +5726,42 @@
         ]
       },
       {
-        "code": 111,
+        "code": 101,
         "indent": 0,
         "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 0,
+        "parameters": [
+          "Escape and take \\V[2] damage?"
+        ]
+      },
+      {
+        "code": 102,
+        "indent": 0,
+        "parameters": [
+          [
+            "Yes",
+            "No"
+          ],
           1,
+          0,
           2,
+          0
+        ]
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
           0,
-          0,
-          3
+          "Yes"
         ]
       },
       {
@@ -5776,12 +5778,40 @@
         "code": 401,
         "indent": 1,
         "parameters": [
+          "The flock makes their escape!"
+        ]
+      },
+      {
+        "code": 111,
+        "indent": 1,
+        "parameters": [
+          1,
+          2,
+          0,
+          0,
+          3
+        ]
+      },
+      {
+        "code": 101,
+        "indent": 2,
+        "parameters": [
+          "",
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "code": 401,
+        "indent": 2,
+        "parameters": [
           "Here comes the enemies final attack..."
         ]
       },
       {
         "code": 311,
-        "indent": 1,
+        "indent": 2,
         "parameters": [
           0,
           0,
@@ -5793,7 +5823,7 @@
       },
       {
         "code": 224,
-        "indent": 1,
+        "indent": 2,
         "parameters": [
           [
             255,
@@ -5807,17 +5837,17 @@
       },
       {
         "code": 0,
-        "indent": 1,
+        "indent": 2,
         "parameters": []
       },
       {
         "code": 411,
-        "indent": 0,
+        "indent": 1,
         "parameters": []
       },
       {
         "code": 101,
-        "indent": 1,
+        "indent": 2,
         "parameters": [
           "",
           0,
@@ -5827,9 +5857,37 @@
       },
       {
         "code": 401,
-        "indent": 1,
+        "indent": 2,
         "parameters": [
           "A clean getaway!"
+        ]
+      },
+      {
+        "code": 0,
+        "indent": 2,
+        "parameters": []
+      },
+      {
+        "code": 412,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 340,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 0,
+        "indent": 1,
+        "parameters": []
+      },
+      {
+        "code": 402,
+        "indent": 0,
+        "parameters": [
+          1,
+          "No"
         ]
       },
       {
@@ -5838,18 +5896,9 @@
         "parameters": []
       },
       {
-        "code": 412,
+        "code": 404,
         "indent": 0,
         "parameters": []
-      },
-      {
-        "code": 121,
-        "indent": 0,
-        "parameters": [
-          4,
-          4,
-          1
-        ]
       },
       {
         "code": 0,
