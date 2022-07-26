@@ -159,8 +159,8 @@
   "partyMembers": [
     1,
     9,
-    11,
-    4
+    23,
+    22
   ],
   "ship": {
     "bgm": {
@@ -655,7 +655,7 @@
     "",
     ""
   ],
-  "versionId": 30094302,
+  "versionId": 81975768,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
