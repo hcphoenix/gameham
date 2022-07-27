@@ -2300,7 +2300,9 @@ Window_SkillList.prototype.processHandling = function() {
       }
       if (Input.isRepeated('up') && this._index == this.maxItems() - 1) {
         SoundManager.playCursor();
-        SceneManager.pop();
+        if (!$gameParty.inBattle()) {
+            SceneManager.pop();
+        }
       }
     } 
     Window_Selectable.prototype.processHandling.call(this);
