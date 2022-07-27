@@ -115,6 +115,17 @@ TH.BattleCommandUseSkill = TH.BattleCommandUseSkill || {};
     var name = cmd.name() !== "move" ? cmd.name() : (this._actor._row === 1 ? "FLY" : "LAND");
     if (!enabled) name = "Grounded";
 
+    // case for escape 
+    if (name == "FLEE") {
+        let helpText = 'Everyone flees and each bird takes ' + GameHam.GetPursuitDamage() + ' damage.';
+        Eli.HelpWindows.actorCmd().contents = Eli.HelpWindows.actorCmd().contents.filter(c => c.symbol != 'FLEE');
+        Eli.HelpWindows.actorCmd().contents.push({
+            text: helpText,
+            symbol: 'FLEE',
+            note: ''
+        });
+    }
+
     this.addCommand(name, cmd.symbol(), enabled, cmd.ext());
   };
   
