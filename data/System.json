@@ -326,9 +326,9 @@
       "volume": 0
     }
   ],
-  "startMapId": 15,
-  "startX": 6,
-  "startY": 5,
+  "startMapId": 7,
+  "startX": 20,
+  "startY": 4,
   "switches": [
     "",
     "Player Can Move",
@@ -655,7 +655,7 @@
     "",
     ""
   ],
-  "versionId": 34318063,
+  "versionId": 70952482,
   "victoryMe": {
     "name": "Victory2",
     "pan": 0,
