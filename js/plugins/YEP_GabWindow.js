@@ -700,8 +700,8 @@ Window_Gab.prototype.drawGabCharacter = function() {
     } else if (this._graphicType === 'face') {
       var wx = 0;
       var wy = 0;
-      var ww = Window_Base._faceWidth;
-      var wh = this.lineHeight() * 2;
+      var ww = Window_Base._faceWidth + Yanfly.Param.GabCharPosX;
+      var wh = this.lineHeight() * 2 + Yanfly.Param.GabCharPosY;
       this.drawFace(this._graphicName, this._graphicIndex, wx, wy, ww, wh);
     }
 };
