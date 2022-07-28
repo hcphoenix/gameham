@@ -5873,9 +5873,32 @@
         "parameters": []
       },
       {
-        "code": 340,
+        "code": 355,
         "indent": 1,
-        "parameters": []
+        "parameters": [
+          "BattleManager.endAction();"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "$gameParty.performEscape();"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "SoundManager.playEscape();"
+        ]
+      },
+      {
+        "code": 655,
+        "indent": 1,
+        "parameters": [
+          "BattleManager.processAbort();"
+        ]
       },
       {
         "code": 0,

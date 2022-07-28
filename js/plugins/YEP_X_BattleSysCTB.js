@@ -2289,6 +2289,14 @@ Window_CTBIcon.prototype.update = function() {
     this.updatePositionY();
 };
 
+ImageManager.loadCBTIconImg = function(filename) {
+    return this.loadBitmap('img/minimugs/', filename, 0, true);
+};
+
+ImageManager.loadCBTIconImgActors = function (faceName) {
+    return ImageManager.loadCBTIconImg("minimug_bird_" + faceName.charAt(faceName.length-1));
+};
+
 Window_CTBIcon.prototype.updateBattler = function() {
     var changed = this._battler !== this._mainSprite._battler;
     if (this._battler && this._battler._ctbTransformed) changed = true;
@@ -2300,6 +2308,7 @@ Window_CTBIcon.prototype.updateBattler = function() {
     if (this._iconIndex > 0) {
       this._image = ImageManager.loadSystem('IconSet');
     } else if (this._battler.isEnemy()) {
+      this._border = ImageManager.loadCBTIconImg("minimug_enemy");
       if (this.isUsingSVBattler()) {
         var name = this._battler.svBattlerName();
         this._image = ImageManager.loadSvActor(name);
@@ -2314,7 +2323,8 @@ Window_CTBIcon.prototype.updateBattler = function() {
       }
     } else if (this._battler.isActor()) {
       var faceName = this._battler.faceName();
-      this._image = ImageManager.loadFace(faceName);
+      this._image = ImageManager.loadCBTIconImgActors(faceName);
+      this._border = ImageManager.loadCBTIconImg("minimug_ally");
     }
     this._redraw = true;
 };
@@ -2373,6 +2383,7 @@ Window_CTBIcon.prototype.drawIcon = function(iconIndex, x, y) {
 };
 
 Window_CTBIcon.prototype.drawBorder = function() {
+/* OLD
     var width = this.contents.width;
     var height = this.contents.height;
     this.contents.fillRect(0, 0, width, height, this.gaugeBackColor());
@@ -2385,6 +2396,21 @@ Window_CTBIcon.prototype.drawBorder = function() {
     width -= 2;
     height -= 2;
     this.contents.fillRect(4, 4, width, height, this.ctbBackgroundColor());
+*/
+    var width = 57;
+    var height = 57;
+    var bitmap = this._border;
+    var pw = 57;
+    var ph = 57;
+    var sw = Math.min(width, pw);
+    var sh = Math.min(height, ph);
+    var dx = 0
+    var dy = 0
+    var sx = 0;
+    var sy = 0;
+    var dw = this.contents.width - 8;
+    var dh = this.contents.height - 8;
+    this.contents.blt(bitmap, sx, sy, sw, sh, dx, dy, dw, dh);
 };
 
 Window_CTBIcon.prototype.ctbBorderColor = function() {
@@ -2398,6 +2424,7 @@ Window_CTBIcon.prototype.ctbBackgroundColor = function() {
 };
 
 Window_CTBIcon.prototype.redrawActorFace = function() {
+    /*
     var width = Window_Base._faceWidth;
     var height = Window_Base._faceHeight;
     var faceIndex = this._battler.faceIndex();
@@ -2412,7 +2439,23 @@ Window_CTBIcon.prototype.redrawActorFace = function() {
     var sy = Math.floor(faceIndex / 4) * ph + (ph - sh) / 2;
     var dw = this.contents.width - 8;
     var dh = this.contents.height - 8;
-    this.contents.blt(bitmap, sx, sy, sw, sh, dx + 4, dy + 4, dw, dh);
+    this.contents.blt(bitmap, sx, sy, sw, sh, dx + 4, dy + 4, dw, dh);*/
+    // For minimugs
+    var width = 57;
+    var height = 57;
+    var faceIndex = this._battler.faceIndex();
+    var bitmap = this._image;
+    var pw = 57;
+    var ph = 57;
+    var sw = Math.min(width, pw);
+    var sh = Math.min(height, ph);
+    var dx = Math.floor(Math.max(width - pw, 0) / 2);
+    var dy = Math.floor(Math.max(height - ph, 0) / 2);
+    var sx = faceIndex % 4 * pw + (pw - sw) / 2;
+    var sy = Math.floor(faceIndex / 4) * ph + (ph - sh) / 2;
+    var dw = this.contents.width - 8;
+    var dh = this.contents.height - 8;
+    this.contents.blt(bitmap, sx, sy, sw, sh, dx, dy, dw, dh);
 };
 
 Window_CTBIcon.prototype.redrawEnemy = function() {
