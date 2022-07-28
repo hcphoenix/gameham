@@ -245,6 +245,13 @@ var _alias_mog_actorcm_temp_initialize = Game_Temp.prototype.initialize;
 Game_Temp.prototype.initialize = function() {
 	_alias_mog_actorcm_temp_initialize.call(this);
     this._actorCmData = [false,false,true];
+    /* Not sure if this is actually faster
+    These should just be frames of the actor faces anyway
+    // Preload sup images
+    for(let i = 1; i <= 23; i++) {
+        ImageManager.loadActorpicCM(`Actor_${i}_sup`);
+    }*/
+
 };	
 
 //=============================================================================

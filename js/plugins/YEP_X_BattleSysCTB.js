@@ -605,6 +605,13 @@ DataManager.isDatabaseLoaded = function() {
     this.processCTBNotetags2($dataStates);
     this.processCTBNotetags3($dataActors, true);
     this.processCTBNotetags3($dataEnemies, false);
+    // Process preloading assets, idk maybe a better place
+    for(let i = 1; i <= 4; i++) {
+        ImageManager.loadCBTIconImgActors(i.toString());
+    }
+    ImageManager.loadCBTIconImg("minimug_summon");
+    ImageManager.loadCBTIconImg("minimug_enemy");
+    ImageManager.loadCBTIconImg("minimug_ally");
     return true;
 };
 
