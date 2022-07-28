@@ -437,7 +437,7 @@ Window_CharacterSelect.prototype.onCancel = function() {
         // We actually dont want to end the scene because you need to select at this point?
         // Or maybe we do end it and go back to title idk figure this out later
         // SceneManager._scene.endScene();
-        
+        this.select(0);
     } else {
         this.partyIndex--;
         // remove the current portrait

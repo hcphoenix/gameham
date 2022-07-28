@@ -75,7 +75,7 @@
         "code": 355,
         "indent": 0,
         "parameters": [
-          "$gameParty.gainItem($gameVariables.value(2));"
+          "$gameParty.gainItem($dataItems[$gameVariables.value(2)], 1);"
         ]
       },
       {
@@ -375,6 +375,17 @@
         ]
       },
       {
+        "code": 312,
+        "indent": 4,
+        "parameters": [
+          0,
+          0,
+          1,
+          0,
+          2
+        ]
+      },
+      {
         "code": 355,
         "indent": 4,
         "parameters": [
@@ -498,13 +509,6 @@
         "indent": 3,
         "parameters": [
           "GameHam.LastMapEncounter = {};"
-        ]
-      },
-      {
-        "code": 655,
-        "indent": 3,
-        "parameters": [
-          "console.log(\"clearing events\");"
         ]
       },
       {

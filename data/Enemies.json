@@ -391,7 +391,7 @@
     ],
     "gold": 0,
     "name": "Ice Cream Kid",
-    "note": "<STEAL SCAN 3: 100%: 1>\n<STEAL SCAN 2: 100%: 1>\n<STEAL ITEM 1: 100%>\n<STEAL GOLD 1: 100%>\n<BIO: A little bundle of joy who's about to discover the cruelty of this twisted world.>\n<Hit Damage Sound: wow, 100, 130>",
+    "note": "<STEAL SCAN 3: 100%: 1>\n<STEAL SCAN 2: 100%: 1>\n<STEAL ITEM 1: 100%>\n<STEAL GOLD 1: 100%>\n<BIO: A little bundle of joy who's about to discover the cruelty of this twisted world.>\n<Hit Damage Sound: wow, 100, 130>\n<CTB ENEMY PORT: 1>",
     "params": [
       20,
       7,
@@ -474,7 +474,7 @@
     ],
     "gold": 0,
     "name": "Trampoline Kid",
-    "note": "<STEAL SCAN 4: 100%: 1>\n<STEAL SCAN 2: 100%: 1>\n<STEAL ITEM 1: 100%>\n<STEAL ITEM 2: 100%>\n<STEAL GOLD 4: 50%>\n<BIO: A speedy little jerk. Neutralize their acrobatics if you can.>",
+    "note": "<STEAL SCAN 4: 100%: 1>\n<STEAL SCAN 2: 100%: 1>\n<STEAL ITEM 1: 100%>\n<STEAL ITEM 2: 100%>\n<STEAL GOLD 4: 50%>\n<BIO: A speedy little jerk. Neutralize their acrobatics if you can.>\n<CTB ENEMY PORT: 5>",
     "params": [
       24,
       12,
@@ -723,7 +723,7 @@
     ],
     "gold": 0,
     "name": "Hunter",
-    "note": "<STEAL SCAN 7: 20%: 1>\n<STEAL SCAN 13: 80%: 1>\n<STEAL SCAN 10: 100%: 1>\n<STEAL ITEM 8: 100%>\n<STEAL GOLD 45: 60%>\n<BIO: An all-time winner of the least dangerous game.>",
+    "note": "<STEAL SCAN 7: 20%: 1>\n<STEAL SCAN 13: 80%: 1>\n<STEAL SCAN 10: 100%: 1>\n<STEAL ITEM 8: 100%>\n<STEAL GOLD 45: 60%>\n<BIO: An all-time winner of the least dangerous game.>\n<CTB ENEMY PORT: 13>",
     "params": [
       25,
       16,
@@ -810,7 +810,7 @@
     "params": [
       25,
       20,
-      20,
+      5,
       3,
       1,
       8,
@@ -1387,7 +1387,7 @@
     ],
     "gold": 0,
     "name": "Hunter with Something to Lose",
-    "note": "<STEAL SCAN 13: 50%: 1>\n<STEAL SCAN 14: 100%: 1>\n<STEAL ITEM 8: 100%>\n<STEAL ITEM 8: 100%>\n<STEAL ITEM 1: 100%>\n<STEAL GOLD 45: 60%>",
+    "note": "<STEAL SCAN 13: 50%: 1>\n<STEAL SCAN 14: 100%: 1>\n<STEAL ITEM 8: 100%>\n<STEAL ITEM 8: 100%>\n<STEAL ITEM 1: 100%>\n<STEAL GOLD 45: 60%>\n<CTB ENEMY PORT: 14>",
     "params": [
       20,
       14,

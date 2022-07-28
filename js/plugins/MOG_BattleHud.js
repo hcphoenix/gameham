@@ -1465,16 +1465,20 @@ Sprite_Animation.prototype.updatePosition = function() {
 	};
 };
 
-//=============================================================================
-// ** ImageManager
-//=============================================================================
+Moghunter.Battle_Hud_DataManager_isDatabaseLoaded = DataManager.isDatabaseLoaded;
+DataManager.isDatabaseLoaded = function() {
+    if (!Moghunter.Battle_Hud_DataManager_isDatabaseLoaded.call(this)) return false;
+    ImageManager.loadBHud("Layout");
+    ImageManager.loadBHud("Turn");
+    ImageManager.loadBHud("HP_Meter");
+    ImageManager.loadBHud("TP_Meter");
+    ImageManager.loadBHud("MP_Meter");
+    ImageManager.loadBHud("HP_Number");
+    ImageManager.loadBHud("TP_Number");
+    ImageManager.loadBHud("MP_Number");
 
-//==============================
-// * BHud
-//==============================
-ImageManager.loadBHud = function(filename) {
-    return this.loadBitmap('img/battlehud/', filename, 0, true);
-};		
+    return true;
+}
 
 //=============================================================================
 // ** ImageManager

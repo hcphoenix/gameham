@@ -11,7 +11,23 @@ function Enemy_Bar() {
 
 (function (_) { 
     "use strict";
-    
+
+    // PRELOAD ASSETS
+    _.DataManager_isDatabaseLoaded = DataManager.isDatabaseLoaded;
+    DataManager.isDatabaseLoaded = function() {
+        if (!_.DataManager_isDatabaseLoaded.call(this)) return false;
+        ImageManager.loadBarBitmap("hp_bar_front");
+        ImageManager.loadBarBitmap("hp_bar_front_2");
+        ImageManager.loadBarBitmap("tp_bar_front");
+        ImageManager.loadBarBitmap("mp_bar_front");
+        ImageManager.loadBarBitmap("hp_bar_back");
+        ImageManager.loadBarBitmap("hp_bar_back_2");
+        ImageManager.loadBarBitmap("tp_bar_back");
+        ImageManager.loadBarBitmap("mp_bar_back");
+        ImageManager.loadBarBitmap("numbers");
+        return true;
+    }
+
     // Helper for loading images from our subfolder
     ImageManager.loadBarBitmap = function (filename) {
         return this.loadBitmap('img/enemybars/', filename, 0, true);

@@ -612,6 +612,7 @@ DataManager.isDatabaseLoaded = function() {
     ImageManager.loadCBTIconImg("minimug_summon");
     ImageManager.loadCBTIconImg("minimug_enemy");
     ImageManager.loadCBTIconImg("minimug_ally");
+    ImageManager.loadCBTIconImg("minimug_enemyports");
     return true;
 };
 
@@ -751,6 +752,8 @@ DataManager.processCTBNotetags3 = function(group, isActor) {
       var line = notedata[i];
       if (line.match(/<(?:CTB ICON):[ ](\d+)>/i)) {
         obj.ctbIcon = parseInt(RegExp.$1);
+      } else if (line.match(/<(?:CTB ENEMY PORT):[ ](\d+)>/i)) {
+        obj.ctbEnemyPort = parseInt(RegExp.$1);
       } else if (line.match(/<(?:CTB BORDER COLOR):[ ](\d+)>/i)) {
         obj.ctbBorderColor = parseInt(RegExp.$1);
       } else if (line.match(/<(?:CTB BACKGROUND COLOR):[ ](\d+)>/i)) {
@@ -2101,6 +2104,10 @@ Game_Enemy.prototype.ctbIcon = function() {
     return this.enemy().ctbIcon;
 };
 
+Game_Enemy.prototype.ctbEnemyPort = function() {
+    return this.enemy().ctbEnemyPort;
+};
+
 Game_Enemy.prototype.ctbBorderColor = function() {
     return this.enemy().ctbBorderColor;
 };
@@ -2316,16 +2323,20 @@ Window_CTBIcon.prototype.updateBattler = function() {
       this._image = ImageManager.loadSystem('IconSet');
     } else if (this._battler.isEnemy()) {
       this._border = ImageManager.loadCBTIconImg("minimug_enemy");
-      if (this.isUsingSVBattler()) {
-        var name = this._battler.svBattlerName();
-        this._image = ImageManager.loadSvActor(name);
+      if(this._battler.ctbEnemyPort()) {
+        this._image = ImageManager.loadCBTIconImg("minimug_enemyports");
       } else {
-        var battlerName = this._battler.battlerName();
-        var battlerHue = this._battler.battlerHue();
-        if ($gameSystem.isSideView()) {
-          this._image = ImageManager.loadSvEnemy(battlerName, battlerHue);
+        if (this.isUsingSVBattler()) {
+            var name = this._battler.svBattlerName();
+            this._image = ImageManager.loadSvActor(name);
         } else {
-          this._image = ImageManager.loadEnemy(battlerName, battlerHue);
+            var battlerName = this._battler.battlerName();
+            var battlerHue = this._battler.battlerHue();
+            if ($gameSystem.isSideView()) {
+            this._image = ImageManager.loadSvEnemy(battlerName, battlerHue);
+            } else {
+            this._image = ImageManager.loadEnemy(battlerName, battlerHue);
+            }
         }
       }
     } else if (this._battler.isActor()) {
@@ -2466,6 +2477,9 @@ Window_CTBIcon.prototype.redrawActorFace = function() {
 };
 
 Window_CTBIcon.prototype.redrawEnemy = function() {
+    if (this._battler.ctbEnemyPort()) {
+        return this.redrawEnemyMinimug();
+    }
     if (this.isUsingSVBattler()) {
       return this.redrawSVEnemy();
     };
@@ -2486,6 +2500,24 @@ Window_CTBIcon.prototype.redrawEnemy = function() {
       dx += Math.floor((this.contents.width - 8 - dw) / 2);
     }
     this.contents.blt(bitmap, 0, 0, sw, sh, dx + 4, dy + 4, dw, dh);
+};
+
+Window_CTBIcon.prototype.redrawEnemyMinimug = function() {
+    var width = 57;
+    var height = 57;
+    var faceIndex = this._battler.ctbEnemyPort() - 1;
+    var bitmap = this._image;
+    var pw = 57;
+    var ph = 57;
+    var sw = Math.min(width, pw);
+    var sh = Math.min(height, ph);
+    var dx = Math.floor(Math.max(width - pw, 0) / 2);
+    var dy = Math.floor(Math.max(height - ph, 0) / 2);
+    var sx = faceIndex % 4 * pw + (pw - sw) / 2;
+    var sy = Math.floor(faceIndex / 4) * ph + (ph - sh) / 2;
+    var dw = this.contents.width - 8;
+    var dh = this.contents.height - 8;
+    this.contents.blt(bitmap, sx, sy, sw, sh, dx, dy, dw, dh);
 };
 
 Window_CTBIcon.prototype.redrawSVEnemy = function() {
