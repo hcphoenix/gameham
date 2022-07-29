@@ -1310,15 +1310,21 @@
     "id": 16,
     "members": [
       {
-        "enemyId": 16,
-        "x": 309,
-        "y": 436,
+        "enemyId": 10,
+        "x": 209,
+        "y": 379,
         "hidden": false
       },
       {
         "enemyId": 10,
-        "x": 508,
-        "y": 436,
+        "x": 417,
+        "y": 322,
+        "hidden": false
+      },
+      {
+        "enemyId": 10,
+        "x": 628,
+        "y": 385,
         "hidden": false
       }
     ],

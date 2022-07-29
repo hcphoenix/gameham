@@ -2001,9 +2001,13 @@ Sprite_Actor.prototype.initialize = function(battler) {
 // * Damage Offset X
 //==============================
 Sprite_Actor.prototype.damageOffsetX = function() {
-	if (!$gameSystem.isSideView() && this._sprite_face) {return 0};
-    return -32;
+	//if (!$gameSystem.isSideView() && this._sprite_face) {return 0};
+    return 75;
 };
+
+Sprite_Actor.prototype.damageOffsetY = function() {
+    return 100;
+}
 
 //==============================
 // * update Position
@@ -2041,6 +2045,28 @@ Sprite_Actor.prototype.setupAnimation = function() {
 	};
 	_alias_mog_bhud_sprt_actor_setupAnimation.call(this);
 };
+
+
+Sprite_Actor.prototype.startAnimation = function(animation, mirror, delay) {
+    var sprite = new Sprite_Animation();
+    sprite.setup(this._effectTarget, animation, mirror, delay);
+    this.parent.addChild(sprite);
+    sprite._offset_x = this.damageOffsetX();
+    sprite._offset_y = this.damageOffsetY();
+    this._animationSprites.push(sprite);
+};
+
+// Extra animation stuff
+var _alias_mog_bhud_sprt_animation_updatePosition = Sprite_Animation.prototype.updatePosition;
+Sprite_Animation.prototype.updatePosition = function() {
+    _alias_mog_bhud_sprt_animation_updatePosition.call(this);
+    if(this._offset_x) {
+        this.x += this._offset_x;
+    }
+    if(this._offset_y) {
+        this.y += this._offset_y;
+    }
+}
 
 //==============================
 // * Setup Damage Popup
