@@ -99,7 +99,7 @@ Scene_DrivingMini.prototype.initialize = function() {
     $gameSystem._drivingmini_phase = 0; // start phase
     this._phase_state = 0; // incremented at each point in a phase ie fade in -> wait for input -> fade out
     this._score = 0;
-    this._scroll_speed = 1.5;
+    this._scroll_speed = 5;
 
     BattleManager.saveBgmAndBgs();
 	AudioManager.fadeOutBgm(2);
@@ -112,9 +112,10 @@ Scene_DrivingMini.prototype.initialize = function() {
 }
 
 Scene_DrivingMini.prototype.load_images = function() {
-    this._player_img = ImageManager.loadDrivingMiniBitmap("player");
+    this._player_img = ImageManager.loadDrivingMiniBitmap("driver");
     this._road_tile_img = ImageManager.loadDrivingMiniTexture("roadtile");
     this._tree_img = ImageManager.loadDrivingMiniTexture("tree");
+    this._sky_img = ImageManager.loadBattleback1("sky_AUTUMN");
 }
 
 Scene_DrivingMini.prototype.createDisplayObjects = function() {
@@ -124,12 +125,16 @@ Scene_DrivingMini.prototype.createDisplayObjects = function() {
     this._spriteField = new Sprite();	
 	this.addChild(this._spriteField);
 
+    this._sky = new Sprite(this._sky_img);
+    this._sky.anchor.y = 0.5;
+    this.addChild(this._sky);
+
     this._camera = new PIXI.projection.Camera3d(); 
     this._camera.setPlanes(300, 10, 1000, false);
     this._camera.position.set(Graphics.boxWidth / 2, 0);
     this._camera.position3d.z = 50;
-    this._camera.position3d.y = -40;
-    this._camera.euler.x = Math.PI / 30;
+    this._camera.position3d.y = -70;
+    this._camera.euler.x = 0.264;
     this.addChild(this._camera);
 
 	this._spriteHudBase = new Sprite();
@@ -175,10 +180,10 @@ Scene_DrivingMini.prototype.createFlashEffectSprite = function() {
 Scene_DrivingMini.prototype.createPlayerSprite = function() {	
     this._player_sprite = new Sprite_DrivingMiniPlayer(this._camera, this._player_img);
     this._player_sprite.opacity = 255;
-    this._player_sprite.anchor.x = 0.5;
-    this._player_sprite.anchor.y = 0.5; 
-    this._player_sprite.x = Graphics.boxWidth / 2;
-    this._player_sprite.y = 320;
+    //this._player_sprite.anchor.x = 0.5;
+   // this._player_sprite.anchor.y = 0.5; 
+    //this._player_sprite.x = Graphics.boxWidth / 2;
+    //this._player_sprite.y = 320;
     //this._player_sprite.scale.x = 6;
     //this._player_sprite.scale.y = 6;
 
@@ -335,7 +340,7 @@ Sprite_DrivingMiniPlayer.prototype.initialize = function(camera, bitmap) {
     this._animation_frame = 0;
     this._camera = camera;
     this.bitmap = bitmap;
-    this.setAnimation(0);
+    //this.setAnimation(0);
 };
 
 Sprite_DrivingMiniPlayer.prototype.update = function() {
@@ -346,7 +351,7 @@ Sprite_DrivingMiniPlayer.prototype.update = function() {
 
     this.updateInput();
 
-    this.updateAnimation();
+    //this.updateAnimation();
 };
 
 
@@ -355,12 +360,16 @@ Sprite_DrivingMiniPlayer.prototype.updateInput = function() {
 
     if(Input.isPressed("right")) {
         this._camera.position3d.x += 1;
-        this.setAnimation(1);
+        this._camera.euler.z += 0.001;
+        //this.setAnimation(1);
     } else if (Input.isPressed("left")) {
         this._camera.position3d.x -= 1;
-        this.setAnimation(2);
-    } else {
-        this.setAnimation(0);
+        this._camera.euler.z -= 0.001;
+        //this.setAnimation(2);
+    } else if (Input.isPressed("down")) {
+        this._camera.euler.x -= 0.01;
+    } else if (Input.isPressed("up")) {
+        this._camera.euler.x += 0.01;
     }
 };
 
@@ -401,13 +410,16 @@ Sprite_DrivingMiniRoadManager.prototype.constructor = Sprite_DrivingMiniPlayer;
 Sprite_DrivingMiniRoadManager.prototype.initialize = function(camera, scroll_speed, tree_img, road_img) {
     Sprite_Base.prototype.initialize.call(this);
     
-    this.maxTrees = 30;
-    this._trees = [];
+    this.maxSegments = 75;
+    this.trackLength = 1500;
+    this.halfTrackLength = this.trackLength / 2;
+    this.treeVariance = 500;
+    this._segments = [];
 
-    for(let i = 0; i < this.maxTrees; i++) {
-        let treeCol = {
+    for(let i = 0; i < this.maxSegments; i++) {
+        let segment = {
             trees: [],
-            pos: (- 500 / this.maxTrees * i + 250),
+            pos: (- this.trackLength / this.maxSegments * i + this.halfTrackLength),
         };
 
         let road = new PIXI.projection.Sprite3d();
@@ -417,10 +429,10 @@ Sprite_DrivingMiniRoadManager.prototype.initialize = function(camera, scroll_spe
         road.texture = road_img;
         road.position3d.y = 35;
         road.position3d.x = 0;
-        road.euler.x = 80;
-        road.position3d.z = treeCol.pos;
+        road.euler.x = -Math.PI / 2;
+        road.position3d.z = segment.pos;
 
-        treeCol.road = road;
+        segment.road = road;
         
         for(let j = 0; j < 6; j++) {
             let tree = new PIXI.projection.Sprite3d();
@@ -428,18 +440,19 @@ Sprite_DrivingMiniRoadManager.prototype.initialize = function(camera, scroll_spe
             tree.anchor.set(0.5, 0.5);
             tree.texture = tree_img;
             tree.position3d.y = 0;
-            tree.position3d.x = -50 + Math.random() * 100 + (Math.random() < 0.5 ? -1 : 1)*100;
+            tree.position3d.x = (60 + Math.random() * this.treeVariance) * (Math.random() < 0.5 ? -1 : 1);
             tree._randomOffset = Math.random() * 25;
-            tree.position3d.z = treeCol.pos + tree._randomOffset;
-            treeCol.trees.push(tree);
+            tree.position3d.z = segment.pos + tree._randomOffset;
+            segment.trees.push(tree);
         }
 
-        this._trees[i] = treeCol;
+        this._segments[i] = segment;
     }
 
     this._scroll_speed = scroll_speed;
     this._camera = camera;
-    this._road_tilt = 0;
+    this._road_tilt = 0; // current tilt of the road
+    this._curve_value = 0;
 };
 
 Sprite_DrivingMiniRoadManager.prototype.update = function() {
@@ -448,19 +461,24 @@ Sprite_DrivingMiniRoadManager.prototype.update = function() {
     // only update during gameplay phase
 	if($gameSystem._drivingmini_phase !== 1 || SceneManager._scene._player_sprite._crashed) return;
 
-    for(let i = 0; i < this.maxTrees; i++) {
-        let treeCol = this._trees[i];
+    for(let i = 0; i < this.maxSegments; i++) {
+        let segment = this._segments[i];
     
-        treeCol.pos -= this._scroll_speed;
-        if(treeCol.pos <= -250) {
-            treeCol.pos = 250;
-            this._road_tilt +=5;
-            treeCol.road.position3d.x += this._road_tilt;
-            treeCol.trees.forEach(tree=>tree.position3d.x+=this._road_tilt);
+        segment.pos -= this._scroll_speed;
+        if(segment.pos <= -this.halfTrackLength) {
+            segment.pos = this.halfTrackLength;
+            //this._road_tilt +=5;
+            segment.road.position3d.x += this._road_tilt;
+            segment.trees.forEach(tree=>tree.position3d.x+=this._road_tilt);
         }
 
-        treeCol.road.position3d.z = treeCol.pos;
-        treeCol.trees.forEach(tree=> tree.position3d.z = treeCol.pos + tree._randomOffset);
+        segment.road.position3d.z = segment.pos;
+        segment.trees.forEach(tree=> tree.position3d.z = segment.pos + tree._randomOffset);
+        
+        // update alpha
+        let alpha = (this.halfTrackLength - segment.pos) / this.halfTrackLength;
+        segment.road.alpha = alpha;
+        segment.trees.forEach(tree=> tree.alpha = alpha);
     }
 
     // sort trees sprite order

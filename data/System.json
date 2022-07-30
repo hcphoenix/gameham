@@ -105,7 +105,7 @@
     "pitch": 100,
     "volume": 90
   },
-  "editMapId": 15,
+  "editMapId": 13,
   "elements": [
     "",
     "Physical",
@@ -326,9 +326,9 @@
       "volume": 0
     }
   ],
-  "startMapId": 15,
-  "startX": 5,
-  "startY": 2,
+  "startMapId": 13,
+  "startX": 8,
+  "startY": 5,
   "switches": [
     "",
     "Player Can Move",
