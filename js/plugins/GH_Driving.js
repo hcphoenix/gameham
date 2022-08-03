@@ -113,6 +113,8 @@ Scene_DrivingMini.prototype.initialize = function() {
 
 Scene_DrivingMini.prototype.load_images = function() {
     this._player_img = ImageManager.loadDrivingMiniBitmap("driver");
+    this._wheel_img = ImageManager.loadDrivingMiniBitmap("wheel");
+    this._wing_img = ImageManager.loadDrivingMiniBitmap("wing");
     this._road_tile_img = ImageManager.loadDrivingMiniTexture("roadtile");
     this._tree_img = ImageManager.loadDrivingMiniTexture("tree");
     this._sky_img = ImageManager.loadBattleback1("sky_AUTUMN");
@@ -130,7 +132,7 @@ Scene_DrivingMini.prototype.createDisplayObjects = function() {
     this.addChild(this._sky);
 
     this._camera = new PIXI.projection.Camera3d(); 
-    this._camera.setPlanes(300, 10, 1000, false);
+    this._camera.setPlanes(300, 0, 1000, false);
     this._camera.position.set(Graphics.boxWidth / 2, 0);
     this._camera.position3d.z = 50;
     this._camera.position3d.y = -70;
@@ -178,7 +180,7 @@ Scene_DrivingMini.prototype.createFlashEffectSprite = function() {
 };
 
 Scene_DrivingMini.prototype.createPlayerSprite = function() {	
-    this._player_sprite = new Sprite_DrivingMiniPlayer(this._camera, this._player_img);
+    this._player_sprite = new Sprite_DrivingMiniPlayer(this._camera, this._player_img, this._wheel_img, this._wing_img);
     this._player_sprite.opacity = 255;
     //this._player_sprite.anchor.x = 0.5;
    // this._player_sprite.anchor.y = 0.5; 
@@ -273,29 +275,14 @@ Scene_DrivingMini.prototype.update_end_phase = function() {
             // after flashing for a bit
             if(this._flash_effect_sprite._flash_count > 5) {
                 this._flash_effect_sprite._timer_count = 0;
-                this._gametext_sprite._timer_count = 0;
                 this._flash_effect_sprite.opacity = 0;
-
-                // turn on gameover
-                this._flash_effect_sprite.opacity = 255;
-                this._gametext_sprite.opacity = 255;
-                this.setGameTextSprite(2);
-                
+        
                 this._phase_state = 2;
             }
             break;
         case 2:
-            this._gametext_sprite._timer_count++;
-            if(this._gametext_sprite._timer_count > 180) {
-                this._flash_effect_sprite.opacity = 0;
-                this._gametext_sprite.opacity = 0;
-
-                // turn on results
-                this._results_sprite.opacity = 255;
-                // TODO write score
-
-                this._phase_state = 3;
-            }
+        // todo: add a message here    
+        this._phase_state = 3;
             break;
         case 3:
             // wait for input
@@ -335,11 +322,28 @@ function Sprite_DrivingMiniPlayer() {
 Sprite_DrivingMiniPlayer.prototype = Object.create(Sprite_Base.prototype);
 Sprite_DrivingMiniPlayer.prototype.constructor = Sprite_DrivingMiniPlayer;
 
-Sprite_DrivingMiniPlayer.prototype.initialize = function(camera, bitmap) {
+Sprite_DrivingMiniPlayer.prototype.initialize = function(camera, bitmap, wheel_img, wing_img) {
     Sprite_Base.prototype.initialize.call(this);
     this._animation_frame = 0;
     this._camera = camera;
     this.bitmap = bitmap;
+    this.jumpVelocity = 0;
+    this.roadHeight = this._camera.position3d.y;
+    this.normalTilt = this._camera.euler.x;
+    this.direction = 0;
+
+    this.wheel = new Sprite(wheel_img);
+    this.wheel.anchor.y = 0.5;
+    this.wheel.anchor.x = 0.5;
+    this.wheel.y = Graphics.boxHeight;
+    this.wheel.x = 300;
+    this.addChild(this.wheel);
+
+    this.wing = new Sprite(wing_img);
+    this.wing.x = 150;
+    this.wing.y = -300;
+    this.wing.rotation = Math.PI / 8;
+    this.wheel.addChild(this.wing);
     //this.setAnimation(0);
 };
 
@@ -357,20 +361,56 @@ Sprite_DrivingMiniPlayer.prototype.update = function() {
 
 Sprite_DrivingMiniPlayer.prototype.updateInput = function() {
     Sprite_Base.prototype.update.call(this);
+    
+    // horrible bounce 
+    this.y = Math.random() * 5 - 5;
+
+    // horrible lurch
+    this.direction += 0.2 * Math.random() - 0.1;
+
+    if(this._camera.euler.z > 0) {
+        this._camera.euler.z -= 0.003;
+    } else if( this._camera.euler.z < 0) {
+        this._camera.euler.z += 0.003;
+    }
 
     if(Input.isPressed("right")) {
-        this._camera.position3d.x += 1;
-        this._camera.euler.z += 0.001;
+        this.direction += 0.1;
+        this._camera.euler.z += 0.006;
         //this.setAnimation(1);
     } else if (Input.isPressed("left")) {
-        this._camera.position3d.x -= 1;
-        this._camera.euler.z -= 0.001;
+        this.direction -= 0.1;
+        this._camera.euler.z -= 0.006;
         //this.setAnimation(2);
-    } else if (Input.isPressed("down")) {
-        this._camera.euler.x -= 0.01;
-    } else if (Input.isPressed("up")) {
-        this._camera.euler.x += 0.01;
     }
+
+    this._camera.position3d.x += this.direction
+
+    if (Input.isTriggered("ok")) {
+        if(this._camera.position3d.y >= this.roadHeight) {
+            this.jumpVelocity = 4;
+            this._camera.position3d.y = this.roadHeight;
+        } else { 
+            this.jumpVelocity = 3;
+        }
+    }
+
+    if(this._camera.position3d.y <= this.roadHeight) {
+        this._camera.position3d.y -= this.jumpVelocity;
+        this.jumpVelocity-= 0.1;
+    } else {
+        // Clamp to prevent clipping
+        if(this._camera.euler.z > 0.05) this._camera.euler.z = 0.05;
+        if(this._camera.euler.z < -0.05) this._camera.euler.z = -0.05;
+    }
+
+    // update camera tilt
+    this._camera.euler.x = this.normalTilt - 0.1 * (this._camera.position3d.y - this.roadHeight) / this.roadHeight;
+
+    // update wheel tilt
+    this.wheel.rotation = Math.PI / 8 * this.direction;
+
+    this.wing.rotation = Math.PI / 8  - Math.PI / 10 * this.direction;
 };
 
 Sprite_DrivingMiniPlayer.animationSpeed = 3;
@@ -479,6 +519,28 @@ Sprite_DrivingMiniRoadManager.prototype.update = function() {
         let alpha = (this.halfTrackLength - segment.pos) / this.halfTrackLength;
         segment.road.alpha = alpha;
         segment.trees.forEach(tree=> tree.alpha = alpha);
+
+        // Check collision
+        if(segment.pos < this._camera.position3d.z - 250 && segment.pos > this._camera.position3d.z - 320) {
+            //let alpha = 1;
+            //segment.road.alpha = alpha;
+            segment.trees.forEach(tree => {
+                if(tree.position3d.z < this._camera.position3d.z - 275
+                    && tree.position3d.z > this._camera.position3d.z - 275 - 20 
+                    && tree.position3d.x < this._camera.position3d.x + 15
+                    && tree.position3d.x > this._camera.position3d.x - 15
+                    && this._camera.position3d.y > -100) {
+                        //tree.alpha = alpha
+                        $gameSystem._drivingmini_phase = 2;
+                }
+            });
+        }
+    }
+
+    if (Input.isPressed("#c")) {
+        this._road_tilt +=5;
+    } else if (Input.isPressed("#v")) {
+        this._road_tilt -=5;
     }
 
     // sort trees sprite order
