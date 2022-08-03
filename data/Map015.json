@@ -1647,7 +1647,7 @@
               "indent": 0,
               "parameters": [
                 [
-                  "\\b[11]Random Party",
+                  "\\b[11]Random Flock",
                   "\\b[29]Build It Your Way!",
                   "\\b[11]Random Party Premium Plus!",
                   "        \\C[18](Locked...)",
@@ -1665,7 +1665,7 @@
               "indent": 0,
               "parameters": [
                 0,
-                "\\b[11]Random Party"
+                "\\b[11]Random Flock"
               ]
             },
             {

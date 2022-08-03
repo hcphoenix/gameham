@@ -44,7 +44,7 @@
       {
         "level": 1,
         "note": "",
-        "skillId": 3
+        "skillId": 19
       },
       {
         "level": 1,
@@ -83,7 +83,7 @@
       }
     ],
     "name": "Normal Bird",
-    "note": "<Equip Slot: 3, 4, 4>",
+    "note": "<Equip Slot: 3, 4, 4>\n<Passive State: 103>",
     "params": [
       [
         1,
@@ -1886,10 +1886,15 @@
         "level": 99,
         "note": "",
         "skillId": 36
+      },
+      {
+        "level": 99,
+        "note": "",
+        "skillId": 39
       }
     ],
     "name": "Dark Lord",
-    "note": "<Equip Slot: 2, 2, 3, 3>",
+    "note": "<Equip Slot: 2, 2, 3, 3>\n<Passive State: 102>",
     "params": [
       [
         1,
@@ -2753,7 +2758,7 @@
       {
         "level": 1,
         "note": "",
-        "skillId": 3
+        "skillId": 46
       },
       {
         "level": 1,
@@ -4552,19 +4557,14 @@
     ],
     "learnings": [
       {
-        "level": 1,
-        "note": "",
-        "skillId": 3
-      },
-      {
-        "level": 1,
-        "note": "",
-        "skillId": 2
-      },
-      {
         "level": 99,
         "note": "",
         "skillId": 133
+      },
+      {
+        "level": 1,
+        "note": "",
+        "skillId": 132
       }
     ],
     "name": "Blue Mage",
@@ -5437,17 +5437,12 @@
       {
         "level": 1,
         "note": "",
-        "skillId": 61
+        "skillId": 64
       },
       {
         "level": 1,
         "note": "",
         "skillId": 2
-      },
-      {
-        "level": 99,
-        "note": "",
-        "skillId": 61
       },
       {
         "level": 99,
@@ -5471,7 +5466,7 @@
       }
     ],
     "name": "Capitalist",
-    "note": "<Row Lock>\n<Equip Slot: 3, 4, 4>\n<Passive State: 34>",
+    "note": "<Row Lock>\n<Equip Slot: 3, 4, 4>\n<Passive State: 101>",
     "params": [
       [
         1,

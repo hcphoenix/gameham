@@ -1,6 +1,6 @@
 {
   "autoplayBgm": true,
-  "autoplayBgs": false,
+  "autoplayBgs": true,
   "battleback1Name": "sky_SPRING",
   "battleback2Name": "ground_FOREST",
   "bgm": {
@@ -10,10 +10,10 @@
     "volume": 70
   },
   "bgs": {
-    "name": "",
+    "name": "ocean",
     "pan": 0,
     "pitch": 100,
-    "volume": 90
+    "volume": 50
   },
   "disableDashing": false,
   "displayName": "",
@@ -6628,7 +6628,7 @@
               "code": 655,
               "indent": 0,
               "parameters": [
-                "  troopId: 15,"
+                "  troopId: 14,"
               ]
             },
             {

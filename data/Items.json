@@ -18,6 +18,12 @@
         "dataId": 0,
         "value1": 0,
         "value2": 3
+      },
+      {
+        "code": 21,
+        "dataId": 29,
+        "value1": 1,
+        "value2": 0
       }
     ],
     "hitType": 0,

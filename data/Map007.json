@@ -1,6 +1,6 @@
 {
   "autoplayBgm": true,
-  "autoplayBgs": false,
+  "autoplayBgs": true,
   "battleback1Name": "sky_SPRING",
   "battleback2Name": "ground_FOREST",
   "bgm": {
@@ -7319,6 +7319,37 @@
                 0,
                 0,
                 -1
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                -1,
+                {
+                  "list": [
+                    {
+                      "code": 33,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": false
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 33,
+                  "indent": null
+                }
               ]
             },
             {

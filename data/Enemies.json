@@ -208,7 +208,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "Actor1_3",
+    "battlerName": "",
     "dropItems": [
       {
         "dataId": 1,
@@ -245,17 +245,17 @@
       }
     ],
     "gold": 0,
-    "name": "old blanky",
+    "name": "",
     "note": "",
     "params": [
-      500,
+      100,
       0,
-      30,
-      30,
-      30,
-      30,
-      30,
-      30
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
     ]
   },
   {
@@ -334,7 +334,7 @@
         "conditionParam1": 0,
         "conditionParam2": 0,
         "conditionType": 0,
-        "rating": 6,
+        "rating": 4,
         "skillId": 81
       },
       {
@@ -474,7 +474,7 @@
     ],
     "gold": 0,
     "name": "Trampoline Kid",
-    "note": "<STEAL SCAN 4: 100%: 1>\n<STEAL SCAN 2: 100%: 1>\n<STEAL ITEM 1: 100%>\n<STEAL ITEM 2: 100%>\n<STEAL GOLD 4: 50%>\n<BIO: A speedy little jerk. Neutralize their acrobatics if you can.>\n<CTB ENEMY PORT: 5>",
+    "note": "<STEAL SCAN 4: 100%: 1>\n<STEAL SCAN 2: 100%: 1>\n<STEAL ITEM 1: 100%>\n<STEAL ITEM 2: 100%>\n<STEAL GOLD 4: 50%>\n<BIO: A speedy little squirt. Neutralize their acrobatics if you can.>\n<CTB ENEMY PORT: 5>",
     "params": [
       24,
       12,
@@ -728,7 +728,7 @@
       25,
       16,
       6,
-      2,
+      1,
       1,
       20,
       8,
@@ -827,36 +827,15 @@
         "conditionType": 0,
         "rating": 5,
         "skillId": 1
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0,
-        "conditionType": 0,
-        "rating": 6,
-        "skillId": 81
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0,
-        "conditionType": 0,
-        "rating": 4,
-        "skillId": 82
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0.5,
-        "conditionType": 3,
-        "rating": 6,
-        "skillId": 83
       }
     ],
     "battlerHue": 0,
-    "battlerName": "enemy_icecream-D",
+    "battlerName": "",
     "dropItems": [
       {
-        "kind": 0,
-        "dataId": 0,
-        "denominator": 1
+        "dataId": 1,
+        "denominator": 1,
+        "kind": 0
       },
       {
         "dataId": 1,
@@ -874,7 +853,7 @@
       {
         "code": 22,
         "dataId": 0,
-        "value": 1
+        "value": 0.95
       },
       {
         "code": 22,
@@ -888,17 +867,17 @@
       }
     ],
     "gold": 0,
-    "name": "Sorbet Lad",
-    "note": "<STEAL SCAN 3: 100%: 1>\n<STEAL SCAN 2: 100%: 1>\n<STEAL ITEM 1: 100%>\n<STEAL GOLD 1: 100%>",
+    "name": "",
+    "note": "",
     "params": [
       100,
-      70,
-      35,
-      1,
-      1,
-      12,
-      45,
-      1
+      0,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
     ]
   },
   {
@@ -910,36 +889,15 @@
         "conditionType": 0,
         "rating": 5,
         "skillId": 1
-      },
-      {
-        "conditionParam1": 1,
-        "conditionParam2": 3,
-        "conditionType": 1,
-        "rating": 6,
-        "skillId": 86
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0.75,
-        "conditionType": 3,
-        "rating": 4,
-        "skillId": 87
-      },
-      {
-        "conditionParam1": 2,
-        "conditionParam2": 3,
-        "conditionType": 1,
-        "rating": 6,
-        "skillId": 88
       }
     ],
     "battlerHue": 0,
-    "battlerName": "enemy_bounce-D",
+    "battlerName": "",
     "dropItems": [
       {
-        "kind": 0,
-        "dataId": 0,
-        "denominator": 1
+        "dataId": 1,
+        "denominator": 1,
+        "kind": 0
       },
       {
         "dataId": 1,
@@ -957,7 +915,7 @@
       {
         "code": 22,
         "dataId": 0,
-        "value": 1
+        "value": 0.95
       },
       {
         "code": 22,
@@ -971,17 +929,17 @@
       }
     ],
     "gold": 0,
-    "name": "Bouncing Buddy",
-    "note": "<STEAL SCAN 4: 100%: 1>\n<STEAL SCAN 2: 100%: 1>\n<STEAL ITEM 1: 100%>\n<STEAL ITEM 2: 100%>\n<STEAL GOLD 4: 50%>",
+    "name": "",
+    "note": "",
     "params": [
       100,
-      70,
-      50,
-      5,
-      1,
-      1,
-      70,
-      1
+      0,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
     ]
   },
   {
@@ -1017,7 +975,7 @@
       }
     ],
     "battlerHue": 0,
-    "battlerName": "enemy_business-C",
+    "battlerName": "enemy_business-D",
     "dropItems": [
       {
         "kind": 0,
@@ -1075,37 +1033,16 @@
         "conditionParam2": 0,
         "conditionType": 0,
         "rating": 5,
-        "skillId": 119
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0,
-        "conditionType": 0,
-        "rating": 7,
-        "skillId": 98
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0,
-        "conditionType": 0,
-        "rating": 4,
-        "skillId": 96
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0,
-        "conditionType": 0,
-        "rating": 6,
-        "skillId": 97
+        "skillId": 1
       }
     ],
     "battlerHue": 0,
-    "battlerName": "enemy_alien-B",
+    "battlerName": "",
     "dropItems": [
       {
-        "kind": 0,
-        "dataId": 0,
-        "denominator": 1
+        "dataId": 1,
+        "denominator": 1,
+        "kind": 0
       },
       {
         "dataId": 1,
@@ -1123,7 +1060,7 @@
       {
         "code": 22,
         "dataId": 0,
-        "value": 1
+        "value": 0.95
       },
       {
         "code": 22,
@@ -1137,17 +1074,17 @@
       }
     ],
     "gold": 0,
-    "name": "Little Gray Man",
-    "note": "<STEAL SCAN 3: 50%: 1>\n<STEAL SCAN 10: 100%: 1>\n<STEAL ITEM 9: 100%>\n<STEAL GOLD -1: 69%>",
+    "name": "",
+    "note": "",
     "params": [
       100,
-      100,
-      50,
-      2,
-      40,
-      1,
-      45,
-      1
+      0,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
     ]
   },
   {
@@ -1159,36 +1096,15 @@
         "conditionType": 0,
         "rating": 5,
         "skillId": 1
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0,
-        "conditionType": 0,
-        "rating": 4,
-        "skillId": 101
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0,
-        "conditionType": 0,
-        "rating": 3,
-        "skillId": 102
-      },
-      {
-        "conditionParam1": 1,
-        "conditionParam2": 3,
-        "conditionType": 1,
-        "rating": 9,
-        "skillId": 103
       }
     ],
     "battlerHue": 0,
-    "battlerName": "enemy_hunter-E",
+    "battlerName": "",
     "dropItems": [
       {
-        "kind": 0,
-        "dataId": 0,
-        "denominator": 1
+        "dataId": 1,
+        "denominator": 1,
+        "kind": 0
       },
       {
         "dataId": 1,
@@ -1206,7 +1122,7 @@
       {
         "code": 22,
         "dataId": 0,
-        "value": 1
+        "value": 0.95
       },
       {
         "code": 22,
@@ -1220,17 +1136,17 @@
       }
     ],
     "gold": 0,
-    "name": "Huntsmaster",
-    "note": "<STEAL SCAN 10: 100%: 1>\n<STEAL SCAN 13: 100%: 1>\n<STEAL SCAN 14: 50%: 1>\n<STEAL ITEM 8: 100%>\n<STEAL ITEM 2: 100%>\n<STEAL GOLD 45: 60%>",
+    "name": "",
+    "note": "",
     "params": [
       100,
-      130,
-      65,
-      8,
-      1,
-      5,
-      30,
-      1
+      0,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
     ]
   },
   {
@@ -1240,38 +1156,17 @@
         "conditionParam1": 0,
         "conditionParam2": 0,
         "conditionType": 0,
-        "rating": 4,
+        "rating": 5,
         "skillId": 1
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0,
-        "conditionType": 0,
-        "rating": 5,
-        "skillId": 106
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0,
-        "conditionType": 0,
-        "rating": 3,
-        "skillId": 107
-      },
-      {
-        "conditionParam1": 0,
-        "conditionParam2": 0,
-        "conditionType": 0,
-        "rating": 5,
-        "skillId": 108
       }
     ],
     "battlerHue": 0,
-    "battlerName": "enemy_washer-B",
+    "battlerName": "",
     "dropItems": [
       {
-        "kind": 0,
-        "dataId": 0,
-        "denominator": 1
+        "dataId": 1,
+        "denominator": 1,
+        "kind": 0
       },
       {
         "dataId": 1,
@@ -1289,7 +1184,7 @@
       {
         "code": 22,
         "dataId": 0,
-        "value": 1
+        "value": 0.95
       },
       {
         "code": 22,
@@ -1303,17 +1198,17 @@
       }
     ],
     "gold": 0,
-    "name": "Dust Annihilator",
-    "note": "<STEAL SCAN 4: 30%: 1>\n<STEAL SCAN 6: 50%: 1>\n<STEAL ITEM 15: 100%>\n<STEAL ITEM 8: 100%>\n<STEAL GOLD 30: 60%>",
+    "name": "",
+    "note": "",
     "params": [
       100,
       0,
-      25,
       10,
-      25,
-      5,
-      25,
-      1
+      10,
+      10,
+      10,
+      10,
+      10
     ]
   },
   {
