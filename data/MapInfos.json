@@ -130,7 +130,7 @@
     "id": 15,
     "expanded": false,
     "name": "New Game",
-    "order": 16,
+    "order": 17,
     "parentId": 0,
     "scrollX": 1092,
     "scrollY": 614.6666666666666
@@ -141,7 +141,16 @@
     "name": "Tutorial Island Lite (Lets get away!)",
     "order": 6,
     "parentId": 4,
-    "scrollX": 1092,
-    "scrollY": 637.3333333333334
+    "scrollX": 1065.3333333333333,
+    "scrollY": 633.3333333333334
+  },
+  {
+    "id": 17,
+    "expanded": false,
+    "name": "Tactics",
+    "order": 16,
+    "parentId": 5,
+    "scrollX": 1076,
+    "scrollY": 614.6666666666666
   }
 ]

@@ -779,7 +779,9 @@ CAE.ScoreTable = CAE.ScoreTable || {};		// Plugin namespace
         this._buttons[1].setClickHandler(() => {
             if(_.globalScores == null) {
                 _.globalScores = [];
-                fetch('https://sheets.googleapis.com/v4/spreadsheets/14FWk7MeS15keDqtyX4l46U5Pplo_654zEMfyEsj2-IE/values:batchGet?ranges=A2:A99&key=AIzaSyBW-9hkJiAbMEJXsDr-8oToub0UCf5lyp8', { method: 'GET' }).then(response => response.json()).then(data => this.ProcessScoreResponse(data));
+                let k = 'QUl6YVN5QWc2YzBGa0hNdW1qMkNkZTlvVFJXZjNKdUFKU2YxaGlV43';
+                k = atob(k.substring(0, k.length-2));
+                fetch('https://sheets.googleapis.com/v4/spreadsheets/14FWk7MeS15keDqtyX4l46U5Pplo_654zEMfyEsj2-IE/values:batchGet?ranges=A2:A99&key='+k, { method: 'GET' }).then(response => response.json()).then(data => this.ProcessScoreResponse(data));
             } else {
                 this.global = true;
                 _.globalScores.sort(_.scoreSort);

@@ -97,6 +97,7 @@ var $plugins =
 {"name":"GH_Tooltips","status":true,"description":"","parameters":{}},
 {"name":"GH_Snake","status":true,"description":"(v1.0) snake minigame","parameters":{}},
 {"name":"GH_Driving","status":true,"description":"(v1.0) Driving minigame","parameters":{}},
+{"name":"GH_Chess","status":true,"description":"(v1.0) Chess","parameters":{}},
 {"name":"GH_CharacterSelect","status":true,"description":"(v1.0) minigame template","parameters":{}},
 {"name":"------------------------","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
 {"name":"-- QUARANTINE","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
