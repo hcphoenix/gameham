@@ -272,14 +272,35 @@ Sprite_CharacterSelectPortrait.prototype.initialize = function(portrait_img, big
     this.spriteFace.anchor.y = 0.5;
     this.spriteFace.anchor.x = 0.5;
     this.addChild(this.spriteFace);
+
+    this.flashSprite = new Sprite(new Bitmap(192,240));
+    this.flashSprite.anchor.y = 0.5;
+    this.flashSprite.anchor.x = 0.5;
+    let color = 'rgba(42, 42, 42, 1)';
+    this.flashSprite.bitmap.fillRect(0, 0, 192, 240, color);
+    this.addChild(this.flashSprite);
+    this.flashSprite.visible = false;
+
+    this.flashCount = 0;
 };
 
 Sprite_CharacterSelectPortrait.prototype.update = function() {
     Sprite_Base.prototype.update.call(this);
     this.updateFrame();
     this.updateContent();
+    this.updateFlash();
     this.timer++;
 };
+
+
+Sprite_CharacterSelectPortrait.prototype.updateFlash = function() {
+    if(this.flashCount >= 0) {
+        if(this.timer % 4 == 0) {
+            this.flashCount--;
+        }
+        this.flashSprite.visible = (this.flashCount % 2) == 0;
+    }
+}
 
 Sprite_CharacterSelectPortrait.AnimationSpeed = 20;
 Sprite_CharacterSelectPortrait.prototype.updateFrame = function() {
@@ -407,7 +428,19 @@ Window_CharacterSelect.prototype.pallette = function() {
 }
 
 Window_CharacterSelect.prototype.onOk = function() {
-    this.selectedActors.push(this.curActorInfo());
+    let actor = this.curActorInfo();
+    // dont allow selecting the same actor
+    for(let i = 0; i < this.selectedActors.length; i++) {
+        if(this.selectedActors[i].id == actor.id) {
+            let cur = this._index; // stay on same box
+            this.start();
+            this.select(cur);
+            this.big_portraits[i].flashCount = 5;
+            return;
+        }
+    }
+
+    this.selectedActors.push(actor);
     if(this.partyIndex < 2) {
         this.partyIndex++;
         let cur = this._index; // stay on same box
@@ -434,10 +467,8 @@ Window_CharacterSelect.prototype.onOk = function() {
 Window_CharacterSelect.prototype.onCancel = function() {
     this.selectedActors.pop();
     if(this.partyIndex == 0) {
-        // We actually dont want to end the scene because you need to select at this point?
-        // Or maybe we do end it and go back to title idk figure this out later
-        // SceneManager._scene.endScene();
-        this.select(0);
+        // Go back to the start menu map scene
+        SceneManager.pop();
     } else {
         this.partyIndex--;
         // remove the current portrait
