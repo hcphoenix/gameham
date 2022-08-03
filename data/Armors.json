@@ -101,7 +101,18 @@
     "atypeId": 1,
     "description": "",
     "etypeId": 3,
-    "traits": [],
+    "traits": [
+      {
+        "code": 43,
+        "dataId": 149,
+        "value": 1
+      },
+      {
+        "code": 43,
+        "dataId": 150,
+        "value": 1
+      }
+    ],
     "iconIndex": 96,
     "name": "Electric Lemon",
     "note": "",
@@ -201,6 +212,11 @@
       {
         "code": 43,
         "dataId": 145,
+        "value": 1
+      },
+      {
+        "code": 43,
+        "dataId": 146,
         "value": 1
       }
     ],
@@ -451,18 +467,12 @@
   },
   {
     "id": 19,
-    "atypeId": 0,
+    "atypeId": 1,
     "description": "",
-    "etypeId": 2,
-    "traits": [
-      {
-        "code": 22,
-        "dataId": 1,
-        "value": 0
-      }
-    ],
-    "iconIndex": 0,
-    "name": "",
+    "etypeId": 3,
+    "traits": [],
+    "iconIndex": 100,
+    "name": "Meteorite",
     "note": "",
     "params": [
       0,
@@ -697,13 +707,7 @@
     "atypeId": 1,
     "description": "",
     "etypeId": 2,
-    "traits": [
-      {
-        "code": 22,
-        "dataId": 1,
-        "value": 0
-      }
-    ],
+    "traits": [],
     "iconIndex": 116,
     "name": "Spite",
     "note": "",

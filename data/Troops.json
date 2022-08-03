@@ -226,10 +226,10 @@
             ]
           },
           {
-            "code": 356,
+            "code": 230,
             "indent": 0,
             "parameters": [
-              "WaitForGab"
+              60
             ]
           },
           {

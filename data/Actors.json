@@ -222,7 +222,7 @@
     "traits": [
       {
         "code": 43,
-        "dataId": 32,
+        "dataId": 39,
         "value": 1
       },
       {
@@ -256,7 +256,7 @@
     "traits": [
       {
         "code": 43,
-        "dataId": 32,
+        "dataId": 39,
         "value": 1
       },
       {
@@ -290,7 +290,7 @@
     "traits": [
       {
         "code": 43,
-        "dataId": 32,
+        "dataId": 37,
         "value": 1
       },
       {
@@ -537,7 +537,7 @@
     "name": "Pollyanna",
     "nickname": "",
     "note": "",
-    "profile": "test test test"
+    "profile": "(We have become aliens to our own planet, copying car alarms as mating calls and sleeping when our cages are curtained. I like crackers.)"
   },
   {
     "id": 17,
@@ -592,10 +592,10 @@
     ],
     "initialLevel": 1,
     "maxLevel": 99,
-    "name": "Ver'onax",
+    "name": "Ixilith",
     "nickname": "",
     "note": "",
-    "profile": "test test test"
+    "profile": "(The person reading this will die on the eighth of January, 2036.)"
   },
   {
     "id": 19,
@@ -620,7 +620,7 @@
       },
       {
         "code": 43,
-        "dataId": 64,
+        "dataId": 62,
         "value": 1
       }
     ],
@@ -629,7 +629,7 @@
     "name": "Mr. Tuxedo",
     "nickname": "",
     "note": "",
-    "profile": "test test test"
+    "profile": "Frankly I'm not so sure about this whole \"resistance\" thing, but hey, this gameshow is free advertising, right?"
   },
   {
     "id": 20,
@@ -663,7 +663,7 @@
     "name": "Bill",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "Players who read this bio also liked:<br>- PlasmaCoin by MisterCard <br>- Transfusion2Go by Juicero <br>- Ketamine 2"
   },
   {
     "id": 21,
@@ -697,7 +697,7 @@
     "name": "Princeton",
     "nickname": "",
     "note": "",
-    "profile": ""
+    "profile": "I connect content creators to next-generation cross-platform solutions for proactively networking full stack meta-services."
   },
   {
     "id": 22,
